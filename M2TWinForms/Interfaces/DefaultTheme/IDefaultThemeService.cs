@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Interfaces
+namespace M2TWinForms.Interfaces.DefaultTheme
 {
-    internal interface IThemedControl
+    public interface IDefaultThemeService
     {
-        void ApplyCurrentLoadedTheme();
+        Theme GetTheme();
     }
 }

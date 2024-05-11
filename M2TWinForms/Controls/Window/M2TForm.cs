@@ -1,17 +1,8 @@
 ﻿using M2TWinForms.Enumerations;
+using M2TWinForms.Helper;
 using M2TWinForms.Interfaces;
-using M2TWinForms.Models;
 using M2TWinForms.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace M2TWinForms.Controls.Window
 {
@@ -107,15 +98,157 @@ namespace M2TWinForms.Controls.Window
 
         public bool CanResize { get; set; } = true;
 
-        public ColorType BackColorType { get; set; } = ColorType.BackgroundPrimary;
-        public ColorType TitleBarBackColorType { get; set; } = ColorType.BackgroundSecondary;
-        public ColorType TitleBarTextColorType { get; set; } = ColorType.ForegroundPrimary;
-        public ColorType TitleBarIconColorType { get; set; } = ColorType.HighlightBackgroundPrimary;
-        public ColorType TitleBarIconHoverColorType { get; set; } = ColorType.BackgroundSecondary;
-        public ColorType TitleBarMinimizeColorType { get; set; } = ColorType.ForegroundPrimary;
-        public ColorType TitleBarMinimizeHoverColorType { get; set; } = ColorType.BackgroundSecondary;
-        public ColorType TitleBarCloseColorType { get; set; } = ColorType.NegativeConfirmationBackgroundColor;
-        public ColorType TitleBarCloseHoverColorType { get; set; } = ColorType.BackgroundSecondary;
+        public bool CanHoverMinimizeClose
+        {
+            get => _canHoverMaximizeClose;
+            set
+            {
+                _canHoverMaximizeClose = value;
+                MinimizeButton.HoverEnabled = value;
+                CloseButton.HoverEnabled = value;
+            }
+        }
+        private bool _canHoverMaximizeClose;
+
+        public ColorType BackColorType
+        {
+            get => backColorType;
+            set
+            {
+                backColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        private ColorType backColorType = ColorType.BackgroundPrimary;
+        public ColorType TitleBarBackColorType
+        {
+            get => titleBarBackColorType;
+            set
+            {
+                titleBarBackColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        private ColorType titleBarBackColorType = ColorType.BackgroundSecondary;
+        public ColorType TitleBarTextColorType
+        {
+            get => titleBarTextColorType;
+            set
+            {
+                titleBarTextColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        private ColorType titleBarTextColorType = ColorType.ForegroundPrimary;
+        public ColorType TitleBarIconImageColorType
+        {
+            get => WindowImageButton.ImageColorType;
+            set
+            {
+                WindowImageButton.ImageColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        public ColorType TitleBarIconHoverImageColorType
+        {
+            get => WindowImageButton.HoverImageColorType;
+            set
+            {
+                WindowImageButton.HoverImageColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        public ColorType TitleBarIconBackColorType
+        {
+            get => WindowImageButton.BackgroundColorType;
+            set
+            {
+                WindowImageButton.BackgroundColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        public ColorType TitleBarIconHoverBackColorType
+        {
+            get => WindowImageButton.HoverBackgroundColorType;
+            set
+            {
+                WindowImageButton.HoverBackgroundColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+
+        public ColorType TitleBarMinimizeImageColorType
+        {
+            get => MinimizeButton.ImageColorType;
+            set
+            {
+                MinimizeButton.ImageColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        public ColorType TitleBarMinimizeHoverImageColorType
+        {
+            get => MinimizeButton.HoverImageColorType;
+            set
+            {
+                MinimizeButton.HoverImageColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        public ColorType TitleBarMinimizeBackColorType
+        {
+            get => MinimizeButton.BackgroundColorType;
+            set
+            {
+                MinimizeButton.BackgroundColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        public ColorType TitleBarMinimizeHoverBackColorType
+        {
+            get => MinimizeButton.HoverBackgroundColorType;
+            set
+            {
+                MinimizeButton.HoverBackgroundColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        public ColorType TitleBarCloseImageColorType
+        {
+            get => CloseButton.ImageColorType;
+            set
+            {
+                CloseButton.ImageColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        public ColorType TitleBarCloseHoverImageColorType
+        {
+            get => CloseButton.HoverImageColorType;
+            set
+            {
+                CloseButton.HoverImageColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        public ColorType TitleBarCloseBackColorType
+        {
+            get => CloseButton.BackgroundColorType;
+            set
+            {
+                CloseButton.BackgroundColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        public ColorType TitleBarCloseHoverBackColorType
+        {
+            get => CloseButton.HoverBackgroundColorType;
+            set
+            {
+                CloseButton.HoverBackgroundColorType = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
 
         public M2TForm()
         {
@@ -140,46 +273,37 @@ namespace M2TWinForms.Controls.Window
             CloseButton.Click += CloseButton_Click;
             MinimizeButton.Click += MinimizeButton_Click;
 
-            SetTheme();
+            CanHoverMinimizeClose = true;
+
+            TitleBarIconImageColorType = ColorType.HighlightForegroundPrimary;
+            TitleBarIconHoverImageColorType = ColorType.HighlightHoverForegroundPrimary;
+            TitleBarIconBackColorType = ColorType.BackgroundSecondary;
+            TitleBarIconHoverBackColorType = ColorType.BackgroundHoverSecondary;
+            TitleBarMinimizeImageColorType = ColorType.ForegroundPrimary;
+            TitleBarMinimizeHoverImageColorType = ColorType.ForegroundHoverPrimary;
+            TitleBarMinimizeBackColorType = ColorType.BackgroundSecondary;
+            TitleBarMinimizeHoverBackColorType = ColorType.BackgroundHoverSecondary;
+            TitleBarCloseImageColorType = ColorType.NegativeConfirmationBackground;
+            TitleBarCloseHoverImageColorType = ColorType.NegativeConfirmationHoverBackground;
+            TitleBarCloseBackColorType = ColorType.BackgroundSecondary;
+            TitleBarCloseHoverBackColorType = ColorType.BackgroundHoverSecondary;
+
+            ApplyCurrentLoadedTheme();
         }
 
-
-        public void SetTheme()
+        public void ApplyCurrentLoadedTheme()
         {
-            this.BackColor = LoadedThemeManager.GetColorForType(BackColorType);
-            PN_DragPanel.BackColor = LoadedThemeManager.GetColorForType(TitleBarBackColorType);
-            LB_Title.ForeColor = LoadedThemeManager.GetColorForType(TitleBarTextColorType);
+            this.BackColor = CurrentLoadedThemeManager.GetColorForType(BackColorType);
+            PN_DragPanel.BackColor = CurrentLoadedThemeManager.GetColorForType(TitleBarBackColorType);
+            LB_Title.ForeColor = CurrentLoadedThemeManager.GetColorForType(TitleBarTextColorType);
 
-            MinimizeButton.BackColor = LoadedThemeManager.GetColorForType(TitleBarBackColorType);
-            MinimizeButton.ImageColor = LoadedThemeManager.GetColorForType(TitleBarMinimizeColorType);
-            MinimizeButton.HoverBackColor = LoadedThemeManager.GetColorForType(TitleBarMinimizeHoverColorType);
-
-            CloseButton.BackColor = LoadedThemeManager.GetColorForType(TitleBarBackColorType);
-            CloseButton.ImageColor = LoadedThemeManager.GetColorForType(TitleBarCloseColorType);
-            CloseButton.HoverBackColor = LoadedThemeManager.GetColorForType(TitleBarCloseHoverColorType);
-
-            WindowImageButton.BackColor = LoadedThemeManager.GetColorForType(TitleBarBackColorType);
-            WindowImageButton.HoverBackColor = LoadedThemeManager.GetColorForType(TitleBarIconHoverColorType);
-            WindowImageButton.ImageColor = LoadedThemeManager.GetColorForType(TitleBarIconColorType);
-
-            this.Refresh();
+            NestedControlThemeApplier.ApplyThemeForChildControls(this);
         }
-
-
-        public void ApplyTheme(Theme theme)
-        {
-            throw new NotImplementedException();
-        }
-
-
 
         private void BaseWindowBorderless_Load(object? sender, EventArgs e)
         {
             CenterToParent();
         }
-
-
-
 
 
         #region Borderless Window
@@ -294,7 +418,6 @@ namespace M2TWinForms.Controls.Window
 
         private const int BorderWidth = 8;
         private ResizeDirection _resizeDir = ResizeDirection.None;
-        private bool _UseIconAsButton = false;
 
         private enum ResizeDirection
         {
@@ -525,8 +648,6 @@ namespace M2TWinForms.Controls.Window
 
 
         #endregion
-
-
 
     }
 }

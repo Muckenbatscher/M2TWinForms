@@ -1,4 +1,4 @@
-using M2TWinForms.Interfaces;
+using M2TWinForms.Interfaces.DefaultTheme;
 using M2TWinForms.Services;
 using M2TWinForms.Services.DefaultTheme;
 
@@ -15,8 +15,8 @@ namespace M2TWinForms.Demo
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            IDefaultThemeGenerationService darkThemeService = new DefaultDarkThemeService();
-            LoadedThemeManager.LoadTheme(darkThemeService.GetTheme());
+            IDefaultThemeService darkThemeService = new DefaultDarkThemeService();
+            CurrentLoadedThemeManager.LoadTheme(darkThemeService.GetTheme());
             Application.Run(new Form1());
         }
     }

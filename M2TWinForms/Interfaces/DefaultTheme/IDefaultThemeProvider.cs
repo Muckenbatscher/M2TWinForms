@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Interfaces
+namespace M2TWinForms.Interfaces.DefaultTheme
 {
-    public interface IDefaultThemeGenerationService
+    public interface IDefaultThemeProvider
     {
         string ThemeName { get; }
         Dictionary<ColorType, string> ColorMap { get; }
-        Theme GetTheme();
     }
 }

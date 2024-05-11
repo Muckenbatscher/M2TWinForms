@@ -65,11 +65,14 @@
             // CloseButton
             // 
             CloseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            CloseButton.BackColor = Color.FromArgb(12, 12, 13);
+            CloseButton.BackgroundColorType = Enumerations.ColorType.BackgroundPrimary;
             CloseButton.BaseImage = Properties.Resources.Close;
             CloseButton.ConvertBaseImageToGrayscale = true;
-            CloseButton.HoverBackColor = Color.Empty;
+            CloseButton.HoverBackgroundColorType = Enumerations.ColorType.BackgroundHoverPrimary;
             CloseButton.HoverEnabled = true;
-            CloseButton.ImageColor = Color.FromArgb(230, 76, 60);
+            CloseButton.HoverImageColorType = Enumerations.ColorType.ForegroundHoverPrimary;
+            CloseButton.ImageColorType = Enumerations.ColorType.ForegroundPrimary;
             CloseButton.ImagePadding = new Padding(0);
             CloseButton.Location = new Point(800, 0);
             CloseButton.Margin = new Padding(4, 3, 4, 3);
@@ -81,11 +84,14 @@
             // MinimizeButton
             // 
             MinimizeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            MinimizeButton.BackColor = Color.FromArgb(12, 12, 13);
+            MinimizeButton.BackgroundColorType = Enumerations.ColorType.BackgroundPrimary;
             MinimizeButton.BaseImage = Properties.Resources.Minimize;
-            MinimizeButton.ConvertBaseImageToGrayscale = false;
-            MinimizeButton.HoverBackColor = Color.Empty;
+            MinimizeButton.ConvertBaseImageToGrayscale = true;
+            MinimizeButton.HoverBackgroundColorType = Enumerations.ColorType.BackgroundHoverPrimary;
             MinimizeButton.HoverEnabled = true;
-            MinimizeButton.ImageColor = Color.White;
+            MinimizeButton.HoverImageColorType = Enumerations.ColorType.ForegroundHoverPrimary;
+            MinimizeButton.ImageColorType = Enumerations.ColorType.ForegroundPrimary;
             MinimizeButton.ImagePadding = new Padding(0);
             MinimizeButton.Location = new Point(760, 0);
             MinimizeButton.Margin = new Padding(4, 3, 4, 3);
@@ -96,11 +102,14 @@
             // 
             // WindowImageButton
             // 
+            WindowImageButton.BackColor = Color.FromArgb(12, 12, 13);
+            WindowImageButton.BackgroundColorType = Enumerations.ColorType.BackgroundPrimary;
             WindowImageButton.BaseImage = null;
             WindowImageButton.ConvertBaseImageToGrayscale = false;
-            WindowImageButton.HoverBackColor = Color.Empty;
+            WindowImageButton.HoverBackgroundColorType = Enumerations.ColorType.BackgroundHoverPrimary;
             WindowImageButton.HoverEnabled = true;
-            WindowImageButton.ImageColor = Color.White;
+            WindowImageButton.HoverImageColorType = Enumerations.ColorType.ForegroundHoverPrimary;
+            WindowImageButton.ImageColorType = Enumerations.ColorType.ForegroundPrimary;
             WindowImageButton.ImagePadding = new Padding(3);
             WindowImageButton.Location = new Point(10, 0);
             WindowImageButton.Margin = new Padding(4, 3, 4, 3);

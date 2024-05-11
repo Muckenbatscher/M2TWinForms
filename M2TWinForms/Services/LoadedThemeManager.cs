@@ -11,34 +11,26 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Services
 {
-    public class LoadedThemeManager
+    internal class LoadedThemeManager
     {
-        public static Theme CurrentLoadedTheme 
+        public Theme CurrentLoadedTheme 
         { 
-            get
-            {
-                if (_currentLoadedTheme == null)
-                {
-                    var darkThemeService = new DefaultDarkThemeService();
-                    _currentLoadedTheme = darkThemeService.GetTheme();
-                }
-                return _currentLoadedTheme;
-            }
+            get => _currentLoadedTheme;
             private set => _currentLoadedTheme = value;
         }
-        private static Theme _currentLoadedTheme;
+        private Theme _currentLoadedTheme;
 
-        public static Color GetColorForType(ColorType colorType)
+        public Color GetColorForType(ColorType colorType)
         {
             var usage = GetColorUsageForTypeFromTheme(CurrentLoadedTheme, colorType);
             return usage.Color;
         }
-        private static ColorUsage GetColorUsageForTypeFromTheme(Theme theme, ColorType colorType)
+        private ColorUsage GetColorUsageForTypeFromTheme(Theme theme, ColorType colorType)
         {
             return theme.Colors.FirstOrDefault(c => c.ColorType == colorType);
         }
 
-        public static void LoadTheme(Theme theme)
+        public void LoadTheme(Theme theme)
         {
             if (theme == null)
                 throw new ArgumentNullException(nameof(theme));

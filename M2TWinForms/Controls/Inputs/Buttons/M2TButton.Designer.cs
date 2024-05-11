@@ -1,8 +1,6 @@
-﻿using M2TWinForms.Enumerations;
-
-namespace M2TWinForms.Controls.Inputs.Buttons
+﻿namespace M2TWinForms.Controls.Inputs.Buttons
 {
-    partial class ColoredImageButton
+    partial class M2TButton
     {
         /// <summary> 
         /// Erforderliche Designervariable.
@@ -31,12 +29,6 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
-            ImageColorType = ColorType.ForegroundPrimary;
-            HoverImageColorType = ColorType.ForegroundHoverPrimary;
-            BackgroundColorType = ColorType.BackgroundPrimary;
-            HoverBackgroundColorType = ColorType.BackgroundHoverPrimary;
         }
 
         #endregion
