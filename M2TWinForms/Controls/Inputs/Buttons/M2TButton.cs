@@ -16,6 +16,7 @@ namespace M2TWinForms.Controls.Inputs.Buttons
 {
     public partial class M2TButton : Button, IThemedControl
     {
+        [DefaultValue(ColorType.BackgroundSecondary)]
         public ColorType BackColorType
         {
             get => _backColorType;
@@ -25,19 +26,21 @@ namespace M2TWinForms.Controls.Inputs.Buttons
                 ApplyCurrentLoadedTheme();
             }
         }
-        private ColorType _backColorType = ColorType.ForegroundPrimary;
+        private ColorType _backColorType = ColorType.BackgroundSecondary;
 
+        [DefaultValue(ColorType.ForegroundPrimary)]
         public ColorType ForeColorType 
         { 
-            get => _foreColor;
+            get => _foreColorType;
             set
             {
-                _foreColor = value;
+                _foreColorType = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        private ColorType _foreColor = ColorType.BackgroundPrimary;
+        private ColorType _foreColorType = ColorType.ForegroundPrimary;
 
+        [DefaultValue(ColorType.BackgroundHoverSecondary)]
         public ColorType HoverBackColorType
         {
             get => _hoverBackColorType;
@@ -47,8 +50,9 @@ namespace M2TWinForms.Controls.Inputs.Buttons
                 ApplyCurrentLoadedTheme();
             }
         }
-        private ColorType _hoverBackColorType = ColorType.ForegroundHoverPrimary;
+        private ColorType _hoverBackColorType = ColorType.BackgroundHoverSecondary;
 
+        [DefaultValue(ColorType.ForegroundHoverPrimary)]
         public ColorType HoverForeColorType
         {
             get => _hoverForeColorType;
@@ -58,7 +62,7 @@ namespace M2TWinForms.Controls.Inputs.Buttons
                 ApplyCurrentLoadedTheme();
             }
         }
-        private ColorType _hoverForeColorType = ColorType.BackgroundHoverPrimary;
+        private ColorType _hoverForeColorType = ColorType.ForegroundHoverPrimary;
         public M2TButton()
         {
             InitializeComponent();

@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Controls\Containers\" />
-    <Folder Include="Controls\Labels\" />
   </ItemGroup>
 
   <ItemGroup>

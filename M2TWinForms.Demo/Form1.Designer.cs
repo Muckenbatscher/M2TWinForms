@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            m2tButton1 = new Controls.Inputs.Buttons.M2TButton();
-            m2tPositiveConfirmationButton1 = new Controls.Inputs.Buttons.M2TPositiveConfirmationButton();
-            m2tNegativeConfirmationButton1 = new Controls.Inputs.Buttons.M2TNegativeConfirmationButton();
+            m2tButton1 = new M2TWinForms.Controls.Inputs.Buttons.M2TButton();
+            m2tPositiveConfirmationButton1 = new M2TWinForms.Controls.Inputs.Buttons.M2TPositiveConfirmationButton();
+            m2tNegativeConfirmationButton1 = new M2TWinForms.Controls.Inputs.Buttons.M2TNegativeConfirmationButton();
+            m2tTextBox1 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tRichTextBox1 = new M2TWinForms.Controls.Inputs.Text.M2TRichTextBox();
+            m2tRichTextBoxSingleLine1 = new M2TWinForms.Controls.Inputs.Text.M2TRichTextBoxSingleLine();
+            m2tLabel1 = new M2TWinForms.Controls.Labels.M2TLabel();
             SuspendLayout();
             // 
             // m2tButton1
@@ -87,11 +91,60 @@
             m2tNegativeConfirmationButton1.Text = "m2tNegativeConfirmationButton1";
             m2tNegativeConfirmationButton1.UseVisualStyleBackColor = false;
             // 
+            // m2tTextBox1
+            // 
+            m2tTextBox1.BackColor = Color.FromArgb(30, 30, 33);
+            m2tTextBox1.ForeColor = Color.FromArgb(255, 255, 255);
+            m2tTextBox1.Location = new Point(301, 101);
+            m2tTextBox1.Name = "m2tTextBox1";
+            m2tTextBox1.Size = new Size(100, 23);
+            m2tTextBox1.TabIndex = 15;
+            // 
+            // m2tRichTextBox1
+            // 
+            m2tRichTextBox1.BackColor = Color.FromArgb(30, 30, 33);
+            m2tRichTextBox1.DetectUrls = false;
+            m2tRichTextBox1.ForeColor = Color.FromArgb(255, 255, 255);
+            m2tRichTextBox1.HighlightBackColorType = Enumerations.ColorType.HighlightForegroundPrimary;
+            m2tRichTextBox1.Location = new Point(303, 149);
+            m2tRichTextBox1.Multiline = false;
+            m2tRichTextBox1.Name = "m2tRichTextBox1";
+            m2tRichTextBox1.Size = new Size(100, 61);
+            m2tRichTextBox1.TabIndex = 16;
+            m2tRichTextBox1.Text = "";
+            // 
+            // m2tRichTextBoxSingleLine1
+            // 
+            m2tRichTextBoxSingleLine1.BackColor = Color.FromArgb(30, 30, 33);
+            m2tRichTextBoxSingleLine1.ForeColor = Color.FromArgb(255, 255, 255);
+            m2tRichTextBoxSingleLine1.HighlightBackColorType = Enumerations.ColorType.HighlightForegroundPrimary;
+            m2tRichTextBoxSingleLine1.Location = new Point(301, 237);
+            m2tRichTextBoxSingleLine1.MaximumSize = new Size(int.MaxValue, 23);
+            m2tRichTextBoxSingleLine1.MinimumSize = new Size(0, 23);
+            m2tRichTextBoxSingleLine1.Multiline = false;
+            m2tRichTextBoxSingleLine1.Name = "m2tRichTextBoxSingleLine1";
+            m2tRichTextBoxSingleLine1.Size = new Size(195, 23);
+            m2tRichTextBoxSingleLine1.TabIndex = 17;
+            m2tRichTextBoxSingleLine1.Text = "";
+            // 
+            // m2tLabel1
+            // 
+            m2tLabel1.AutoSize = true;
+            m2tLabel1.Location = new Point(298, 63);
+            m2tLabel1.Name = "m2tLabel1";
+            m2tLabel1.Size = new Size(62, 15);
+            m2tLabel1.TabIndex = 18;
+            m2tLabel1.Text = "m2tLabel1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(m2tLabel1);
+            Controls.Add(m2tRichTextBoxSingleLine1);
+            Controls.Add(m2tRichTextBox1);
+            Controls.Add(m2tTextBox1);
             Controls.Add(m2tNegativeConfirmationButton1);
             Controls.Add(m2tPositiveConfirmationButton1);
             Controls.Add(m2tButton1);
@@ -101,7 +154,12 @@
             Controls.SetChildIndex(m2tButton1, 0);
             Controls.SetChildIndex(m2tPositiveConfirmationButton1, 0);
             Controls.SetChildIndex(m2tNegativeConfirmationButton1, 0);
+            Controls.SetChildIndex(m2tTextBox1, 0);
+            Controls.SetChildIndex(m2tRichTextBox1, 0);
+            Controls.SetChildIndex(m2tRichTextBoxSingleLine1, 0);
+            Controls.SetChildIndex(m2tLabel1, 0);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -109,5 +167,9 @@
         private Controls.Inputs.Buttons.M2TButton m2tButton1;
         private Controls.Inputs.Buttons.M2TPositiveConfirmationButton m2tPositiveConfirmationButton1;
         private Controls.Inputs.Buttons.M2TNegativeConfirmationButton m2tNegativeConfirmationButton1;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox1;
+        private Controls.Inputs.Text.M2TRichTextBox m2tRichTextBox1;
+        private Controls.Inputs.Text.M2TRichTextBoxSingleLine m2tRichTextBoxSingleLine1;
+        private Controls.Labels.M2TLabel m2tLabel1;
     }
 }

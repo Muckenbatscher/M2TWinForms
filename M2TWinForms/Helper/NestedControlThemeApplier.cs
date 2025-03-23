@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Helper
 {
-    internal class NestedControlThemeApplier
+    internal static class NestedControlThemeApplier
     {
         public static void ApplyThemeForChildControls(Control control)
         {
