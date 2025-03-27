@@ -1,14 +1,19 @@
 using M2TWinForms.ThemeDesigner.ThemeVisualisation;
 using M2TWinForms.Themes;
 using M2TWinForms.Themes.Creation;
+using M2TWinForms.Themes.MaterialDesign;
 
 namespace M2TWinForms.ThemeDesigner
 {
     public partial class Form1 : Form
     {
-        private MaterialDesignThemeSelection SelectedMaterialThemeSelection
+        private ThemeMode SelectedThemeMode
         {
-            get => (MaterialDesignThemeSelection)CB_SelectedTheme.SelectedValue!;
+            get => ((ThemeSelectionItem)CB_SelectedTheme.SelectedItem!).Mode;
+        }
+        private ContrastLevel SelectedContrastLevel
+        {
+            get => ((ThemeSelectionItem)CB_SelectedTheme.SelectedItem!).ContrastLevel;
         }
         private string SelectedFilePath
         {
@@ -27,15 +32,14 @@ namespace M2TWinForms.ThemeDesigner
         {
             var selections = new List<ThemeSelectionItem>()
             {
-                new ThemeSelectionItem("Light", MaterialDesignThemeSelection.Light),
-                new ThemeSelectionItem("Light Medium Constrast", MaterialDesignThemeSelection.LightMediumContrast),
-                new ThemeSelectionItem("Light High Constrast", MaterialDesignThemeSelection.LightHighContrast),
-                new ThemeSelectionItem("Dark", MaterialDesignThemeSelection.Dark),
-                new ThemeSelectionItem("Dark Medium Constrast", MaterialDesignThemeSelection.DarkMediumContrast),
-                new ThemeSelectionItem("Dark High Constrast", MaterialDesignThemeSelection.DarkHighContrast)
+                new ThemeSelectionItem("Light", ThemeMode.Light, ContrastLevel.Normal),
+                new ThemeSelectionItem("Light Medium Constrast", ThemeMode.Light, ContrastLevel.Medium),
+                new ThemeSelectionItem("Light High Constrast", ThemeMode.Light, ContrastLevel.High),
+                new ThemeSelectionItem("Dark", ThemeMode.Dark, ContrastLevel.Normal),
+                new ThemeSelectionItem("Dark Medium Constrast", ThemeMode.Dark, ContrastLevel.Medium),
+                new ThemeSelectionItem("Dark High Constrast", ThemeMode.Dark, ContrastLevel.High)
             };
             CB_SelectedTheme.DisplayMember = nameof(ThemeSelectionItem.DisplayName);
-            CB_SelectedTheme.ValueMember = nameof(ThemeSelectionItem.MaterialDesignThemeSelection);
             CB_SelectedTheme.DataSource = selections;
         }
 
@@ -60,7 +64,7 @@ namespace M2TWinForms.ThemeDesigner
             try
             {
                 var file = new FileInfo(SelectedFilePath);
-                var theme = Theme.CreateFromMaterialDesignJson(file, SelectedMaterialThemeSelection);
+                var theme = Theme.CreateFromMaterialDesignJson(file, SelectedThemeMode, SelectedContrastLevel);
                 CSV_LoadedTheme.LoadTheme(theme);
             }
             catch (Exception ex)
