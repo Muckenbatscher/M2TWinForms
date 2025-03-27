@@ -1,4 +1,5 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
+﻿using M2TWinForms.Themes.Creation;
+using M2TWinForms.Themes.MaterialDesign;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,34 +11,34 @@ namespace M2TWinForms.Themes.DefaultThemeProviders
 {
     public class DefaultLightThemeProvider : DefaultThemeProvider
     {
-        protected override ThemeColors CreateThemeColors()
+        protected override IThemeColors CreateThemeColors()
         {
             return new ThemeColors
             {
-                Primary = Color.FromArgb(109, 94, 15),
-                OnPrimary = Color.FromArgb(255, 255, 255),
-                PrimaryContainer = Color.FromArgb(248, 226, 136),
-                OnPrimaryContainer = Color.FromArgb(83, 70, 0),
-                Secondary = Color.FromArgb(102, 94, 64),
-                OnSecondary = Color.FromArgb(255, 255, 255),
-                SecondaryContainer = Color.FromArgb(238, 226, 188),
-                OnSecondaryContainer = Color.FromArgb(77, 71, 42),
-                Tertiary = Color.FromArgb(67, 102, 79),
-                OnTertiary = Color.FromArgb(255, 255, 255),
-                TertiaryContainer = Color.FromArgb(197, 236, 207),
-                OnTertiaryContainer = Color.FromArgb(43, 78, 56),
-                Error = Color.FromArgb(186, 26, 26),
-                OnError = Color.FromArgb(255, 255, 255),
-                ErrorContainer = Color.FromArgb(255, 218, 214),
-                OnErrorContainer = Color.FromArgb(147, 0, 10),
-                Surface = Color.FromArgb(255, 249, 237),
-                SurfaceContainer = Color.FromArgb(244, 237, 223),
-                SurfaceContainerLowest = Color.FromArgb(255, 255, 255),
-                SurfaceContainerLow = Color.FromArgb(250, 243, 229),
-                SurfaceContainerHigh = Color.FromArgb(238, 232, 218),
-                SurfaceContainerHighest = Color.FromArgb(232, 226, 212),
-                OnSurface = Color.FromArgb(30, 28, 19),
-                OnSurfaceVariant = Color.FromArgb(75, 71, 57),
+                Primary = ColorTranslator.FromHtml("#6D5E0F"),
+                OnPrimary = ColorTranslator.FromHtml("#FFFFFF"),
+                PrimaryContainer = ColorTranslator.FromHtml("#F8E288"),
+                OnPrimaryContainer = ColorTranslator.FromHtml("#534600"),
+                Secondary = ColorTranslator.FromHtml("#665E40"),
+                OnSecondary = ColorTranslator.FromHtml("#FFFFFF"),
+                SecondaryContainer = ColorTranslator.FromHtml("#EEE2BC"),
+                OnSecondaryContainer = ColorTranslator.FromHtml("#4D472A"),
+                Tertiary = ColorTranslator.FromHtml("#43664F"),
+                OnTertiary = ColorTranslator.FromHtml("#FFFFFF"),
+                TertiaryContainer = ColorTranslator.FromHtml("#C5ECCF"),
+                OnTertiaryContainer = ColorTranslator.FromHtml("#2B4E38"),
+                Error = ColorTranslator.FromHtml("#BA1A1A"),
+                OnError = ColorTranslator.FromHtml("#FFFFFF"),
+                ErrorContainer = ColorTranslator.FromHtml("#FFDAD6"),
+                OnErrorContainer = ColorTranslator.FromHtml("#93000A"),
+                Surface = ColorTranslator.FromHtml("#FFF9ED"),
+                SurfaceContainer = ColorTranslator.FromHtml("#F4EDE3"),
+                SurfaceContainerLowest = ColorTranslator.FromHtml("#FFFFFF"),
+                SurfaceContainerLow = ColorTranslator.FromHtml("#FAF3E5"),
+                SurfaceContainerHigh = ColorTranslator.FromHtml("#EEE8DA"),
+                SurfaceContainerHighest = ColorTranslator.FromHtml("#E8E2D4"),
+                OnSurface = ColorTranslator.FromHtml("#1E1C13"),
+                OnSurfaceVariant = ColorTranslator.FromHtml("#4B4739"),
             };
         }
     }

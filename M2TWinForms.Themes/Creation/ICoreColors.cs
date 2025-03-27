@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.Creation
 {
-    public interface ICoreColorsProvider
+    public interface ICoreColors
     {
         public Color Primary { get; }
         public Color Secondary { get; }

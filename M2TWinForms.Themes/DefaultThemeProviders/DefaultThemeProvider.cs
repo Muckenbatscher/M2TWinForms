@@ -1,4 +1,5 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
+﻿using M2TWinForms.Themes.Creation;
+using M2TWinForms.Themes.MaterialDesign;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace M2TWinForms.Themes.DefaultThemeProviders
         public Theme CreateTheme()
         {
             var colors = CreateThemeColors();
-            return new Theme() { Colors = colors };
+            return Theme.CreateFromThemeColors(colors);
         }
-        protected abstract ThemeColors CreateThemeColors();
+        protected abstract IThemeColors CreateThemeColors();
     }
 }

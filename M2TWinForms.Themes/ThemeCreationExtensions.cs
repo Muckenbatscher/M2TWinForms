@@ -13,80 +13,46 @@ namespace M2TWinForms.Themes
 {
     public partial class Theme
     {
-        public static Theme CreateFromColorsProvider(IThemeColorsProvider themeColorsProvider)
+        public static Theme CreateFromThemeColors(IThemeColors themeColors)
         {
-            var themeColors = new ThemeColors()
+            var colors = new ThemeColors()
             {
-                Primary = themeColorsProvider.Primary,
-                OnPrimary = themeColorsProvider.OnPrimary,
-                PrimaryContainer = themeColorsProvider.PrimaryContainer,
-                OnPrimaryContainer = themeColorsProvider.OnPrimaryContainer,
-                Secondary = themeColorsProvider.Secondary,
-                OnSecondary = themeColorsProvider.OnSecondary,
-                SecondaryContainer = themeColorsProvider.SecondaryContainer,
-                OnSecondaryContainer = themeColorsProvider.OnSecondaryContainer,
-                Tertiary = themeColorsProvider.Tertiary,
-                OnTertiary = themeColorsProvider.OnTertiary,
-                TertiaryContainer = themeColorsProvider.TertiaryContainer,
-                OnTertiaryContainer = themeColorsProvider.OnTertiaryContainer,
-                Error = themeColorsProvider.Error,
-                OnError = themeColorsProvider.OnError,
-                ErrorContainer = themeColorsProvider.ErrorContainer,
-                OnErrorContainer = themeColorsProvider.OnErrorContainer,
-                Surface = themeColorsProvider.Surface,
-                SurfaceContainer = themeColorsProvider.SurfaceContainer,
-                SurfaceContainerLowest = themeColorsProvider.SurfaceContainerLowest,
-                SurfaceContainerLow = themeColorsProvider.SurfaceContainerLow,
-                SurfaceContainerHigh = themeColorsProvider.SurfaceContainerHigh,
-                SurfaceContainerHighest = themeColorsProvider.SurfaceContainerHighest,
-                OnSurface = themeColorsProvider.OnSurface,
-                OnSurfaceVariant = themeColorsProvider.OnSurfaceVariant
+                Primary = themeColors.Primary,
+                OnPrimary = themeColors.OnPrimary,
+                PrimaryContainer = themeColors.PrimaryContainer,
+                OnPrimaryContainer = themeColors.OnPrimaryContainer,
+                Secondary = themeColors.Secondary,
+                OnSecondary = themeColors.OnSecondary,
+                SecondaryContainer = themeColors.SecondaryContainer,
+                OnSecondaryContainer = themeColors.OnSecondaryContainer,
+                Tertiary = themeColors.Tertiary,
+                OnTertiary = themeColors.OnTertiary,
+                TertiaryContainer = themeColors.TertiaryContainer,
+                OnTertiaryContainer = themeColors.OnTertiaryContainer,
+                Error = themeColors.Error,
+                OnError = themeColors.OnError,
+                ErrorContainer = themeColors.ErrorContainer,
+                OnErrorContainer = themeColors.OnErrorContainer,
+                Surface = themeColors.Surface,
+                SurfaceContainer = themeColors.SurfaceContainer,
+                SurfaceContainerLowest = themeColors.SurfaceContainerLowest,
+                SurfaceContainerLow = themeColors.SurfaceContainerLow,
+                SurfaceContainerHigh = themeColors.SurfaceContainerHigh,
+                SurfaceContainerHighest = themeColors.SurfaceContainerHighest,
+                OnSurface = themeColors.OnSurface,
+                OnSurfaceVariant = themeColors.OnSurfaceVariant
             };
-            return new Theme() { Colors = themeColors };
+            return new Theme() { Colors = colors };
         }
 
-        public static Theme CreateFromCoreColorsProvider(ICoreColorsProvider coreColorsProvider)
+        public static Theme CreateFromCoreColors(ICoreColors coreColors, ThemeMode mode, ContrastLevel contrastLevel)
         {
             throw new NotImplementedException();
         }
 
-        public static Theme CreateFromSinglePrimaryColor(Color primaryColor)
+        public static Theme CreateFromSinglePrimaryColor(Color primaryColor, ThemeMode mode, ContrastLevel contrastLevel)
         {
             throw new NotImplementedException();
-        }
-
-        public static Theme CreateFromMaterialDesignJson(string materialDesignJson, ThemeMode mode, ContrastLevel contrastLevel)
-        {
-            var deserializer = new MaterialThemeDeserializer();
-            var materialTheme = deserializer.Deserialize(materialDesignJson);
-            var converter = new ThemeBuilderConverter();
-            Scheme selectedScheme = null;
-            if (mode == ThemeMode.Light && contrastLevel == ContrastLevel.Normal)
-                selectedScheme = materialTheme.Schemes.Light;
-            else if (mode == ThemeMode.Light && contrastLevel == ContrastLevel.Medium)
-                selectedScheme = materialTheme.Schemes.LightMediumContrast;
-            else if (mode == ThemeMode.Light && contrastLevel == ContrastLevel.High)
-                selectedScheme = materialTheme.Schemes.LightHighContrast;
-            else if (mode == ThemeMode.Dark && contrastLevel == ContrastLevel.Normal)
-                selectedScheme = materialTheme.Schemes.Dark;
-            else if (mode == ThemeMode.Dark && contrastLevel == ContrastLevel.Medium)
-                selectedScheme = materialTheme.Schemes.DarkMediumContrast;
-            else if (mode == ThemeMode.Dark && contrastLevel == ContrastLevel.High)
-                selectedScheme = materialTheme.Schemes.DarkHighContrast;
-            else
-                throw new ArgumentException("Invalid combination of theme mode and contrast level.");
-           
-            var themeColors = converter.ConvertFromThemeBuilder(selectedScheme);
-            return new Theme() { Colors = themeColors };
-        }
-
-        public static Theme CreateFromMaterialDesignJson(FileInfo materialDesignJsonFile, ThemeMode mode, ContrastLevel contrastLevel)
-        {
-            if (!materialDesignJsonFile.Exists)
-                throw new FileNotFoundException("Material Design JSON file not found.", materialDesignJsonFile.FullName);
-
-            var materialDesignJson = File.ReadAllText(materialDesignJsonFile.FullName);
-            return CreateFromMaterialDesignJson(materialDesignJson, mode, contrastLevel);
         }
     }
 }

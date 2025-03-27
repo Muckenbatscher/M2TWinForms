@@ -1,4 +1,5 @@
-﻿using System;
+﻿using M2TWinForms.Themes.Creation;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.MaterialDesign
 {
-    public class ThemeColors
+    public class ThemeColors : IThemeColors
     {
         public Color Primary { get; set; }
         public Color OnPrimary { get; set; }
