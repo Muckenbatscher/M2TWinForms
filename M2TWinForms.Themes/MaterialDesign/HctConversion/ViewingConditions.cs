@@ -23,55 +23,25 @@ namespace M2TWinForms.Themes.MaterialDesign.HctConversion
         private readonly double flRoot;
         private readonly double z;
 
-        public double GetAw()
-        {
-            return aw;
-        }
+        public double Aw => aw;
 
-        public double GetN()
-        {
-            return n;
-        }
+        public double N => n;
 
-        public double GetNbb()
-        {
-            return nbb;
-        }
+        public double Nbb => nbb;
 
-        public double GetNcb()
-        {
-            return ncb;
-        }
+        public double Ncb => ncb;
 
-        public double GetC()
-        {
-            return c;
-        }
+        public double C => c;
 
-        public double GetNc()
-        {
-            return nc;
-        }
+        public double Nc => nc;
 
-        public double[] GetRgbD()
-        {
-            return rgbD;
-        }
+        public double[] RgbD => rgbD;
 
-        public double GetFl()
-        {
-            return fl;
-        }
+        public double Fl => fl;
 
-        public double GetFlRoot()
-        {
-            return flRoot;
-        }
+        public double FlRoot => flRoot;
 
-        public double GetZ()
-        {
-            return z;
-        }
+        public double Z => z;
 
         /**
          * Create ViewingConditions from a simple, physically relevant, set of parameters.

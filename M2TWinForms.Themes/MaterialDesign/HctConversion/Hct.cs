@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,24 +45,28 @@ namespace M2TWinForms.Themes.MaterialDesign.HctConversion
             SetInternalState(argb);
         }
 
-        public double GetHue()
+        public double Hue
         {
-            return hue;
+            get => hue;
         }
 
-        public double GetChroma()
+        public double Chroma
         {
-            return chroma;
+            get => chroma;
         }
 
-        public double GetTone()
+        public double Tone
         {
-            return tone;
+            get => tone;
         }
 
-        public int ToInt()
+        public int ToRgbInt()
         {
             return argb;
+        }
+        public Color ToColor()
+        {
+            return Color.FromArgb(argb);
         }
 
         /**
@@ -102,20 +107,6 @@ namespace M2TWinForms.Themes.MaterialDesign.HctConversion
             return $"HCT({(int)Math.Round(hue)}, {(int)Math.Round(chroma)}, {(int)Math.Round(tone)})";
         }
 
-        public bool IsBlue()
-        {
-            return hue >= 250 && hue < 270;
-        }
-
-        public bool IsYellow()
-        {
-            return hue >= 105 && hue < 125;
-        }
-
-        public bool IsCyan()
-        {
-            return hue >= 170 && hue < 207;
-        }
 
         /**
          * Translate a color into different ViewingConditions.
@@ -133,7 +124,7 @@ namespace M2TWinForms.Themes.MaterialDesign.HctConversion
         public Hct InViewingConditions(ViewingConditions vc)
         {
             // 1. Use CAM16 to find XYZ coordinates of color in specified VC.
-            Cam16 cam16 = Cam16.FromInt(ToInt());
+            Cam16 cam16 = Cam16.FromInt(ToRgbInt());
             double[] viewedInVc = cam16.XyzInViewingConditions(vc, null);
 
             // 2. Create CAM16 of those XYZ coordinates in default VC.

@@ -71,12 +71,6 @@ namespace M2TWinForms.Themes.MaterialDesign.HctConversion
             return argb & 255;
         }
 
-        /** Returns whether a color in ARGB format is opaque. */
-        public static bool IsOpaque(int argb)
-        {
-            return AlphaFromArgb(argb) >= 255;
-        }
-
         /** Converts a color from ARGB to XYZ. */
         public static int ArgbFromXyz(double x, double y, double z)
         {
@@ -97,50 +91,6 @@ namespace M2TWinForms.Themes.MaterialDesign.HctConversion
             double g = Linearized(GreenFromArgb(argb));
             double b = Linearized(BlueFromArgb(argb));
             return MathUtils.MatrixMultiply(new double[] { r, g, b }, SrgbToXyz);
-        }
-
-        /** Converts a color represented in Lab color space into an ARGB integer. */
-        public static int ArgbFromLab(double l, double a, double b)
-        {
-            double[] whitePoint = WHITE_POINT_D65;
-            double fy = (l + 16.0) / 116.0;
-            double fx = a / 500.0 + fy;
-            double fz = fy - b / 200.0;
-            double xNormalized = LabInvf(fx);
-            double yNormalized = LabInvf(fy);
-            double zNormalized = LabInvf(fz);
-            double x = xNormalized * whitePoint[0];
-            double y = yNormalized * whitePoint[1];
-            double z = zNormalized * whitePoint[2];
-            return ArgbFromXyz(x, y, z);
-        }
-
-        /**
-         * Converts a color from ARGB representation to L*a*b* representation.
-         *
-         * @param argb the ARGB representation of a color
-         * @return a Lab object representing the color
-         */
-        public static double[] LabFromArgb(int argb)
-        {
-            double linearR = Linearized(RedFromArgb(argb));
-            double linearG = Linearized(GreenFromArgb(argb));
-            double linearB = Linearized(BlueFromArgb(argb));
-            double[][] matrix = SrgbToXyz;
-            double x = matrix[0][0] * linearR + matrix[0][1] * linearG + matrix[0][2] * linearB;
-            double y = matrix[1][0] * linearR + matrix[1][1] * linearG + matrix[1][2] * linearB;
-            double z = matrix[2][0] * linearR + matrix[2][1] * linearG + matrix[2][2] * linearB;
-            double[] whitePoint = WHITE_POINT_D65;
-            double xNormalized = x / whitePoint[0];
-            double yNormalized = y / whitePoint[1];
-            double zNormalized = z / whitePoint[2];
-            double fx = LabF(xNormalized);
-            double fy = LabF(yNormalized);
-            double fz = LabF(zNormalized);
-            double l = 116.0 * fy - 16;
-            double a = 500.0 * (fx - fy);
-            double b = 200.0 * (fy - fz);
-            return new double[] { l, a, b };
         }
 
         /**

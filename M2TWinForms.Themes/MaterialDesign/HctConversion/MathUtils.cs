@@ -8,8 +8,6 @@ namespace M2TWinForms.Themes.MaterialDesign.HctConversion
 {
     internal class MathUtils
     {
-        private MathUtils() { }
-
         /**
          * The signum function.
          *
@@ -80,21 +78,6 @@ namespace M2TWinForms.Themes.MaterialDesign.HctConversion
         }
 
         /**
-         * Sanitizes a degree measure as an integer.
-         *
-         * @return a degree measure between 0 (inclusive) and 360 (exclusive).
-         */
-        public static int SanitizeDegreesInt(int degrees)
-        {
-            degrees = degrees % 360;
-            if (degrees < 0)
-            {
-                degrees = degrees + 360;
-            }
-            return degrees;
-        }
-
-        /**
          * Sanitizes a degree measure as a floating-point number.
          *
          * @return a degree measure between 0.0 (inclusive) and 360.0 (exclusive).
@@ -107,29 +90,6 @@ namespace M2TWinForms.Themes.MaterialDesign.HctConversion
                 degrees = degrees + 360.0;
             }
             return degrees;
-        }
-
-        /**
-         * Sign of direction change needed to travel from one angle to another.
-         *
-         * <p>For angles that are 180 degrees apart from each other, both directions have the same travel
-         * distance, so either direction is shortest. The value 1.0 is returned in this case.
-         *
-         * @param from The angle travel starts from, in degrees.
-         * @param to The angle travel ends at, in degrees.
-         * @return -1 if decreasing from leads to the shortest travel distance, 1 if increasing from leads
-         * to the shortest travel distance.
-         */
-        public static double RotationDirection(double from, double to)
-        {
-            double increasingDifference = SanitizeDegreesDouble(to - from);
-            return increasingDifference <= 180.0 ? 1.0 : -1.0;
-        }
-
-        /** Distance of two points on a circle, represented using degrees. */
-        public static double DifferenceDegrees(double a, double b)
-        {
-            return 180.0 - Math.Abs(Math.Abs(a - b) - 180.0);
         }
 
         /** Multiplies a 1x3 row vector with a 3x3 matrix. */
