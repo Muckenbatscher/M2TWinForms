@@ -35,6 +35,7 @@
             CB_SelectedTheme = new ComboBox();
             LB_PathPrompt = new Label();
             BT_Browse = new Button();
+            BT_HctConversion = new Button();
             TLP_ThemeColors.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             TLP_ThemeColors.RowCount = 2;
             TLP_ThemeColors.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             TLP_ThemeColors.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TLP_ThemeColors.Size = new Size(776, 426);
+            TLP_ThemeColors.Size = new Size(776, 384);
             TLP_ThemeColors.TabIndex = 0;
             // 
             // BT_Apply
@@ -78,7 +79,7 @@
             TLP_ThemeColors.SetColumnSpan(CSV_LoadedTheme, 5);
             CSV_LoadedTheme.Location = new Point(3, 43);
             CSV_LoadedTheme.Name = "CSV_LoadedTheme";
-            CSV_LoadedTheme.Size = new Size(770, 380);
+            CSV_LoadedTheme.Size = new Size(770, 338);
             CSV_LoadedTheme.TabIndex = 1;
             // 
             // TB_FilePath
@@ -120,11 +121,23 @@
             BT_Browse.UseVisualStyleBackColor = true;
             BT_Browse.Click += BT_Browse_Click;
             // 
+            // BT_HctConversion
+            // 
+            BT_HctConversion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            BT_HctConversion.Location = new Point(12, 408);
+            BT_HctConversion.Name = "BT_HctConversion";
+            BT_HctConversion.Size = new Size(134, 30);
+            BT_HctConversion.TabIndex = 1;
+            BT_HctConversion.Text = "HCT Conversion";
+            BT_HctConversion.UseVisualStyleBackColor = true;
+            BT_HctConversion.Click += BT_HctConversion_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(BT_HctConversion);
             Controls.Add(TLP_ThemeColors);
             Name = "Form1";
             Text = "Form1";
@@ -142,5 +155,6 @@
         private Label LB_PathPrompt;
         private Button BT_Browse;
         private Button BT_Apply;
+        private Button BT_HctConversion;
     }
 }

@@ -1,3 +1,4 @@
+using M2TWinForms.ThemeDesigner.HctConversionTester;
 using M2TWinForms.ThemeDesigner.ThemeVisualisation;
 using M2TWinForms.Themes;
 using M2TWinForms.Themes.Creation;
@@ -71,6 +72,12 @@ namespace M2TWinForms.ThemeDesigner
             {
                 MessageBox.Show($"An error occured while loading the theme: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void BT_HctConversion_Click(object sender, EventArgs e)
+        {
+            var hctVisualisation = new HctVisualisation();
+            hctVisualisation.Show();
         }
     }
 }

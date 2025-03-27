@@ -1,5 +1,8 @@
-﻿using System;
+﻿using M2TWinForms.Themes.MaterialDesign.HctConversion;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +35,20 @@ namespace M2TWinForms.Themes.MaterialDesign
             Hue = hue;
             Chroma = chroma;
             Tone = tone;
+        }
+
+        public HctColor(Color rgbColor)
+        {
+            var hct = Hct.FromInt(rgbColor.ToArgb());
+            Hue = hct.Hue;
+            Chroma = hct.Chroma;
+            Tone = hct.Tone;
+        }
+
+        public Color GetColor()
+        {
+            var hct = Hct.From(Hue, Chroma, Tone);
+            return hct.ToColor();
         }
     }
 }
