@@ -45,14 +45,5 @@ namespace M2TWinForms.Themes
             return new Theme() { Colors = colors };
         }
 
-        public static Theme CreateFromCoreColors(ICoreColors coreColors, ThemeMode mode, ContrastLevel contrastLevel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static Theme CreateFromSinglePrimaryColor(Color primaryColor, ThemeMode mode, ContrastLevel contrastLevel)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

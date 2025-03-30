@@ -1,4 +1,5 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
+﻿using M2TWinForms.ThemeDesigner.HctPaletteVisualisation;
+using M2TWinForms.Themes.MaterialDesign;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,11 @@ namespace M2TWinForms.ThemeDesigner.HctConversionTester
 
         private void BT_CalculateHct_Click(object sender, EventArgs e)
         {
+            CalcluateHctFromEnteredHct();
+        }
+
+        private void CalcluateHctFromEnteredHct()
+        {
             var rgbColor = Color.FromArgb(EnteredRed, EnteredGreen, EnteredBlue);
             var hctColor = new HctColor(rgbColor);
             EnteredHue = (int)hctColor.Hue;
@@ -38,12 +44,38 @@ namespace M2TWinForms.ThemeDesigner.HctConversionTester
 
         private void BT_CalculateRgb_Click(object sender, EventArgs e)
         {
+            CalculateRgbFromEnteredHct();
+        }
+
+        private void CalculateRgbFromEnteredHct()
+        {
             var hctColor = new HctColor(EnteredHue, EnteredChroma, EnteredTone);
             var rgbColor = hctColor.GetColor();
             EnteredRed = rgbColor.R;
             EnteredGreen = rgbColor.G;
             EnteredBlue = rgbColor.B;
             PN_VisualisationRgb.BackColor = rgbColor;
+        }
+
+        private void BT_PaletteGeneration_Click(object sender, EventArgs e)
+        {
+            var paletteGeneration = new InteractiveColorPaletteVisualisation();
+            paletteGeneration.EnteredHue = EnteredHue;
+            paletteGeneration.EnteredChroma = EnteredChroma;
+            paletteGeneration.EnteredTone = EnteredTone;
+            paletteGeneration.ShowDialog();
+        }
+
+        private void TB_RgbColorHtml_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != (char)Keys.Enter)
+                return;
+
+            var color = ColorTranslator.FromHtml(TB_RgbColorHtml.Text);
+            EnteredRed = color.R;
+            EnteredGreen = color.G;
+            EnteredBlue = color.B;
+            CalcluateHctFromEnteredHct();
         }
     }
 }

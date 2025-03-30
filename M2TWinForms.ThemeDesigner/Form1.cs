@@ -1,7 +1,5 @@
 using M2TWinForms.ThemeDesigner.HctConversionTester;
-using M2TWinForms.ThemeDesigner.ThemeVisualisation;
 using M2TWinForms.Themes;
-using M2TWinForms.Themes.Creation;
 using M2TWinForms.Themes.MaterialDesign;
 
 namespace M2TWinForms.ThemeDesigner
@@ -10,11 +8,11 @@ namespace M2TWinForms.ThemeDesigner
     {
         private ThemeMode SelectedThemeMode
         {
-            get => ((ThemeSelectionItem)CB_SelectedTheme.SelectedItem!).Mode;
+            get => SL_ThemeMode.SelectedValue;
         }
         private ContrastLevel SelectedContrastLevel
         {
-            get => ((ThemeSelectionItem)CB_SelectedTheme.SelectedItem!).ContrastLevel;
+            get => SL_ContrastLevel.SelectedValue;
         }
         private string SelectedFilePath
         {
@@ -26,22 +24,6 @@ namespace M2TWinForms.ThemeDesigner
         public Form1()
         {
             InitializeComponent();
-            InitializeThemeSelection();
-        }
-
-        private void InitializeThemeSelection()
-        {
-            var selections = new List<ThemeSelectionItem>()
-            {
-                new ThemeSelectionItem("Light", ThemeMode.Light, ContrastLevel.Normal),
-                new ThemeSelectionItem("Light Medium Constrast", ThemeMode.Light, ContrastLevel.Medium),
-                new ThemeSelectionItem("Light High Constrast", ThemeMode.Light, ContrastLevel.High),
-                new ThemeSelectionItem("Dark", ThemeMode.Dark, ContrastLevel.Normal),
-                new ThemeSelectionItem("Dark Medium Constrast", ThemeMode.Dark, ContrastLevel.Medium),
-                new ThemeSelectionItem("Dark High Constrast", ThemeMode.Dark, ContrastLevel.High)
-            };
-            CB_SelectedTheme.DisplayMember = nameof(ThemeSelectionItem.DisplayName);
-            CB_SelectedTheme.DataSource = selections;
         }
 
         private void BT_Browse_Click(object sender, EventArgs e)

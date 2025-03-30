@@ -1,4 +1,5 @@
-﻿using System;
+﻿using M2TWinForms.Themes.Creation;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.MaterialDesign
 {
-    public class ColorPalette
+    public class ColorPalette : IColorPalette
     {
         public Color Zero { get; set; }
         public Color Ten { get; set; }
