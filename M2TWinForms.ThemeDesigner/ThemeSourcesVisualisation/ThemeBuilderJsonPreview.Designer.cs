@@ -1,6 +1,6 @@
 ﻿namespace M2TWinForms.ThemeDesigner
 {
-    partial class Form1
+    partial class ThemeBuilderJsonPreview
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThemeBuilderJsonPreview));
             TLP_ThemeColors = new TableLayoutPanel();
             CSV_LoadedTheme = new M2TWinForms.ThemeDesigner.ThemeVisualisation.ColorSchemeVisualisation();
             TB_FilePath = new TextBox();
@@ -37,7 +37,6 @@
             SL_ThemeMode = new M2TWinForms.ThemeDesigner.ThemeVisualisation.Selection.ThemeModeSelection();
             SL_ContrastLevel = new M2TWinForms.ThemeDesigner.ThemeVisualisation.Selection.ContrastLevelSelection();
             BT_Apply = new Button();
-            BT_HctConversion = new Button();
             TLP_ThemeColors.SuspendLayout();
             SuspendLayout();
             // 
@@ -64,7 +63,7 @@
             TLP_ThemeColors.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             TLP_ThemeColors.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             TLP_ThemeColors.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TLP_ThemeColors.Size = new Size(776, 513);
+            TLP_ThemeColors.Size = new Size(776, 531);
             TLP_ThemeColors.TabIndex = 0;
             // 
             // CSV_LoadedTheme
@@ -73,7 +72,7 @@
             TLP_ThemeColors.SetColumnSpan(CSV_LoadedTheme, 4);
             CSV_LoadedTheme.Location = new Point(3, 123);
             CSV_LoadedTheme.Name = "CSV_LoadedTheme";
-            CSV_LoadedTheme.Size = new Size(770, 387);
+            CSV_LoadedTheme.Size = new Size(770, 405);
             CSV_LoadedTheme.TabIndex = 1;
             // 
             // TB_FilePath
@@ -136,23 +135,11 @@
             BT_Apply.UseVisualStyleBackColor = true;
             BT_Apply.Click += BT_Apply_Click;
             // 
-            // BT_HctConversion
-            // 
-            BT_HctConversion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            BT_HctConversion.Location = new Point(12, 537);
-            BT_HctConversion.Name = "BT_HctConversion";
-            BT_HctConversion.Size = new Size(134, 30);
-            BT_HctConversion.TabIndex = 1;
-            BT_HctConversion.Text = "HCT Conversion";
-            BT_HctConversion.UseVisualStyleBackColor = true;
-            BT_HctConversion.Click += BT_HctConversion_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 579);
-            Controls.Add(BT_HctConversion);
+            ClientSize = new Size(800, 555);
             Controls.Add(TLP_ThemeColors);
             Name = "Form1";
             Text = "Form1";
@@ -169,7 +156,6 @@
         private Label LB_PathPrompt;
         private Button BT_Browse;
         private Button BT_Apply;
-        private Button BT_HctConversion;
         private ThemeVisualisation.Selection.ThemeModeSelection SL_ThemeMode;
         private ThemeVisualisation.Selection.ContrastLevelSelection SL_ContrastLevel;
     }

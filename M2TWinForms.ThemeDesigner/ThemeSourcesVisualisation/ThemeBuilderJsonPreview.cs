@@ -4,7 +4,7 @@ using M2TWinForms.Themes.MaterialDesign;
 
 namespace M2TWinForms.ThemeDesigner
 {
-    public partial class Form1 : Form
+    public partial class ThemeBuilderJsonPreview : Form
     {
         private ThemeMode SelectedThemeMode
         {
@@ -21,7 +21,7 @@ namespace M2TWinForms.ThemeDesigner
         }
         private string _lastOpenedDirectory = string.Empty;
 
-        public Form1()
+        public ThemeBuilderJsonPreview()
         {
             InitializeComponent();
         }
@@ -54,12 +54,6 @@ namespace M2TWinForms.ThemeDesigner
             {
                 MessageBox.Show($"An error occured while loading the theme: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void BT_HctConversion_Click(object sender, EventArgs e)
-        {
-            var hctVisualisation = new HctVisualisation();
-            hctVisualisation.Show();
         }
     }
 }

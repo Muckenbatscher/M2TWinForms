@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             TLP_MAIN = new TableLayoutPanel();
+            TB_RgbColorHtml = new TextBox();
             NUD_Tone = new NumericUpDown();
             NUD_Chroma = new NumericUpDown();
             NUD_Hue = new NumericUpDown();
@@ -47,7 +48,6 @@
             BT_CalculateHct = new Button();
             PN_VisualisationRgb = new Panel();
             BT_PaletteGeneration = new Button();
-            TB_RgbColorHtml = new TextBox();
             TLP_MAIN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NUD_Tone).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUD_Chroma).BeginInit();
@@ -96,6 +96,15 @@
             TLP_MAIN.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             TLP_MAIN.Size = new Size(769, 426);
             TLP_MAIN.TabIndex = 0;
+            // 
+            // TB_RgbColorHtml
+            // 
+            TB_RgbColorHtml.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            TB_RgbColorHtml.Location = new Point(153, 8);
+            TB_RgbColorHtml.Name = "TB_RgbColorHtml";
+            TB_RgbColorHtml.Size = new Size(228, 23);
+            TB_RgbColorHtml.TabIndex = 1;
+            TB_RgbColorHtml.KeyPress += TB_RgbColorHtml_KeyPress;
             // 
             // NUD_Tone
             // 
@@ -272,15 +281,6 @@
             BT_PaletteGeneration.Text = "Generate Palettes";
             BT_PaletteGeneration.UseVisualStyleBackColor = true;
             BT_PaletteGeneration.Click += BT_PaletteGeneration_Click;
-            // 
-            // TB_RgbColorHtml
-            // 
-            TB_RgbColorHtml.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            TB_RgbColorHtml.Location = new Point(153, 8);
-            TB_RgbColorHtml.Name = "TB_RgbColorHtml";
-            TB_RgbColorHtml.Size = new Size(228, 23);
-            TB_RgbColorHtml.TabIndex = 1;
-            TB_RgbColorHtml.KeyPress += TB_RgbColorHtml_KeyPress;
             // 
             // HctVisualisation
             // 
