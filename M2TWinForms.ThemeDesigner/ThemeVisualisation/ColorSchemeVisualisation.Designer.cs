@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             TLP_Main = new TableLayoutPanel();
+            CRV_ErrorContainer = new ColorRoleWithOnRoleVisualisation();
+            CRV_Error = new ColorRoleWithOnRoleVisualisation();
+            CRV_Tertiary = new ColorRoleWithOnRoleVisualisation();
+            CRV_Secondary = new ColorRoleWithOnRoleVisualisation();
             TLP_Surface = new TableLayoutPanel();
             CRV_OnSurfaceVariant = new ColorRoleVisualisation();
             CRV_OnSurface = new ColorRoleVisualisation();
@@ -41,12 +45,8 @@
             CRV_SurfaceContainerLowest = new ColorRoleVisualisation();
             CRV_Primary = new ColorRoleWithOnRoleVisualisation();
             CRV_PrimaryContainer = new ColorRoleWithOnRoleVisualisation();
-            CRV_Secondary = new ColorRoleWithOnRoleVisualisation();
             CRV_SecondaryContainer = new ColorRoleWithOnRoleVisualisation();
-            CRV_Tertiary = new ColorRoleWithOnRoleVisualisation();
             CRV_TertiaryContainer = new ColorRoleWithOnRoleVisualisation();
-            CRV_Error = new ColorRoleWithOnRoleVisualisation();
-            CRV_ErrorContainer = new ColorRoleWithOnRoleVisualisation();
             TLP_Main.SuspendLayout();
             TLP_Surface.SuspendLayout();
             TLP_SurfaceContainer.SuspendLayout();
@@ -79,6 +79,50 @@
             TLP_Main.RowStyles.Add(new RowStyle(SizeType.Percent, 17F));
             TLP_Main.Size = new Size(852, 476);
             TLP_Main.TabIndex = 0;
+            // 
+            // CRV_ErrorContainer
+            // 
+            CRV_ErrorContainer.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            CRV_ErrorContainer.Color = Color.LightGray;
+            CRV_ErrorContainer.ColorRoleName = "Error Container";
+            CRV_ErrorContainer.Location = new Point(642, 160);
+            CRV_ErrorContainer.Name = "CRV_ErrorContainer";
+            CRV_ErrorContainer.OnColor = Color.Black;
+            CRV_ErrorContainer.Size = new Size(207, 151);
+            CRV_ErrorContainer.TabIndex = 11;
+            // 
+            // CRV_Error
+            // 
+            CRV_Error.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            CRV_Error.Color = Color.LightGray;
+            CRV_Error.ColorRoleName = "Error";
+            CRV_Error.Location = new Point(642, 3);
+            CRV_Error.Name = "CRV_Error";
+            CRV_Error.OnColor = Color.Black;
+            CRV_Error.Size = new Size(207, 151);
+            CRV_Error.TabIndex = 10;
+            // 
+            // CRV_Tertiary
+            // 
+            CRV_Tertiary.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            CRV_Tertiary.Color = Color.LightGray;
+            CRV_Tertiary.ColorRoleName = "Tertiary";
+            CRV_Tertiary.Location = new Point(429, 3);
+            CRV_Tertiary.Name = "CRV_Tertiary";
+            CRV_Tertiary.OnColor = Color.Black;
+            CRV_Tertiary.Size = new Size(207, 151);
+            CRV_Tertiary.TabIndex = 8;
+            // 
+            // CRV_Secondary
+            // 
+            CRV_Secondary.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            CRV_Secondary.Color = Color.LightGray;
+            CRV_Secondary.ColorRoleName = "Secondary";
+            CRV_Secondary.Location = new Point(216, 3);
+            CRV_Secondary.Name = "CRV_Secondary";
+            CRV_Secondary.OnColor = Color.Black;
+            CRV_Secondary.Size = new Size(207, 151);
+            CRV_Secondary.TabIndex = 6;
             // 
             // TLP_Surface
             // 
@@ -239,38 +283,16 @@
             CRV_PrimaryContainer.Size = new Size(207, 151);
             CRV_PrimaryContainer.TabIndex = 5;
             // 
-            // CRV_Secondary
-            // 
-            CRV_Secondary.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            CRV_Secondary.Color = Color.LightGray;
-            CRV_Secondary.ColorRoleName = "Secondary";
-            CRV_Secondary.Location = new Point(216, 3);
-            CRV_Secondary.Name = "CRV_Secondary";
-            CRV_Secondary.OnColor = Color.Black;
-            CRV_Secondary.Size = new Size(207, 151);
-            CRV_Secondary.TabIndex = 6;
-            // 
             // CRV_SecondaryContainer
             // 
             CRV_SecondaryContainer.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             CRV_SecondaryContainer.Color = Color.LightGray;
-            CRV_SecondaryContainer.ColorRoleName = "Secondary";
+            CRV_SecondaryContainer.ColorRoleName = "Secondary Container";
             CRV_SecondaryContainer.Location = new Point(216, 160);
             CRV_SecondaryContainer.Name = "CRV_SecondaryContainer";
             CRV_SecondaryContainer.OnColor = Color.Black;
             CRV_SecondaryContainer.Size = new Size(207, 151);
             CRV_SecondaryContainer.TabIndex = 7;
-            // 
-            // CRV_Tertiary
-            // 
-            CRV_Tertiary.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            CRV_Tertiary.Color = Color.LightGray;
-            CRV_Tertiary.ColorRoleName = "Tertiary";
-            CRV_Tertiary.Location = new Point(429, 3);
-            CRV_Tertiary.Name = "CRV_Tertiary";
-            CRV_Tertiary.OnColor = Color.Black;
-            CRV_Tertiary.Size = new Size(207, 151);
-            CRV_Tertiary.TabIndex = 8;
             // 
             // CRV_TertiaryContainer
             // 
@@ -282,28 +304,6 @@
             CRV_TertiaryContainer.OnColor = Color.Black;
             CRV_TertiaryContainer.Size = new Size(207, 151);
             CRV_TertiaryContainer.TabIndex = 9;
-            // 
-            // CRV_Error
-            // 
-            CRV_Error.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            CRV_Error.Color = Color.LightGray;
-            CRV_Error.ColorRoleName = "Error";
-            CRV_Error.Location = new Point(642, 3);
-            CRV_Error.Name = "CRV_Error";
-            CRV_Error.OnColor = Color.Black;
-            CRV_Error.Size = new Size(207, 151);
-            CRV_Error.TabIndex = 10;
-            // 
-            // CRV_ErrorContainer
-            // 
-            CRV_ErrorContainer.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            CRV_ErrorContainer.Color = Color.LightGray;
-            CRV_ErrorContainer.ColorRoleName = "Error Container";
-            CRV_ErrorContainer.Location = new Point(642, 160);
-            CRV_ErrorContainer.Name = "CRV_ErrorContainer";
-            CRV_ErrorContainer.OnColor = Color.Black;
-            CRV_ErrorContainer.Size = new Size(207, 151);
-            CRV_ErrorContainer.TabIndex = 11;
             // 
             // ColorSchemeVisualisation
             // 

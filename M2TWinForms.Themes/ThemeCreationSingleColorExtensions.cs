@@ -12,12 +12,12 @@ namespace M2TWinForms.Themes
     {
         public static Theme CreateFromSinglePrimaryColor(Color primaryColor, ThemeMode mode, ContrastLevel contrastLevel)
         {
-            var primaryColorHct = new HctColor(primaryColor);
-            var seconaryColorHct = new HctColor(primaryColorHct.Hue, primaryColorHct.Chroma - 50, primaryColorHct.Tone);
-            var tertiaryColorHct = new HctColor(primaryColorHct.Hue + 60, 24, primaryColorHct.Tone);
-            var errorColorHct = new HctColor(20, 55, primaryColorHct.Tone);
-            var neutralColorHct = new HctColor(primaryColorHct.Hue, 5, primaryColorHct.Tone);
-            var neutralVariantColorHct = new HctColor(primaryColorHct.Hue, 10, primaryColorHct.Tone);
+            var primaryColorHct = new HctColor(primaryColor) { Chroma = 32, Tone = 50 };
+            var seconaryColorHct = new HctColor(primaryColorHct.Hue, 16, 50);
+            var tertiaryColorHct = new HctColor(primaryColorHct.Hue + 60, 24, 50);
+            var errorColorHct = new HctColor(24, 85, 50);
+            var neutralColorHct = new HctColor(primaryColorHct.Hue, 5, 50);
+            var neutralVariantColorHct = new HctColor(primaryColorHct.Hue, 8, 50);
 
             var coreColors = new CoreColors()
             {

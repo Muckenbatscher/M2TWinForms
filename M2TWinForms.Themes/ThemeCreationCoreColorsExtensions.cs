@@ -23,9 +23,9 @@ namespace M2TWinForms.Themes
             var surfaceVariantBackgroundTone = GetSurfaceVariantTone(mode, contrastLevel, true);
             double surfaceContainerLowestTone = mode == ThemeMode.Dark ? 0 : 100;
             double surfaceContainerLowTone = mode == ThemeMode.Dark ? 6 : 96;
-            double surfaceContainerTone = mode == ThemeMode.Dark ? 9 : 94;
-            double surfaceContainerHighTone = mode == ThemeMode.Dark ? 12 : 92;
-            double surfaceContainerHighestTone = mode == ThemeMode.Dark ? 15 : 90;
+            double surfaceContainerTone = mode == ThemeMode.Dark ? 12 : 92;
+            double surfaceContainerHighTone = mode == ThemeMode.Dark ? 18 : 89;
+            double surfaceContainerHighestTone = mode == ThemeMode.Dark ? 22 : 86;
 
             var primaryHct = new HctColor(coreColors.Primary);
             var primaryPalette = new HctTonalPalette(primaryHct);
@@ -47,22 +47,22 @@ namespace M2TWinForms.Themes
 
             var colors = new ThemeColors()
             {
-                Primary = primaryPalette.GetHctForTone(foregroundTone).GetColor(),
-                OnPrimary = primaryPalette.GetHctForTone(backgroundTone).GetColor(),
-                PrimaryContainer = primaryPalette.GetHctForTone(containerForegroundTone).GetColor(),
-                OnPrimaryContainer = primaryPalette.GetHctForTone(containerBackgroundTone).GetColor(),
-                Secondary = secondaryPalette.GetHctForTone(foregroundTone).GetColor(),
-                OnSecondary = secondaryPalette.GetHctForTone(backgroundTone).GetColor(),
-                SecondaryContainer = secondaryPalette.GetHctForTone(containerForegroundTone).GetColor(),
-                OnSecondaryContainer = secondaryPalette.GetHctForTone(containerBackgroundTone).GetColor(),
-                Tertiary = secondaryPalette.GetHctForTone(foregroundTone).GetColor(),
-                OnTertiary = secondaryPalette.GetHctForTone(backgroundTone).GetColor(),
-                TertiaryContainer = tertiaryPalette.GetHctForTone(containerForegroundTone).GetColor(),
-                OnTertiaryContainer = tertiaryPalette.GetHctForTone(containerBackgroundTone).GetColor(),
-                Error = errorPalette.GetHctForTone(foregroundTone).GetColor(),
-                OnError = errorPalette.GetHctForTone(backgroundTone).GetColor(),
-                ErrorContainer = errorPalette.GetHctForTone(containerForegroundTone).GetColor(),
-                OnErrorContainer = errorPalette.GetHctForTone(containerBackgroundTone).GetColor(),
+                Primary = primaryPalette.GetHctForTone(backgroundTone).GetColor(),
+                OnPrimary = primaryPalette.GetHctForTone(foregroundTone).GetColor(),
+                PrimaryContainer = primaryPalette.GetHctForTone(containerBackgroundTone).GetColor(),
+                OnPrimaryContainer = primaryPalette.GetHctForTone(containerForegroundTone).GetColor(),
+                Secondary = secondaryPalette.GetHctForTone(backgroundTone).GetColor(),
+                OnSecondary = secondaryPalette.GetHctForTone(foregroundTone).GetColor(),
+                SecondaryContainer = secondaryPalette.GetHctForTone(containerBackgroundTone).GetColor(),
+                OnSecondaryContainer = secondaryPalette.GetHctForTone(containerForegroundTone).GetColor(),
+                Tertiary = tertiaryPalette.GetHctForTone(backgroundTone).GetColor(),
+                OnTertiary = tertiaryPalette.GetHctForTone(foregroundTone).GetColor(),
+                TertiaryContainer = tertiaryPalette.GetHctForTone(containerBackgroundTone).GetColor(),
+                OnTertiaryContainer = tertiaryPalette.GetHctForTone(containerForegroundTone).GetColor(),
+                Error = errorPalette.GetHctForTone(backgroundTone).GetColor(),
+                OnError = errorPalette.GetHctForTone(foregroundTone).GetColor(),
+                ErrorContainer = errorPalette.GetHctForTone(containerBackgroundTone).GetColor(),
+                OnErrorContainer = errorPalette.GetHctForTone(containerForegroundTone).GetColor(),
                 Surface = neutralPalette.GetHctForTone(surfaceBackgroundTone).GetColor(),
                 SurfaceContainer = neutralPalette.GetHctForTone(surfaceContainerTone).GetColor(),
                 SurfaceContainerLowest = neutralPalette.GetHctForTone(surfaceContainerLowestTone).GetColor(),
