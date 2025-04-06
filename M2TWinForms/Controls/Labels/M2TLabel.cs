@@ -1,6 +1,6 @@
-﻿using M2TWinForms.Enumerations;
-using M2TWinForms.Interfaces;
-using M2TWinForms.Services;
+﻿using M2TWinForms.Interfaces;
+using M2TWinForms.Themes.MaterialDesign;
+using M2TWinForms.Themes.ThemeLoading;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,17 +12,34 @@ namespace M2TWinForms.Controls.Labels
 {
     public class M2TLabel : Label, IThemedControl
     {
-        [DefaultValue(ColorType.ForegroundPrimary)]
-        public ColorType ForeColorType
+        [Description("The Material Design Color Role used for the text of the Label")]
+        [Category("Material Design")]
+        [DefaultValue(M2TLabelTextColorRoleSelection.OnSurface)]
+        public M2TLabelTextColorRoleSelection ForeColorRole
         {
-            get => _foreColorType;
+            get => _foreColorRole;
             set
             {
-                _foreColorType = value;
+                _foreColorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        private ColorType _foreColorType = ColorType.ForegroundPrimary;
+        private M2TLabelTextColorRoleSelection _foreColorRole = M2TLabelTextColorRoleSelection.OnSurface;
+
+
+        [Description("The Material Design Color Role used for the background of the Label")]
+        [Category("Material Design")]
+        [DefaultValue(M2TLabelBackgroundColorRoleSelection.Transparent)]
+        public M2TLabelBackgroundColorRoleSelection BackColorRole
+        {
+            get => _backColorRole;
+            set
+            {
+                _backColorRole = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        private M2TLabelBackgroundColorRoleSelection _backColorRole = M2TLabelBackgroundColorRoleSelection.Transparent;
 
         public M2TLabel()
         {
@@ -31,7 +48,61 @@ namespace M2TWinForms.Controls.Labels
 
         public void ApplyCurrentLoadedTheme()
         {
-            this.ForeColor = CurrentLoadedThemeManager.GetColorForType(ForeColorType);
+            if (BackColorRole == M2TLabelBackgroundColorRoleSelection.Transparent)
+            {
+                this.BackColor = Color.Transparent;
+            }
+            else
+            {
+                var mappedBackColorRole = GetMappedColorRole(BackColorRole);
+                this.BackColor = CurrentLoadedThemeManager.GetColorForRole(mappedBackColorRole);
+            }
+            var mappedForeColorRole = GetMappedColorRole(ForeColorRole);
+            this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(mappedForeColorRole);
+        }
+
+        private ColorRoles GetMappedColorRole(M2TLabelTextColorRoleSelection labelForeColorRole)
+        {
+            return labelForeColorRole switch
+            {
+                M2TLabelTextColorRoleSelection.Primary => ColorRoles.Primary,
+                M2TLabelTextColorRoleSelection.OnPrimary => ColorRoles.OnPrimary,
+                M2TLabelTextColorRoleSelection.OnPrimaryContainer => ColorRoles.OnPrimaryContainer,
+                M2TLabelTextColorRoleSelection.Secondary => ColorRoles.Secondary,
+                M2TLabelTextColorRoleSelection.OnSecondary => ColorRoles.OnSecondary,
+                M2TLabelTextColorRoleSelection.OnSecondaryContainer => ColorRoles.OnSecondaryContainer,
+                M2TLabelTextColorRoleSelection.Tertiary => ColorRoles.Tertiary,
+                M2TLabelTextColorRoleSelection.OnTertiary => ColorRoles.OnTertiary,
+                M2TLabelTextColorRoleSelection.OnTertiaryContainer => ColorRoles.OnTertiaryContainer,
+                M2TLabelTextColorRoleSelection.Error => ColorRoles.Error,
+                M2TLabelTextColorRoleSelection.OnError => ColorRoles.OnError,
+                M2TLabelTextColorRoleSelection.OnErrorContainer => ColorRoles.OnErrorContainer,
+                M2TLabelTextColorRoleSelection.OnSurface => ColorRoles.OnSurface,
+                M2TLabelTextColorRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
+                _ => throw new ArgumentException($"Unknown {nameof(M2TLabelTextColorRoleSelection)} value: {labelForeColorRole}"),
+            };
+        }
+
+        private ColorRoles GetMappedColorRole(M2TLabelBackgroundColorRoleSelection labelBackColorRole)
+        {
+            return labelBackColorRole switch
+            {
+                M2TLabelBackgroundColorRoleSelection.Primary => ColorRoles.Primary,
+                M2TLabelBackgroundColorRoleSelection.PrimaryContainer => ColorRoles.PrimaryContainer,
+                M2TLabelBackgroundColorRoleSelection.Secondary => ColorRoles.Secondary,
+                M2TLabelBackgroundColorRoleSelection.SecondaryContainer => ColorRoles.SecondaryContainer,
+                M2TLabelBackgroundColorRoleSelection.Tertiary => ColorRoles.Tertiary,
+                M2TLabelBackgroundColorRoleSelection.TertiaryContainer => ColorRoles.TertiaryContainer,
+                M2TLabelBackgroundColorRoleSelection.Error => ColorRoles.Error,
+                M2TLabelBackgroundColorRoleSelection.ErrorContainer => ColorRoles.ErrorContainer,
+                M2TLabelBackgroundColorRoleSelection.Surface => ColorRoles.Surface,
+                M2TLabelBackgroundColorRoleSelection.SurfaceContainer => ColorRoles.SurfaceContainer,
+                M2TLabelBackgroundColorRoleSelection.SurfaceContainerLowest => ColorRoles.SurfaceContainerLowest,
+                M2TLabelBackgroundColorRoleSelection.SurfaceContainerLow => ColorRoles.SurfaceContainerLow,
+                M2TLabelBackgroundColorRoleSelection.SurfaceContainerHigh => ColorRoles.SurfaceContainerHigh,
+                M2TLabelBackgroundColorRoleSelection.SurfaceContainerHighest => ColorRoles.SurfaceContainerHighest,
+                _ => throw new ArgumentException($"Unknown {nameof(M2TLabelBackgroundColorRoleSelection)} value: {labelBackColorRole}"),
+            };
         }
     }
 }

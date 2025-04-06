@@ -35,6 +35,7 @@
             m2tRichTextBox1 = new M2TWinForms.Controls.Inputs.Text.M2TRichTextBox();
             m2tRichTextBoxSingleLine1 = new M2TWinForms.Controls.Inputs.Text.M2TRichTextBoxSingleLine();
             m2tLabel1 = new M2TWinForms.Controls.Labels.M2TLabel();
+            m2tLabel2 = new M2TWinForms.Controls.Labels.M2TLabel();
             SuspendLayout();
             // 
             // m2tButton1
@@ -130,17 +131,31 @@
             // m2tLabel1
             // 
             m2tLabel1.AutoSize = true;
+            m2tLabel1.BackColor = Color.Transparent;
+            m2tLabel1.ForeColor = Color.FromArgb(30, 28, 19);
             m2tLabel1.Location = new Point(298, 63);
             m2tLabel1.Name = "m2tLabel1";
             m2tLabel1.Size = new Size(62, 15);
             m2tLabel1.TabIndex = 18;
             m2tLabel1.Text = "m2tLabel1";
             // 
+            // m2tLabel2
+            // 
+            m2tLabel2.AutoSize = true;
+            m2tLabel2.BackColor = Color.Transparent;
+            m2tLabel2.ForeColor = Color.FromArgb(30, 28, 19);
+            m2tLabel2.Location = new Point(49, 289);
+            m2tLabel2.Name = "m2tLabel2";
+            m2tLabel2.Size = new Size(62, 15);
+            m2tLabel2.TabIndex = 19;
+            m2tLabel2.Text = "m2tLabel2";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(m2tLabel2);
             Controls.Add(m2tLabel1);
             Controls.Add(m2tRichTextBoxSingleLine1);
             Controls.Add(m2tRichTextBox1);
@@ -158,6 +173,7 @@
             Controls.SetChildIndex(m2tRichTextBox1, 0);
             Controls.SetChildIndex(m2tRichTextBoxSingleLine1, 0);
             Controls.SetChildIndex(m2tLabel1, 0);
+            Controls.SetChildIndex(m2tLabel2, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -171,5 +187,6 @@
         private Controls.Inputs.Text.M2TRichTextBox m2tRichTextBox1;
         private Controls.Inputs.Text.M2TRichTextBoxSingleLine m2tRichTextBoxSingleLine1;
         private Controls.Labels.M2TLabel m2tLabel1;
+        private Controls.Labels.M2TLabel m2tLabel2;
     }
 }

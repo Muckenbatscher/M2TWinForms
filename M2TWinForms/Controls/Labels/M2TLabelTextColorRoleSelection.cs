@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace M2TWinForms.Controls.Labels
+{
+    public enum M2TLabelTextColorRoleSelection
+    {
+        Primary,
+        OnPrimary,
+        OnPrimaryContainer,
+        Secondary,
+        OnSecondary,
+        OnSecondaryContainer,
+        Tertiary,
+        OnTertiary,
+        OnTertiaryContainer,
+        Error,
+        OnError,
+        OnErrorContainer,
+        OnSurface,
+        OnSurfaceVariant
+    }
+}
