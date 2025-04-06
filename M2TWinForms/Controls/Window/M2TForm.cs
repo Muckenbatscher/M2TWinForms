@@ -3,6 +3,7 @@ using M2TWinForms.Helper;
 using M2TWinForms.Interfaces;
 using M2TWinForms.Themes.MaterialDesign;
 using M2TWinForms.Themes.ThemeLoading;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace M2TWinForms.Controls.Window
@@ -111,115 +112,71 @@ namespace M2TWinForms.Controls.Window
         }
         private bool _canHoverMaximizeClose;
 
-        public ColorRoles TitleBarIconImageColorRole
-        {
-            get => WindowImageButton.ImageColorRole;
-            set
-            {
-                WindowImageButton.ImageColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        public ColorRoles TitleBarIconHoverImageColorRole
-        {
-            get => WindowImageButton.HoverImageColorRole;
-            set
-            {
-                WindowImageButton.HoverImageColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        public ColorRoles TitleBarIconBackColorRole
-        {
-            get => WindowImageButton.BackgroundColorRole;
-            set
-            {
-                WindowImageButton.BackgroundColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        public ColorRoles TitleBarIconHoverBackColorRole
-        {
-            get => WindowImageButton.HoverBackgroundColorRole;
-            set
-            {
-                WindowImageButton.HoverBackgroundColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
 
-        public ColorRoles TitleBarMinimizeImageColorRole
+        [Description("The Material Design Color Role used for background of the form")]
+        [Category("Material Design")]
+        public M2TFormBackgroundRoleSelection BackgroundColorRole
         {
-            get => MinimizeButton.ImageColorRole;
+            get => _backgroundColorRole;
             set
             {
-                MinimizeButton.ImageColorRole = value;
+                _backgroundColorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        public ColorRoles TitleBarMinimizeHoverImageColorRole
+        private M2TFormBackgroundRoleSelection _backgroundColorRole = M2TFormBackgroundRoleSelection.Surface;
+
+        [Description("The Material Design Color Role used for titlebar of the form containing the control buttons")]
+        [Category("Material Design")]
+        public M2TFormBackgroundRoleSelection TitleBarColorRole
         {
-            get => MinimizeButton.HoverImageColorRole;
+            get => _titleBarColorRole;
             set
             {
-                MinimizeButton.HoverImageColorRole = value;
+                _titleBarColorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        public ColorRoles TitleBarMinimizeBackColorRole
+        private M2TFormBackgroundRoleSelection _titleBarColorRole = M2TFormBackgroundRoleSelection.SurfaceContainerHigh;
+
+        [Description("The Material Design Color Role used for the hover color of the control buttons in the titlebar")]
+        [Category("Material Design")]
+        public M2TFormBackgroundRoleSelection TitleBarButtonHoverColorRole
         {
-            get => MinimizeButton.BackgroundColorRole;
+            get => _titleBarButtonHoverColorRole;
             set
             {
-                MinimizeButton.BackgroundColorRole = value;
+                _titleBarButtonHoverColorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        public ColorRoles TitleBarMinimizeHoverBackColorRole
+        private M2TFormBackgroundRoleSelection _titleBarButtonHoverColorRole = M2TFormBackgroundRoleSelection.SurfaceContainer;
+
+        [Description("The Material Design Color Role used for the foreground color of the control buttons and window title text in the titlebar")]
+        [Category("Material Design")]
+        public M2TFormForegroundRoleSelection TitleBarForegroundColorRole
         {
-            get => MinimizeButton.HoverBackgroundColorRole;
+            get => _titleBarForegroundColorRole;
             set
             {
-                MinimizeButton.HoverBackgroundColorRole = value;
+                _titleBarForegroundColorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        public ColorRoles TitleBarCloseImageColorRole
+        private M2TFormForegroundRoleSelection _titleBarForegroundColorRole = M2TFormForegroundRoleSelection.OnSurface;
+
+        [Description("The Material Design Color Role used for the foreground color of the close button in the titlebar")]
+        [Category("Material Design")]
+        public M2TFormForegroundRoleSelection CloseButtonColorRole
         {
-            get => CloseButton.ImageColorRole;
+            get => _closeButtonColorRole;
             set
             {
-                CloseButton.ImageColorRole = value;
+                _closeButtonColorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        public ColorRoles TitleBarCloseHoverImageColorRole
-        {
-            get => CloseButton.HoverImageColorRole;
-            set
-            {
-                CloseButton.HoverImageColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        public ColorRoles TitleBarCloseBackColorRole
-        {
-            get => CloseButton.BackgroundColorRole;
-            set
-            {
-                CloseButton.BackgroundColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        public ColorRoles TitleBarCloseHoverBackColorRole
-        {
-            get => CloseButton.HoverBackgroundColorRole;
-            set
-            {
-                CloseButton.HoverBackgroundColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
+        private M2TFormForegroundRoleSelection _closeButtonColorRole = M2TFormForegroundRoleSelection.Error;
 
         public M2TForm()
         {
@@ -246,30 +203,53 @@ namespace M2TWinForms.Controls.Window
 
             CanHoverMinimizeClose = true;
 
-            TitleBarIconImageColorRole = ColorRoles.OnSurface;
-            TitleBarIconHoverImageColorRole = ColorRoles.OnSurface;
-            TitleBarIconBackColorRole = ColorRoles.SurfaceContainerHigh;
-            TitleBarIconHoverBackColorRole = ColorRoles.SurfaceContainer;
-            TitleBarMinimizeImageColorRole = ColorRoles.OnSurface;
-            TitleBarMinimizeHoverImageColorRole = ColorRoles.OnSurface;
-            TitleBarMinimizeBackColorRole = ColorRoles.SurfaceContainerHigh;
-            TitleBarMinimizeHoverBackColorRole = ColorRoles.SurfaceContainer;
-            TitleBarCloseImageColorRole = ColorRoles.Error;
-            TitleBarCloseHoverImageColorRole = ColorRoles.Error;
-            TitleBarCloseBackColorRole = ColorRoles.SurfaceContainerHigh;
-            TitleBarCloseHoverBackColorRole = ColorRoles.SurfaceContainer;
-
             ApplyCurrentLoadedTheme();
         }
 
         public void ApplyCurrentLoadedTheme()
         {
-            this.BackColor = CurrentLoadedThemeManager.GetColorForRole(ColorRoles.Surface);
-            PN_DragPanel.BackColor = CurrentLoadedThemeManager.GetColorForRole(ColorRoles.SurfaceContainerHigh);
-            LB_Title.ForeColor = CurrentLoadedThemeManager.GetColorForRole(ColorRoles.OnSurface);
+            this.BackColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(BackgroundColorRole));
+            PN_DragPanel.BackColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarColorRole));
+            LB_Title.ForeColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarForegroundColorRole));
+
+            WindowImageButton.ImageColorRole = GetMappedRole(TitleBarForegroundColorRole);
+            MinimizeButton.ImageColorRole = GetMappedRole(TitleBarForegroundColorRole);
+            CloseButton.ImageColorRole = GetMappedRole(CloseButtonColorRole);
+            WindowImageButton.HoverBackgroundColorRole = GetMappedRole(TitleBarButtonHoverColorRole);
+            MinimizeButton.HoverBackgroundColorRole = GetMappedRole(TitleBarButtonHoverColorRole);
+            CloseButton.HoverBackgroundColorRole = GetMappedRole(TitleBarButtonHoverColorRole);
 
             NestedControlThemeApplier.ApplyThemeForChildControls(this);
         }
+
+        private ColorRoles GetMappedRole(M2TFormBackgroundRoleSelection role)
+        {
+            return role switch
+            {
+                M2TFormBackgroundRoleSelection.Surface => ColorRoles.Surface,
+                M2TFormBackgroundRoleSelection.SurfaceContainer => ColorRoles.SurfaceContainer,
+                M2TFormBackgroundRoleSelection.SurfaceContainerHighest => ColorRoles.SurfaceContainerHighest,
+                M2TFormBackgroundRoleSelection.SurfaceContainerHigh => ColorRoles.SurfaceContainerHigh,
+                M2TFormBackgroundRoleSelection.SurfaceContainerLow => ColorRoles.SurfaceContainerLow,
+                M2TFormBackgroundRoleSelection.SurfaceContainerLowest => ColorRoles.SurfaceContainerLowest,
+                _ => throw new ArgumentException($"Could not map {nameof(M2TFormBackgroundRoleSelection)}: {role}"),
+            };
+        }
+
+        private ColorRoles GetMappedRole(M2TFormForegroundRoleSelection role)
+        {
+            return role switch
+            {
+                M2TFormForegroundRoleSelection.Primary => ColorRoles.Primary,
+                M2TFormForegroundRoleSelection.Secondary => ColorRoles.Secondary,
+                M2TFormForegroundRoleSelection.Tertiary => ColorRoles.Tertiary,
+                M2TFormForegroundRoleSelection.Error => ColorRoles.Error,
+                M2TFormForegroundRoleSelection.OnSurface => ColorRoles.OnSurface,
+                M2TFormForegroundRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
+                _ => throw new ArgumentException($"Could not map {nameof(M2TFormForegroundRoleSelection)}: {role}"),
+            };
+        }
+
 
         private void BaseWindowBorderless_Load(object? sender, EventArgs e)
         {
@@ -598,7 +578,7 @@ namespace M2TWinForms.Controls.Window
 
         #region ControlButtons
 
-        private void WindowImageButton_Click(object sender, EventArgs e)
+        private void WindowImageButton_Click(object? sender, EventArgs e)
         {
             if (UseIconAsButton)
             {
@@ -606,13 +586,13 @@ namespace M2TWinForms.Controls.Window
             }
         }
 
-        private void CloseButton_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object? sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
-        private void MinimizeButton_Click(object sender, EventArgs e)
+        private void MinimizeButton_Click(object? sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
