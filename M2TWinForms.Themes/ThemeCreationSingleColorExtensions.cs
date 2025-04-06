@@ -10,14 +10,23 @@ namespace M2TWinForms.Themes
 {
     partial class Theme
     {
-        public static Theme CreateFromSinglePrimaryColor(Color primaryColor, ThemeMode mode, ContrastLevel contrastLevel)
+        private const double SecondaryChromaFactor = (double)TargetChromas.Primary / TargetChromas.Secondary ;
+        private const double TertiaryChromaFactor = (double)TargetChromas.Primary / TargetChromas.Tertiary ;
+        private const double ErrorChromaFactor = (double)TargetChromas.Primary / TargetChromas.Error;
+        private const double NeutralChromaFactor = (double)TargetChromas.Primary / TargetChromas.Neutral;
+        private const double NeutralVariantChromaFactor = (double)TargetChromas.Primary / TargetChromas.NeutralVariant;
+
+        public static Theme CreateFromSinglePrimaryColor(Color primaryColor, ThemeMode mode, ContrastLevel contrastLevel, bool normalizeChroma)
         {
-            var primaryColorHct = new HctColor(primaryColor) { Chroma = 32, Tone = 50 };
-            var seconaryColorHct = new HctColor(primaryColorHct.Hue, 16, 50);
-            var tertiaryColorHct = new HctColor(primaryColorHct.Hue + 60, 24, 50);
-            var errorColorHct = new HctColor(24, 85, 50);
-            var neutralColorHct = new HctColor(primaryColorHct.Hue, 5, 50);
-            var neutralVariantColorHct = new HctColor(primaryColorHct.Hue, 8, 50);
+            var primaryColorHct = new HctColor(primaryColor) { Tone = 50 };
+            if (normalizeChroma)
+                primaryColorHct.Chroma = TargetChromas.Primary;
+
+            var seconaryColorHct = new HctColor(primaryColorHct.Hue, primaryColorHct.Chroma * SecondaryChromaFactor, 50);
+            var tertiaryColorHct = new HctColor(primaryColorHct.Hue + 60, primaryColorHct.Chroma * TertiaryChromaFactor, 50);
+            var errorColorHct = new HctColor(24, primaryColorHct.Chroma * ErrorChromaFactor, 50);
+            var neutralColorHct = new HctColor(primaryColorHct.Hue, primaryColorHct.Chroma * NeutralChromaFactor, 50);
+            var neutralVariantColorHct = new HctColor(primaryColorHct.Hue, primaryColorHct.Chroma * NeutralVariantChromaFactor, 50);
 
             var coreColors = new CoreColors()
             {
@@ -29,7 +38,7 @@ namespace M2TWinForms.Themes
                 NeutralVariant = neutralVariantColorHct.GetColor()
             };
 
-            return Theme.CreateFromCoreColors(coreColors, mode, contrastLevel);
+            return Theme.CreateFromCoreColors(coreColors, mode, contrastLevel, true);
         }
     }
 }

@@ -125,6 +125,7 @@
             BT_CoreColors.TabIndex = 5;
             BT_CoreColors.Text = "Core Colors";
             BT_CoreColors.UseVisualStyleBackColor = true;
+            BT_CoreColors.Click += BT_CoreColors_Click;
             // 
             // BT_SingleColor
             // 

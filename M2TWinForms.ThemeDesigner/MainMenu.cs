@@ -36,10 +36,16 @@ namespace M2TWinForms.ThemeDesigner
             var themeBuilderJsonPreview = new ThemeBuilderJsonPreview();
             themeBuilderJsonPreview.ShowDialog();
         }
+        private void BT_CoreColors_Click(object sender, EventArgs e)
+        {
+            var coreColorsPreview = new CoreColorsPreview();
+            coreColorsPreview.ShowDialog();
+        }
         private void BT_SingleColor_Click(object sender, EventArgs e)
         {
             var singleColorPreview = new SingleColorPreview();
             singleColorPreview.ShowDialog();
         }
+
     }
 }

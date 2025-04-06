@@ -11,7 +11,7 @@ namespace M2TWinForms.Themes
 {
     partial class Theme
     {
-        public static Theme CreateFromCoreColors(ICoreColors coreColors, ThemeMode mode, ContrastLevel contrastLevel)
+        public static Theme CreateFromCoreColors(ICoreColors coreColors, ThemeMode mode, ContrastLevel contrastLevel, bool normalizeChroma)
         {
             var foregroundTone = GetTone(mode, contrastLevel, false);
             var backgroundTone = GetTone(mode, contrastLevel, true);
@@ -27,22 +27,34 @@ namespace M2TWinForms.Themes
             double surfaceContainerHighTone = mode == ThemeMode.Dark ? 18 : 89;
             double surfaceContainerHighestTone = mode == ThemeMode.Dark ? 22 : 86;
 
-            var primaryHct = new HctColor(coreColors.Primary);
+            var primaryHct = new HctColor(coreColors.Primary) { Tone = 50 };
+            if (normalizeChroma)
+                primaryHct.Chroma = TargetChromas.Primary;
             var primaryPalette = new HctTonalPalette(primaryHct);
 
-            var secondaryHct = new HctColor(coreColors.Secondary);
+            var secondaryHct = new HctColor(coreColors.Secondary) { Tone = 50 };
+            if (normalizeChroma)
+                secondaryHct.Chroma = TargetChromas.Secondary;
             var secondaryPalette = new HctTonalPalette(secondaryHct);
 
-            var tertiaryHct = new HctColor(coreColors.Tertiary);
+            var tertiaryHct = new HctColor(coreColors.Tertiary) { Tone = 50 };
+            if (normalizeChroma)
+                tertiaryHct.Chroma = TargetChromas.Tertiary;
             var tertiaryPalette = new HctTonalPalette(tertiaryHct);
 
-            var errorHct = new HctColor(coreColors.Error);
+            var errorHct = new HctColor(coreColors.Error) { Tone = 50 };
+            if (normalizeChroma)
+                errorHct.Chroma = TargetChromas.Error;
             var errorPalette = new HctTonalPalette(errorHct);
 
-            var neutralHct = new HctColor(coreColors.Neutral);
+            var neutralHct = new HctColor(coreColors.Neutral) { Tone = 50 };
+            if (normalizeChroma)
+                neutralHct.Chroma = TargetChromas.Neutral;
             var neutralPalette = new HctTonalPalette(neutralHct);
 
-            var neutralVariantHct = new HctColor(coreColors.NeutralVariant);
+            var neutralVariantHct = new HctColor(coreColors.NeutralVariant) { Tone = 50 };
+            if (normalizeChroma)
+                neutralVariantHct.Chroma = TargetChromas.NeutralVariant;
             var neutralVariantPalette = new HctTonalPalette(neutralVariantHct);
 
             var colors = new ThemeColors()

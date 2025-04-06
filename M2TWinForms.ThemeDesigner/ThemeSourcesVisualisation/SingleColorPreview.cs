@@ -55,7 +55,7 @@ namespace M2TWinForms.ThemeDesigner.ThemeSourcesVisualisation
         {
             RefreshEnteredColorPreview();
 
-            var theme = Theme.CreateFromSinglePrimaryColor(EnteredColor, SelectedThemeMode, SelectedContrastLevel);
+            var theme = Theme.CreateFromSinglePrimaryColor(EnteredColor, SelectedThemeMode, SelectedContrastLevel, true);
             CSV_LoadedTheme.LoadTheme(theme);
         }
 

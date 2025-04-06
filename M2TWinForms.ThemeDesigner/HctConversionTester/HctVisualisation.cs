@@ -29,10 +29,10 @@ namespace M2TWinForms.ThemeDesigner.HctConversionTester
 
         private void BT_CalculateHct_Click(object sender, EventArgs e)
         {
-            CalcluateHctFromEnteredHct();
+            CalculateHctFromEnteredRgb();
         }
 
-        private void CalcluateHctFromEnteredHct()
+        private void CalculateHctFromEnteredRgb()
         {
             var rgbColor = Color.FromArgb(EnteredRed, EnteredGreen, EnteredBlue);
             var hctColor = new HctColor(rgbColor);
@@ -75,7 +75,7 @@ namespace M2TWinForms.ThemeDesigner.HctConversionTester
             EnteredRed = color.R;
             EnteredGreen = color.G;
             EnteredBlue = color.B;
-            CalcluateHctFromEnteredHct();
+            CalculateHctFromEnteredRgb();
         }
     }
 }
