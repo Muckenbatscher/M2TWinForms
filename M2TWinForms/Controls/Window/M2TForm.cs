@@ -268,7 +268,7 @@ namespace M2TWinForms.Controls.Window
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        public partial class NativeMethods
+        public class NativeMethods
         {
             [DllImport("dwmapi")]
             public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref NativeStructs.MARGINS pMarInset);
@@ -277,18 +277,20 @@ namespace M2TWinForms.Controls.Window
             [DllImport("dwmapi.dll")]
             public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
         }
-        public partial class NativeConstants
+        public class NativeConstants
         {
             public const int CS_DROPSHADOW = 0x20000;
             public const int WM_NCPAINT = 0x85;
+            public const int WS_MINIMIZEBOX = 0x20000;
+            public const int CS_DBLCLKS = 0x8;
         }
 
 
         #region Drop Shadow
 
-        public partial class NativeStructs
+        public class NativeStructs
         {
-            public partial struct MARGINS
+            public struct MARGINS
             {
                 public int leftWidth;
                 public int rightWidth;
@@ -304,15 +306,15 @@ namespace M2TWinForms.Controls.Window
             {
                 CheckAeroEnabled();
                 CreateParams cp = base.CreateParams;
+                //drop shadow
                 if (!aeroEnabled)
-                {
                     cp.ClassStyle = cp.ClassStyle | NativeConstants.CS_DROPSHADOW;
-                    return cp;
-                }
-                else
-                {
-                    return cp;
-                }
+
+                //minimize from taskbar
+                cp.Style |= NativeConstants.WS_MINIMIZEBOX;
+                cp.ClassStyle |= NativeConstants.CS_DBLCLKS;
+
+                return cp;
             }
         }
 
