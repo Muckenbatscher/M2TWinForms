@@ -132,10 +132,12 @@
             // 
             m2tLabel1.AutoSize = true;
             m2tLabel1.BackColor = Color.Transparent;
-            m2tLabel1.ForeColor = Color.FromArgb(30, 28, 19);
-            m2tLabel1.Location = new Point(298, 63);
+            m2tLabel1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            m2tLabel1.ForeColor = Color.FromArgb(109, 94, 15);
+            m2tLabel1.ForeColorRole = M2TWinForms.Controls.Labels.M2TLabelTextColorRoleSelection.Primary;
+            m2tLabel1.Location = new Point(301, 68);
             m2tLabel1.Name = "m2tLabel1";
-            m2tLabel1.Size = new Size(62, 15);
+            m2tLabel1.Size = new Size(123, 30);
             m2tLabel1.TabIndex = 18;
             m2tLabel1.Text = "m2tLabel1";
             // 
@@ -163,7 +165,7 @@
             Controls.Add(m2tNegativeConfirmationButton1);
             Controls.Add(m2tPositiveConfirmationButton1);
             Controls.Add(m2tButton1);
-            HasImage = false;
+            HasIcon = false;
             Name = "Form1";
             Text = "Form1";
             Controls.SetChildIndex(m2tButton1, 0);

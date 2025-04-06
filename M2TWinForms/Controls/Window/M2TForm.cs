@@ -28,20 +28,20 @@ namespace M2TWinForms.Controls.Window
             }
         }
 
-        public bool HasImage
+        public bool HasIcon
         {
             get
             {
-                return _hasImage;
+                return _hasIcon;
             }
             set
             {
-                _hasImage = value;
-                LB_Title.Location = new Point(originalTextLocation.X - (_hasImage ? 0 : WindowImageButton.Width), originalTextLocation.Y);
+                _hasIcon = value;
+                LB_Title.Location = new Point(originalTextLocation.X - (_hasIcon ? 0 : WindowImageButton.Width), originalTextLocation.Y);
                 WindowImageButton.Visible = value;
             }
         }
-        private bool _hasImage = true;
+        private bool _hasIcon = true;
 
         public Image WindowIcon
         {
@@ -52,7 +52,7 @@ namespace M2TWinForms.Controls.Window
             set
             {
                 _windowIcon = value;
-                HasImage = HasImage && !(value == null);
+                HasIcon = HasIcon && !(value == null);
                 WindowImageButton.BaseImage = value;
             }
         }

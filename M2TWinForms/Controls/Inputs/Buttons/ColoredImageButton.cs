@@ -199,7 +199,7 @@ namespace M2TWinForms.Controls.Inputs.Buttons
 
         public new event ClickEventHandler? Click;
 
-        public new delegate void ClickEventHandler(object sender, EventArgs e);
+        public delegate void ClickEventHandler(object? sender, EventArgs e);
 
         public ColoredImageButton()
         {
@@ -213,12 +213,12 @@ namespace M2TWinForms.Controls.Inputs.Buttons
             base.MouseLeave += ColoredImageButton_MouseLeave;
         }
 
-        private void ColoredImageButton_Click(object sender, EventArgs e)
+        private void ColoredImageButton_Click(object? sender, EventArgs e)
         {
             Click?.Invoke(this, new EventArgs());
         }
 
-        private void ColoredImageButton_Load(object sender, EventArgs e)
+        private void ColoredImageButton_Load(object? sender, EventArgs e)
         {
             ForceImageRedraw();
         }
@@ -227,18 +227,18 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         {
             this.Refresh();
         }
-        private void ColoredImageButton_Paint(object sender, PaintEventArgs e)
+        private void ColoredImageButton_Paint(object? sender, PaintEventArgs e)
         {
             Color imageColor = IsCurrentlyHovered ? HoverImageColor : ImageColor;
             ImageMethods.DrawImageWithColor(ConvertedBaseImage, imageColor, ImagePadding, this, e);
         }
 
-        private void ColoredImageButton_MouseEnter(object sender, EventArgs e)
+        private void ColoredImageButton_MouseEnter(object? sender, EventArgs e)
         {
             if (HoverEnabled)
                 IsCurrentlyHovered = true;
         }
-        private void ColoredImageButton_MouseLeave(object sender, EventArgs e)
+        private void ColoredImageButton_MouseLeave(object? sender, EventArgs e)
         {
             IsCurrentlyHovered = false;
         }

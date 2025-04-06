@@ -10,21 +10,21 @@ namespace M2TWinForms.Themes.ThemeBuilderConversion.SerializationModels
     public class Schemes
     {
         [JsonPropertyName("light")]
-        public Scheme Light { get; set; }
+        public Scheme? Light { get; set; }
 
         [JsonPropertyName("light-medium-contrast")]
-        public Scheme LightMediumContrast { get; set; }
+        public Scheme? LightMediumContrast { get; set; }
 
         [JsonPropertyName("light-high-contrast")]
-        public Scheme LightHighContrast { get; set; }
+        public Scheme? LightHighContrast { get; set; }
 
         [JsonPropertyName("dark")]
-        public Scheme Dark { get; set; }
+        public Scheme? Dark { get; set; }
 
         [JsonPropertyName("dark-medium-contrast")]
-        public Scheme DarkMediumContrast { get; set; }
+        public Scheme? DarkMediumContrast { get; set; }
 
         [JsonPropertyName("dark-high-contrast")]
-        public Scheme DarkHighContrast { get; set; }
+        public Scheme? DarkHighContrast { get; set; }
     }
 }

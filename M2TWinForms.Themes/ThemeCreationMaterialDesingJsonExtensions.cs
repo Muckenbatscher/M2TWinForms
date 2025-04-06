@@ -15,8 +15,10 @@ namespace M2TWinForms.Themes
         {
             var deserializer = new MaterialThemeDeserializer();
             var materialTheme = deserializer.Deserialize(materialDesignJson);
+            if (materialTheme == null)
+                throw new ArgumentException("Material design theme could not be parsed from the supplied JSON content.");
             var converter = new ThemeBuilderConverter();
-            Scheme selectedScheme = null;
+            Scheme? selectedScheme = null;
             if (mode == ThemeMode.Light && contrastLevel == ContrastLevel.Normal)
                 selectedScheme = materialTheme.Schemes.Light;
             else if (mode == ThemeMode.Light && contrastLevel == ContrastLevel.Medium)
@@ -31,6 +33,9 @@ namespace M2TWinForms.Themes
                 selectedScheme = materialTheme.Schemes.DarkHighContrast;
             else
                 throw new ArgumentException("Invalid combination of theme mode and contrast level.");
+
+            if (selectedScheme == null)
+                throw new ArgumentException($"The requested combination of {nameof(ThemeMode)}: {mode} and {nameof(ContrastLevel)}: {contrastLevel} was not present in the supplied JSON content.");
 
             var themeColors = converter.ConvertFromThemeBuilder(selectedScheme);
             return new Theme() { Colors = themeColors };
