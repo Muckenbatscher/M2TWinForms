@@ -1,4 +1,6 @@
-﻿namespace M2TWinForms.Controls.Window
+﻿using M2TWinForms.Themes.MaterialDesign;
+
+namespace M2TWinForms.Controls.Window
 {
     partial class M2TForm
     {
@@ -50,7 +52,6 @@
             // 
             // PN_DragPanel
             // 
-            PN_DragPanel.BackColor = Color.DimGray;
             PN_DragPanel.Controls.Add(CloseButton);
             PN_DragPanel.Controls.Add(MinimizeButton);
             PN_DragPanel.Controls.Add(WindowImageButton);
@@ -65,14 +66,13 @@
             // CloseButton
             // 
             CloseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            CloseButton.BackColor = Color.FromArgb(12, 12, 13);
-            CloseButton.BackgroundColorType = Enumerations.ColorType.BackgroundPrimary;
+            CloseButton.BackgroundColorRole = ColorRoles.SurfaceContainerHigh;
             CloseButton.BaseImage = Properties.Resources.Close;
             CloseButton.ConvertBaseImageToGrayscale = true;
-            CloseButton.HoverBackgroundColorType = Enumerations.ColorType.BackgroundHoverPrimary;
+            CloseButton.HoverBackgroundColorRole = ColorRoles.SurfaceContainer;
             CloseButton.HoverEnabled = true;
-            CloseButton.HoverImageColorType = Enumerations.ColorType.ForegroundHoverPrimary;
-            CloseButton.ImageColorType = Enumerations.ColorType.ForegroundPrimary;
+            CloseButton.HoverImageColorRole = ColorRoles.Error;
+            CloseButton.ImageColorRole = ColorRoles.Error;
             CloseButton.ImagePadding = new Padding(0);
             CloseButton.Location = new Point(800, 0);
             CloseButton.Margin = new Padding(4, 3, 4, 3);
@@ -84,14 +84,13 @@
             // MinimizeButton
             // 
             MinimizeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            MinimizeButton.BackColor = Color.FromArgb(12, 12, 13);
-            MinimizeButton.BackgroundColorType = Enumerations.ColorType.BackgroundPrimary;
+            MinimizeButton.BackgroundColorRole = ColorRoles.SurfaceContainerHigh;
             MinimizeButton.BaseImage = Properties.Resources.Minimize;
             MinimizeButton.ConvertBaseImageToGrayscale = true;
-            MinimizeButton.HoverBackgroundColorType = Enumerations.ColorType.BackgroundHoverPrimary;
+            MinimizeButton.HoverBackgroundColorRole = ColorRoles.SurfaceContainer;
             MinimizeButton.HoverEnabled = true;
-            MinimizeButton.HoverImageColorType = Enumerations.ColorType.ForegroundHoverPrimary;
-            MinimizeButton.ImageColorType = Enumerations.ColorType.ForegroundPrimary;
+            MinimizeButton.HoverImageColorRole = ColorRoles.OnSurface;
+            MinimizeButton.ImageColorRole = ColorRoles.OnSurface;
             MinimizeButton.ImagePadding = new Padding(0);
             MinimizeButton.Location = new Point(760, 0);
             MinimizeButton.Margin = new Padding(4, 3, 4, 3);
@@ -102,14 +101,13 @@
             // 
             // WindowImageButton
             // 
-            WindowImageButton.BackColor = Color.FromArgb(12, 12, 13);
-            WindowImageButton.BackgroundColorType = Enumerations.ColorType.BackgroundPrimary;
+            WindowImageButton.BackgroundColorRole = ColorRoles.SurfaceContainerHigh;
             WindowImageButton.BaseImage = null;
             WindowImageButton.ConvertBaseImageToGrayscale = false;
-            WindowImageButton.HoverBackgroundColorType = Enumerations.ColorType.BackgroundHoverPrimary;
+            WindowImageButton.HoverBackgroundColorRole = ColorRoles.SurfaceContainer;
             WindowImageButton.HoverEnabled = true;
-            WindowImageButton.HoverImageColorType = Enumerations.ColorType.ForegroundHoverPrimary;
-            WindowImageButton.ImageColorType = Enumerations.ColorType.ForegroundPrimary;
+            WindowImageButton.HoverImageColorRole = ColorRoles.OnSurface;
+            WindowImageButton.ImageColorRole = ColorRoles.OnSurface;
             WindowImageButton.ImagePadding = new Padding(3);
             WindowImageButton.Location = new Point(10, 0);
             WindowImageButton.Margin = new Padding(4, 3, 4, 3);
@@ -121,7 +119,6 @@
             // M2TForm
             // 
             AutoScaleMode = AutoScaleMode.None;
-            BackColor = Color.FromArgb(60, 60, 60);
             ClientSize = new Size(840, 400);
             Controls.Add(PN_DragPanel);
             DoubleBuffered = true;

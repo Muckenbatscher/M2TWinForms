@@ -32,11 +32,6 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         {
             components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
-            ImageColorType = ColorType.ForegroundPrimary;
-            HoverImageColorType = ColorType.ForegroundHoverPrimary;
-            BackgroundColorType = ColorType.BackgroundPrimary;
-            HoverBackgroundColorType = ColorType.BackgroundHoverPrimary;
         }
 
         #endregion

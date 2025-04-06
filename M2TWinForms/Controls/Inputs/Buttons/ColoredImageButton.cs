@@ -1,8 +1,7 @@
-﻿using M2TWinForms.Enumerations;
-using M2TWinForms.Helper;
+﻿using M2TWinForms.Helper;
 using M2TWinForms.Interfaces;
-using M2TWinForms.Models;
-using M2TWinForms.Services;
+using M2TWinForms.Themes.MaterialDesign;
+using M2TWinForms.Themes.ThemeLoading;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -86,16 +85,16 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         private Padding _imagePadding;
 
 
-        public ColorType ImageColorType
+        public ColorRoles ImageColorRole
         {
-            get => _imageColorType;
+            get => _imageColorRole;
             set
             {
-                _imageColorType = value;
+                _imageColorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        private ColorType _imageColorType = ColorType.ForegroundPrimary;
+        private ColorRoles _imageColorRole = ColorRoles.OnSurface;
         private Color ImageColor
         {
             get
@@ -110,16 +109,16 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         }
         private Color _imageColor;
 
-        public ColorType HoverImageColorType
+        public ColorRoles HoverImageColorRole
         {
-            get => _hoverImageColorType;
+            get => _hoverImageColorRole;
             set
             {
-                _hoverImageColorType = value;
+                _hoverImageColorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        private ColorType _hoverImageColorType = ColorType.ForegroundHoverPrimary;
+        private ColorRoles _hoverImageColorRole = ColorRoles.OnSurface;
         private Color HoverImageColor
         {
             get
@@ -135,16 +134,16 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         private Color _hoverImageColor;
 
 
-        public ColorType BackgroundColorType
+        public ColorRoles BackgroundColorRole
         {
-            get => _backgroundColorType;
+            get => _backgroundColorRole;
             set
             {
-                _backgroundColorType = value;
+                _backgroundColorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        private ColorType _backgroundColorType = ColorType.BackgroundPrimary;
+        private ColorRoles _backgroundColorRole = ColorRoles.Surface;
         private new Color BackColor
         {
             get
@@ -160,16 +159,16 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         private Color _originalBackColor;
 
 
-        public ColorType HoverBackgroundColorType
+        public ColorRoles HoverBackgroundColorRole
         {
-            get => _hoverBackgroundColorType;
+            get => _hoverBackgroundColorRole;
             set
             {
-                _hoverBackgroundColorType = value;
+                _hoverBackgroundColorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        private ColorType _hoverBackgroundColorType = ColorType.BackgroundHoverPrimary;
+        private ColorRoles _hoverBackgroundColorRole = ColorRoles.SurfaceContainer;
 
         private Color HoverBackColor { get; set; }
         public bool HoverEnabled
@@ -246,10 +245,10 @@ namespace M2TWinForms.Controls.Inputs.Buttons
 
         public void ApplyCurrentLoadedTheme()
         {
-            ImageColor = CurrentLoadedThemeManager.GetColorForType(ImageColorType);
-            HoverImageColor = CurrentLoadedThemeManager.GetColorForType(HoverImageColorType);
-            BackColor = CurrentLoadedThemeManager.GetColorForType(BackgroundColorType);
-            HoverBackColor = CurrentLoadedThemeManager.GetColorForType(HoverBackgroundColorType);
+            ImageColor = CurrentLoadedThemeManager.GetColorForRole(ImageColorRole);
+            HoverImageColor = CurrentLoadedThemeManager.GetColorForRole(HoverImageColorRole);
+            BackColor = CurrentLoadedThemeManager.GetColorForRole(BackgroundColorRole);
+            HoverBackColor = CurrentLoadedThemeManager.GetColorForRole(HoverBackgroundColorRole);
         }
     }
 }
