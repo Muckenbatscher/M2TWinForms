@@ -12,6 +12,21 @@ namespace M2TWinForms.Controls.Labels
 {
     public class M2TLabel : Label, IThemedControl
     {
+        [Obsolete("Should not be set directly. Instead use the color roles to ensure proper theming.")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override Color ForeColor
+        {
+            get => base.ForeColor;
+            set => base.ForeColor = value;
+        }
+        [Obsolete("Should not be set directly. Instead use the color roles to ensure proper theming.")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override Color BackColor
+        {
+            get => base.BackColor;
+            set => base.BackColor = value;
+        }
+
         [Description("The Material Design Color Role used for the text of the Label")]
         [Category("Material Design")]
         [DefaultValue(M2TLabelTextColorRoleSelection.OnSurface)]

@@ -131,9 +131,7 @@
             // m2tLabel1
             // 
             m2tLabel1.AutoSize = true;
-            m2tLabel1.BackColor = Color.Transparent;
             m2tLabel1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            m2tLabel1.ForeColor = Color.FromArgb(109, 94, 15);
             m2tLabel1.ForeColorRole = M2TWinForms.Controls.Labels.M2TLabelTextColorRoleSelection.Primary;
             m2tLabel1.Location = new Point(301, 68);
             m2tLabel1.Name = "m2tLabel1";
@@ -144,9 +142,7 @@
             // m2tLabel2
             // 
             m2tLabel2.AutoSize = true;
-            m2tLabel2.BackColor = Color.Transparent;
-            m2tLabel2.ForeColor = Color.FromArgb(30, 28, 19);
-            m2tLabel2.Location = new Point(49, 289);
+            m2tLabel2.Location = new Point(33, 299);
             m2tLabel2.Name = "m2tLabel2";
             m2tLabel2.Size = new Size(62, 15);
             m2tLabel2.TabIndex = 19;
