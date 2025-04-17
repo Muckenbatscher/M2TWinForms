@@ -285,7 +285,6 @@ namespace M2TWinForms.Controls.Window
             public const int CS_DBLCLKS = 0x8;
             public const int WS_THICKFRAME = 0x40000;
             public const int WS_CAPTION = 0xC00000;
-            public const int WM_NCHITTEST = 0x0084;
             public const int WM_NCCALCSIZE = 0x0083;
         }
 
@@ -341,15 +340,9 @@ namespace M2TWinForms.Controls.Window
             else if (m.Msg == NativeConstants.WM_NCCALCSIZE)
             {
                 m.Result = IntPtr.Zero;
+                return;
             }
-            else if (m.Msg == NativeConstants.WM_NCHITTEST)
-            {
-                m.Result = IntPtr.Zero;
-            }
-            else
-            {
-                base.WndProc(ref m);
-            }
+            base.WndProc(ref m);
         }
         private void CheckAeroEnabled()
         {
