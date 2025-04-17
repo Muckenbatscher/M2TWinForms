@@ -283,6 +283,10 @@ namespace M2TWinForms.Controls.Window
             public const int WM_NCPAINT = 0x85;
             public const int WS_MINIMIZEBOX = 0x20000;
             public const int CS_DBLCLKS = 0x8;
+            public const int WS_THICKFRAME = 0x40000;
+            public const int WS_CAPTION = 0xC00000;
+            public const int WM_NCHITTEST = 0x0084;
+            public const int WM_NCCALCSIZE = 0x0083;
         }
 
 
@@ -311,8 +315,8 @@ namespace M2TWinForms.Controls.Window
                     cp.ClassStyle = cp.ClassStyle | NativeConstants.CS_DROPSHADOW;
 
                 //minimize from taskbar
-                cp.Style |= NativeConstants.WS_MINIMIZEBOX;
-                cp.ClassStyle |= NativeConstants.CS_DBLCLKS;
+                cp.Style = cp.Style | NativeConstants.WS_MINIMIZEBOX | NativeConstants.WS_THICKFRAME | NativeConstants.WS_CAPTION;
+                cp.ClassStyle = cp.ClassStyle | NativeConstants.CS_DBLCLKS;
 
                 return cp;
             }
@@ -320,25 +324,32 @@ namespace M2TWinForms.Controls.Window
 
         protected override void WndProc(ref Message m)
         {
-            switch (m.Msg)
+            if (m.Msg == NativeConstants.WM_NCPAINT)
             {
-                case NativeConstants.WM_NCPAINT:
-                    {
-                        int val = 2;
-                        if (aeroEnabled)
-                        {
-                            NativeMethods.DwmSetWindowAttribute(Handle, 2, ref val, 4);
-                            var mrg = new NativeStructs.MARGINS();
-                            mrg.leftWidth = 0;
-                            mrg.rightWidth = 0;
-                            mrg.topHeight = 0;
-                            mrg.bottomHeight = 1;
-                            NativeMethods.DwmExtendFrameIntoClientArea(Handle, ref mrg);
-                        }
-                        break;
-                    }
+                if (aeroEnabled)
+                {
+                    int val = 2;
+                    NativeMethods.DwmSetWindowAttribute(Handle, 2, ref val, 4);
+                    var margin = new NativeStructs.MARGINS();
+                    margin.leftWidth = 0;
+                    margin.rightWidth = 0;
+                    margin.topHeight = 0;
+                    margin.bottomHeight = 1;
+                    NativeMethods.DwmExtendFrameIntoClientArea(Handle, ref margin);
+                }
             }
-            base.WndProc(ref m);
+            else if (m.Msg == NativeConstants.WM_NCCALCSIZE)
+            {
+                m.Result = IntPtr.Zero;
+            }
+            else if (m.Msg == NativeConstants.WM_NCHITTEST)
+            {
+                m.Result = IntPtr.Zero;
+            }
+            else
+            {
+                base.WndProc(ref m);
+            }
         }
         private void CheckAeroEnabled()
         {
