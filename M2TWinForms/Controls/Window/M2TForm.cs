@@ -16,8 +16,7 @@ namespace M2TWinForms.Controls.Window
         public delegate void WindowIconClickedEventHandler(object sender, EventArgs e);
 
 
-        private Point originalTextLocation;
-
+        [DefaultValue(false)]
         public bool UseIconAsButton
         {
             get
@@ -30,6 +29,8 @@ namespace M2TWinForms.Controls.Window
             }
         }
 
+        private Point _originalTextLocation;
+        [DefaultValue(false)]
         public bool HasIcon
         {
             get
@@ -39,7 +40,8 @@ namespace M2TWinForms.Controls.Window
             set
             {
                 _hasIcon = value;
-                LB_Title.Location = new Point(originalTextLocation.X - (_hasIcon ? 0 : WindowImageButton.Width), originalTextLocation.Y);
+                int horizontalOffset = _hasIcon ? 0 : WindowImageButton.Width;
+                LB_Title.Location = new Point(_originalTextLocation.X - horizontalOffset, _originalTextLocation.Y);
                 WindowImageButton.Visible = value;
             }
         }
@@ -60,16 +62,11 @@ namespace M2TWinForms.Controls.Window
         }
         private Image _windowIcon;
 
+        [DefaultValue(typeof(Padding), "3, 3, 3, 3")]
         public Padding WindowIconPadding
         {
-            get
-            {
-                return WindowImageButton.ImagePadding;
-            }
-            set
-            {
-                WindowImageButton.ImagePadding = value;
-            }
+            get => WindowImageButton.ImagePadding;
+            set => WindowImageButton.ImagePadding = value;
         }
 
         public override string Text
@@ -85,24 +82,41 @@ namespace M2TWinForms.Controls.Window
             }
         }
 
-        public bool WindowSizingVisible
+        [DefaultValue(true)]
+        public bool CanMinimize
         {
             get
             {
-                return _canMinimize;
+                return MinimizeButton.Visible;
             }
             set
             {
-                _canMinimize = value;
                 MinimizeButton.Visible = value;
-                MaximizeButton.Visible = value;
+                MinimizeBox = value;
             }
         }
-        private bool _canMinimize = true;
 
+        [DefaultValue(true)]
+        public bool CanMaximize
+        {
+            get
+            {
+                return MaximizeButton.Visible;
+            }
+            set
+            {
+                MaximizeButton.Visible = value;
+                MaximizeBox = value;
+                var minimizeOffset = CloseButton.Width + (value ? MaximizeButton.Width : 0) + MinimizeButton.Width;
+                MinimizeButton.Location = new Point(this.Width - minimizeOffset, MinimizeButton.Location.Y);
+            }
+        }
+
+        [DefaultValue(true)]
         public bool CanResize { get; set; } = true;
 
-        public bool CanHoverMinimizeClose
+        [DefaultValue(true)]
+        public bool CanHoverControlBox
         {
             get => _canHoverMaximizeClose;
             set
@@ -115,9 +129,10 @@ namespace M2TWinForms.Controls.Window
         }
         private bool _canHoverMaximizeClose;
 
-
+        #region Color Roles
         [Description("The Material Design Color Role used for background of the form")]
         [Category("Material Design")]
+        [DefaultValue(M2TFormBackgroundRoleSelection.Surface)]
         public M2TFormBackgroundRoleSelection BackgroundColorRole
         {
             get => _backgroundColorRole;
@@ -127,10 +142,11 @@ namespace M2TWinForms.Controls.Window
                 ApplyCurrentLoadedTheme();
             }
         }
-        private M2TFormBackgroundRoleSelection _backgroundColorRole = M2TFormBackgroundRoleSelection.Surface;
+        private M2TFormBackgroundRoleSelection _backgroundColorRole;
 
         [Description("The Material Design Color Role used for titlebar of the form containing the control buttons")]
         [Category("Material Design")]
+        [DefaultValue(M2TFormBackgroundRoleSelection.SurfaceContainerHigh)]
         public M2TFormBackgroundRoleSelection TitleBarColorRole
         {
             get => _titleBarColorRole;
@@ -140,10 +156,11 @@ namespace M2TWinForms.Controls.Window
                 ApplyCurrentLoadedTheme();
             }
         }
-        private M2TFormBackgroundRoleSelection _titleBarColorRole = M2TFormBackgroundRoleSelection.SurfaceContainerHigh;
+        private M2TFormBackgroundRoleSelection _titleBarColorRole;
 
         [Description("The Material Design Color Role used for the hover color of the control buttons in the titlebar")]
         [Category("Material Design")]
+        [DefaultValue(M2TFormBackgroundRoleSelection.SurfaceContainer)]
         public M2TFormBackgroundRoleSelection TitleBarButtonHoverColorRole
         {
             get => _titleBarButtonHoverColorRole;
@@ -153,10 +170,11 @@ namespace M2TWinForms.Controls.Window
                 ApplyCurrentLoadedTheme();
             }
         }
-        private M2TFormBackgroundRoleSelection _titleBarButtonHoverColorRole = M2TFormBackgroundRoleSelection.SurfaceContainer;
+        private M2TFormBackgroundRoleSelection _titleBarButtonHoverColorRole;
 
         [Description("The Material Design Color Role used for the foreground color of the control buttons and window title text in the titlebar")]
         [Category("Material Design")]
+        [DefaultValue(M2TFormForegroundRoleSelection.OnSurface)]
         public M2TFormForegroundRoleSelection TitleBarForegroundColorRole
         {
             get => _titleBarForegroundColorRole;
@@ -166,10 +184,11 @@ namespace M2TWinForms.Controls.Window
                 ApplyCurrentLoadedTheme();
             }
         }
-        private M2TFormForegroundRoleSelection _titleBarForegroundColorRole = M2TFormForegroundRoleSelection.OnSurface;
+        private M2TFormForegroundRoleSelection _titleBarForegroundColorRole;
 
         [Description("The Material Design Color Role used for the foreground color of the close button in the titlebar")]
         [Category("Material Design")]
+        [DefaultValue(M2TFormForegroundRoleSelection.Error)]
         public M2TFormForegroundRoleSelection CloseButtonColorRole
         {
             get => _closeButtonColorRole;
@@ -179,7 +198,9 @@ namespace M2TWinForms.Controls.Window
                 ApplyCurrentLoadedTheme();
             }
         }
-        private M2TFormForegroundRoleSelection _closeButtonColorRole = M2TFormForegroundRoleSelection.Error;
+        private M2TFormForegroundRoleSelection _closeButtonColorRole;
+        #endregion
+
 
         public M2TForm()
         {
@@ -190,10 +211,16 @@ namespace M2TWinForms.Controls.Window
 
             SetCorrectedMaximizedBounds();
 
+            TitleBarForegroundColorRole = M2TFormForegroundRoleSelection.OnSurface;
+            BackgroundColorRole = M2TFormBackgroundRoleSelection.Surface;
+            TitleBarColorRole = M2TFormBackgroundRoleSelection.SurfaceContainerHigh;
+            TitleBarButtonHoverColorRole = M2TFormBackgroundRoleSelection.SurfaceContainer;
+            TitleBarForegroundColorRole = M2TFormForegroundRoleSelection.OnSurface;
+            CloseButtonColorRole = M2TFormForegroundRoleSelection.Error;
+
+            _originalTextLocation = LB_Title.Location;
             WindowIconPadding = new Padding(3);
             UseIconAsButton = false;
-
-            originalTextLocation = LB_Title.Location;
 
             base.Load += BaseWindowBorderless_Load;
             base.MouseMove += BaseWindowBorderless_MouseMove;
@@ -207,7 +234,9 @@ namespace M2TWinForms.Controls.Window
             MaximizeButton.Click += MaximizeButton_Click;
             MinimizeButton.Click += MinimizeButton_Click;
 
-            CanHoverMinimizeClose = true;
+            CanMinimize = true;
+            CanMaximize = true;
+            CanHoverControlBox = true;
 
             ApplyCurrentLoadedTheme();
         }
@@ -506,7 +535,7 @@ namespace M2TWinForms.Controls.Window
             if (this.WindowState == FormWindowState.Maximized)
                 return;
 
-            
+
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -523,7 +552,7 @@ namespace M2TWinForms.Controls.Window
                 SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
 
-            if (e.Button == MouseButtons.Left && e.Clicks == 2)
+            if (e.Button == MouseButtons.Left && e.Clicks == 2 && CanMaximize)
                 RequestWindowStateMaximizationChange();
         }
 
