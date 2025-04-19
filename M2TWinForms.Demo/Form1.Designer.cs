@@ -36,6 +36,8 @@
             m2tRichTextBoxSingleLine1 = new M2TWinForms.Controls.Inputs.Text.M2TRichTextBoxSingleLine();
             m2tLabel1 = new M2TWinForms.Controls.Labels.M2TLabel();
             m2tLabel2 = new M2TWinForms.Controls.Labels.M2TLabel();
+            m2tLabel3 = new M2TWinForms.Controls.Labels.M2TLabel();
+            m2tLabel4 = new M2TWinForms.Controls.Labels.M2TLabel();
             SuspendLayout();
             // 
             // m2tButton1
@@ -148,11 +150,32 @@
             m2tLabel2.TabIndex = 19;
             m2tLabel2.Text = "m2tLabel2";
             // 
+            // m2tLabel3
+            // 
+            m2tLabel3.AutoSize = true;
+            m2tLabel3.Location = new Point(0, 364);
+            m2tLabel3.Name = "m2tLabel3";
+            m2tLabel3.Size = new Size(62, 15);
+            m2tLabel3.TabIndex = 20;
+            m2tLabel3.Text = "m2tLabel3";
+            // 
+            // m2tLabel4
+            // 
+            m2tLabel4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            m2tLabel4.AutoSize = true;
+            m2tLabel4.Location = new Point(738, 214);
+            m2tLabel4.Name = "m2tLabel4";
+            m2tLabel4.Size = new Size(62, 15);
+            m2tLabel4.TabIndex = 21;
+            m2tLabel4.Text = "m2tLabel4";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(m2tLabel4);
+            Controls.Add(m2tLabel3);
             Controls.Add(m2tLabel2);
             Controls.Add(m2tLabel1);
             Controls.Add(m2tRichTextBoxSingleLine1);
@@ -162,6 +185,7 @@
             Controls.Add(m2tPositiveConfirmationButton1);
             Controls.Add(m2tButton1);
             HasIcon = false;
+            Location = new Point(0, 0);
             Name = "Form1";
             Text = "Form1";
             Controls.SetChildIndex(m2tButton1, 0);
@@ -172,6 +196,8 @@
             Controls.SetChildIndex(m2tRichTextBoxSingleLine1, 0);
             Controls.SetChildIndex(m2tLabel1, 0);
             Controls.SetChildIndex(m2tLabel2, 0);
+            Controls.SetChildIndex(m2tLabel3, 0);
+            Controls.SetChildIndex(m2tLabel4, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -186,5 +212,7 @@
         private Controls.Inputs.Text.M2TRichTextBoxSingleLine m2tRichTextBoxSingleLine1;
         private Controls.Labels.M2TLabel m2tLabel1;
         private Controls.Labels.M2TLabel m2tLabel2;
+        private Controls.Labels.M2TLabel m2tLabel3;
+        private Controls.Labels.M2TLabel m2tLabel4;
     }
 }

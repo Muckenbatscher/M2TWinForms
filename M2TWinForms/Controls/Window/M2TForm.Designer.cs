@@ -32,9 +32,10 @@ namespace M2TWinForms.Controls.Window
         {
             LB_Title = new Label();
             PN_DragPanel = new Panel();
-            CloseButton = new Inputs.Buttons.ColoredImageButton();
-            MinimizeButton = new Inputs.Buttons.ColoredImageButton();
-            WindowImageButton = new Inputs.Buttons.ColoredImageButton();
+            MaximizeButton = new M2TWinForms.Controls.Inputs.Buttons.ColoredImageButton();
+            CloseButton = new M2TWinForms.Controls.Inputs.Buttons.ColoredImageButton();
+            MinimizeButton = new M2TWinForms.Controls.Inputs.Buttons.ColoredImageButton();
+            WindowImageButton = new M2TWinForms.Controls.Inputs.Buttons.ColoredImageButton();
             PN_DragPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,6 +53,7 @@ namespace M2TWinForms.Controls.Window
             // 
             // PN_DragPanel
             // 
+            PN_DragPanel.Controls.Add(MaximizeButton);
             PN_DragPanel.Controls.Add(CloseButton);
             PN_DragPanel.Controls.Add(MinimizeButton);
             PN_DragPanel.Controls.Add(WindowImageButton);
@@ -63,9 +65,28 @@ namespace M2TWinForms.Controls.Window
             PN_DragPanel.Size = new Size(840, 40);
             PN_DragPanel.TabIndex = 11;
             // 
+            // MaximizeButton
+            // 
+            MaximizeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            MaximizeButton.BackColor = Color.FromArgb(238, 232, 218);
+            MaximizeButton.BackgroundColorRole = ColorRoles.SurfaceContainerHigh;
+            MaximizeButton.BaseImage = Properties.Resources.Maximize;
+            MaximizeButton.ConvertBaseImageToGrayscale = true;
+            MaximizeButton.HoverBackgroundColorRole = ColorRoles.SurfaceContainer;
+            MaximizeButton.HoverEnabled = true;
+            MaximizeButton.HoverImageColorRole = ColorRoles.OnSurface;
+            MaximizeButton.ImageColorRole = ColorRoles.OnSurface;
+            MaximizeButton.ImagePadding = new Padding(3);
+            MaximizeButton.Location = new Point(760, 0);
+            MaximizeButton.Name = "MaximizeButton";
+            MaximizeButton.Size = new Size(40, 40);
+            MaximizeButton.TabIndex = 15;
+            MaximizeButton.TabStop = false;
+            // 
             // CloseButton
             // 
             CloseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            CloseButton.BackColor = Color.FromArgb(238, 232, 218);
             CloseButton.BackgroundColorRole = ColorRoles.SurfaceContainerHigh;
             CloseButton.BaseImage = Properties.Resources.Close;
             CloseButton.ConvertBaseImageToGrayscale = true;
@@ -75,7 +96,6 @@ namespace M2TWinForms.Controls.Window
             CloseButton.ImageColorRole = ColorRoles.Error;
             CloseButton.ImagePadding = new Padding(0);
             CloseButton.Location = new Point(800, 0);
-            CloseButton.Margin = new Padding(4, 3, 4, 3);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(40, 40);
             CloseButton.TabIndex = 14;
@@ -84,6 +104,7 @@ namespace M2TWinForms.Controls.Window
             // MinimizeButton
             // 
             MinimizeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            MinimizeButton.BackColor = Color.FromArgb(238, 232, 218);
             MinimizeButton.BackgroundColorRole = ColorRoles.SurfaceContainerHigh;
             MinimizeButton.BaseImage = Properties.Resources.Minimize;
             MinimizeButton.ConvertBaseImageToGrayscale = true;
@@ -91,9 +112,8 @@ namespace M2TWinForms.Controls.Window
             MinimizeButton.HoverEnabled = true;
             MinimizeButton.HoverImageColorRole = ColorRoles.OnSurface;
             MinimizeButton.ImageColorRole = ColorRoles.OnSurface;
-            MinimizeButton.ImagePadding = new Padding(0);
-            MinimizeButton.Location = new Point(760, 0);
-            MinimizeButton.Margin = new Padding(4, 3, 4, 3);
+            MinimizeButton.ImagePadding = new Padding(0, 2, 0, -2);
+            MinimizeButton.Location = new Point(720, 0);
             MinimizeButton.Name = "MinimizeButton";
             MinimizeButton.Size = new Size(40, 40);
             MinimizeButton.TabIndex = 13;
@@ -101,16 +121,16 @@ namespace M2TWinForms.Controls.Window
             // 
             // WindowImageButton
             // 
+            WindowImageButton.BackColor = Color.FromArgb(238, 232, 218);
             WindowImageButton.BackgroundColorRole = ColorRoles.SurfaceContainerHigh;
-            WindowImageButton.BaseImage = null;
+            WindowImageButton.BaseImage = Properties.Resources.WindowIcon;
             WindowImageButton.ConvertBaseImageToGrayscale = false;
             WindowImageButton.HoverBackgroundColorRole = ColorRoles.SurfaceContainer;
             WindowImageButton.HoverEnabled = true;
             WindowImageButton.HoverImageColorRole = ColorRoles.OnSurface;
             WindowImageButton.ImageColorRole = ColorRoles.OnSurface;
-            WindowImageButton.ImagePadding = new Padding(3);
+            WindowImageButton.ImagePadding = new Padding(0);
             WindowImageButton.Location = new Point(10, 0);
-            WindowImageButton.Margin = new Padding(4, 3, 4, 3);
             WindowImageButton.Name = "WindowImageButton";
             WindowImageButton.Size = new Size(40, 40);
             WindowImageButton.TabIndex = 12;
@@ -126,6 +146,7 @@ namespace M2TWinForms.Controls.Window
             Name = "M2TForm";
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterParent;
+            Resize += M2TForm_Resize;
             PN_DragPanel.ResumeLayout(false);
             PN_DragPanel.PerformLayout();
             ResumeLayout(false);
@@ -136,6 +157,7 @@ namespace M2TWinForms.Controls.Window
         internal Inputs.Buttons.ColoredImageButton WindowImageButton;
         internal Inputs.Buttons.ColoredImageButton MinimizeButton;
         internal Inputs.Buttons.ColoredImageButton CloseButton;
+        internal Inputs.Buttons.ColoredImageButton MaximizeButton;
 
         #endregion
     }
