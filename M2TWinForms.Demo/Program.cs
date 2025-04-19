@@ -2,6 +2,7 @@ using M2TWinForms.Interfaces.DefaultTheme;
 using M2TWinForms.Services;
 using M2TWinForms.Services.DefaultTheme;
 using M2TWinForms.Themes;
+using M2TWinForms.Themes.MaterialDesign;
 
 namespace M2TWinForms.Demo
 {
@@ -20,7 +21,7 @@ namespace M2TWinForms.Demo
             IDefaultThemeService darkThemeService = new DefaultDarkThemeService();
             CurrentLoadedThemeManager.LoadTheme(darkThemeService.GetTheme());
 
-            var theme = Theme.CreateFromSinglePrimaryColor(Color.Blue, Themes.MaterialDesign.ThemeMode.Dark, Themes.MaterialDesign.ContrastLevel.Normal, true);
+            var theme = Theme.CreateFromSinglePrimaryColor(Color.Green, ThemeMode.Light, ContrastLevel.Normal, true);
             Themes.ThemeLoading.CurrentLoadedThemeManager.LoadTheme(theme);
             
             Application.EnableVisualStyles();
