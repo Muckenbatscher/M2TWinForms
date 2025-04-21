@@ -308,7 +308,7 @@
             // m2tLabel7
             // 
             m2tLabel7.AutoSize = true;
-            m2tLabel7.Location = new Point(63, 40);
+            m2tLabel7.Location = new Point(63, 38);
             m2tLabel7.Name = "m2tLabel7";
             m2tLabel7.Size = new Size(62, 15);
             m2tLabel7.TabIndex = 39;

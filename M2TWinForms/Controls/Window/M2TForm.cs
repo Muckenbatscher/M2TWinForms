@@ -1,5 +1,6 @@
 ﻿using M2TWinForms.Helper;
 using M2TWinForms.Interfaces;
+using M2TWinForms.Native;
 using M2TWinForms.Themes.MaterialDesign;
 using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
@@ -30,7 +31,7 @@ namespace M2TWinForms.Controls.Window
         }
 
         private Point _originalTextLocation;
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool HasIcon
         {
             get
@@ -113,7 +114,7 @@ namespace M2TWinForms.Controls.Window
                 RefreshMinizeButtonLocation();
             }
         }
-        private bool _canMaximize;
+        private bool _canMaximize = true;
 
         [DefaultValue(true)]
         public bool CanResize { get; set; } = true;
@@ -130,7 +131,28 @@ namespace M2TWinForms.Controls.Window
                 CloseButton.HoverEnabled = value;
             }
         }
-        private bool _canHoverMaximizeClose;
+        private bool _canHoverMaximizeClose = true;
+
+        [DefaultValue(FormBorderStyle.Sizable)]
+        public new FormBorderStyle FormBorderStyle
+        {
+            get => _formBorderStyle;
+            set
+            {
+                _formBorderStyle = value;
+                IEnumerable<FormBorderStyle> resizableBorderStyles =
+                [
+                    FormBorderStyle.Sizable,
+                    FormBorderStyle.SizableToolWindow
+                ];
+                CanResize = resizableBorderStyles.Contains(value);
+                if (value == FormBorderStyle.None)
+                   PN_DragPanel.Size = new Size(PN_DragPanel.Width, 0);
+                else
+                    PN_DragPanel.Size = new Size(PN_DragPanel.Width, 36);
+            }
+        }
+        private FormBorderStyle _formBorderStyle;
 
         #region Color Roles
         [Description("The Material Design Color Role used for background of the form")]
@@ -208,7 +230,8 @@ namespace M2TWinForms.Controls.Window
         public M2TForm()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.None;
+            base.FormBorderStyle = FormBorderStyle.None;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.ResizeRedraw, true);
 
@@ -220,11 +243,13 @@ namespace M2TWinForms.Controls.Window
             CloseButtonColorRole = M2TFormForegroundRoleSelection.Error;
 
             _originalTextLocation = LB_Title.Location;
-            WindowIconPadding = new Padding(3);
+            HasIcon = true;
             UseIconAsButton = false;
+            WindowIconPadding = new Padding(3);
 
             base.Load += BaseWindowBorderless_Load;
             base.MouseMove += BaseWindowBorderless_MouseMove;
+            PN_DragPanel.MouseMove += BaseWindowBorderless_MouseMove;
             base.MouseLeave += BaseWindowBorderless_MouseLeave;
             base.MouseDown += BaseWindowBorderless_MouseDown;
 
@@ -296,64 +321,8 @@ namespace M2TWinForms.Controls.Window
 
         #region Borderless Window
 
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
-        [DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        [DllImport("user32.dll")]
-        public static extern int GetSystemMetrics(int nIndex);
-
-
-        public class NativeMethods
-        {
-            [DllImport("dwmapi")]
-            public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref NativeStructs.MARGINS pMarInset);
-            [DllImport("dwmapi")]
-            internal static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
-            [DllImport("dwmapi.dll")]
-            public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
-        }
-        private class NativeConstants
-        {
-            public const int CS_DROPSHADOW = 0x20000;
-            public const int WM_NCPAINT = 0x85;
-            public const int WS_MINIMIZEBOX = 0x20000;
-            public const int CS_DBLCLKS = 0x8;
-            public const int WS_THICKFRAME = 0x40000;
-            public const int WS_CAPTION = 0xC00000;
-            public const int WM_NCCALCSIZE = 0x0083;
-            public const int SM_CXBORDER = 0x5;
-            public const int SM_CYBORDER = 0x6;
-            public const int SM_CXFIXEDFRAME = 0x7;
-            public const int SM_CYFIXEDFRAME = 0x8;
-            public const int SM_CXSIZEFRAME = 0x20;
-            public const int SM_CYSIZEFRAME = 0x21;
-            public const int SM_CXCAPTION = 0x32;
-            public const int SM_CYCAPTION = 0x33;
-            public const int WM_SYSCOMMAND = 0x0112;
-            public const int SC_MAXIMIZE = 0xF030;
-            public const int SC_RESTORE = 0xF120;
-        }
-
-
+        
         #region Drop Shadow
-
-        public class NativeStructs
-        {
-            public struct MARGINS
-            {
-                public int leftWidth;
-                public int rightWidth;
-                public int topHeight;
-                public int bottomHeight;
-            }
-        }
-
         private bool aeroEnabled;
         private void CheckAeroEnabled()
         {
@@ -399,11 +368,11 @@ namespace M2TWinForms.Controls.Window
                     int val = 2;
                     NativeMethods.DwmSetWindowAttribute(Handle, 2, ref val, 4);
 
-                    var margin = new NativeStructs.MARGINS();
-                    margin.leftWidth = 0;
-                    margin.rightWidth = 0;
-                    margin.topHeight = 0;
-                    margin.bottomHeight = 1;
+                    var margin = new NativeStructs.Margin();
+                    margin.LeftWidth = 0;
+                    margin.RightWidth = 0;
+                    margin.TopHeight = 0;
+                    margin.BottomHeight = 1;
                     NativeMethods.DwmExtendFrameIntoClientArea(Handle, ref margin);
                 }
             }
@@ -428,28 +397,17 @@ namespace M2TWinForms.Controls.Window
 
 
         #region Window Resizing
-
-        private const int HTLEFT = 10;
-        private const int HTRIGHT = 11;
-        private const int HTTOP = 12;
-        private const int HTTOPLEFT = 13;
-        private const int HTTOPRIGHT = 14;
-        private const int HTBOTTOM = 15;
-        private const int HTBOTTOMLEFT = 16;
-        private const int HTBOTTOMRIGHT = 17;
-
-
         private enum ResizeDirection
         {
-            None = 0,
-            Left = 1,
-            TopLeft = 2,
-            Top = 3,
-            TopRight = 4,
-            Right = 5,
-            BottomRight = 6,
-            Bottom = 7,
-            BottomLeft = 8
+            None,
+            Left,
+            TopLeft,
+            Top,
+            TopRight,
+            Right,
+            BottomRight,
+            Bottom,
+            BottomLeft
         }
 
         private ResizeDirection ResizeDir
@@ -462,7 +420,6 @@ namespace M2TWinForms.Controls.Window
             {
                 _resizeDir = value;
 
-                // Change cursor
                 this.Cursor = value switch
                 {
                     ResizeDirection.Left or ResizeDirection.Right => Cursors.SizeWE,
@@ -476,7 +433,16 @@ namespace M2TWinForms.Controls.Window
         private ResizeDirection _resizeDir = ResizeDirection.None;
 
 
+        private void BaseWindowBorderless_MouseLeave(object? sender, EventArgs e)
+        {
+            ResizeDir = ResizeDirection.None;
+        }
+
         private void BaseWindowBorderless_MouseMove(object? sender, MouseEventArgs e)
+        {
+            RefreshResizeDirCursor(e.Location);
+        }
+        private void RefreshResizeDirCursor(Point mouseLocation)
         {
             if (!CanResize || this.WindowState != FormWindowState.Normal)
             {
@@ -484,48 +450,36 @@ namespace M2TWinForms.Controls.Window
                 return;
             }
 
-            var borderX = GetSystemMetrics(NativeConstants.SM_CXBORDER);
-            var sizeFrameX = GetSystemMetrics(NativeConstants.SM_CXSIZEFRAME);
-            var fixedFrameX = GetSystemMetrics(NativeConstants.SM_CXFIXEDFRAME);
-            var borderWidthX = sizeFrameX + fixedFrameX + borderX;
-            var borderY = GetSystemMetrics(NativeConstants.SM_CYBORDER);
-            var sizeFrameY = GetSystemMetrics(NativeConstants.SM_CYSIZEFRAME);
-            var fixedFrameY = GetSystemMetrics(NativeConstants.SM_CYFIXEDFRAME);
-            var borderWidthY = sizeFrameY + fixedFrameY + borderY;
+            var borderWidthX = WindowBorderSystemMetrics.GetForX().Total;
+            var borderWidthY = WindowBorderSystemMetrics.GetForY().Total;
 
-            if (e.Location.X < borderWidthX & e.Location.Y < borderWidthY)
+            if (mouseLocation.X < borderWidthX & mouseLocation.Y < borderWidthY)
                 ResizeDir = ResizeDirection.TopLeft;
 
-            else if (e.Location.X < borderWidthX & e.Location.Y > this.Height - borderWidthY)
+            else if (mouseLocation.X < borderWidthX & mouseLocation.Y > this.Height - borderWidthY)
                 ResizeDir = ResizeDirection.BottomLeft;
 
-            else if (e.Location.X > this.Width - borderWidthX & e.Location.Y > this.Height - borderWidthY)
+            else if (mouseLocation.X > this.Width - borderWidthX & mouseLocation.Y > this.Height - borderWidthY)
                 ResizeDir = ResizeDirection.BottomRight;
 
-            else if (e.Location.X > this.Width - borderWidthX & e.Location.Y < borderWidthY)
+            else if (mouseLocation.X > this.Width - borderWidthX & mouseLocation.Y < borderWidthY)
                 ResizeDir = ResizeDirection.TopRight;
 
-            else if (e.Location.X < borderWidthX)
+            else if (mouseLocation.X < borderWidthX)
                 ResizeDir = ResizeDirection.Left;
 
-            else if (e.Location.X > this.Width - borderWidthX)
+            else if (mouseLocation.X > this.Width - borderWidthX)
                 ResizeDir = ResizeDirection.Right;
 
-            else if (e.Location.Y < borderWidthY)
+            else if (mouseLocation.Y < borderWidthY)
                 ResizeDir = ResizeDirection.Top;
 
-            else if (e.Location.Y > this.Height - borderWidthY)
+            else if (mouseLocation.Y > this.Height - borderWidthY)
                 ResizeDir = ResizeDirection.Bottom;
 
             else
                 ResizeDir = ResizeDirection.None;
         }
-
-        private void BaseWindowBorderless_MouseLeave(object? sender, EventArgs e)
-        {
-            ResizeDir = ResizeDirection.None;
-        }
-
 
         private void BaseWindowBorderless_MouseDown(object? sender, MouseEventArgs e)
         {
@@ -536,31 +490,24 @@ namespace M2TWinForms.Controls.Window
         {
             int dir = direction switch
             {
-                ResizeDirection.Left => HTLEFT,
-                ResizeDirection.TopLeft => HTTOPLEFT,
-                ResizeDirection.Top => HTTOP,
-                ResizeDirection.TopRight => HTTOPRIGHT,
-                ResizeDirection.Right => HTRIGHT,
-                ResizeDirection.BottomRight => HTBOTTOMRIGHT,
-                ResizeDirection.Bottom => HTBOTTOM,
-                ResizeDirection.BottomLeft => HTBOTTOMLEFT,
+                ResizeDirection.Left => NativeConstants.HT_LEFT,
+                ResizeDirection.TopLeft => NativeConstants.HT_TOPLEFT,
+                ResizeDirection.Top => NativeConstants.HT_TOP,
+                ResizeDirection.TopRight => NativeConstants.HT_TOPRIGHT,
+                ResizeDirection.Right => NativeConstants.HT_RIGHT,
+                ResizeDirection.BottomRight => NativeConstants.HT_BOTTOMRIGHT,
+                ResizeDirection.Bottom => NativeConstants.HT_BOTTOM,
+                ResizeDirection.BottomLeft => NativeConstants.HT_BOTTOMLEFT,
                 _ => -1
             };
 
             if (dir != -1)
             {
-                ReleaseCapture();
-                SendMessage(this.Handle, WM_NCLBUTTONDOWN, dir, 0);
+                NativeMethods.ReleaseCapture();
+                NativeMethods.SendMessage(this.Handle, NativeConstants.WM_NCLBUTTONDOWN, dir, 0);
             }
         }
 
-
-        private void SetCorrectedMaximizedBounds()
-        {
-            var rect = Screen.FromHandle(this.Handle).WorkingArea;
-            var correctedRect = new Rectangle(0, 0, rect.Width - 1, rect.Height + 1);
-            this.MaximizedBounds = correctedRect;
-        }
 
         private void PerformMaximize()
         {
@@ -570,24 +517,31 @@ namespace M2TWinForms.Controls.Window
             SetCorrectedMaximizedBounds();
             this.WindowState = FormWindowState.Maximized;
         }
-
-
+        private void SetCorrectedMaximizedBounds()
+        {
+            var rect = Screen.FromHandle(this.Handle).WorkingArea;
+            var correctedRect = new Rectangle(0, 0, rect.Width - 1, rect.Height + 1);
+            this.MaximizedBounds = correctedRect;
+        }
         #endregion
 
 
         #region Window Drag
         private void DraggingPanel_MouseDown(object? sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            //top window border resize
+            if (ResizeDir != ResizeDirection.None && e.Button == MouseButtons.Left && CanResize && this.WindowState != FormWindowState.Maximized)
+                ResizeForm(ResizeDir);
+
+            else if (e.Button == MouseButtons.Left)
             {
-                ReleaseCapture();
-                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                NativeMethods.ReleaseCapture();
+                NativeMethods.SendMessage(this.Handle, NativeConstants.WM_NCLBUTTONDOWN, NativeConstants.HT_CAPTION, 0);
             }
 
             if (e.Button == MouseButtons.Left && e.Clicks == 2 && CanMaximize)
                 RequestWindowStateMaximizationChange();
         }
-
         #endregion
 
 
