@@ -87,30 +87,33 @@ namespace M2TWinForms.Controls.Window
         {
             get
             {
-                return MinimizeButton.Visible;
+                return _canMinimize;
             }
             set
             {
+                _canMinimize = value;
                 MinimizeButton.Visible = value;
                 MinimizeBox = value;
             }
         }
+        private bool _canMinimize = true;
 
         [DefaultValue(true)]
         public bool CanMaximize
         {
             get
             {
-                return MaximizeButton.Visible;
+                return _canMaximize;
             }
             set
             {
+                _canMaximize = value;
                 MaximizeButton.Visible = value;
                 MaximizeBox = value;
-                var minimizeOffset = CloseButton.Width + (value ? MaximizeButton.Width : 0) + MinimizeButton.Width;
-                MinimizeButton.Location = new Point(this.Width - minimizeOffset, MinimizeButton.Location.Y);
+                RefreshMinizeButtonLocation();
             }
         }
+        private bool _canMaximize;
 
         [DefaultValue(true)]
         public bool CanResize { get; set; } = true;
@@ -209,8 +212,6 @@ namespace M2TWinForms.Controls.Window
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.ResizeRedraw, true);
 
-            SetCorrectedMaximizedBounds();
-
             TitleBarForegroundColorRole = M2TFormForegroundRoleSelection.OnSurface;
             BackgroundColorRole = M2TFormBackgroundRoleSelection.Surface;
             TitleBarColorRole = M2TFormBackgroundRoleSelection.SurfaceContainerHigh;
@@ -304,6 +305,10 @@ namespace M2TWinForms.Controls.Window
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
+        [DllImport("user32.dll")]
+        public static extern int GetSystemMetrics(int nIndex);
+
+
         public class NativeMethods
         {
             [DllImport("dwmapi")]
@@ -322,6 +327,17 @@ namespace M2TWinForms.Controls.Window
             public const int WS_THICKFRAME = 0x40000;
             public const int WS_CAPTION = 0xC00000;
             public const int WM_NCCALCSIZE = 0x0083;
+            public const int SM_CXBORDER = 0x5;
+            public const int SM_CYBORDER = 0x6;
+            public const int SM_CXFIXEDFRAME = 0x7;
+            public const int SM_CYFIXEDFRAME = 0x8;
+            public const int SM_CXSIZEFRAME = 0x20;
+            public const int SM_CYSIZEFRAME = 0x21;
+            public const int SM_CXCAPTION = 0x32;
+            public const int SM_CYCAPTION = 0x33;
+            public const int WM_SYSCOMMAND = 0x0112;
+            public const int SC_MAXIMIZE = 0xF030;
+            public const int SC_RESTORE = 0xF120;
         }
 
 
@@ -391,6 +407,15 @@ namespace M2TWinForms.Controls.Window
                     NativeMethods.DwmExtendFrameIntoClientArea(Handle, ref margin);
                 }
             }
+            if (m.Msg == NativeConstants.WM_SYSCOMMAND)
+            {
+                var correctedWParam = m.WParam.ToInt32() & 0xFFF0;
+                if (correctedWParam == NativeConstants.SC_MAXIMIZE || 
+                    correctedWParam == NativeConstants.SC_RESTORE)
+                {
+                    SetCorrectedMaximizedBounds();
+                }
+            }
             else if (m.Msg == NativeConstants.WM_NCCALCSIZE)
             {
                 m.Result = IntPtr.Zero;
@@ -413,7 +438,6 @@ namespace M2TWinForms.Controls.Window
         private const int HTBOTTOMLEFT = 16;
         private const int HTBOTTOMRIGHT = 17;
 
-        private const int BorderWidth = 8;
 
         private enum ResizeDirection
         {
@@ -460,29 +484,37 @@ namespace M2TWinForms.Controls.Window
                 return;
             }
 
+            var borderX = GetSystemMetrics(NativeConstants.SM_CXBORDER);
+            var sizeFrameX = GetSystemMetrics(NativeConstants.SM_CXSIZEFRAME);
+            var fixedFrameX = GetSystemMetrics(NativeConstants.SM_CXFIXEDFRAME);
+            var borderWidthX = sizeFrameX + fixedFrameX + borderX;
+            var borderY = GetSystemMetrics(NativeConstants.SM_CYBORDER);
+            var sizeFrameY = GetSystemMetrics(NativeConstants.SM_CYSIZEFRAME);
+            var fixedFrameY = GetSystemMetrics(NativeConstants.SM_CYFIXEDFRAME);
+            var borderWidthY = sizeFrameY + fixedFrameY + borderY;
 
-            if (e.Location.X < BorderWidth & e.Location.Y < BorderWidth)
+            if (e.Location.X < borderWidthX & e.Location.Y < borderWidthY)
                 ResizeDir = ResizeDirection.TopLeft;
 
-            else if (e.Location.X < BorderWidth & e.Location.Y > this.Height - BorderWidth)
+            else if (e.Location.X < borderWidthX & e.Location.Y > this.Height - borderWidthY)
                 ResizeDir = ResizeDirection.BottomLeft;
 
-            else if (e.Location.X > this.Width - BorderWidth & e.Location.Y > this.Height - BorderWidth)
+            else if (e.Location.X > this.Width - borderWidthX & e.Location.Y > this.Height - borderWidthY)
                 ResizeDir = ResizeDirection.BottomRight;
 
-            else if (e.Location.X > this.Width - BorderWidth & e.Location.Y < BorderWidth)
+            else if (e.Location.X > this.Width - borderWidthX & e.Location.Y < borderWidthY)
                 ResizeDir = ResizeDirection.TopRight;
 
-            else if (e.Location.X < BorderWidth)
+            else if (e.Location.X < borderWidthX)
                 ResizeDir = ResizeDirection.Left;
 
-            else if (e.Location.X > this.Width - BorderWidth)
+            else if (e.Location.X > this.Width - borderWidthX)
                 ResizeDir = ResizeDirection.Right;
 
-            else if (e.Location.Y < BorderWidth)
+            else if (e.Location.Y < borderWidthY)
                 ResizeDir = ResizeDirection.Top;
 
-            else if (e.Location.Y > this.Height - BorderWidth)
+            else if (e.Location.Y > this.Height - borderWidthY)
                 ResizeDir = ResizeDirection.Bottom;
 
             else
@@ -526,7 +558,7 @@ namespace M2TWinForms.Controls.Window
         private void SetCorrectedMaximizedBounds()
         {
             var rect = Screen.FromHandle(this.Handle).WorkingArea;
-            var correctedRect = new Rectangle(0, 1, rect.Width, rect.Height + 1);
+            var correctedRect = new Rectangle(0, 0, rect.Width - 1, rect.Height + 1);
             this.MaximizedBounds = correctedRect;
         }
 
@@ -535,7 +567,7 @@ namespace M2TWinForms.Controls.Window
             if (this.WindowState == FormWindowState.Maximized)
                 return;
 
-
+            SetCorrectedMaximizedBounds();
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -603,13 +635,17 @@ namespace M2TWinForms.Controls.Window
                 RefreshMaximizeButtonForWindowState();
             }
             _previousWindowState = currentWindowState;
+            RefreshMinizeButtonLocation();
         }
         private void RefreshMaximizeButtonForWindowState()
         {
-            if (WindowState != FormWindowState.Maximized)
-                MaximizeButton.BaseImage = Properties.Resources.Maximize;
-            else
-                MaximizeButton.BaseImage = Properties.Resources.Window;
+            bool isMaximized = WindowState == FormWindowState.Maximized;
+            MaximizeButton.BaseImage = isMaximized ? Properties.Resources.Window : Properties.Resources.Maximize;
+        }
+        private void RefreshMinizeButtonLocation()
+        {
+            var minimizeOffset = CloseButton.Width + (CanMaximize ? MaximizeButton.Width : 0) + MinimizeButton.Width + PN_DragPanel.Padding.Right + PN_DragPanel.Padding.Left;
+            MinimizeButton.Location = new Point(PN_DragPanel.Width - minimizeOffset, MinimizeButton.Location.Y);
         }
         #endregion
 

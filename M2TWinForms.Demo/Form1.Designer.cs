@@ -50,6 +50,11 @@
             m2tButton12 = new M2TWinForms.Controls.Inputs.Buttons.M2TButton();
             m2tButton13 = new M2TWinForms.Controls.Inputs.Buttons.M2TButton();
             m2tButton14 = new M2TWinForms.Controls.Inputs.Buttons.M2TButton();
+            m2tLabel6 = new M2TWinForms.Controls.Labels.M2TLabel();
+            m2tLabel7 = new M2TWinForms.Controls.Labels.M2TLabel();
+            m2tLabel8 = new M2TWinForms.Controls.Labels.M2TLabel();
+            m2tLabel9 = new M2TWinForms.Controls.Labels.M2TLabel();
+            m2tLabel10 = new M2TWinForms.Controls.Labels.M2TLabel();
             SuspendLayout();
             // 
             // m2tTextBox1
@@ -102,7 +107,8 @@
             // m2tLabel2
             // 
             m2tLabel2.AutoSize = true;
-            m2tLabel2.Location = new Point(542, 149);
+            m2tLabel2.ForeColorRole = M2TWinForms.Controls.Labels.M2TLabelTextColorRoleSelection.OnSurfaceVariant;
+            m2tLabel2.Location = new Point(542, 127);
             m2tLabel2.Name = "m2tLabel2";
             m2tLabel2.Size = new Size(62, 15);
             m2tLabel2.TabIndex = 19;
@@ -289,13 +295,68 @@
             m2tButton14.Text = "Primary T";
             m2tButton14.UseVisualStyleBackColor = false;
             // 
+            // m2tLabel6
+            // 
+            m2tLabel6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            m2tLabel6.AutoSize = true;
+            m2tLabel6.Location = new Point(353, 436);
+            m2tLabel6.Name = "m2tLabel6";
+            m2tLabel6.Size = new Size(62, 15);
+            m2tLabel6.TabIndex = 38;
+            m2tLabel6.Text = "m2tLabel6";
+            // 
+            // m2tLabel7
+            // 
+            m2tLabel7.AutoSize = true;
+            m2tLabel7.Location = new Point(63, 40);
+            m2tLabel7.Name = "m2tLabel7";
+            m2tLabel7.Size = new Size(62, 15);
+            m2tLabel7.TabIndex = 39;
+            m2tLabel7.Text = "m2tLabel7";
+            // 
+            // m2tLabel8
+            // 
+            m2tLabel8.AutoSize = true;
+            m2tLabel8.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            m2tLabel8.ForeColorRole = M2TWinForms.Controls.Labels.M2TLabelTextColorRoleSelection.Secondary;
+            m2tLabel8.Location = new Point(407, 94);
+            m2tLabel8.Name = "m2tLabel8";
+            m2tLabel8.Size = new Size(123, 30);
+            m2tLabel8.TabIndex = 40;
+            m2tLabel8.Text = "m2tLabel8";
+            // 
+            // m2tLabel9
+            // 
+            m2tLabel9.AutoSize = true;
+            m2tLabel9.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            m2tLabel9.ForeColorRole = M2TWinForms.Controls.Labels.M2TLabelTextColorRoleSelection.Tertiary;
+            m2tLabel9.Location = new Point(407, 124);
+            m2tLabel9.Name = "m2tLabel9";
+            m2tLabel9.Size = new Size(123, 30);
+            m2tLabel9.TabIndex = 41;
+            m2tLabel9.Text = "m2tLabel9";
+            // 
+            // m2tLabel10
+            // 
+            m2tLabel10.AutoSize = true;
+            m2tLabel10.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            m2tLabel10.ForeColorRole = M2TWinForms.Controls.Labels.M2TLabelTextColorRoleSelection.Error;
+            m2tLabel10.Location = new Point(409, 154);
+            m2tLabel10.Name = "m2tLabel10";
+            m2tLabel10.Size = new Size(136, 30);
+            m2tLabel10.TabIndex = 42;
+            m2tLabel10.Text = "m2tLabel10";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            CanMaximize = true;
-            CanMinimize = true;
             ClientSize = new Size(800, 450);
+            Controls.Add(m2tLabel10);
+            Controls.Add(m2tLabel9);
+            Controls.Add(m2tLabel8);
+            Controls.Add(m2tLabel7);
+            Controls.Add(m2tLabel6);
             Controls.Add(m2tButton11);
             Controls.Add(m2tButton12);
             Controls.Add(m2tButton13);
@@ -319,7 +380,6 @@
             Controls.Add(m2tRichTextBox1);
             Controls.Add(m2tTextBox1);
             HasIcon = false;
-            Location = new Point(0, 0);
             Name = "Form1";
             Text = "Form1";
             Controls.SetChildIndex(m2tTextBox1, 0);
@@ -344,6 +404,11 @@
             Controls.SetChildIndex(m2tButton13, 0);
             Controls.SetChildIndex(m2tButton12, 0);
             Controls.SetChildIndex(m2tButton11, 0);
+            Controls.SetChildIndex(m2tLabel6, 0);
+            Controls.SetChildIndex(m2tLabel7, 0);
+            Controls.SetChildIndex(m2tLabel8, 0);
+            Controls.SetChildIndex(m2tLabel9, 0);
+            Controls.SetChildIndex(m2tLabel10, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -372,5 +437,10 @@
         private Controls.Inputs.Buttons.M2TButton m2tButton12;
         private Controls.Inputs.Buttons.M2TButton m2tButton13;
         private Controls.Inputs.Buttons.M2TButton m2tButton14;
+        private Controls.Labels.M2TLabel m2tLabel6;
+        private Controls.Labels.M2TLabel m2tLabel7;
+        private Controls.Labels.M2TLabel m2tLabel8;
+        private Controls.Labels.M2TLabel m2tLabel9;
+        private Controls.Labels.M2TLabel m2tLabel10;
     }
 }

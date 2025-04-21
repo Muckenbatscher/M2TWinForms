@@ -36,6 +36,8 @@
             BT_PaletteGeneration = new Button();
             BT_CoreColors = new Button();
             BT_SingleColor = new Button();
+            label1 = new Label();
+            label2 = new Label();
             TLP_Main.SuspendLayout();
             SuspendLayout();
             // 
@@ -138,17 +140,39 @@
             BT_SingleColor.UseVisualStyleBackColor = true;
             BT_SingleColor.Click += BT_SingleColor_Click;
             // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Location = new Point(765, 96);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 1;
+            label1.Text = "label1";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(-1, 146);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 2;
+            label2.Text = "label2";
+            // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(TLP_Main);
             Name = "MainMenu";
             Text = "MainMenu";
             TLP_Main.ResumeLayout(false);
             TLP_Main.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -161,5 +185,7 @@
         private Button BT_PaletteGeneration;
         private Button BT_CoreColors;
         private Button BT_SingleColor;
+        private Label label1;
+        private Label label2;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using M2TWinForms.Themes.MaterialDesign;
+using System.ComponentModel;
 
 namespace M2TWinForms.Controls.Window
 {
@@ -45,7 +46,7 @@ namespace M2TWinForms.Controls.Window
             LB_Title.BackColor = Color.Transparent;
             LB_Title.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LB_Title.ForeColor = Color.White;
-            LB_Title.Location = new Point(52, 10);
+            LB_Title.Location = new Point(44, 8);
             LB_Title.Name = "LB_Title";
             LB_Title.Size = new Size(38, 20);
             LB_Title.TabIndex = 1;
@@ -60,9 +61,9 @@ namespace M2TWinForms.Controls.Window
             PN_DragPanel.Controls.Add(LB_Title);
             PN_DragPanel.Dock = DockStyle.Top;
             PN_DragPanel.Location = new Point(0, 0);
-            PN_DragPanel.Margin = new Padding(3, 2, 3, 2);
+            PN_DragPanel.Margin = new Padding(0);
             PN_DragPanel.Name = "PN_DragPanel";
-            PN_DragPanel.Size = new Size(840, 40);
+            PN_DragPanel.Size = new Size(840, 36);
             PN_DragPanel.TabIndex = 11;
             // 
             // MaximizeButton
@@ -77,9 +78,9 @@ namespace M2TWinForms.Controls.Window
             MaximizeButton.HoverImageColorRole = ColorRoles.OnSurface;
             MaximizeButton.ImageColorRole = ColorRoles.OnSurface;
             MaximizeButton.ImagePadding = new Padding(3);
-            MaximizeButton.Location = new Point(760, 0);
+            MaximizeButton.Location = new Point(768, 0);
             MaximizeButton.Name = "MaximizeButton";
-            MaximizeButton.Size = new Size(40, 40);
+            MaximizeButton.Size = new Size(36, 36);
             MaximizeButton.TabIndex = 15;
             MaximizeButton.TabStop = false;
             // 
@@ -95,9 +96,9 @@ namespace M2TWinForms.Controls.Window
             CloseButton.HoverImageColorRole = ColorRoles.Error;
             CloseButton.ImageColorRole = ColorRoles.Error;
             CloseButton.ImagePadding = new Padding(0);
-            CloseButton.Location = new Point(800, 0);
+            CloseButton.Location = new Point(804, 0);
             CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(40, 40);
+            CloseButton.Size = new Size(36, 36);
             CloseButton.TabIndex = 14;
             CloseButton.TabStop = false;
             // 
@@ -113,9 +114,9 @@ namespace M2TWinForms.Controls.Window
             MinimizeButton.HoverImageColorRole = ColorRoles.OnSurface;
             MinimizeButton.ImageColorRole = ColorRoles.OnSurface;
             MinimizeButton.ImagePadding = new Padding(0, 2, 0, -2);
-            MinimizeButton.Location = new Point(720, 0);
+            MinimizeButton.Location = new Point(732, 0);
             MinimizeButton.Name = "MinimizeButton";
-            MinimizeButton.Size = new Size(40, 40);
+            MinimizeButton.Size = new Size(36, 36);
             MinimizeButton.TabIndex = 13;
             MinimizeButton.TabStop = false;
             // 
@@ -130,9 +131,9 @@ namespace M2TWinForms.Controls.Window
             WindowImageButton.HoverImageColorRole = ColorRoles.OnSurface;
             WindowImageButton.ImageColorRole = ColorRoles.OnSurface;
             WindowImageButton.ImagePadding = new Padding(0);
-            WindowImageButton.Location = new Point(10, 0);
+            WindowImageButton.Location = new Point(5, 0);
             WindowImageButton.Name = "WindowImageButton";
-            WindowImageButton.Size = new Size(40, 40);
+            WindowImageButton.Size = new Size(36, 36);
             WindowImageButton.TabIndex = 12;
             WindowImageButton.TabStop = false;
             // 
@@ -152,12 +153,12 @@ namespace M2TWinForms.Controls.Window
             ResumeLayout(false);
         }
 
-        internal Label LB_Title;
-        internal Panel PN_DragPanel;
-        internal Inputs.Buttons.ColoredImageButton WindowImageButton;
-        internal Inputs.Buttons.ColoredImageButton MinimizeButton;
-        internal Inputs.Buttons.ColoredImageButton CloseButton;
-        internal Inputs.Buttons.ColoredImageButton MaximizeButton;
+        private Label LB_Title;
+        private Panel PN_DragPanel;
+        private Inputs.Buttons.ColoredImageButton WindowImageButton;
+        private Inputs.Buttons.ColoredImageButton MinimizeButton;
+        private Inputs.Buttons.ColoredImageButton CloseButton;
+        private Inputs.Buttons.ColoredImageButton MaximizeButton;
 
         #endregion
     }
