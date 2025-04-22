@@ -379,7 +379,6 @@
             Controls.Add(m2tRichTextBoxSingleLine1);
             Controls.Add(m2tRichTextBox1);
             Controls.Add(m2tTextBox1);
-            HasIcon = false;
             Name = "Form1";
             Text = "Form1";
             Controls.SetChildIndex(m2tTextBox1, 0);

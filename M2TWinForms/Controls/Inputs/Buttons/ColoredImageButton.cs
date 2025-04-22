@@ -1,7 +1,5 @@
 ﻿using M2TWinForms.Helper;
-using M2TWinForms.Interfaces;
 using M2TWinForms.Themes.MaterialDesign;
-using M2TWinForms.Themes.ThemeLoading;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +12,7 @@ using System.Windows.Forms;
 
 namespace M2TWinForms.Controls.Inputs.Buttons
 {
-    public partial class ColoredImageButton : UserControl, IThemedControl
+    public partial class ColoredImageButton : UserControl
     {
         public Image? BaseImage
         {
@@ -85,17 +83,7 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         private Padding _imagePadding;
 
 
-        public ColorRoles ImageColorRole
-        {
-            get => _imageColorRole;
-            set
-            {
-                _imageColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private ColorRoles _imageColorRole = ColorRoles.OnSurface;
-        private Color ImageColor
+        public Color ImageColor
         {
             get
             {
@@ -109,17 +97,8 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         }
         private Color _imageColor;
 
-        public ColorRoles HoverImageColorRole
-        {
-            get => _hoverImageColorRole;
-            set
-            {
-                _hoverImageColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private ColorRoles _hoverImageColorRole = ColorRoles.OnSurface;
-        private Color HoverImageColor
+
+        public Color HoverImageColor
         {
             get
             {
@@ -134,17 +113,7 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         private Color _hoverImageColor;
 
 
-        public ColorRoles BackgroundColorRole
-        {
-            get => _backgroundColorRole;
-            set
-            {
-                _backgroundColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private ColorRoles _backgroundColorRole = ColorRoles.Surface;
-        private new Color BackColor
+        public new Color BackColor
         {
             get
             {
@@ -159,18 +128,7 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         private Color _originalBackColor;
 
 
-        public ColorRoles HoverBackgroundColorRole
-        {
-            get => _hoverBackgroundColorRole;
-            set
-            {
-                _hoverBackgroundColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private ColorRoles _hoverBackgroundColorRole = ColorRoles.SurfaceContainer;
-
-        private Color HoverBackColor { get; set; }
+        public Color HoverBackColor { get; set; }
         public bool HoverEnabled
         {
             get
@@ -204,7 +162,7 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         public ColoredImageButton()
         {
             InitializeComponent();
-            DoubleBuffered = true; 
+            DoubleBuffered = true;
 
             base.Click += ColoredImageButton_Click;
             base.Load += ColoredImageButton_Load;
@@ -241,14 +199,6 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         private void ColoredImageButton_MouseLeave(object? sender, EventArgs e)
         {
             IsCurrentlyHovered = false;
-        }
-
-        public void ApplyCurrentLoadedTheme()
-        {
-            ImageColor = CurrentLoadedThemeManager.GetColorForRole(ImageColorRole);
-            HoverImageColor = CurrentLoadedThemeManager.GetColorForRole(HoverImageColorRole);
-            BackColor = CurrentLoadedThemeManager.GetColorForRole(BackgroundColorRole);
-            HoverBackColor = CurrentLoadedThemeManager.GetColorForRole(HoverBackgroundColorRole);
         }
     }
 }
