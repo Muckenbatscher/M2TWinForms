@@ -21,7 +21,7 @@ namespace M2TWinForms.Demo
             IDefaultThemeService darkThemeService = new DefaultDarkThemeService();
             CurrentLoadedThemeManager.LoadTheme(darkThemeService.GetTheme());
 
-            var theme = Theme.CreateFromSinglePrimaryColor(Color.Red, ThemeMode.Dark, ContrastLevel.Normal, true);
+            var theme = Theme.CreateFromSinglePrimaryColor(Color.Blue, ThemeMode.Light, ContrastLevel.Normal, true);
             Themes.ThemeLoading.CurrentLoadedThemeManager.LoadTheme(theme);
             
             Application.EnableVisualStyles();

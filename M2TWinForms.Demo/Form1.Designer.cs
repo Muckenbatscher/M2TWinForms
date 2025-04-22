@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            m2tTextBox1 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
-            m2tRichTextBox1 = new M2TWinForms.Controls.Inputs.Text.M2TRichTextBox();
-            m2tRichTextBoxSingleLine1 = new M2TWinForms.Controls.Inputs.Text.M2TRichTextBoxSingleLine();
             m2tLabel1 = new M2TWinForms.Controls.Labels.M2TLabel();
             m2tLabel2 = new M2TWinForms.Controls.Labels.M2TLabel();
             m2tLabel3 = new M2TWinForms.Controls.Labels.M2TLabel();
@@ -55,50 +52,31 @@
             m2tLabel8 = new M2TWinForms.Controls.Labels.M2TLabel();
             m2tLabel9 = new M2TWinForms.Controls.Labels.M2TLabel();
             m2tLabel10 = new M2TWinForms.Controls.Labels.M2TLabel();
+            m2tTextBox1 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tTextBox2 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tTextBox3 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tTextBox4 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tTextBox5 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tTextBox6 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tTextBox7 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tTextBox8 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tTextBox9 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tTextBox10 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tTextBox11 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tTextBox12 = new M2TWinForms.Controls.Inputs.Text.M2TTextBox();
+            m2tPanel1 = new M2TWinForms.Controls.Panels.M2TPanel();
+            m2tPanel2 = new M2TWinForms.Controls.Panels.M2TPanel();
+            m2tPanel3 = new M2TWinForms.Controls.Panels.M2TPanel();
+            m2tPanel4 = new M2TWinForms.Controls.Panels.M2TPanel();
+            m2tPanel5 = new M2TWinForms.Controls.Panels.M2TPanel();
             SuspendLayout();
-            // 
-            // m2tTextBox1
-            // 
-            m2tTextBox1.BackColor = Color.FromArgb(30, 30, 33);
-            m2tTextBox1.ForeColor = Color.FromArgb(255, 255, 255);
-            m2tTextBox1.Location = new Point(301, 101);
-            m2tTextBox1.Name = "m2tTextBox1";
-            m2tTextBox1.Size = new Size(100, 23);
-            m2tTextBox1.TabIndex = 15;
-            // 
-            // m2tRichTextBox1
-            // 
-            m2tRichTextBox1.BackColor = Color.FromArgb(30, 30, 33);
-            m2tRichTextBox1.DetectUrls = false;
-            m2tRichTextBox1.ForeColor = Color.FromArgb(255, 255, 255);
-            m2tRichTextBox1.HighlightBackColorType = Enumerations.ColorType.HighlightForegroundPrimary;
-            m2tRichTextBox1.Location = new Point(303, 149);
-            m2tRichTextBox1.Multiline = false;
-            m2tRichTextBox1.Name = "m2tRichTextBox1";
-            m2tRichTextBox1.Size = new Size(100, 61);
-            m2tRichTextBox1.TabIndex = 16;
-            m2tRichTextBox1.Text = "";
-            // 
-            // m2tRichTextBoxSingleLine1
-            // 
-            m2tRichTextBoxSingleLine1.BackColor = Color.FromArgb(30, 30, 33);
-            m2tRichTextBoxSingleLine1.ForeColor = Color.FromArgb(255, 255, 255);
-            m2tRichTextBoxSingleLine1.HighlightBackColorType = Enumerations.ColorType.HighlightForegroundPrimary;
-            m2tRichTextBoxSingleLine1.Location = new Point(301, 237);
-            m2tRichTextBoxSingleLine1.MaximumSize = new Size(int.MaxValue, 23);
-            m2tRichTextBoxSingleLine1.MinimumSize = new Size(0, 23);
-            m2tRichTextBoxSingleLine1.Multiline = false;
-            m2tRichTextBoxSingleLine1.Name = "m2tRichTextBoxSingleLine1";
-            m2tRichTextBoxSingleLine1.Size = new Size(195, 23);
-            m2tRichTextBoxSingleLine1.TabIndex = 17;
-            m2tRichTextBoxSingleLine1.Text = "";
             // 
             // m2tLabel1
             // 
             m2tLabel1.AutoSize = true;
             m2tLabel1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             m2tLabel1.ForeColorRole = M2TWinForms.Controls.Labels.M2TLabelTextColorRoleSelection.Primary;
-            m2tLabel1.Location = new Point(301, 68);
+            m2tLabel1.Location = new Point(510, 68);
             m2tLabel1.Name = "m2tLabel1";
             m2tLabel1.Size = new Size(123, 30);
             m2tLabel1.TabIndex = 18;
@@ -108,7 +86,7 @@
             // 
             m2tLabel2.AutoSize = true;
             m2tLabel2.ForeColorRole = M2TWinForms.Controls.Labels.M2TLabelTextColorRoleSelection.OnSurfaceVariant;
-            m2tLabel2.Location = new Point(542, 127);
+            m2tLabel2.Location = new Point(692, 100);
             m2tLabel2.Name = "m2tLabel2";
             m2tLabel2.Size = new Size(62, 15);
             m2tLabel2.TabIndex = 19;
@@ -136,7 +114,7 @@
             // m2tLabel5
             // 
             m2tLabel5.AutoSize = true;
-            m2tLabel5.Location = new Point(542, 104);
+            m2tLabel5.Location = new Point(692, 77);
             m2tLabel5.Name = "m2tLabel5";
             m2tLabel5.Size = new Size(62, 15);
             m2tLabel5.TabIndex = 23;
@@ -319,7 +297,7 @@
             m2tLabel8.AutoSize = true;
             m2tLabel8.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             m2tLabel8.ForeColorRole = M2TWinForms.Controls.Labels.M2TLabelTextColorRoleSelection.Secondary;
-            m2tLabel8.Location = new Point(407, 94);
+            m2tLabel8.Location = new Point(510, 94);
             m2tLabel8.Name = "m2tLabel8";
             m2tLabel8.Size = new Size(123, 30);
             m2tLabel8.TabIndex = 40;
@@ -330,7 +308,7 @@
             m2tLabel9.AutoSize = true;
             m2tLabel9.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             m2tLabel9.ForeColorRole = M2TWinForms.Controls.Labels.M2TLabelTextColorRoleSelection.Tertiary;
-            m2tLabel9.Location = new Point(407, 124);
+            m2tLabel9.Location = new Point(510, 124);
             m2tLabel9.Name = "m2tLabel9";
             m2tLabel9.Size = new Size(123, 30);
             m2tLabel9.TabIndex = 41;
@@ -341,17 +319,181 @@
             m2tLabel10.AutoSize = true;
             m2tLabel10.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             m2tLabel10.ForeColorRole = M2TWinForms.Controls.Labels.M2TLabelTextColorRoleSelection.Error;
-            m2tLabel10.Location = new Point(409, 154);
+            m2tLabel10.Location = new Point(512, 154);
             m2tLabel10.Name = "m2tLabel10";
             m2tLabel10.Size = new Size(136, 30);
             m2tLabel10.TabIndex = 42;
             m2tLabel10.Text = "m2tLabel10";
+            // 
+            // m2tTextBox1
+            // 
+            m2tTextBox1.ColorRole = M2TWinForms.Controls.Inputs.Text.M2TTextBoxColorRoleSelection.Primary;
+            m2tTextBox1.Location = new Point(285, 75);
+            m2tTextBox1.Name = "m2tTextBox1";
+            m2tTextBox1.Size = new Size(100, 23);
+            m2tTextBox1.TabIndex = 43;
+            m2tTextBox1.Text = "test text";
+            // 
+            // m2tTextBox2
+            // 
+            m2tTextBox2.ColorRole = M2TWinForms.Controls.Inputs.Text.M2TTextBoxColorRoleSelection.Secondary;
+            m2tTextBox2.Location = new Point(285, 104);
+            m2tTextBox2.Name = "m2tTextBox2";
+            m2tTextBox2.Size = new Size(100, 23);
+            m2tTextBox2.TabIndex = 44;
+            m2tTextBox2.Text = "test text";
+            // 
+            // m2tTextBox3
+            // 
+            m2tTextBox3.ColorRole = M2TWinForms.Controls.Inputs.Text.M2TTextBoxColorRoleSelection.Tertiary;
+            m2tTextBox3.Location = new Point(285, 134);
+            m2tTextBox3.Name = "m2tTextBox3";
+            m2tTextBox3.Size = new Size(100, 23);
+            m2tTextBox3.TabIndex = 45;
+            m2tTextBox3.Text = "test text";
+            // 
+            // m2tTextBox4
+            // 
+            m2tTextBox4.ColorRole = M2TWinForms.Controls.Inputs.Text.M2TTextBoxColorRoleSelection.Error;
+            m2tTextBox4.Location = new Point(285, 164);
+            m2tTextBox4.Name = "m2tTextBox4";
+            m2tTextBox4.Size = new Size(100, 23);
+            m2tTextBox4.TabIndex = 46;
+            m2tTextBox4.Text = "test text";
+            // 
+            // m2tTextBox5
+            // 
+            m2tTextBox5.ColorRole = M2TWinForms.Controls.Inputs.Text.M2TTextBoxColorRoleSelection.ErrorContainer;
+            m2tTextBox5.Location = new Point(391, 164);
+            m2tTextBox5.Name = "m2tTextBox5";
+            m2tTextBox5.Size = new Size(100, 23);
+            m2tTextBox5.TabIndex = 50;
+            m2tTextBox5.Text = "test text";
+            // 
+            // m2tTextBox6
+            // 
+            m2tTextBox6.ColorRole = M2TWinForms.Controls.Inputs.Text.M2TTextBoxColorRoleSelection.TertiaryContainer;
+            m2tTextBox6.Location = new Point(391, 134);
+            m2tTextBox6.Name = "m2tTextBox6";
+            m2tTextBox6.Size = new Size(100, 23);
+            m2tTextBox6.TabIndex = 49;
+            m2tTextBox6.Text = "test text";
+            // 
+            // m2tTextBox7
+            // 
+            m2tTextBox7.ColorRole = M2TWinForms.Controls.Inputs.Text.M2TTextBoxColorRoleSelection.SecondaryContainer;
+            m2tTextBox7.Location = new Point(391, 104);
+            m2tTextBox7.Name = "m2tTextBox7";
+            m2tTextBox7.Size = new Size(100, 23);
+            m2tTextBox7.TabIndex = 48;
+            m2tTextBox7.Text = "test text";
+            // 
+            // m2tTextBox8
+            // 
+            m2tTextBox8.ColorRole = M2TWinForms.Controls.Inputs.Text.M2TTextBoxColorRoleSelection.PrimaryContainer;
+            m2tTextBox8.Location = new Point(391, 75);
+            m2tTextBox8.Name = "m2tTextBox8";
+            m2tTextBox8.Size = new Size(100, 23);
+            m2tTextBox8.TabIndex = 47;
+            m2tTextBox8.Text = "test text";
+            // 
+            // m2tTextBox9
+            // 
+            m2tTextBox9.ColorRole = M2TWinForms.Controls.Inputs.Text.M2TTextBoxColorRoleSelection.SurfaceContainerHighest;
+            m2tTextBox9.Location = new Point(391, 265);
+            m2tTextBox9.Name = "m2tTextBox9";
+            m2tTextBox9.Size = new Size(100, 23);
+            m2tTextBox9.TabIndex = 54;
+            m2tTextBox9.Text = "test text";
+            // 
+            // m2tTextBox10
+            // 
+            m2tTextBox10.ColorRole = M2TWinForms.Controls.Inputs.Text.M2TTextBoxColorRoleSelection.SurfaceContainerLowest;
+            m2tTextBox10.Location = new Point(391, 235);
+            m2tTextBox10.Name = "m2tTextBox10";
+            m2tTextBox10.Size = new Size(100, 23);
+            m2tTextBox10.TabIndex = 53;
+            m2tTextBox10.Text = "test text";
+            // 
+            // m2tTextBox11
+            // 
+            m2tTextBox11.ColorRole = M2TWinForms.Controls.Inputs.Text.M2TTextBoxColorRoleSelection.SurfaceVariant;
+            m2tTextBox11.Location = new Point(285, 265);
+            m2tTextBox11.Name = "m2tTextBox11";
+            m2tTextBox11.Size = new Size(100, 23);
+            m2tTextBox11.TabIndex = 52;
+            m2tTextBox11.Text = "test text";
+            // 
+            // m2tTextBox12
+            // 
+            m2tTextBox12.Location = new Point(285, 235);
+            m2tTextBox12.Name = "m2tTextBox12";
+            m2tTextBox12.Size = new Size(100, 23);
+            m2tTextBox12.TabIndex = 51;
+            m2tTextBox12.Text = "test text";
+            // 
+            // m2tPanel1
+            // 
+            m2tPanel1.ColorRole = M2TWinForms.Controls.Panels.M2TPanelColorRoleSelection.SurfaceContainerLowest;
+            m2tPanel1.Location = new Point(296, 326);
+            m2tPanel1.Name = "m2tPanel1";
+            m2tPanel1.Size = new Size(31, 100);
+            m2tPanel1.TabIndex = 55;
+            // 
+            // m2tPanel2
+            // 
+            m2tPanel2.ColorRole = M2TWinForms.Controls.Panels.M2TPanelColorRoleSelection.SurfaceContainerLow;
+            m2tPanel2.Location = new Point(333, 326);
+            m2tPanel2.Name = "m2tPanel2";
+            m2tPanel2.Size = new Size(31, 100);
+            m2tPanel2.TabIndex = 56;
+            // 
+            // m2tPanel3
+            // 
+            m2tPanel3.ColorRole = M2TWinForms.Controls.Panels.M2TPanelColorRoleSelection.SurfaceContainerHigh;
+            m2tPanel3.Location = new Point(407, 326);
+            m2tPanel3.Name = "m2tPanel3";
+            m2tPanel3.Size = new Size(31, 100);
+            m2tPanel3.TabIndex = 57;
+            // 
+            // m2tPanel4
+            // 
+            m2tPanel4.ColorRole = M2TWinForms.Controls.Panels.M2TPanelColorRoleSelection.SurfaceContainerHighest;
+            m2tPanel4.Location = new Point(444, 326);
+            m2tPanel4.Name = "m2tPanel4";
+            m2tPanel4.Size = new Size(31, 100);
+            m2tPanel4.TabIndex = 56;
+            // 
+            // m2tPanel5
+            // 
+            m2tPanel5.ColorRole = M2TWinForms.Controls.Panels.M2TPanelColorRoleSelection.SurfaceContainer;
+            m2tPanel5.Location = new Point(370, 326);
+            m2tPanel5.Name = "m2tPanel5";
+            m2tPanel5.Size = new Size(31, 100);
+            m2tPanel5.TabIndex = 57;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(m2tPanel5);
+            Controls.Add(m2tPanel4);
+            Controls.Add(m2tPanel3);
+            Controls.Add(m2tPanel2);
+            Controls.Add(m2tPanel1);
+            Controls.Add(m2tTextBox9);
+            Controls.Add(m2tTextBox10);
+            Controls.Add(m2tTextBox11);
+            Controls.Add(m2tTextBox12);
+            Controls.Add(m2tTextBox5);
+            Controls.Add(m2tTextBox6);
+            Controls.Add(m2tTextBox7);
+            Controls.Add(m2tTextBox8);
+            Controls.Add(m2tTextBox4);
+            Controls.Add(m2tTextBox3);
+            Controls.Add(m2tTextBox2);
+            Controls.Add(m2tTextBox1);
             Controls.Add(m2tLabel10);
             Controls.Add(m2tLabel9);
             Controls.Add(m2tLabel8);
@@ -376,14 +518,8 @@
             Controls.Add(m2tLabel3);
             Controls.Add(m2tLabel2);
             Controls.Add(m2tLabel1);
-            Controls.Add(m2tRichTextBoxSingleLine1);
-            Controls.Add(m2tRichTextBox1);
-            Controls.Add(m2tTextBox1);
             Name = "Form1";
             Text = "Form1";
-            Controls.SetChildIndex(m2tTextBox1, 0);
-            Controls.SetChildIndex(m2tRichTextBox1, 0);
-            Controls.SetChildIndex(m2tRichTextBoxSingleLine1, 0);
             Controls.SetChildIndex(m2tLabel1, 0);
             Controls.SetChildIndex(m2tLabel2, 0);
             Controls.SetChildIndex(m2tLabel3, 0);
@@ -408,15 +544,28 @@
             Controls.SetChildIndex(m2tLabel8, 0);
             Controls.SetChildIndex(m2tLabel9, 0);
             Controls.SetChildIndex(m2tLabel10, 0);
+            Controls.SetChildIndex(m2tTextBox1, 0);
+            Controls.SetChildIndex(m2tTextBox2, 0);
+            Controls.SetChildIndex(m2tTextBox3, 0);
+            Controls.SetChildIndex(m2tTextBox4, 0);
+            Controls.SetChildIndex(m2tTextBox8, 0);
+            Controls.SetChildIndex(m2tTextBox7, 0);
+            Controls.SetChildIndex(m2tTextBox6, 0);
+            Controls.SetChildIndex(m2tTextBox5, 0);
+            Controls.SetChildIndex(m2tTextBox12, 0);
+            Controls.SetChildIndex(m2tTextBox11, 0);
+            Controls.SetChildIndex(m2tTextBox10, 0);
+            Controls.SetChildIndex(m2tTextBox9, 0);
+            Controls.SetChildIndex(m2tPanel1, 0);
+            Controls.SetChildIndex(m2tPanel2, 0);
+            Controls.SetChildIndex(m2tPanel3, 0);
+            Controls.SetChildIndex(m2tPanel4, 0);
+            Controls.SetChildIndex(m2tPanel5, 0);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Controls.Inputs.Text.M2TTextBox m2tTextBox1;
-        private Controls.Inputs.Text.M2TRichTextBox m2tRichTextBox1;
-        private Controls.Inputs.Text.M2TRichTextBoxSingleLine m2tRichTextBoxSingleLine1;
         private Controls.Labels.M2TLabel m2tLabel1;
         private Controls.Labels.M2TLabel m2tLabel2;
         private Controls.Labels.M2TLabel m2tLabel3;
@@ -441,5 +590,22 @@
         private Controls.Labels.M2TLabel m2tLabel8;
         private Controls.Labels.M2TLabel m2tLabel9;
         private Controls.Labels.M2TLabel m2tLabel10;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox1;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox2;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox3;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox4;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox5;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox6;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox7;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox8;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox9;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox10;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox11;
+        private Controls.Inputs.Text.M2TTextBox m2tTextBox12;
+        private Controls.Panels.M2TPanel m2tPanel1;
+        private Controls.Panels.M2TPanel m2tPanel2;
+        private Controls.Panels.M2TPanel m2tPanel3;
+        private Controls.Panels.M2TPanel m2tPanel4;
+        private Controls.Panels.M2TPanel m2tPanel5;
     }
 }
