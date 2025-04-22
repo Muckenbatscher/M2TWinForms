@@ -69,16 +69,16 @@ namespace M2TWinForms.Controls.Labels
             }
             else
             {
-                var mappedBackColorRole = GetMappedColorRole(BackColorRole);
+                var mappedBackColorRole = GetMappedBackColorRole();
                 this.BackColor = CurrentLoadedThemeManager.GetColorForRole(mappedBackColorRole);
             }
-            var mappedForeColorRole = GetMappedColorRole(ForeColorRole);
+            var mappedForeColorRole = GetMappedForeColorRole();
             this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(mappedForeColorRole);
         }
 
-        private ColorRoles GetMappedColorRole(M2TLabelTextColorRoleSelection labelForeColorRole)
+        private ColorRoles GetMappedForeColorRole()
         {
-            return labelForeColorRole switch
+            return ForeColorRole switch
             {
                 M2TLabelTextColorRoleSelection.Primary => ColorRoles.Primary,
                 M2TLabelTextColorRoleSelection.OnPrimary => ColorRoles.OnPrimary,
@@ -94,13 +94,13 @@ namespace M2TWinForms.Controls.Labels
                 M2TLabelTextColorRoleSelection.OnErrorContainer => ColorRoles.OnErrorContainer,
                 M2TLabelTextColorRoleSelection.OnSurface => ColorRoles.OnSurface,
                 M2TLabelTextColorRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
-                _ => throw new ArgumentException($"Unknown {nameof(M2TLabelTextColorRoleSelection)} value: {labelForeColorRole}"),
+                _ => throw new ArgumentException($"Unknown {nameof(M2TLabelTextColorRoleSelection)} value: {ForeColorRole}"),
             };
         }
 
-        private ColorRoles GetMappedColorRole(M2TLabelBackgroundColorRoleSelection labelBackColorRole)
+        private ColorRoles GetMappedBackColorRole()
         {
-            return labelBackColorRole switch
+            return BackColorRole switch
             {
                 M2TLabelBackgroundColorRoleSelection.Primary => ColorRoles.Primary,
                 M2TLabelBackgroundColorRoleSelection.PrimaryContainer => ColorRoles.PrimaryContainer,
@@ -116,7 +116,7 @@ namespace M2TWinForms.Controls.Labels
                 M2TLabelBackgroundColorRoleSelection.SurfaceContainerLow => ColorRoles.SurfaceContainerLow,
                 M2TLabelBackgroundColorRoleSelection.SurfaceContainerHigh => ColorRoles.SurfaceContainerHigh,
                 M2TLabelBackgroundColorRoleSelection.SurfaceContainerHighest => ColorRoles.SurfaceContainerHighest,
-                _ => throw new ArgumentException($"Unknown {nameof(M2TLabelBackgroundColorRoleSelection)} value: {labelBackColorRole}"),
+                _ => throw new ArgumentException($"Unknown {nameof(M2TLabelBackgroundColorRoleSelection)} value: {BackColorRole}"),
             };
         }
     }

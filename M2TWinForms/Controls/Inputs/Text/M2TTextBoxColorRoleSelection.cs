@@ -4,27 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Controls.Inputs.Buttons
+namespace M2TWinForms.Controls.Inputs.Text
 {
-    public enum M2TButtonColorRoleSelection
+    public enum M2TTextBoxColorRoleSelection
     {
         Primary,
-        PrimaryTransparent,
         PrimaryContainer,
         Secondary,
-        SecondaryTransparent,
         SecondaryContainer,
         Tertiary,
-        TertiaryTransparent,
         TertiaryContainer,
         Error,
-        ErrorTransparent,
         ErrorContainer,
         Surface,
-        SurfaceContainer, 
+        SurfaceContainer,
         SurfaceContainerLowest,
         SurfaceContainerLow,
         SurfaceContainerHigh,
         SurfaceContainerHighest,
+        SurfaceVariant,
+        SurfaceContainerVariant,
+        SurfaceContainerLowestVariant,
+        SurfaceContainerLowVariant,
+        SurfaceContainerHighVariant,
+        SurfaceContainerHighestVariant
     }
 }
