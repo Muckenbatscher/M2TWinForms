@@ -1,5 +1,5 @@
-﻿using M2TWinForms.Controls.Labels;
-using M2TWinForms.Interfaces;
+﻿using M2TWinForms.Interfaces;
+using M2TWinForms.Native;
 using M2TWinForms.Themes.MaterialDesign;
 using M2TWinForms.Themes.ThemeLoading;
 using System;
@@ -65,6 +65,7 @@ namespace M2TWinForms.Controls.Inputs.Text
         {
             this.BackColor = CurrentLoadedThemeManager.GetColorForRole(GetBackgroundRole());
             this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(GetForegroundRole());
+            this.Invalidate();
         }
 
         private ColorRoles GetForegroundRole()

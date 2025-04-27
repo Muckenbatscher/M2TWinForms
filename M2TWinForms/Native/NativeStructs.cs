@@ -8,7 +8,7 @@ namespace M2TWinForms.Native
 {
     internal class NativeStructs
     {
-        public struct Margin
+        internal struct Margin
         {
             public int LeftWidth;
             public int RightWidth;

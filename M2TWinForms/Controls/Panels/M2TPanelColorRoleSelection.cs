@@ -8,6 +8,7 @@ namespace M2TWinForms.Controls.Panels
 {
     public enum M2TPanelColorRoleSelection
     {
+        Transparent,
         Primary,
         PrimaryContainer,
         Secondary,

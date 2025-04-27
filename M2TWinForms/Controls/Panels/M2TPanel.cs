@@ -23,7 +23,7 @@ namespace M2TWinForms.Controls.Panels
 
         [Description("The Material Design Color Role used to determine background and text of the TextBox")]
         [Category("Material Design")]
-        [DefaultValue(M2TPanelColorRoleSelection.Surface)]
+        [DefaultValue(M2TPanelColorRoleSelection.Transparent)]
         public M2TPanelColorRoleSelection ColorRole
         {
             get => _colorRole;
@@ -33,11 +33,16 @@ namespace M2TWinForms.Controls.Panels
                 ApplyCurrentLoadedTheme();
             }
         }
-        private M2TPanelColorRoleSelection _colorRole = M2TPanelColorRoleSelection.Surface;
+        private M2TPanelColorRoleSelection _colorRole = M2TPanelColorRoleSelection.Transparent;
 
 
         public void ApplyCurrentLoadedTheme()
         {
+            if (ColorRole == M2TPanelColorRoleSelection.Transparent)
+            {
+                this.BackColor = Color.Transparent;
+                return;
+            }
             var backColorRole = GetMappedBackColorRole();   
             this.BackColor = CurrentLoadedThemeManager.GetColorForRole(backColorRole);
         }
