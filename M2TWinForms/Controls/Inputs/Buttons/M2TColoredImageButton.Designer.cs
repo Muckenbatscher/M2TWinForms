@@ -1,6 +1,4 @@
-﻿using M2TWinForms.Enumerations;
-
-namespace M2TWinForms.Controls.Inputs.Buttons
+﻿namespace M2TWinForms.Controls.Inputs.Buttons
 {
     partial class M2TColoredImageButton
     {

@@ -1,5 +1,4 @@
-﻿using M2TWinForms.Interfaces;
-using M2TWinForms.Themes.MaterialDesign;
+﻿using M2TWinForms.Themes.MaterialDesign;
 using M2TWinForms.Themes.ThemeLoading;
 using System;
 using System.Collections.Generic;
