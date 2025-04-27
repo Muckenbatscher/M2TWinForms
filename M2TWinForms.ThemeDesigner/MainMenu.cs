@@ -1,4 +1,5 @@
-﻿using M2TWinForms.ThemeDesigner.HctConversionTester;
+﻿using M2TWinForms.Controls.Window;
+using M2TWinForms.ThemeDesigner.HctConversionTester;
 using M2TWinForms.ThemeDesigner.HctPaletteVisualisation;
 using M2TWinForms.ThemeDesigner.ThemeSourcesVisualisation;
 using System;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace M2TWinForms.ThemeDesigner
 {
-    public partial class MainMenu : Form
+    public partial class MainMenu : M2TForm
     {
         public MainMenu()
         {
