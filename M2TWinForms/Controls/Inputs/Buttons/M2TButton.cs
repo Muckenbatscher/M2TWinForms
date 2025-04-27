@@ -32,8 +32,22 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         {
             get => base.FlatAppearance;
         }
+        [DefaultValue(FlatStyle.Flat)]
+        public new FlatStyle FlatStyle
+        {
+            get => base.FlatStyle;
+            set => base.FlatStyle = value;
+        }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [DefaultValue(false)]
+        public new bool UseVisualStyleBackColor
+        {
+            get => base.UseVisualStyleBackColor;
+            set => base.UseVisualStyleBackColor = value;
+        }
 
-
+        [Description("The Material Design Color Role used to determine background and text of the Button")]
+        [Category("Material Design")]
         [DefaultValue(M2TButtonColorRoleSelection.Surface)]
         public M2TButtonColorRoleSelection ColorRole
         {

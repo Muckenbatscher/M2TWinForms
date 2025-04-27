@@ -85,6 +85,7 @@
             m2tPanel10 = new M2TWinForms.Controls.Panels.M2TPanel();
             m2tLabel19 = new M2TWinForms.Controls.Labels.M2TLabel();
             m2tLabel20 = new M2TWinForms.Controls.Labels.M2TLabel();
+            m2tButton15 = new M2TWinForms.Controls.Inputs.Buttons.M2TButton();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
@@ -143,156 +144,128 @@
             // 
             // m2tButton1
             // 
-            m2tButton1.FlatStyle = FlatStyle.Flat;
             m2tButton1.Location = new Point(49, 80);
             m2tButton1.Name = "m2tButton1";
             m2tButton1.Size = new Size(95, 26);
             m2tButton1.TabIndex = 24;
             m2tButton1.Text = "Surface";
-            m2tButton1.UseVisualStyleBackColor = false;
             // 
             // m2tButton2
             // 
             m2tButton2.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.SurfaceContainer;
-            m2tButton2.FlatStyle = FlatStyle.Flat;
             m2tButton2.Location = new Point(147, 80);
             m2tButton2.Name = "m2tButton2";
             m2tButton2.Size = new Size(95, 26);
             m2tButton2.TabIndex = 25;
             m2tButton2.Text = "Surface C";
-            m2tButton2.UseVisualStyleBackColor = false;
             // 
             // m2tButton3
             // 
             m2tButton3.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.Primary;
-            m2tButton3.FlatStyle = FlatStyle.Flat;
             m2tButton3.Location = new Point(49, 127);
             m2tButton3.Name = "m2tButton3";
             m2tButton3.Size = new Size(95, 26);
             m2tButton3.TabIndex = 26;
             m2tButton3.Text = "Primary";
-            m2tButton3.UseVisualStyleBackColor = false;
             // 
             // m2tButton4
             // 
             m2tButton4.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.Secondary;
-            m2tButton4.FlatStyle = FlatStyle.Flat;
             m2tButton4.Location = new Point(147, 127);
             m2tButton4.Name = "m2tButton4";
             m2tButton4.Size = new Size(95, 26);
             m2tButton4.TabIndex = 27;
             m2tButton4.Text = "Secondary";
-            m2tButton4.UseVisualStyleBackColor = false;
             // 
             // m2tButton5
             // 
             m2tButton5.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.Tertiary;
-            m2tButton5.FlatStyle = FlatStyle.Flat;
             m2tButton5.Location = new Point(49, 156);
             m2tButton5.Name = "m2tButton5";
             m2tButton5.Size = new Size(95, 26);
             m2tButton5.TabIndex = 28;
             m2tButton5.Text = "Tertiary";
-            m2tButton5.UseVisualStyleBackColor = false;
             // 
             // m2tButton6
             // 
             m2tButton6.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.Error;
-            m2tButton6.FlatStyle = FlatStyle.Flat;
             m2tButton6.Location = new Point(147, 156);
             m2tButton6.Name = "m2tButton6";
             m2tButton6.Size = new Size(95, 26);
             m2tButton6.TabIndex = 29;
             m2tButton6.Text = "Error";
-            m2tButton6.UseVisualStyleBackColor = false;
             // 
             // m2tButton7
             // 
             m2tButton7.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.ErrorContainer;
-            m2tButton7.FlatStyle = FlatStyle.Flat;
             m2tButton7.Location = new Point(147, 235);
             m2tButton7.Name = "m2tButton7";
             m2tButton7.Size = new Size(95, 26);
             m2tButton7.TabIndex = 33;
             m2tButton7.Text = "Error C";
-            m2tButton7.UseVisualStyleBackColor = false;
             // 
             // m2tButton8
             // 
             m2tButton8.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.TertiaryContainer;
-            m2tButton8.FlatStyle = FlatStyle.Flat;
             m2tButton8.Location = new Point(49, 235);
             m2tButton8.Name = "m2tButton8";
             m2tButton8.Size = new Size(95, 26);
             m2tButton8.TabIndex = 32;
             m2tButton8.Text = "Tertiary C";
-            m2tButton8.UseVisualStyleBackColor = false;
             // 
             // m2tButton9
             // 
             m2tButton9.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.SecondaryContainer;
-            m2tButton9.FlatStyle = FlatStyle.Flat;
             m2tButton9.Location = new Point(147, 206);
             m2tButton9.Name = "m2tButton9";
             m2tButton9.Size = new Size(95, 26);
             m2tButton9.TabIndex = 31;
             m2tButton9.Text = "Secondary C";
-            m2tButton9.UseVisualStyleBackColor = false;
             // 
             // m2tButton10
             // 
             m2tButton10.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.PrimaryContainer;
-            m2tButton10.FlatStyle = FlatStyle.Flat;
             m2tButton10.Location = new Point(49, 206);
             m2tButton10.Name = "m2tButton10";
             m2tButton10.Size = new Size(95, 26);
             m2tButton10.TabIndex = 30;
             m2tButton10.Text = "Primary C";
-            m2tButton10.UseVisualStyleBackColor = false;
             // 
             // m2tButton11
             // 
             m2tButton11.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.ErrorTransparent;
-            m2tButton11.FlatStyle = FlatStyle.Flat;
             m2tButton11.Location = new Point(147, 315);
             m2tButton11.Name = "m2tButton11";
             m2tButton11.Size = new Size(95, 26);
             m2tButton11.TabIndex = 37;
             m2tButton11.Text = "Error T";
-            m2tButton11.UseVisualStyleBackColor = false;
             // 
             // m2tButton12
             // 
             m2tButton12.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.TertiaryTransparent;
-            m2tButton12.FlatStyle = FlatStyle.Flat;
             m2tButton12.Location = new Point(49, 315);
             m2tButton12.Name = "m2tButton12";
             m2tButton12.Size = new Size(95, 26);
             m2tButton12.TabIndex = 36;
             m2tButton12.Text = "Tertiary T";
-            m2tButton12.UseVisualStyleBackColor = false;
             // 
             // m2tButton13
             // 
             m2tButton13.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.SecondaryTransparent;
-            m2tButton13.FlatStyle = FlatStyle.Flat;
             m2tButton13.Location = new Point(147, 286);
             m2tButton13.Name = "m2tButton13";
             m2tButton13.Size = new Size(95, 26);
             m2tButton13.TabIndex = 35;
             m2tButton13.Text = "Secondary T";
-            m2tButton13.UseVisualStyleBackColor = false;
             // 
             // m2tButton14
             // 
             m2tButton14.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.PrimaryTransparent;
-            m2tButton14.FlatStyle = FlatStyle.Flat;
             m2tButton14.Location = new Point(49, 286);
             m2tButton14.Name = "m2tButton14";
             m2tButton14.Size = new Size(95, 26);
             m2tButton14.TabIndex = 34;
             m2tButton14.Text = "Primary T";
-            m2tButton14.UseVisualStyleBackColor = false;
             // 
             // m2tLabel6
             // 
@@ -647,11 +620,21 @@
             m2tLabel20.TabIndex = 0;
             m2tLabel20.Text = "m2tLabel20";
             // 
+            // m2tButton15
+            // 
+            m2tButton15.ColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TButtonColorRoleSelection.PrimaryContainer;
+            m2tButton15.Location = new Point(812, 153);
+            m2tButton15.Name = "m2tButton15";
+            m2tButton15.Size = new Size(75, 23);
+            m2tButton15.TabIndex = 63;
+            m2tButton15.Text = "m2tButton15";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(990, 569);
+            Controls.Add(m2tButton15);
             Controls.Add(m2tPanel10);
             Controls.Add(m2tPanel8);
             Controls.Add(m2tPanel9);
@@ -746,6 +729,7 @@
             Controls.SetChildIndex(m2tPanel9, 0);
             Controls.SetChildIndex(m2tPanel8, 0);
             Controls.SetChildIndex(m2tPanel10, 0);
+            Controls.SetChildIndex(m2tButton15, 0);
             m2tPanel6.ResumeLayout(false);
             m2tPanel6.PerformLayout();
             m2tPanel7.ResumeLayout(false);
@@ -817,5 +801,6 @@
         private Controls.Panels.M2TPanel m2tPanel10;
         private Controls.Labels.M2TLabel m2tLabel19;
         private Controls.Labels.M2TLabel m2tLabel20;
+        private Controls.Inputs.Buttons.M2TButton m2tButton15;
     }
 }
