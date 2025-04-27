@@ -32,7 +32,6 @@
             // 
             // M2TRichTextBox
             // 
-            SelectionChanged += M2TRichTextBox_SelectionChanged;
             ResumeLayout(false);
         }
 

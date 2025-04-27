@@ -65,7 +65,6 @@ namespace M2TWinForms.Controls.Inputs.Text
         {
             this.BackColor = CurrentLoadedThemeManager.GetColorForRole(GetBackgroundRole());
             this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(GetForegroundRole());
-            this.Invalidate();
         }
 
         private ColorRoles GetForegroundRole()

@@ -1,6 +1,6 @@
-﻿using M2TWinForms.Enumerations;
-using M2TWinForms.Interfaces;
-using M2TWinForms.Services;
+﻿using M2TWinForms.Interfaces;
+using M2TWinForms.Themes.MaterialDesign;
+using M2TWinForms.Themes.ThemeLoading;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,53 +15,33 @@ namespace M2TWinForms.Controls.Inputs.Text
 {
     public partial class M2TRichTextBox : RichTextBox, IThemedControl
     {
-        [DefaultValue(ColorType.BackgroundSecondary)]
-        public ColorType BackColorType
+        [Obsolete("Should not be set directly. Instead use the color roles to ensure proper theming.")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override Color ForeColor
         {
-            get => _backColorType;
+            get => base.ForeColor;
+            set => base.ForeColor = value;
+        }
+        [Obsolete("Should not be set directly. Instead use the color roles to ensure proper theming.")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override Color BackColor
+        {
+            get => base.BackColor;
+            set => base.BackColor = value;
+        }
+        [Description("The Material Design Color Role used to determine background and text of the TextBox")]
+        [Category("Material Design")]
+        [DefaultValue(M2TTextBoxColorRoleSelection.Surface)]
+        public M2TTextBoxColorRoleSelection ColorRole
+        {
+            get => _colorRole;
             set
             {
-                _backColorType = value;
+                _colorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        private ColorType _backColorType = ColorType.BackgroundSecondary;
-
-        [DefaultValue(ColorType.ForegroundPrimary)]
-        public ColorType ForeColorType
-        {
-            get => _foreColor;
-            set
-            {
-                _foreColor = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private ColorType _foreColor = ColorType.ForegroundPrimary;
-
-        [DefaultValue(ColorType.HighlightBackgroundPrimary)]
-        public ColorType HighlightBackColorType
-        {
-            get => _highlightBackColorType;
-            set
-            {
-                _highlightBackColorType = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private ColorType _highlightBackColorType = ColorType.HighlightBackgroundPrimary;
-
-        [DefaultValue(ColorType.HighlightForegroundPrimary)]
-        public ColorType HighlightForeColorType
-        {
-            get => _highlightForeColorType;
-            set
-            {
-                _highlightForeColorType = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private ColorType _highlightForeColorType = ColorType.HighlightForegroundPrimary;
+        private M2TTextBoxColorRoleSelection _colorRole = M2TTextBoxColorRoleSelection.Surface;
 
         public M2TRichTextBox()
         {
@@ -71,22 +51,65 @@ namespace M2TWinForms.Controls.Inputs.Text
 
         public void ApplyCurrentLoadedTheme()
         {
-            this.BackColor = CurrentLoadedThemeManager.GetColorForType(BackColorType);
-            this.ForeColor = CurrentLoadedThemeManager.GetColorForType(ForeColorType);
-            
+            this.BackColor = CurrentLoadedThemeManager.GetColorForRole(GetBackgroundRole());
+            this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(GetForegroundRole());
         }
 
-        private void M2TRichTextBox_SelectionChanged(object sender, EventArgs e)
+
+        private ColorRoles GetForegroundRole()
         {
-            ApplySelectionColor();
+            return ColorRole switch
+            {
+                M2TTextBoxColorRoleSelection.Primary => ColorRoles.OnPrimary,
+                M2TTextBoxColorRoleSelection.PrimaryContainer => ColorRoles.OnPrimaryContainer,
+                M2TTextBoxColorRoleSelection.Secondary => ColorRoles.OnSecondary,
+                M2TTextBoxColorRoleSelection.SecondaryContainer => ColorRoles.OnSecondaryContainer,
+                M2TTextBoxColorRoleSelection.Tertiary => ColorRoles.OnTertiary,
+                M2TTextBoxColorRoleSelection.TertiaryContainer => ColorRoles.OnTertiaryContainer,
+                M2TTextBoxColorRoleSelection.Error => ColorRoles.OnError,
+                M2TTextBoxColorRoleSelection.ErrorContainer => ColorRoles.OnErrorContainer,
+                M2TTextBoxColorRoleSelection.Surface => ColorRoles.OnSurface,
+                M2TTextBoxColorRoleSelection.SurfaceContainer => ColorRoles.OnSurface,
+                M2TTextBoxColorRoleSelection.SurfaceContainerLowest => ColorRoles.OnSurface,
+                M2TTextBoxColorRoleSelection.SurfaceContainerLow => ColorRoles.OnSurface,
+                M2TTextBoxColorRoleSelection.SurfaceContainerHigh => ColorRoles.OnSurface,
+                M2TTextBoxColorRoleSelection.SurfaceContainerHighest => ColorRoles.OnSurface,
+                M2TTextBoxColorRoleSelection.SurfaceVariant => ColorRoles.OnSurfaceVariant,
+                M2TTextBoxColorRoleSelection.SurfaceContainerVariant => ColorRoles.OnSurfaceVariant,
+                M2TTextBoxColorRoleSelection.SurfaceContainerLowestVariant => ColorRoles.OnSurfaceVariant,
+                M2TTextBoxColorRoleSelection.SurfaceContainerLowVariant => ColorRoles.OnSurfaceVariant,
+                M2TTextBoxColorRoleSelection.SurfaceContainerHighVariant => ColorRoles.OnSurfaceVariant,
+                M2TTextBoxColorRoleSelection.SurfaceContainerHighestVariant => ColorRoles.OnSurfaceVariant,
+                _ => throw new ArgumentException($"Unknown {nameof(M2TTextBoxColorRoleSelection)} value: {ColorRole}")
+            };
+        }
+        private ColorRoles GetBackgroundRole()
+        {
+            return ColorRole switch
+            {
+                M2TTextBoxColorRoleSelection.Primary => ColorRoles.Primary,
+                M2TTextBoxColorRoleSelection.PrimaryContainer => ColorRoles.PrimaryContainer,
+                M2TTextBoxColorRoleSelection.Secondary => ColorRoles.Secondary,
+                M2TTextBoxColorRoleSelection.SecondaryContainer => ColorRoles.SecondaryContainer,
+                M2TTextBoxColorRoleSelection.Tertiary => ColorRoles.Tertiary,
+                M2TTextBoxColorRoleSelection.TertiaryContainer => ColorRoles.TertiaryContainer,
+                M2TTextBoxColorRoleSelection.Error => ColorRoles.Error,
+                M2TTextBoxColorRoleSelection.ErrorContainer => ColorRoles.ErrorContainer,
+                M2TTextBoxColorRoleSelection.Surface => ColorRoles.Surface,
+                M2TTextBoxColorRoleSelection.SurfaceContainer => ColorRoles.SurfaceContainer,
+                M2TTextBoxColorRoleSelection.SurfaceContainerLowest => ColorRoles.SurfaceContainerLowest,
+                M2TTextBoxColorRoleSelection.SurfaceContainerLow => ColorRoles.SurfaceContainerLow,
+                M2TTextBoxColorRoleSelection.SurfaceContainerHigh => ColorRoles.SurfaceContainerHigh,
+                M2TTextBoxColorRoleSelection.SurfaceContainerHighest => ColorRoles.SurfaceContainerHighest,
+                M2TTextBoxColorRoleSelection.SurfaceVariant => ColorRoles.Surface,
+                M2TTextBoxColorRoleSelection.SurfaceContainerVariant => ColorRoles.SurfaceContainer,
+                M2TTextBoxColorRoleSelection.SurfaceContainerLowestVariant => ColorRoles.SurfaceContainerLowest,
+                M2TTextBoxColorRoleSelection.SurfaceContainerLowVariant => ColorRoles.SurfaceContainerLow,
+                M2TTextBoxColorRoleSelection.SurfaceContainerHighVariant => ColorRoles.SurfaceContainerHigh,
+                M2TTextBoxColorRoleSelection.SurfaceContainerHighestVariant => ColorRoles.SurfaceContainerHighest,
+                _ => throw new ArgumentException($"Unknown {nameof(M2TTextBoxColorRoleSelection)} value: {ColorRole}")
+            };
         }
 
-        private void ApplySelectionColor()
-        {
-            this.SelectionColor = CurrentLoadedThemeManager.GetColorForType(ForeColorType);
-            this.SelectionBackColor = CurrentLoadedThemeManager.GetColorForType(BackColorType);
-            this.SelectionColor = CurrentLoadedThemeManager.GetColorForType(HighlightForeColorType);
-            //this.SelectionBackColor = CurrentLoadedThemeManager.GetColorForType(HighlightBackColorType);
-        }
     }
 }
