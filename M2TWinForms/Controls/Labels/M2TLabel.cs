@@ -26,6 +26,7 @@ namespace M2TWinForms.Controls.Labels
             set => base.BackColor = value;
         }
 
+
         [Description("The Material Design Color Role used for the text of the Label")]
         [Category("Material Design")]
         [DefaultValue(M2TLabelTextColorRoleSelection.OnSurface)]
@@ -39,7 +40,6 @@ namespace M2TWinForms.Controls.Labels
             }
         }
         private M2TLabelTextColorRoleSelection _foreColorRole = M2TLabelTextColorRoleSelection.OnSurface;
-
 
         [Description("The Material Design Color Role used for the background of the Label")]
         [Category("Material Design")]

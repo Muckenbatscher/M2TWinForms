@@ -86,11 +86,13 @@
             m2tLabel19 = new M2TWinForms.Controls.Labels.M2TLabel();
             m2tLabel20 = new M2TWinForms.Controls.Labels.M2TLabel();
             m2tButton15 = new M2TWinForms.Controls.Inputs.Buttons.M2TButton();
+            m2tNumericUpDown1 = new M2TWinForms.Controls.UpDown.M2TNumericUpDown();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
             m2tPanel9.SuspendLayout();
             m2tPanel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // m2tLabel1
@@ -629,11 +631,20 @@
             m2tButton15.TabIndex = 63;
             m2tButton15.Text = "m2tButton15";
             // 
+            // m2tNumericUpDown1
+            // 
+            m2tNumericUpDown1.BackColorRole = M2TWinForms.Controls.UpDown.M2TNumericUpDownBackgroundColorRoleSelection.SurfaceContainer;
+            m2tNumericUpDown1.Location = new Point(812, 75);
+            m2tNumericUpDown1.Name = "m2tNumericUpDown1";
+            m2tNumericUpDown1.Size = new Size(120, 23);
+            m2tNumericUpDown1.TabIndex = 64;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(990, 569);
+            Controls.Add(m2tNumericUpDown1);
             Controls.Add(m2tButton15);
             Controls.Add(m2tPanel10);
             Controls.Add(m2tPanel8);
@@ -730,6 +741,7 @@
             Controls.SetChildIndex(m2tPanel8, 0);
             Controls.SetChildIndex(m2tPanel10, 0);
             Controls.SetChildIndex(m2tButton15, 0);
+            Controls.SetChildIndex(m2tNumericUpDown1, 0);
             m2tPanel6.ResumeLayout(false);
             m2tPanel6.PerformLayout();
             m2tPanel7.ResumeLayout(false);
@@ -740,6 +752,7 @@
             m2tPanel9.PerformLayout();
             m2tPanel10.ResumeLayout(false);
             m2tPanel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -802,5 +815,6 @@
         private Controls.Labels.M2TLabel m2tLabel19;
         private Controls.Labels.M2TLabel m2tLabel20;
         private Controls.Inputs.Buttons.M2TButton m2tButton15;
+        private Controls.UpDown.M2TNumericUpDown m2tNumericUpDown1;
     }
 }
