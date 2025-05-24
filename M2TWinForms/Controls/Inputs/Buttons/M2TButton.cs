@@ -62,7 +62,7 @@ namespace M2TWinForms
 
         public M2TButton() : base()
         {
-            FlatStyle = FlatStyle.Flat; 
+            FlatStyle = FlatStyle.Flat;
             UseVisualStyleBackColor = false;
 
             ApplyCurrentLoadedTheme();
@@ -70,24 +70,25 @@ namespace M2TWinForms
 
         public void ApplyCurrentLoadedTheme()
         {
-            var backColor = Color.Transparent;
-            try
-            {
-                var backColorRole = GetBackgroundColorRole(ColorRole);
-                backColor = CurrentLoadedThemeManager.GetColorForRole(backColorRole);
-            }
-            catch (Exception) { }
+            IEnumerable<M2TButtonColorRoleSelection> transparentRoles = [
+                M2TButtonColorRoleSelection.PrimaryTransparent,
+                M2TButtonColorRoleSelection.SecondaryTransparent,
+                M2TButtonColorRoleSelection.TertiaryTransparent,
+                M2TButtonColorRoleSelection.ErrorTransparent];
+            bool isTransparentRole = transparentRoles.Contains(ColorRole);
 
+            var backColorRole = GetBackgroundColorRole(ColorRole);
+            var backColor = CurrentLoadedThemeManager.GetColorForRole(backColorRole);
             var foreColorRole = GetForegroundColorRole(ColorRole);
             var foreColor = CurrentLoadedThemeManager.GetColorForRole(foreColorRole);
 
-            this.BackColor = backColor;
+            this.BackColor = isTransparentRole ? Color.Transparent : backColor;
             this.ForeColor = foreColor;
             this.FlatAppearance.BorderColor = foreColor;
-            if (backColor == Color.Transparent)
+            if (isTransparentRole)
             {
-                this.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                this.FlatAppearance.MouseDownBackColor = Color.Transparent;
+                this.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, backColor);
+                this.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, backColor);
             }
             else
             {
@@ -124,12 +125,16 @@ namespace M2TWinForms
             return colorRole switch
             {
                 M2TButtonColorRoleSelection.Primary => ColorRoles.Primary,
+                M2TButtonColorRoleSelection.PrimaryTransparent => ColorRoles.Primary,
                 M2TButtonColorRoleSelection.PrimaryContainer => ColorRoles.PrimaryContainer,
                 M2TButtonColorRoleSelection.Secondary => ColorRoles.Secondary,
+                M2TButtonColorRoleSelection.SecondaryTransparent => ColorRoles.Secondary,
                 M2TButtonColorRoleSelection.SecondaryContainer => ColorRoles.SecondaryContainer,
                 M2TButtonColorRoleSelection.Tertiary => ColorRoles.Tertiary,
+                M2TButtonColorRoleSelection.TertiaryTransparent => ColorRoles.Tertiary,
                 M2TButtonColorRoleSelection.TertiaryContainer => ColorRoles.TertiaryContainer,
                 M2TButtonColorRoleSelection.Error => ColorRoles.Error,
+                M2TButtonColorRoleSelection.ErrorTransparent => ColorRoles.Error,
                 M2TButtonColorRoleSelection.ErrorContainer => ColorRoles.ErrorContainer,
                 M2TButtonColorRoleSelection.Surface => ColorRoles.Surface,
                 M2TButtonColorRoleSelection.SurfaceContainer => ColorRoles.SurfaceContainer,
