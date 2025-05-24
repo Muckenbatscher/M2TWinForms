@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Controls.Labels
+namespace M2TWinForms
 {
     public class M2TLabel : Label, IThemedControl
     {

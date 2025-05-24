@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Controls.Window
+namespace M2TWinForms
 {
     public partial class BorderlessForm : Form
     {

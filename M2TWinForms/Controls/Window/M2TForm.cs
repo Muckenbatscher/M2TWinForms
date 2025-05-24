@@ -4,7 +4,7 @@ using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
 using System.Diagnostics;
 
-namespace M2TWinForms.Controls.Window
+namespace M2TWinForms
 {
     public partial class M2TForm : BorderlessForm, IThemedControl
     {

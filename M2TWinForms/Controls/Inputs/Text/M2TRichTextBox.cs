@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace M2TWinForms.Controls.Inputs.Text
+namespace M2TWinForms
 {
     public partial class M2TRichTextBox : RichTextBox, IThemedControl
     {
@@ -42,9 +42,8 @@ namespace M2TWinForms.Controls.Inputs.Text
         }
         private M2TTextBoxColorRoleSelection _colorRole = M2TTextBoxColorRoleSelection.Surface;
 
-        public M2TRichTextBox()
+        public M2TRichTextBox() : base()
         {
-            InitializeComponent();
             ApplyCurrentLoadedTheme();
         }
 

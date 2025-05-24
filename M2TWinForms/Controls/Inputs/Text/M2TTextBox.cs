@@ -1,5 +1,4 @@
-﻿using M2TWinForms.Native;
-using M2TWinForms.Themes.MaterialDesign;
+﻿using M2TWinForms.Themes.MaterialDesign;
 using M2TWinForms.Themes.ThemeLoading;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Controls.Inputs.Text
+namespace M2TWinForms
 {
     public partial class M2TTextBox : TextBox, IThemedControl
     {
@@ -51,10 +50,8 @@ namespace M2TWinForms.Controls.Inputs.Text
         }
         private M2TTextBoxColorRoleSelection _colorRole = M2TTextBoxColorRoleSelection.Surface;
 
-        public M2TTextBox()
+        public M2TTextBox() : base()
         {
-            InitializeComponent();
-
             BorderStyle = BorderStyle.FixedSingle;
             ColorRole = M2TTextBoxColorRoleSelection.Surface;
             ApplyCurrentLoadedTheme();

@@ -1,5 +1,4 @@
 ﻿using M2TWinForms.Helper;
-using M2TWinForms.Themes.MaterialDesign;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace M2TWinForms.Controls.Inputs.Buttons
+namespace M2TWinForms
 {
     public partial class ColoredImageButton : UserControl
     {

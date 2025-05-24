@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Controls.UpDown
+namespace M2TWinForms
 {
     public class M2TNumericUpDown : NumericUpDown, IThemedControl
     {

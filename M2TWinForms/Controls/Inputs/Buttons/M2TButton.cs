@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Controls.Inputs.Buttons
+namespace M2TWinForms
 {
     public partial class M2TButton : Button, IThemedControl
     {
@@ -60,9 +60,8 @@ namespace M2TWinForms.Controls.Inputs.Buttons
         }
         private M2TButtonColorRoleSelection _colorRole = M2TButtonColorRoleSelection.Surface;
 
-        public M2TButton()
+        public M2TButton() : base()
         {
-            InitializeComponent();
             FlatStyle = FlatStyle.Flat; 
             UseVisualStyleBackColor = false;
 

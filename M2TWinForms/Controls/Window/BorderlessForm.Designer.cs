@@ -1,6 +1,6 @@
 ﻿using M2TWinForms.Themes.MaterialDesign;
 
-namespace M2TWinForms.Controls.Window
+namespace M2TWinForms
 {
     partial class BorderlessForm
     {
@@ -32,10 +32,10 @@ namespace M2TWinForms.Controls.Window
         {
             LB_Title = new Label();
             PN_DragPanel = new Panel();
-            MaximizeButton = new M2TWinForms.Controls.Inputs.Buttons.ColoredImageButton();
-            CloseButton = new M2TWinForms.Controls.Inputs.Buttons.ColoredImageButton();
-            MinimizeButton = new M2TWinForms.Controls.Inputs.Buttons.ColoredImageButton();
-            WindowImageButton = new M2TWinForms.Controls.Inputs.Buttons.ColoredImageButton();
+            MaximizeButton = new M2TWinForms.ColoredImageButton();
+            CloseButton = new M2TWinForms.ColoredImageButton();
+            MinimizeButton = new M2TWinForms.ColoredImageButton();
+            WindowImageButton = new M2TWinForms.ColoredImageButton();
             PN_DragPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -132,10 +132,10 @@ namespace M2TWinForms.Controls.Window
 
         private Label LB_Title;
         private Panel PN_DragPanel;
-        private Inputs.Buttons.ColoredImageButton WindowImageButton;
-        private Inputs.Buttons.ColoredImageButton MinimizeButton;
-        private Inputs.Buttons.ColoredImageButton CloseButton;
-        private Inputs.Buttons.ColoredImageButton MaximizeButton;
+        private ColoredImageButton WindowImageButton;
+        private ColoredImageButton MinimizeButton;
+        private ColoredImageButton CloseButton;
+        private ColoredImageButton MaximizeButton;
 
         #endregion
     }

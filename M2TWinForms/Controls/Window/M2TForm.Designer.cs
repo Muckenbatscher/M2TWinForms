@@ -1,7 +1,7 @@
 ﻿using M2TWinForms.Themes.MaterialDesign;
 using System.ComponentModel;
 
-namespace M2TWinForms.Controls.Window
+namespace M2TWinForms
 {
     partial class M2TForm
     {

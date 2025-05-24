@@ -1,5 +1,4 @@
-﻿using M2TWinForms.Controls.Inputs.Buttons;
-using M2TWinForms.Controls.Labels;
+﻿using M2TWinForms;
 
 namespace M2TWinForms.ThemeDesigner
 {

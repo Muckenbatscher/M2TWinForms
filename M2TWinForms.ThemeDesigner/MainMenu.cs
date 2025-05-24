@@ -1,5 +1,4 @@
-﻿using M2TWinForms.Controls.Window;
-using M2TWinForms.ThemeDesigner.HctConversionTester;
+﻿using M2TWinForms.ThemeDesigner.HctConversionTester;
 using M2TWinForms.ThemeDesigner.HctPaletteVisualisation;
 using M2TWinForms.ThemeDesigner.ThemeSourcesVisualisation;
 using System;

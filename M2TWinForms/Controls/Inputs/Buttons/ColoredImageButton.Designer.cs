@@ -1,4 +1,4 @@
-﻿namespace M2TWinForms.Controls.Inputs.Buttons
+﻿namespace M2TWinForms
 {
     partial class ColoredImageButton
     {
