@@ -26,8 +26,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controls\DataGridView\Row\" />
-  </ItemGroup>
-
 </Project>

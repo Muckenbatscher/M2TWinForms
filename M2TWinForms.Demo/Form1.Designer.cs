@@ -91,8 +91,8 @@
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewButtonColumn();
             m2tDataGridView1 = new M2TDataGridView();
-            m2tDataGridViewColumn1 = new M2TDataGridViewColumn();
-            m2tDataGridViewColumn2 = new M2TDataGridViewColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
@@ -669,23 +669,21 @@
             // m2tDataGridView1
             // 
             m2tDataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            m2tDataGridView1.Columns.AddRange(new DataGridViewColumn[] { m2tDataGridViewColumn1, m2tDataGridViewColumn2 });
-            m2tDataGridView1.Location = new Point(588, 297);
+            m2tDataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column3, Column4 });
+            m2tDataGridView1.Location = new Point(598, 302);
             m2tDataGridView1.Name = "m2tDataGridView1";
-            m2tDataGridView1.Size = new Size(406, 177);
+            m2tDataGridView1.Size = new Size(396, 171);
             m2tDataGridView1.TabIndex = 67;
             // 
-            // m2tDataGridViewColumn1
+            // Column3
             // 
-            m2tDataGridViewColumn1.CustomColumnProperty = null;
-            m2tDataGridViewColumn1.IsActive = false;
-            m2tDataGridViewColumn1.Name = "m2tDataGridViewColumn1";
+            Column3.HeaderText = "Column3";
+            Column3.Name = "Column3";
             // 
-            // m2tDataGridViewColumn2
+            // Column4
             // 
-            m2tDataGridViewColumn2.CustomColumnProperty = null;
-            m2tDataGridViewColumn2.IsActive = false;
-            m2tDataGridViewColumn2.Name = "m2tDataGridViewColumn2";
+            Column4.HeaderText = "Column4";
+            Column4.Name = "Column4";
             // 
             // Form1
             // 
@@ -871,10 +869,10 @@
         private M2TButton m2tButton15;
         private M2TNumericUpDown m2tNumericUpDown1;
         private DataGridView dataGridView1;
-        private M2TDataGridView m2tDataGridView1;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewButtonColumn Column2;
-        private M2TDataGridViewColumn m2tDataGridViewColumn1;
-        private M2TDataGridViewColumn m2tDataGridViewColumn2;
+        private M2TDataGridView m2tDataGridView1;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
     }
 }

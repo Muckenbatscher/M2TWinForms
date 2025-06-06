@@ -15,6 +15,9 @@ namespace M2TWinForms.Demo
         public Form1()
         {
             InitializeComponent();
+            m2tDataGridView1.Rows.Add("Row 1", "Data 1");
+            m2tDataGridView1.Rows.Add("Row 2", "Data 2");
+            m2tDataGridView1.Rows.Add("Row 3", "Data 3");
         }
     }
 }
