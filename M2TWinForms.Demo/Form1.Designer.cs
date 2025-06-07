@@ -32,6 +32,8 @@
             M2TDataGridViewCellStyle m2tDataGridViewCellStyle1 = new M2TDataGridViewCellStyle();
             M2TDataGridViewCellStyle m2tDataGridViewCellStyle2 = new M2TDataGridViewCellStyle();
             M2TDataGridViewCellStyle m2tDataGridViewCellStyle3 = new M2TDataGridViewCellStyle();
+            M2TDataGridViewCellStyle m2tDataGridViewCellStyle4 = new M2TDataGridViewCellStyle();
+            M2TDataGridViewCellStyle m2tDataGridViewCellStyle5 = new M2TDataGridViewCellStyle();
             m2tLabel1 = new M2TLabel();
             m2tLabel2 = new M2TLabel();
             m2tLabel3 = new M2TLabel();
@@ -93,11 +95,16 @@
             m2tDataGridView1 = new M2TDataGridView();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewButtonColumn();
+            Column2 = new DataGridViewCheckBoxColumn();
             m2tNumericUpDown2 = new M2TNumericUpDown();
             m2tNumericUpDown3 = new M2TNumericUpDown();
             m2tNumericUpDown4 = new M2TNumericUpDown();
             m2tNumericUpDown5 = new M2TNumericUpDown();
             m2tNumericUpDown6 = new M2TNumericUpDown();
+            dataGridView1 = new DataGridView();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewButtonColumn();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
@@ -110,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // m2tLabel1
@@ -658,25 +666,40 @@
             // 
             // m2tDataGridView1
             // 
-            m2tDataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            m2tDataGridViewCellStyle1.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHigh;
-            m2tDataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            m2tDataGridViewCellStyle1.Padding = new Padding(0, 2, 0, 2);
-            m2tDataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            m2tDataGridView1.ColumnHeadersDefaultCellStyle = m2tDataGridViewCellStyle1;
-            m2tDataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column3, Column4 });
+            m2tDataGridView1.AllowUserToResizeRows = false;
+            m2tDataGridViewCellStyle1.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
+            m2tDataGridViewCellStyle1.SelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
+            m2tDataGridView1.AlternatingRowsDefaultCellStyle = m2tDataGridViewCellStyle1;
+            m2tDataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             m2tDataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            m2tDataGridViewCellStyle2.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHigh;
             m2tDataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            m2tDataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            m2tDataGridView1.DefaultCellStyle = m2tDataGridViewCellStyle2;
-            m2tDataGridView1.Location = new Point(598, 302);
-            m2tDataGridView1.Name = "m2tDataGridView1";
+            m2tDataGridViewCellStyle2.Padding = new Padding(0, 2, 0, 2);
+            m2tDataGridViewCellStyle2.SelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
+            m2tDataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            m2tDataGridView1.ColumnHeadersDefaultCellStyle = m2tDataGridViewCellStyle2;
+            m2tDataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            m2tDataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column3, Column4, Column1, Column2 });
             m2tDataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            m2tDataGridViewCellStyle3.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHigh;
             m2tDataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            m2tDataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            m2tDataGridView1.RowHeadersDefaultCellStyle = m2tDataGridViewCellStyle3;
-            m2tDataGridView1.Size = new Size(396, 171);
+            m2tDataGridViewCellStyle3.SelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Tertiary;
+            m2tDataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            m2tDataGridView1.DefaultCellStyle = m2tDataGridViewCellStyle3;
+            m2tDataGridView1.DefaultCellStyleSelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Tertiary;
+            m2tDataGridView1.Location = new Point(561, 265);
+            m2tDataGridView1.Name = "m2tDataGridView1";
+            m2tDataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            m2tDataGridViewCellStyle4.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHigh;
+            m2tDataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            m2tDataGridViewCellStyle4.SelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
+            m2tDataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            m2tDataGridView1.RowHeadersDefaultCellStyle = m2tDataGridViewCellStyle4;
+            m2tDataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            m2tDataGridViewCellStyle5.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
+            m2tDataGridViewCellStyle5.SelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
+            m2tDataGridView1.RowsDefaultCellStyle = m2tDataGridViewCellStyle5;
+            m2tDataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            m2tDataGridView1.Size = new Size(497, 259);
             m2tDataGridView1.TabIndex = 67;
             // 
             // Column3
@@ -688,6 +711,17 @@
             // 
             Column4.HeaderText = "Column4";
             Column4.Name = "Column4";
+            // 
+            // Column1
+            // 
+            Column1.FlatStyle = FlatStyle.Flat;
+            Column1.HeaderText = "Column1";
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Column2";
+            Column2.Name = "Column2";
             // 
             // m2tNumericUpDown2
             // 
@@ -733,11 +767,33 @@
             m2tNumericUpDown6.Size = new Size(120, 23);
             m2tNumericUpDown6.TabIndex = 72;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column5, Column6 });
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.Location = new Point(571, 558);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(451, 150);
+            dataGridView1.TabIndex = 73;
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Column5";
+            Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "Column6";
+            Column6.Name = "Column6";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1103, 780);
+            Controls.Add(dataGridView1);
             Controls.Add(m2tNumericUpDown6);
             Controls.Add(m2tNumericUpDown4);
             Controls.Add(m2tNumericUpDown5);
@@ -848,6 +904,7 @@
             Controls.SetChildIndex(m2tNumericUpDown5, 0);
             Controls.SetChildIndex(m2tNumericUpDown4, 0);
             Controls.SetChildIndex(m2tNumericUpDown6, 0);
+            Controls.SetChildIndex(dataGridView1, 0);
             m2tPanel6.ResumeLayout(false);
             m2tPanel6.PerformLayout();
             m2tPanel7.ResumeLayout(false);
@@ -865,6 +922,7 @@
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown4).EndInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown5).EndInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -929,12 +987,17 @@
         private M2TButton m2tButton15;
         private M2TNumericUpDown m2tNumericUpDown1;
         private M2TDataGridView m2tDataGridView1;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
         private M2TNumericUpDown m2tNumericUpDown2;
         private M2TNumericUpDown m2tNumericUpDown3;
         private M2TNumericUpDown m2tNumericUpDown4;
         private M2TNumericUpDown m2tNumericUpDown5;
         private M2TNumericUpDown m2tNumericUpDown6;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewButtonColumn Column6;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewButtonColumn Column1;
+        private DataGridViewCheckBoxColumn Column2;
     }
 }

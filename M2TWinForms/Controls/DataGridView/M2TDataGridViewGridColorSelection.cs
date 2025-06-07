@@ -21,6 +21,11 @@ namespace M2TWinForms
         OnError,
         OnErrorContainer,
         Surface,
+        SurfaceContainer,
+        SurfaceContainerLowest,
+        SurfaceContainerLow,
+        SurfaceContainerHigh,
+        SurfaceContainerHighest,
         OnSurface,
         OnSurfaceVariant
     }

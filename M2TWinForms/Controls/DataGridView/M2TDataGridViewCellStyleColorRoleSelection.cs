@@ -8,6 +8,7 @@ namespace M2TWinForms
 {
     public enum M2TDataGridViewCellStyleColorRoleSelection
     {
+        Empty,
         Primary,
         PrimaryContainer,
         Secondary,

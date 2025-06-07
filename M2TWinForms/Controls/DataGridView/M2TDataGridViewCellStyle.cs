@@ -82,14 +82,30 @@ namespace M2TWinForms
 
         public void ApplyCurrentLoadedTheme()
         {
-            var foreColorRole = GetForegroundColorRole(ColorRole);
-            this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(foreColorRole);
-            var backColorRole = GetBackgroundColorRole(ColorRole);
-            this.BackColor = CurrentLoadedThemeManager.GetColorForRole(backColorRole);
-            var selectionForeColorRole = GetForegroundColorRole(SelectionColorRole);
-            this.SelectionForeColor = CurrentLoadedThemeManager.GetColorForRole(selectionForeColorRole);
-            var selectionBackColorRole = GetBackgroundColorRole(SelectionColorRole);
-            this.SelectionBackColor = CurrentLoadedThemeManager.GetColorForRole(selectionBackColorRole);
+            if (ColorRole != M2TDataGridViewCellStyleColorRoleSelection.Empty)
+            {
+                var foreColorRole = GetForegroundColorRole(ColorRole);
+                this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(foreColorRole);
+                var backColorRole = GetBackgroundColorRole(ColorRole);
+                this.BackColor = CurrentLoadedThemeManager.GetColorForRole(backColorRole);
+            }
+            else
+            {
+                this.ForeColor = Color.Empty;
+                this.BackColor = Color.Empty;
+            }
+            if (SelectionColorRole != M2TDataGridViewCellStyleColorRoleSelection.Empty)
+            {
+                var selectionForeColorRole = GetForegroundColorRole(SelectionColorRole);
+                this.SelectionForeColor = CurrentLoadedThemeManager.GetColorForRole(selectionForeColorRole);
+                var selectionBackColorRole = GetBackgroundColorRole(SelectionColorRole);
+                this.SelectionBackColor = CurrentLoadedThemeManager.GetColorForRole(selectionBackColorRole);
+            }
+            else
+            {
+                this.SelectionForeColor = Color.Empty;
+                this.SelectionBackColor = Color.Empty;
+            }
         }
 
 
@@ -107,6 +123,7 @@ namespace M2TWinForms
                 M2TDataGridViewCellStyleColorRoleSelection.ErrorContainer => ColorRoles.OnErrorContainer,
                 M2TDataGridViewCellStyleColorRoleSelection.Surface => ColorRoles.OnSurface,
                 M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainer => ColorRoles.OnSurface,
+                M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerLowest => ColorRoles.OnSurface,
                 M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerLow => ColorRoles.OnSurface,
                 M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHigh => ColorRoles.OnSurface,
                 M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHighest => ColorRoles.OnSurface,
@@ -133,14 +150,6 @@ namespace M2TWinForms
                 M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHighest => ColorRoles.SurfaceContainerHighest,
                 _ => throw new ArgumentException($"Unknown {nameof(M2TDataGridViewCellStyleColorRoleSelection)} value: {colorRole}"),
             };
-        }
-
-        public override DataGridViewCellStyle Clone()
-        {
-            M2TDataGridViewCellStyle clone = (M2TDataGridViewCellStyle)base.Clone();
-            clone.ColorRole = this.ColorRole;
-            clone.SelectionColorRole = this.SelectionColorRole;
-            return clone;
         }
     }
 }
