@@ -701,6 +701,7 @@
             m2tDataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             m2tDataGridView1.Size = new Size(497, 259);
             m2tDataGridView1.TabIndex = 67;
+            m2tDataGridView1.CellContentClick += m2tDataGridView1_CellContentClick;
             // 
             // Column3
             // 
@@ -714,7 +715,6 @@
             // 
             // Column1
             // 
-            Column1.FlatStyle = FlatStyle.Flat;
             Column1.HeaderText = "Column1";
             Column1.Name = "Column1";
             // 

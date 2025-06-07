@@ -15,7 +15,7 @@ namespace M2TWinForms.Demo
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            var theme = Theme.CreateFromSinglePrimaryColor(Color.Khaki, ThemeMode.Dark, ContrastLevel.Normal, true);
+            var theme = Theme.CreateFromSinglePrimaryColor(Color.Khaki, ThemeMode.Light, ContrastLevel.Normal, true);
             Themes.ThemeLoading.CurrentLoadedThemeManager.LoadTheme(theme);
             
             Application.EnableVisualStyles();

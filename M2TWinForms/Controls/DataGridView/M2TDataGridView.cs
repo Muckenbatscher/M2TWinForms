@@ -312,8 +312,13 @@ namespace M2TWinForms
             ApplyCurrentLoadedTheme();
 
             this.ColumnStateChanged += M2TDataGridView_ColumnStateChanged;
+            this.ColumnAdded += M2TDataGridView_ColumnAdded;
         }
 
+        private void M2TDataGridView_ColumnAdded(object? sender, DataGridViewColumnEventArgs e)
+        {
+            ApplyCurrentLoadedTheme();
+        }
 
         public void ApplyCurrentLoadedTheme()
         {
@@ -325,6 +330,15 @@ namespace M2TWinForms
             DefaultCellStyle.ApplyCurrentLoadedTheme(); 
             RowHeadersDefaultCellStyle.ApplyCurrentLoadedTheme();
             ColumnHeadersDefaultCellStyle.ApplyCurrentLoadedTheme();
+
+            foreach (DataGridViewColumn column in Columns)
+            {
+                if (column is DataGridViewButtonColumn buttonColumn)
+                    buttonColumn.FlatStyle = FlatStyle.Flat;
+
+                if (column is DataGridViewCheckBoxColumn checkboxColumn)
+                    checkboxColumn.FlatStyle = FlatStyle.Flat;
+            }
         }
         private void M2TDataGridView_ColumnStateChanged(object? sender, DataGridViewColumnStateChangedEventArgs e)
         {

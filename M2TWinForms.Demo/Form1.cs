@@ -22,5 +22,11 @@ namespace M2TWinForms.Demo
             dataGridView1.Rows.Add("Row 4", "button4");
             dataGridView1.Rows.Add("Row 5", "button5");
         }
+
+        private void m2tDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            M2TDataGridView dataGridView = sender as M2TDataGridView;
+            var column = dataGridView.Columns[e.ColumnIndex];
+        }
     }
 }

@@ -71,12 +71,18 @@ namespace M2TWinForms
         private M2TDataGridViewCellStyleColorRoleSelection _selectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Primary;
 
 
-        public M2TDataGridViewCellStyle()
+        public M2TDataGridViewCellStyle() : base()
         {
             ApplyCurrentLoadedTheme();
         }
         public M2TDataGridViewCellStyle(DataGridViewCellStyle dataGridViewCellStyle) : base(dataGridViewCellStyle)
         {
+            ApplyCurrentLoadedTheme();
+        }
+        public M2TDataGridViewCellStyle(M2TDataGridViewCellStyle dataGridViewCellStyle) : base(dataGridViewCellStyle)
+        {
+            ColorRole = dataGridViewCellStyle.ColorRole;
+            SelectionColorRole = dataGridViewCellStyle.SelectionColorRole;
             ApplyCurrentLoadedTheme();
         }
 
