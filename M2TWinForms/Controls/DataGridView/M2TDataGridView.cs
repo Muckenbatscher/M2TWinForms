@@ -24,6 +24,12 @@ namespace M2TWinForms
             get => base.ColumnHeadersBorderStyle;
             set => base.ColumnHeadersBorderStyle = value;
         }
+        [DefaultValue(DataGridViewHeaderBorderStyle.Single)]
+        public new DataGridViewHeaderBorderStyle RowHeadersBorderStyle
+        {
+            get => base.RowHeadersBorderStyle;
+            set => base.RowHeadersBorderStyle = value;
+        }
 
         [Obsolete("Should not be set directly. Instead use the color roles to ensure proper theming.")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -46,7 +52,30 @@ namespace M2TWinForms
             }
         }
         private M2TDataGridViewBackgroundColorSelection _backgroundColorRole = M2TDataGridViewBackgroundColorSelection.SurfaceContainer;
-        
+
+
+        [Obsolete("Should not be set directly. Instead use the color roles to ensure proper theming.")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public new Color GridColor
+        {
+            get => base.GridColor;
+            set => base.GridColor = value;
+        }
+
+        [Description("The Material Design Color Role used to determine background of the DataGridView")]
+        [Category("Material Design")]
+        [DefaultValue(M2TDataGridViewGridColorSelection.OnSurfaceVariant)]
+        public M2TDataGridViewGridColorSelection GridColorRole
+        {
+            get => _gridColorRole;
+            set
+            {
+                _gridColorRole = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        private M2TDataGridViewGridColorSelection _gridColorRole = M2TDataGridViewGridColorSelection.OnSurfaceVariant;
+
         public new M2TDataGridViewCellStyle DefaultCellStyle
         {
             get 
@@ -60,7 +89,7 @@ namespace M2TWinForms
             set => base.DefaultCellStyle = value;
         }
 
-        [Description("The Material Design Color Role used to determine background and text of the CellStyle")]
+        [Description("The Material Design Color Role used to determine background and text a cell")]
         [Category("Material Design")]
         [DefaultValue(M2TDataGridViewCellStyleColorRoleSelection.Surface)]
         public M2TDataGridViewCellStyleColorRoleSelection DefaultCellStyleColorRole
@@ -73,7 +102,7 @@ namespace M2TWinForms
             }
         }
 
-        [Description("The Material Design Color Role used to determine background and text of the CellStyle when selected")]
+        [Description("The Material Design Color Role used to determine background and text of a cell when selected")]
         [Category("Material Design")]
         [DefaultValue(M2TDataGridViewCellStyleColorRoleSelection.Primary)]
         public M2TDataGridViewCellStyleColorRoleSelection DefaultCellStyleSelectionColorRole
@@ -98,7 +127,7 @@ namespace M2TWinForms
             }
             set => base.ColumnHeadersDefaultCellStyle = value;
         }
-        [Description("The Material Design Color Role used to determine background and text of the CellStyle")]
+        [Description("The Material Design Color Role used to determine background and text of the column header")]
         [Category("Material Design")]
         [DefaultValue(M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHigh)]
         public M2TDataGridViewCellStyleColorRoleSelection ColumnHeadersDefaultCellStyleColorRole
@@ -111,7 +140,7 @@ namespace M2TWinForms
             }
         }
 
-        [Description("The Material Design Color Role used to determine background and text of the CellStyle when selected")]
+        [Description("The Material Design Color Role used to determine background and text of the column header when selected")]
         [Category("Material Design")]
         [DefaultValue(M2TDataGridViewCellStyleColorRoleSelection.Primary)]
         public M2TDataGridViewCellStyleColorRoleSelection ColumnHeadersDefaultCellStyleSelectionColorRole
@@ -168,7 +197,12 @@ namespace M2TWinForms
         {
             EnableHeadersVisualStyles = false;
             ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             ColumnHeadersDefaultCellStyle.Padding = new Padding(0, 2, 0, 2);
+
+            this.DefaultCellStyle = new M2TDataGridViewCellStyle();
+            this.ColumnHeadersDefaultCellStyle = new M2TDataGridViewCellStyle();
+            this.RowHeadersDefaultCellStyle = new M2TDataGridViewCellStyle();
 
             DefaultCellStyleColorRole = M2TDataGridViewCellStyleColorRoleSelection.Surface;
             DefaultCellStyleSelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Primary;
@@ -180,7 +214,6 @@ namespace M2TWinForms
             RowHeadersDefaultCellStyleSelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Primary;
 
             ApplyCurrentLoadedTheme();
-            this.DefaultCellStyle = new M2TDataGridViewCellStyle();
         }
 
 
@@ -188,8 +221,12 @@ namespace M2TWinForms
         {
             var backColorRole = GetMappedColorRole(BackgroundColorRole);
             this.BackgroundColor = CurrentLoadedThemeManager.GetColorForRole(backColorRole);
+            var gridColorRole = GetMappedColorRole(GridColorRole);
+            this.GridColor = CurrentLoadedThemeManager.GetColorForRole(gridColorRole);
 
-            DefaultCellStyle.ApplyCurrentLoadedTheme();
+            DefaultCellStyle.ApplyCurrentLoadedTheme(); 
+            RowHeadersDefaultCellStyle.ApplyCurrentLoadedTheme();
+            ColumnHeadersDefaultCellStyle.ApplyCurrentLoadedTheme();
         }
 
         private ColorRoles GetMappedColorRole(M2TDataGridViewBackgroundColorSelection backColorSelection)
@@ -213,7 +250,28 @@ namespace M2TWinForms
                 _ => throw new NotImplementedException()
             };
         }
-
+        private ColorRoles GetMappedColorRole(M2TDataGridViewGridColorSelection backColorSelection)
+        {
+            return backColorSelection switch
+            {
+                M2TDataGridViewGridColorSelection.Primary => ColorRoles.Primary,
+                M2TDataGridViewGridColorSelection.OnPrimary => ColorRoles.OnPrimary,
+                M2TDataGridViewGridColorSelection.OnPrimaryContainer => ColorRoles.OnPrimaryContainer,
+                M2TDataGridViewGridColorSelection.Secondary => ColorRoles.Secondary,
+                M2TDataGridViewGridColorSelection.OnSecondary => ColorRoles.OnSecondary,
+                M2TDataGridViewGridColorSelection.OnSecondaryContainer => ColorRoles.OnSecondaryContainer,
+                M2TDataGridViewGridColorSelection.Tertiary => ColorRoles.Tertiary,
+                M2TDataGridViewGridColorSelection.OnTertiary => ColorRoles.OnTertiary,
+                M2TDataGridViewGridColorSelection.OnTertiaryContainer => ColorRoles.OnTertiaryContainer,
+                M2TDataGridViewGridColorSelection.Error => ColorRoles.Error,
+                M2TDataGridViewGridColorSelection.OnError => ColorRoles.OnError,
+                M2TDataGridViewGridColorSelection.OnErrorContainer => ColorRoles.OnErrorContainer,
+                M2TDataGridViewGridColorSelection.Surface => ColorRoles.Surface,
+                M2TDataGridViewGridColorSelection.OnSurface => ColorRoles.OnSurface,
+                M2TDataGridViewGridColorSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
+                _ => throw new NotImplementedException()
+            };
+        }
 
     }
 }

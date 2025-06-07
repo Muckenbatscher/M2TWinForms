@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            M2TDataGridViewCellStyle m2tDataGridViewCellStyle1 = new M2TDataGridViewCellStyle();
+            M2TDataGridViewCellStyle m2tDataGridViewCellStyle2 = new M2TDataGridViewCellStyle();
+            M2TDataGridViewCellStyle m2tDataGridViewCellStyle3 = new M2TDataGridViewCellStyle();
             m2tLabel1 = new M2TLabel();
             m2tLabel2 = new M2TLabel();
             m2tLabel3 = new M2TLabel();
@@ -87,20 +90,26 @@
             m2tLabel20 = new M2TLabel();
             m2tButton15 = new M2TButton();
             m2tNumericUpDown1 = new M2TNumericUpDown();
-            dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewButtonColumn();
             m2tDataGridView1 = new M2TDataGridView();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
+            m2tNumericUpDown2 = new M2TNumericUpDown();
+            m2tNumericUpDown3 = new M2TNumericUpDown();
+            m2tNumericUpDown4 = new M2TNumericUpDown();
+            m2tNumericUpDown5 = new M2TNumericUpDown();
+            m2tNumericUpDown6 = new M2TNumericUpDown();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
             m2tPanel9.SuspendLayout();
             m2tPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)m2tDataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown6).BeginInit();
             SuspendLayout();
             // 
             // m2tLabel1
@@ -633,7 +642,7 @@
             // m2tButton15
             // 
             m2tButton15.ColorRole = M2TButtonColorRoleSelection.PrimaryContainer;
-            m2tButton15.Location = new Point(812, 153);
+            m2tButton15.Location = new Point(692, 164);
             m2tButton15.Name = "m2tButton15";
             m2tButton15.Size = new Size(75, 23);
             m2tButton15.TabIndex = 63;
@@ -642,36 +651,31 @@
             // m2tNumericUpDown1
             // 
             m2tNumericUpDown1.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.SurfaceContainer;
-            m2tNumericUpDown1.Location = new Point(812, 75);
+            m2tNumericUpDown1.Location = new Point(938, 75);
             m2tNumericUpDown1.Name = "m2tNumericUpDown1";
             m2tNumericUpDown1.Size = new Size(120, 23);
             m2tNumericUpDown1.TabIndex = 64;
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2 });
-            dataGridView1.Location = new Point(588, 502);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(406, 217);
-            dataGridView1.TabIndex = 66;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Column1";
-            Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Column2";
-            Column2.Name = "Column2";
-            // 
             // m2tDataGridView1
             // 
-            m2tDataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            m2tDataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            m2tDataGridViewCellStyle1.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHigh;
+            m2tDataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            m2tDataGridViewCellStyle1.Padding = new Padding(0, 2, 0, 2);
+            m2tDataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            m2tDataGridView1.ColumnHeadersDefaultCellStyle = m2tDataGridViewCellStyle1;
             m2tDataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column3, Column4 });
+            m2tDataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            m2tDataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            m2tDataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            m2tDataGridView1.DefaultCellStyle = m2tDataGridViewCellStyle2;
             m2tDataGridView1.Location = new Point(598, 302);
             m2tDataGridView1.Name = "m2tDataGridView1";
+            m2tDataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            m2tDataGridViewCellStyle3.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHigh;
+            m2tDataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            m2tDataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            m2tDataGridView1.RowHeadersDefaultCellStyle = m2tDataGridViewCellStyle3;
             m2tDataGridView1.Size = new Size(396, 171);
             m2tDataGridView1.TabIndex = 67;
             // 
@@ -685,13 +689,61 @@
             Column4.HeaderText = "Column4";
             Column4.Name = "Column4";
             // 
+            // m2tNumericUpDown2
+            // 
+            m2tNumericUpDown2.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.Primary;
+            m2tNumericUpDown2.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnPrimary;
+            m2tNumericUpDown2.Location = new Point(812, 104);
+            m2tNumericUpDown2.Name = "m2tNumericUpDown2";
+            m2tNumericUpDown2.Size = new Size(120, 23);
+            m2tNumericUpDown2.TabIndex = 68;
+            // 
+            // m2tNumericUpDown3
+            // 
+            m2tNumericUpDown3.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.PrimaryContainer;
+            m2tNumericUpDown3.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnPrimaryContainer;
+            m2tNumericUpDown3.Location = new Point(812, 133);
+            m2tNumericUpDown3.Name = "m2tNumericUpDown3";
+            m2tNumericUpDown3.Size = new Size(120, 23);
+            m2tNumericUpDown3.TabIndex = 69;
+            // 
+            // m2tNumericUpDown4
+            // 
+            m2tNumericUpDown4.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.TertiaryContainer;
+            m2tNumericUpDown4.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnTertiaryContainer;
+            m2tNumericUpDown4.Location = new Point(938, 133);
+            m2tNumericUpDown4.Name = "m2tNumericUpDown4";
+            m2tNumericUpDown4.Size = new Size(120, 23);
+            m2tNumericUpDown4.TabIndex = 71;
+            // 
+            // m2tNumericUpDown5
+            // 
+            m2tNumericUpDown5.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.Tertiary;
+            m2tNumericUpDown5.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnTertiary;
+            m2tNumericUpDown5.Location = new Point(938, 104);
+            m2tNumericUpDown5.Name = "m2tNumericUpDown5";
+            m2tNumericUpDown5.Size = new Size(120, 23);
+            m2tNumericUpDown5.TabIndex = 70;
+            // 
+            // m2tNumericUpDown6
+            // 
+            m2tNumericUpDown6.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnSurfaceVariant;
+            m2tNumericUpDown6.Location = new Point(812, 75);
+            m2tNumericUpDown6.Name = "m2tNumericUpDown6";
+            m2tNumericUpDown6.Size = new Size(120, 23);
+            m2tNumericUpDown6.TabIndex = 72;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1103, 780);
+            Controls.Add(m2tNumericUpDown6);
+            Controls.Add(m2tNumericUpDown4);
+            Controls.Add(m2tNumericUpDown5);
+            Controls.Add(m2tNumericUpDown3);
+            Controls.Add(m2tNumericUpDown2);
             Controls.Add(m2tDataGridView1);
-            Controls.Add(dataGridView1);
             Controls.Add(m2tNumericUpDown1);
             Controls.Add(m2tButton15);
             Controls.Add(m2tPanel10);
@@ -790,8 +842,12 @@
             Controls.SetChildIndex(m2tPanel10, 0);
             Controls.SetChildIndex(m2tButton15, 0);
             Controls.SetChildIndex(m2tNumericUpDown1, 0);
-            Controls.SetChildIndex(dataGridView1, 0);
             Controls.SetChildIndex(m2tDataGridView1, 0);
+            Controls.SetChildIndex(m2tNumericUpDown2, 0);
+            Controls.SetChildIndex(m2tNumericUpDown3, 0);
+            Controls.SetChildIndex(m2tNumericUpDown5, 0);
+            Controls.SetChildIndex(m2tNumericUpDown4, 0);
+            Controls.SetChildIndex(m2tNumericUpDown6, 0);
             m2tPanel6.ResumeLayout(false);
             m2tPanel6.PerformLayout();
             m2tPanel7.ResumeLayout(false);
@@ -803,8 +859,12 @@
             m2tPanel10.ResumeLayout(false);
             m2tPanel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)m2tDataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown6).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -868,11 +928,13 @@
         private M2TLabel m2tLabel20;
         private M2TButton m2tButton15;
         private M2TNumericUpDown m2tNumericUpDown1;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewButtonColumn Column2;
         private M2TDataGridView m2tDataGridView1;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
+        private M2TNumericUpDown m2tNumericUpDown2;
+        private M2TNumericUpDown m2tNumericUpDown3;
+        private M2TNumericUpDown m2tNumericUpDown4;
+        private M2TNumericUpDown m2tNumericUpDown5;
+        private M2TNumericUpDown m2tNumericUpDown6;
     }
 }
