@@ -87,6 +87,14 @@
             m2tLabel20 = new M2TLabel();
             m2tButton15 = new M2TButton();
             m2tNumericUpDown1 = new M2TNumericUpDown();
+            m2tButton16 = new M2TButton();
+            m2tButton17 = new M2TButton();
+            m2tButton18 = new M2TButton();
+            m2tLabel21 = new M2TLabel();
+            m2tLabel22 = new M2TLabel();
+            TB_MessageText = new M2TTextBox();
+            m2tButton19 = new M2TButton();
+            m2tButton20 = new M2TButton();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
@@ -129,7 +137,7 @@
             // 
             m2tLabel4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             m2tLabel4.AutoSize = true;
-            m2tLabel4.Location = new Point(928, 214);
+            m2tLabel4.Location = new Point(1086, 511);
             m2tLabel4.Name = "m2tLabel4";
             m2tLabel4.Size = new Size(62, 15);
             m2tLabel4.TabIndex = 21;
@@ -273,7 +281,7 @@
             // 
             m2tLabel6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             m2tLabel6.AutoSize = true;
-            m2tLabel6.Location = new Point(353, 555);
+            m2tLabel6.Location = new Point(353, 591);
             m2tLabel6.Name = "m2tLabel6";
             m2tLabel6.Size = new Size(62, 15);
             m2tLabel6.TabIndex = 38;
@@ -639,11 +647,95 @@
             m2tNumericUpDown1.Size = new Size(120, 23);
             m2tNumericUpDown1.TabIndex = 64;
             // 
+            // m2tButton16
+            // 
+            m2tButton16.Location = new Point(915, 248);
+            m2tButton16.Name = "m2tButton16";
+            m2tButton16.Size = new Size(75, 23);
+            m2tButton16.TabIndex = 65;
+            m2tButton16.Text = "None";
+            m2tButton16.Click += m2tButton16_Click;
+            // 
+            // m2tButton17
+            // 
+            m2tButton17.ColorRole = M2TButtonColorRoleSelection.SecondaryContainer;
+            m2tButton17.Location = new Point(996, 248);
+            m2tButton17.Name = "m2tButton17";
+            m2tButton17.Size = new Size(75, 23);
+            m2tButton17.TabIndex = 66;
+            m2tButton17.Text = "Info";
+            m2tButton17.Click += m2tButton17_Click;
+            // 
+            // m2tButton18
+            // 
+            m2tButton18.ColorRole = M2TButtonColorRoleSelection.PrimaryContainer;
+            m2tButton18.Location = new Point(915, 306);
+            m2tButton18.Name = "m2tButton18";
+            m2tButton18.Size = new Size(75, 23);
+            m2tButton18.TabIndex = 67;
+            m2tButton18.Text = "Warning";
+            m2tButton18.Click += m2tButton18_Click;
+            // 
+            // m2tLabel21
+            // 
+            m2tLabel21.AutoSize = true;
+            m2tLabel21.Location = new Point(915, 230);
+            m2tLabel21.Name = "m2tLabel21";
+            m2tLabel21.Size = new Size(104, 15);
+            m2tLabel21.TabIndex = 68;
+            m2tLabel21.Text = "Message Box Icon:";
+            // 
+            // m2tLabel22
+            // 
+            m2tLabel22.AutoSize = true;
+            m2tLabel22.Location = new Point(915, 186);
+            m2tLabel22.Name = "m2tLabel22";
+            m2tLabel22.Size = new Size(102, 15);
+            m2tLabel22.TabIndex = 69;
+            m2tLabel22.Text = "Message Box Text:";
+            // 
+            // TB_MessageText
+            // 
+            TB_MessageText.ColorRole = M2TTextBoxColorRoleSelection.SurfaceContainerLowest;
+            TB_MessageText.Location = new Point(915, 204);
+            TB_MessageText.Name = "TB_MessageText";
+            TB_MessageText.Size = new Size(159, 23);
+            TB_MessageText.TabIndex = 70;
+            TB_MessageText.Text = "Some Sample Message Box Text ";
+            // 
+            // m2tButton19
+            // 
+            m2tButton19.ColorRole = M2TButtonColorRoleSelection.ErrorContainer;
+            m2tButton19.Location = new Point(996, 306);
+            m2tButton19.Name = "m2tButton19";
+            m2tButton19.Size = new Size(75, 23);
+            m2tButton19.TabIndex = 71;
+            m2tButton19.Text = "Error";
+            m2tButton19.Click += m2tButton19_Click;
+            // 
+            // m2tButton20
+            // 
+            m2tButton20.ColorRole = M2TButtonColorRoleSelection.TertiaryContainer;
+            m2tButton20.Location = new Point(915, 277);
+            m2tButton20.Name = "m2tButton20";
+            m2tButton20.Size = new Size(75, 23);
+            m2tButton20.TabIndex = 72;
+            m2tButton20.Text = "Question";
+            m2tButton20.Click += m2tButton20_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(990, 569);
+            ClientSize = new Size(1146, 605);
+            Controls.Add(m2tButton20);
+            Controls.Add(m2tButton19);
+            Controls.Add(TB_MessageText);
+            Controls.Add(m2tLabel22);
+            Controls.Add(m2tLabel21);
+            Controls.Add(m2tButton18);
+            Controls.Add(m2tButton17);
+            Controls.Add(m2tButton16);
             Controls.Add(m2tNumericUpDown1);
             Controls.Add(m2tButton15);
             Controls.Add(m2tPanel10);
@@ -742,6 +834,14 @@
             Controls.SetChildIndex(m2tPanel10, 0);
             Controls.SetChildIndex(m2tButton15, 0);
             Controls.SetChildIndex(m2tNumericUpDown1, 0);
+            Controls.SetChildIndex(m2tButton16, 0);
+            Controls.SetChildIndex(m2tButton17, 0);
+            Controls.SetChildIndex(m2tButton18, 0);
+            Controls.SetChildIndex(m2tLabel21, 0);
+            Controls.SetChildIndex(m2tLabel22, 0);
+            Controls.SetChildIndex(TB_MessageText, 0);
+            Controls.SetChildIndex(m2tButton19, 0);
+            Controls.SetChildIndex(m2tButton20, 0);
             m2tPanel6.ResumeLayout(false);
             m2tPanel6.PerformLayout();
             m2tPanel7.ResumeLayout(false);
@@ -816,5 +916,13 @@
         private M2TLabel m2tLabel20;
         private M2TButton m2tButton15;
         private M2TNumericUpDown m2tNumericUpDown1;
+        private M2TButton m2tButton16;
+        private M2TButton m2tButton17;
+        private M2TButton m2tButton18;
+        private M2TLabel m2tLabel21;
+        private M2TLabel m2tLabel22;
+        private M2TTextBox TB_MessageText;
+        private M2TButton m2tButton19;
+        private M2TButton m2tButton20;
     }
 }

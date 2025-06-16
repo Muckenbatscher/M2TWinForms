@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controls\DataGridView\**" />
+    <EmbeddedResource Remove="Controls\DataGridView\**" />
+    <None Remove="Controls\DataGridView\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\M2TWinForms.Themes\M2TWinForms.Themes.csproj" />
   </ItemGroup>
 
