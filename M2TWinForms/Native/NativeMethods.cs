@@ -15,6 +15,11 @@ namespace M2TWinForms.Native
         public static extern bool ReleaseCapture();
         [DllImport("user32.dll")]
         public static extern int GetSystemMetrics(int nIndex);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern int LoadString(IntPtr hInstance, uint uID, StringBuilder lpBuffer, int nBufferMax);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr GetModuleHandle(string lpModuleName);
 
 
         [DllImport("dwmapi.dll")]

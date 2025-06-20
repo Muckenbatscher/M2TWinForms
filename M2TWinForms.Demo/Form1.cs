@@ -20,27 +20,27 @@ namespace M2TWinForms.Demo
 
         private void m2tButton16_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(TB_MessageText.Text, "None", MessageBoxButtons.OK, MessageBoxIcon.None);
+            M2TMessageBox.Show(TB_MessageText.Text, "None", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
         private void m2tButton17_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(TB_MessageText.Text, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            M2TMessageBox.Show(TB_MessageText.Text, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void m2tButton20_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(TB_MessageText.Text, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            M2TMessageBox.Show(TB_MessageText.Text, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
         private void m2tButton18_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(TB_MessageText.Text, "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            M2TMessageBox.Show(TB_MessageText.Text, "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
         }
 
         private void m2tButton19_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(TB_MessageText.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            M2TMessageBox.Show(TB_MessageText.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

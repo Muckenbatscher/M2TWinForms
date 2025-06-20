@@ -117,7 +117,7 @@ namespace M2TWinForms
         private bool _canMaximize = true;
 
         [DefaultValue(true)]
-        public bool CanResize { get; set; } = true;
+        public bool CanResize { get; private set; } = true;
 
         [DefaultValue(true)]
         public bool CanHoverControlBox
@@ -155,12 +155,12 @@ namespace M2TWinForms
         private FormBorderStyle _formBorderStyle;
 
 
-        
+
 
         public Color TitleBarColor
         {
             get => PN_DragPanel.BackColor;
-            set =>  PN_DragPanel.BackColor = value;
+            set => PN_DragPanel.BackColor = value;
         }
 
         public Color TitleBarButtonHoverColor
@@ -234,7 +234,7 @@ namespace M2TWinForms
             foreach (var control in resizingControls)
             {
                 control.MouseMove += BaseWindowBorderless_MouseMove;
-                control.MouseLeave += BaseWindowBorderless_MouseLeave; 
+                control.MouseLeave += BaseWindowBorderless_MouseLeave;
                 control.MouseDown += BaseWindowBorderless_MouseDown;
             }
 
@@ -261,43 +261,6 @@ namespace M2TWinForms
 
         #region Borderless Window
 
-
-        #region Drop Shadow
-        private bool aeroEnabled;
-        private void CheckAeroEnabled()
-        {
-            if (Environment.OSVersion.Version.Major >= 6)
-            {
-                int enabled = 0;
-                NativeMethods.DwmIsCompositionEnabled(ref enabled);
-                aeroEnabled = enabled == 1;
-            }
-            else
-            {
-                aeroEnabled = false;
-            }
-        }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CheckAeroEnabled();
-                CreateParams cp = base.CreateParams;
-                //drop shadow
-                if (!aeroEnabled)
-                    cp.ClassStyle = cp.ClassStyle | NativeConstants.CS_DROPSHADOW;
-
-                //minimize from taskbar
-                cp.Style = cp.Style | NativeConstants.WS_MINIMIZEBOX;
-                if (!this.DesignMode)
-                    cp.Style = cp.Style | NativeConstants.WS_THICKFRAME | NativeConstants.WS_CAPTION;
-
-                cp.ClassStyle = cp.ClassStyle | NativeConstants.CS_DBLCLKS;
-
-                return cp;
-            }
-        }
 
         protected override void WndProc(ref Message m)
         {
@@ -332,6 +295,44 @@ namespace M2TWinForms
                 return;
             }
             base.WndProc(ref m);
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CheckAeroEnabled();
+                CreateParams cp = base.CreateParams;
+                //drop shadow
+                if (!aeroEnabled)
+                    cp.ClassStyle = cp.ClassStyle | NativeConstants.CS_DROPSHADOW;
+
+                //minimize from taskbar
+                cp.Style = cp.Style | NativeConstants.WS_MINIMIZEBOX;
+                if (!this.DesignMode)
+                    cp.Style = cp.Style | NativeConstants.WS_THICKFRAME | NativeConstants.WS_CAPTION;
+
+                cp.ClassStyle = cp.ClassStyle | NativeConstants.CS_DBLCLKS;
+
+                return cp;
+            }
+        }
+
+
+        #region Drop Shadow
+        private bool aeroEnabled;
+        private void CheckAeroEnabled()
+        {
+            if (Environment.OSVersion.Version.Major >= 6)
+            {
+                int enabled = 0;
+                NativeMethods.DwmIsCompositionEnabled(ref enabled);
+                aeroEnabled = enabled == 1;
+            }
+            else
+            {
+                aeroEnabled = false;
+            }
         }
 
         #endregion
@@ -390,7 +391,7 @@ namespace M2TWinForms
                 ResizeDir = ResizeDirection.None;
                 return;
             }
-            
+
             Point mouseLocation = PointToClient(Cursor.Position);
 
             var borderWidthX = WindowBorderSystemMetrics.GetForX().Total;

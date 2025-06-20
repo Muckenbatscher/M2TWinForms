@@ -52,7 +52,7 @@ namespace M2TWinForms.ThemeDesigner
             }
             catch (Exception ex)
             {
-                M2TMessageBoxDialog.Show($"An error occured while loading the theme: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occured while loading the theme: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
