@@ -35,7 +35,7 @@ namespace M2TWinForms.Demo
 
         private void m2tButton18_Click(object sender, EventArgs e)
         {
-            M2TMessageBox.Show(TB_MessageText.Text, "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            M2TMessageBox.Show(TB_MessageText.Text, "Warning", MessageBoxButtons.CancelTryContinue, MessageBoxIcon.Warning);
         }
 
         private void m2tButton19_Click(object sender, EventArgs e)

@@ -79,10 +79,10 @@ namespace M2TWinForms
             {
                 button.Dock = DockStyle.None;
                 button.Height = PN_Buttons.Height - button.Margin.Vertical;
+                PN_Buttons.Controls.Add(button);
                 var locationX = PN_Buttons.Width - currentButtonLocationOffset - button.Width - button.Margin.Horizontal;
                 var locationY = button.Margin.Top;
                 button.Location = new Point(locationX, locationY);
-                PN_Buttons.Controls.Add(button);
                 currentButtonLocationOffset = PN_Buttons.Width - locationX;
             }
             FitToContents();

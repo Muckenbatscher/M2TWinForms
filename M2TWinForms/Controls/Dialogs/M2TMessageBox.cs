@@ -138,7 +138,7 @@ namespace M2TWinForms
                 Message = text ?? string.Empty,
                 Text = caption ?? string.Empty,
             };
-            var msgBoxButtons = GetMessageBoxButtons(buttons, defaultButton, true);
+            var msgBoxButtons = CreateMessageBoxButtons(buttons, defaultButton, true);
             dialog.AddButtons(msgBoxButtons);
             var focussedButtonIndex = defaultButton switch
             {
@@ -156,7 +156,7 @@ namespace M2TWinForms
             return dialog;
         }
 
-        private static M2TButton[] GetMessageBoxButtons(MessageBoxButtons buttons,
+        private static M2TButton[] CreateMessageBoxButtons(MessageBoxButtons buttons,
             MessageBoxDefaultButton defaultButton, bool useHighlightForDefaultButton)
         {
             switch (buttons)
@@ -234,7 +234,8 @@ namespace M2TWinForms
             {
                 Text = localizedButtonText,
                 DialogResult = dialogResult,
-                ColorRole = colorRole
+                ColorRole = colorRole,
+                AutoSize = true,
             };
         }
     }
