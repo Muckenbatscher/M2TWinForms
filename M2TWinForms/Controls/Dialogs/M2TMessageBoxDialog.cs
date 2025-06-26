@@ -75,6 +75,7 @@ namespace M2TWinForms
             if (minimumRequiredWidth > PN_Buttons.Width)
                 PN_Buttons.Width = minimumRequiredWidth;
 
+            int buttonTabIndex = buttons.Count();
             foreach (var button in buttons.Reverse())
             {
                 button.Dock = DockStyle.None;
@@ -83,7 +84,9 @@ namespace M2TWinForms
                 var locationX = PN_Buttons.Width - currentButtonLocationOffset - button.Width - button.Margin.Horizontal;
                 var locationY = button.Margin.Top;
                 button.Location = new Point(locationX, locationY);
+                button.TabIndex = buttonTabIndex;
                 currentButtonLocationOffset = PN_Buttons.Width - locationX;
+                buttonTabIndex -= 1;
             }
             FitToContents();
         }
