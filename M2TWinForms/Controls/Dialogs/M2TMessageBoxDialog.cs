@@ -34,8 +34,8 @@ namespace M2TWinForms
 
         private void FitToContents()
         {
-            var bounds = GetContainingControlsBounds();
-            this.Size = bounds + new Size(8, 36 + 8);
+            var bounds = GetContainingControlsBounds() + new Size(8, 36 + 8);
+            this.Size = bounds;
         }
 
         private Size GetContainingControlsBounds()

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -173,6 +174,14 @@ namespace M2TWinForms
         }
         private SizeGripStyle _sizeGripStyle;
 
+        [DefaultValue(false)]
+        public new bool AutoSize
+        {
+            get => _autoSize;
+            set => _autoSize = value;
+        }
+        private bool _autoSize;
+
 
         public Color TitleBarColor
         {
@@ -239,6 +248,7 @@ namespace M2TWinForms
             WindowIconPadding = new Padding(3);
 
             base.Load += BaseWindowBorderless_Load;
+            base.Shown += BaseWindowBorderless_Shown;
             base.Resize += BorderlessForm_Resize;
             AttachMouseResizeHandlersRecursively(this);
 
@@ -259,11 +269,13 @@ namespace M2TWinForms
         {
             CenterToParent();
         }
+        private void BaseWindowBorderless_Shown(object? sender, EventArgs e)
+        {
+            AutoSizeWithModeToContents();
+        }
 
 
-        #region Borderless Window
-
-
+        #region Native Calls
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == NativeConstants.WM_NCPAINT)
@@ -319,7 +331,7 @@ namespace M2TWinForms
                 return cp;
             }
         }
-
+        #endregion
 
         #region Drop Shadow
         private bool aeroEnabled;
@@ -338,7 +350,6 @@ namespace M2TWinForms
         }
 
         #endregion
-
 
         #region Window Resizing
         private enum ResizeDirection
@@ -458,12 +469,14 @@ namespace M2TWinForms
             if (e.Control == null)
                 return;
             AttachMouseResizeHandlersRecursively(e.Control);
+            AttachChildControlAutoSizeEvents(e.Control);
         }
         private void BorderlessForm_ControlRemoved(object? sender, ControlEventArgs e)
         {
             if (e.Control == null)
                 return;
             DetachMouseResizeHandlersRecursively(e.Control);
+            DetachChildControlAutoSizeEvents(e.Control);
         }
         private void AttachMouseResizeHandlersRecursively(Control control)
         {
@@ -491,7 +504,6 @@ namespace M2TWinForms
         }
         #endregion
 
-
         #region Window Drag
         private void DraggingPanel_MouseDown(object? sender, MouseEventArgs e)
         {
@@ -511,11 +523,8 @@ namespace M2TWinForms
         #endregion
 
 
-        #endregion
-
 
         #region ControlButtons
-
         private void WindowImageButton_Click(object? sender, EventArgs e)
         {
             if (UseIconAsButton)
@@ -536,6 +545,9 @@ namespace M2TWinForms
         {
             RequestWindowStateMaximizationChange();
         }
+        #endregion
+
+        #region Window State
         private void RequestWindowStateMaximizationChange()
         {
             if (this.WindowState == FormWindowState.Normal)
@@ -579,6 +591,63 @@ namespace M2TWinForms
         {
             var minimizeOffset = CloseButton.Width + (CanMaximize ? MaximizeButton.Width : 0) + MinimizeButton.Width + PN_DragPanel.Padding.Right + PN_DragPanel.Padding.Left;
             MinimizeButton.Location = new Point(PN_DragPanel.Width - minimizeOffset, MinimizeButton.Location.Y);
+        }
+        #endregion
+
+        #region Custom AutoSize
+        private void AttachChildControlAutoSizeEvents(Control control)
+        {
+            control.Resize += BorderlessForm_ChildControlResized;
+            control.Move += BorderlessForm_ChildControlMoved;
+        }
+        private void DetachChildControlAutoSizeEvents(Control control)
+        {
+            control.Resize -= BorderlessForm_ChildControlResized;
+            control.Move -= BorderlessForm_ChildControlMoved;
+        }
+
+        private void BorderlessForm_ChildControlResized(object? sender, EventArgs e)
+            => DoAutoSizeCore();
+        private void BorderlessForm_ChildControlMoved(object? sender, EventArgs e)
+            => DoAutoSizeCore();
+
+        private void DoAutoSizeCore()
+        {
+            if (AutoSize)
+                AutoSizeWithModeToContents();
+        }
+
+        private void AutoSizeWithModeToContents()
+        {
+            var bounds = GetContainingControlsBounds();
+
+            if (AutoSizeMode == AutoSizeMode.GrowAndShrink)
+                Size = bounds;
+            else if (AutoSizeMode == AutoSizeMode.GrowOnly)
+            {
+                var targetWidth = Math.Max(bounds.Width, Size.Width);
+                var targetHeight = Math.Max(bounds.Height, Size.Height);
+                Size = new Size(targetWidth, targetHeight);
+            }
+        }
+
+        private Size GetContainingControlsBounds()
+        {
+            int maxX = 0, maxY = 0;
+
+            foreach (Control ctrl in Controls)
+            {
+                if (!ctrl.Visible)
+                    continue;
+                if (ctrl.Equals(PN_DragPanel))
+                    continue; // Skip the drag panel
+
+                if ((ctrl.Anchor & AnchorStyles.Right) == 0) //ignore right anchored controls, will move upon resize
+                    maxX = Math.Max(maxX, ctrl.Right + ctrl.Margin.Right);
+                if ((ctrl.Anchor & AnchorStyles.Bottom) == 0) //ignore bottom anchored controls, will move upon resize
+                    maxY = Math.Max(maxY, ctrl.Bottom + ctrl.Margin.Bottom);
+            }
+            return new Size(maxX, maxY);
         }
         #endregion
 
