@@ -114,6 +114,7 @@
             CanMinimize = false;
             ClientSize = new Size(327, 203);
             Controls.Add(TLP_Main);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "M2TMessageBoxDialog";

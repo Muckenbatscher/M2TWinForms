@@ -117,7 +117,7 @@ namespace M2TWinForms
         private bool _canMaximize = true;
 
         [DefaultValue(true)]
-        public bool CanResize { get; private set; } = true;
+        public bool CanResize { get; private set; }
 
         [DefaultValue(true)]
         public bool CanHoverControlBox
@@ -218,6 +218,7 @@ namespace M2TWinForms
 
             _originalTextLocation = LB_Title.Location;
             HasIcon = true;
+            CanResize = true;
             UseIconAsButton = false;
             WindowIconPadding = new Padding(3);
 

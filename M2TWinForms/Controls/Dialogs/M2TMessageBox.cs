@@ -1,4 +1,5 @@
 ﻿using M2TWinForms.Native;
+using M2TWinForms.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +7,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace M2TWinForms
 {
@@ -136,8 +136,14 @@ namespace M2TWinForms
             var dialog = new M2TMessageBoxDialog()
             {
                 Message = text ?? string.Empty,
-                Text = caption ?? string.Empty,
+                Text = caption ?? string.Empty
             };
+
+            var iconImage = GetWindowIcon(icon);
+            if (iconImage != null)
+                dialog.WindowIcon = iconImage;
+            dialog.HasIcon = iconImage != null;
+
             var msgBoxButtons = CreateMessageBoxButtons(buttons, defaultButton, true);
             dialog.AddButtons(msgBoxButtons);
             var focussedButtonIndex = defaultButton switch
@@ -236,6 +242,18 @@ namespace M2TWinForms
                 DialogResult = dialogResult,
                 ColorRole = colorRole,
                 AutoSize = true,
+            };
+        }
+
+        private static Image? GetWindowIcon(MessageBoxIcon icon)
+        {
+            return icon switch
+            {
+                MessageBoxIcon.Error => Resources.MessageBoxError,
+                MessageBoxIcon.Information => Resources.MessageBoxInfo,
+                MessageBoxIcon.Question => Resources.MessageBoxQuestion,
+                MessageBoxIcon.Warning => Resources.MessageBoxWarning,
+                _ => null
             };
         }
     }
