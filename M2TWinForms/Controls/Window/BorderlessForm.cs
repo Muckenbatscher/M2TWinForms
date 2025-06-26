@@ -117,9 +117,6 @@ namespace M2TWinForms
         private bool _canMaximize = true;
 
         [DefaultValue(true)]
-        public bool CanResize { get; private set; }
-
-        [DefaultValue(true)]
         public bool CanHoverControlBox
         {
             get => _canHoverMaximizeClose;
@@ -133,6 +130,22 @@ namespace M2TWinForms
         }
         private bool _canHoverMaximizeClose = true;
 
+        [DefaultValue(true)]
+        public bool CanResize 
+        { 
+            get
+            {
+                IEnumerable<FormBorderStyle> resizableBorderStyles =
+                [
+                    FormBorderStyle.Sizable,
+                    FormBorderStyle.SizableToolWindow
+                ];
+                bool resizableBorderStyle = resizableBorderStyles.Contains(FormBorderStyle);
+                bool resizableSizeGripStyle = SizeGripStyle == SizeGripStyle.Show;
+                return resizableBorderStyle && resizableSizeGripStyle;
+            }
+        }
+
         [DefaultValue(FormBorderStyle.Sizable)]
         public new FormBorderStyle FormBorderStyle
         {
@@ -140,12 +153,6 @@ namespace M2TWinForms
             set
             {
                 _formBorderStyle = value;
-                IEnumerable<FormBorderStyle> resizableBorderStyles =
-                [
-                    FormBorderStyle.Sizable,
-                    FormBorderStyle.SizableToolWindow
-                ];
-                CanResize = resizableBorderStyles.Contains(value);
                 if (value == FormBorderStyle.None)
                     PN_DragPanel.Size = new Size(PN_DragPanel.Width, 0);
                 else
@@ -154,7 +161,17 @@ namespace M2TWinForms
         }
         private FormBorderStyle _formBorderStyle;
 
-
+        [DefaultValue(SizeGripStyle.Show)]
+        public new SizeGripStyle SizeGripStyle
+        {
+            get => _sizeGripStyle;
+            set
+            {
+                _sizeGripStyle = value;
+                base.SizeGripStyle = value;
+            }
+        }
+        private SizeGripStyle _sizeGripStyle;
 
 
         public Color TitleBarColor
@@ -174,7 +191,6 @@ namespace M2TWinForms
                 CloseButton.HoverBackColor = value;
             }
         }
-
 
         public Color TitleBarForegroundColor
         {
@@ -218,7 +234,7 @@ namespace M2TWinForms
 
             _originalTextLocation = LB_Title.Location;
             HasIcon = true;
-            CanResize = true;
+            SizeGripStyle = SizeGripStyle.Show;
             UseIconAsButton = false;
             WindowIconPadding = new Padding(3);
 
