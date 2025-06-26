@@ -131,8 +131,8 @@ namespace M2TWinForms
         private bool _canHoverMaximizeClose = true;
 
         [DefaultValue(true)]
-        public bool CanResize 
-        { 
+        public bool CanResize
+        {
             get
             {
                 IEnumerable<FormBorderStyle> resizableBorderStyles =
@@ -239,23 +239,8 @@ namespace M2TWinForms
             WindowIconPadding = new Padding(3);
 
             base.Load += BaseWindowBorderless_Load;
-            var resizingControls = new Control[]
-            {
-                this,
-                PN_DragPanel,
-                WindowImageButton,
-                MaximizeButton,
-                MinimizeButton,
-                CloseButton
-            };
-            foreach (var control in resizingControls)
-            {
-                control.MouseMove += BaseWindowBorderless_MouseMove;
-                control.MouseLeave += BaseWindowBorderless_MouseLeave;
-                control.MouseDown += BaseWindowBorderless_MouseDown;
-            }
-
             base.Resize += BorderlessForm_Resize;
+            AttachMouseResizeHandlersRecursively(this);
 
             PN_DragPanel.MouseDown += DraggingPanel_MouseDown;
             LB_Title.MouseDown += DraggingPanel_MouseDown;
@@ -396,7 +381,6 @@ namespace M2TWinForms
         {
             RefreshResizeDirCursor();
         }
-
         private void BaseWindowBorderless_MouseMove(object? sender, MouseEventArgs e)
         {
             RefreshResizeDirCursor();
@@ -469,20 +453,41 @@ namespace M2TWinForms
             }
         }
 
-
-        private void PerformMaximize()
+        private void BorderlessForm_ControlAdded(object? sender, ControlEventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
+            if (e.Control == null)
                 return;
-
-            SetCorrectedMaximizedBounds();
-            this.WindowState = FormWindowState.Maximized;
+            AttachMouseResizeHandlersRecursively(e.Control);
         }
-        private void SetCorrectedMaximizedBounds()
+        private void BorderlessForm_ControlRemoved(object? sender, ControlEventArgs e)
         {
-            var rect = Screen.FromHandle(this.Handle).WorkingArea;
-            var correctedRect = new Rectangle(0, 0, rect.Width - 1, rect.Height + 1);
-            this.MaximizedBounds = correctedRect;
+            if (e.Control == null)
+                return;
+            DetachMouseResizeHandlersRecursively(e.Control);
+        }
+        private void AttachMouseResizeHandlersRecursively(Control control)
+        {
+            control.MouseMove += BaseWindowBorderless_MouseMove;
+            control.MouseLeave += BaseWindowBorderless_MouseLeave;
+            control.MouseDown += BaseWindowBorderless_MouseDown;
+            foreach (Control child in control.Controls)
+            {
+                AttachMouseResizeHandlersRecursively(child);
+            }
+            control.ControlAdded += BorderlessForm_ControlAdded;
+            control.ControlRemoved += BorderlessForm_ControlRemoved;
+        }
+        private void DetachMouseResizeHandlersRecursively(Control control)
+        {
+            control.MouseMove -= BaseWindowBorderless_MouseMove;
+            control.MouseLeave -= BaseWindowBorderless_MouseLeave;
+            control.MouseDown -= BaseWindowBorderless_MouseDown;
+            foreach (Control child in control.Controls)
+            {
+                DetachMouseResizeHandlersRecursively(child);
+            }
+            control.ControlAdded -= BorderlessForm_ControlAdded;
+            control.ControlRemoved -= BorderlessForm_ControlRemoved;
         }
         #endregion
 
@@ -518,13 +523,11 @@ namespace M2TWinForms
                 WindowIconClicked?.Invoke(this, new EventArgs());
             }
         }
-
         private void CloseButton_Click(object? sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
         private void MinimizeButton_Click(object? sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -539,6 +542,21 @@ namespace M2TWinForms
                 PerformMaximize();
             else
                 this.WindowState = FormWindowState.Normal;
+        }
+
+        private void PerformMaximize()
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                return;
+
+            SetCorrectedMaximizedBounds();
+            this.WindowState = FormWindowState.Maximized;
+        }
+        private void SetCorrectedMaximizedBounds()
+        {
+            var rect = Screen.FromHandle(this.Handle).WorkingArea;
+            var correctedRect = new Rectangle(0, 0, rect.Width - 1, rect.Height + 1);
+            this.MaximizedBounds = correctedRect;
         }
 
         private FormWindowState? _previousWindowState;
@@ -563,5 +581,6 @@ namespace M2TWinForms
             MinimizeButton.Location = new Point(PN_DragPanel.Width - minimizeOffset, MinimizeButton.Location.Y);
         }
         #endregion
+
     }
 }

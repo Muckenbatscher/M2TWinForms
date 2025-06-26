@@ -137,6 +137,8 @@ namespace M2TWinForms
             Name = "BorderlessForm";
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterParent;
+            ControlAdded += BorderlessForm_ControlAdded;
+            ControlRemoved += BorderlessForm_ControlRemoved;
             PN_DragPanel.ResumeLayout(false);
             PN_DragPanel.PerformLayout();
             ResumeLayout(false);
