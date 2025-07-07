@@ -54,7 +54,6 @@
             TLP_Main.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             TLP_Main.Size = new Size(284, 95);
             TLP_Main.TabIndex = 14;
-            TLP_Main.Resize += tableLayoutPanel1_Resize;
             // 
             // LB_Message
             // 
@@ -119,7 +118,6 @@
             MinimizeBox = false;
             Name = "M2TMessageBoxDialog";
             Text = "M2TMessageBox";
-            Shown += M2TMessageBoxDialog_Shown;
             Controls.SetChildIndex(TLP_Main, 0);
             TLP_Main.ResumeLayout(false);
             TLP_Main.PerformLayout();
