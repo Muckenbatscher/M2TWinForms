@@ -117,6 +117,10 @@ namespace M2TWinForms
                 M2TButtonColorRoleSelection.ErrorContainer => ColorRoles.OnErrorContainer,
                 M2TButtonColorRoleSelection.Surface => ColorRoles.OnSurface,
                 M2TButtonColorRoleSelection.SurfaceContainer => ColorRoles.OnSurface,
+                M2TButtonColorRoleSelection.SurfaceContainerLowest => ColorRoles.OnSurface,
+                M2TButtonColorRoleSelection.SurfaceContainerLow => ColorRoles.OnSurface,
+                M2TButtonColorRoleSelection.SurfaceContainerHigh => ColorRoles.OnSurface,
+                M2TButtonColorRoleSelection.SurfaceContainerHighest => ColorRoles.OnSurface,
                 _ => throw new ArgumentException($"Unknown {nameof(M2TButtonColorRoleSelection)} value: {colorRole}"),
             };
         }
