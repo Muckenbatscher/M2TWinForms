@@ -8,7 +8,7 @@ namespace M2TWinForms
 {
     public partial class M2TForm : BorderlessForm, IThemedControl
     {
-        
+
         #region Color Roles
         [Description("The Material Design Color Role used for background of the form")]
         [Category("Material Design")]
@@ -91,7 +91,10 @@ namespace M2TWinForms
             TitleBarColorRole = M2TFormBackgroundRoleSelection.SurfaceContainerHigh;
             TitleBarButtonHoverColorRole = M2TFormBackgroundRoleSelection.SurfaceContainer;
             CloseButtonColorRole = M2TFormForegroundRoleSelection.Error;
+        }
 
+        private void M2TForm_Load(object sender, EventArgs e)
+        {
             ApplyCurrentLoadedTheme();
         }
 
@@ -134,6 +137,5 @@ namespace M2TWinForms
                 _ => throw new ArgumentException($"Could not map {nameof(M2TFormForegroundRoleSelection)}: {role}"),
             };
         }
-
     }
 }

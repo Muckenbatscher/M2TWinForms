@@ -32,8 +32,13 @@ namespace M2TWinForms
         private void InitializeComponent()
         {
             SuspendLayout();
+            // 
+            // M2TForm
+            // 
             AutoScaleMode = AutoScaleMode.None;
+            ClientSize = new Size(856, 439);
             Name = "M2TForm";
+            Load += M2TForm_Load;
             ResumeLayout(false);
         }
 

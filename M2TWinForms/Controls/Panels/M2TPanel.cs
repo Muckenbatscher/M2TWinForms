@@ -1,4 +1,5 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
+﻿using M2TWinForms.Helper;
+using M2TWinForms.Themes.MaterialDesign;
 using M2TWinForms.Themes.ThemeLoading;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,8 @@ namespace M2TWinForms
             }
             var backColorRole = GetMappedBackColorRole();   
             this.BackColor = CurrentLoadedThemeManager.GetColorForRole(backColorRole);
+
+            NestedControlThemeApplier.ApplyThemeForChildControls(this);
         }
 
         private ColorRoles GetMappedBackColorRole()
