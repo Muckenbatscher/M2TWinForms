@@ -117,9 +117,6 @@ namespace M2TWinForms
         private bool _canMaximize = true;
 
         [DefaultValue(true)]
-        public bool CanResize { get; set; } = true;
-
-        [DefaultValue(true)]
         public bool CanHoverControlBox
         {
             get => _canHoverMaximizeClose;
@@ -133,6 +130,22 @@ namespace M2TWinForms
         }
         private bool _canHoverMaximizeClose = true;
 
+        [DefaultValue(true)]
+        public bool CanResize
+        {
+            get
+            {
+                IEnumerable<FormBorderStyle> resizableBorderStyles =
+                [
+                    FormBorderStyle.Sizable,
+                    FormBorderStyle.SizableToolWindow
+                ];
+                bool resizableBorderStyle = resizableBorderStyles.Contains(FormBorderStyle);
+                bool resizableSizeGripStyle = SizeGripStyle == SizeGripStyle.Show;
+                return resizableBorderStyle && resizableSizeGripStyle;
+            }
+        }
+
         [DefaultValue(FormBorderStyle.Sizable)]
         public new FormBorderStyle FormBorderStyle
         {
@@ -140,12 +153,6 @@ namespace M2TWinForms
             set
             {
                 _formBorderStyle = value;
-                IEnumerable<FormBorderStyle> resizableBorderStyles =
-                [
-                    FormBorderStyle.Sizable,
-                    FormBorderStyle.SizableToolWindow
-                ];
-                CanResize = resizableBorderStyles.Contains(value);
                 if (value == FormBorderStyle.None)
                     PN_DragPanel.Size = new Size(PN_DragPanel.Width, 0);
                 else
@@ -154,13 +161,23 @@ namespace M2TWinForms
         }
         private FormBorderStyle _formBorderStyle;
 
+        [DefaultValue(SizeGripStyle.Show)]
+        public new SizeGripStyle SizeGripStyle
+        {
+            get => _sizeGripStyle;
+            set
+            {
+                _sizeGripStyle = value;
+                base.SizeGripStyle = value;
+            }
+        }
+        private SizeGripStyle _sizeGripStyle;
 
-        
 
         public Color TitleBarColor
         {
             get => PN_DragPanel.BackColor;
-            set =>  PN_DragPanel.BackColor = value;
+            set => PN_DragPanel.BackColor = value;
         }
 
         public Color TitleBarButtonHoverColor
@@ -174,7 +191,6 @@ namespace M2TWinForms
                 CloseButton.HoverBackColor = value;
             }
         }
-
 
         public Color TitleBarForegroundColor
         {
@@ -218,27 +234,13 @@ namespace M2TWinForms
 
             _originalTextLocation = LB_Title.Location;
             HasIcon = true;
+            SizeGripStyle = SizeGripStyle.Show;
             UseIconAsButton = false;
             WindowIconPadding = new Padding(3);
 
             base.Load += BaseWindowBorderless_Load;
-            var resizingControls = new Control[]
-            {
-                this,
-                PN_DragPanel,
-                WindowImageButton,
-                MaximizeButton,
-                MinimizeButton,
-                CloseButton
-            };
-            foreach (var control in resizingControls)
-            {
-                control.MouseMove += BaseWindowBorderless_MouseMove;
-                control.MouseLeave += BaseWindowBorderless_MouseLeave; 
-                control.MouseDown += BaseWindowBorderless_MouseDown;
-            }
-
             base.Resize += BorderlessForm_Resize;
+            AttachMouseResizeHandlersRecursively(this);
 
             PN_DragPanel.MouseDown += DraggingPanel_MouseDown;
             LB_Title.MouseDown += DraggingPanel_MouseDown;
@@ -261,43 +263,6 @@ namespace M2TWinForms
 
         #region Borderless Window
 
-
-        #region Drop Shadow
-        private bool aeroEnabled;
-        private void CheckAeroEnabled()
-        {
-            if (Environment.OSVersion.Version.Major >= 6)
-            {
-                int enabled = 0;
-                NativeMethods.DwmIsCompositionEnabled(ref enabled);
-                aeroEnabled = enabled == 1;
-            }
-            else
-            {
-                aeroEnabled = false;
-            }
-        }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CheckAeroEnabled();
-                CreateParams cp = base.CreateParams;
-                //drop shadow
-                if (!aeroEnabled)
-                    cp.ClassStyle = cp.ClassStyle | NativeConstants.CS_DROPSHADOW;
-
-                //minimize from taskbar
-                cp.Style = cp.Style | NativeConstants.WS_MINIMIZEBOX;
-                if (!this.DesignMode)
-                    cp.Style = cp.Style | NativeConstants.WS_THICKFRAME | NativeConstants.WS_CAPTION;
-
-                cp.ClassStyle = cp.ClassStyle | NativeConstants.CS_DBLCLKS;
-
-                return cp;
-            }
-        }
 
         protected override void WndProc(ref Message m)
         {
@@ -332,6 +297,44 @@ namespace M2TWinForms
                 return;
             }
             base.WndProc(ref m);
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CheckAeroEnabled();
+                CreateParams cp = base.CreateParams;
+                //drop shadow
+                if (!aeroEnabled)
+                    cp.ClassStyle = cp.ClassStyle | NativeConstants.CS_DROPSHADOW;
+
+                //minimize from taskbar
+                cp.Style = cp.Style | NativeConstants.WS_MINIMIZEBOX;
+                if (!this.DesignMode)
+                    cp.Style = cp.Style | NativeConstants.WS_THICKFRAME | NativeConstants.WS_CAPTION;
+
+                cp.ClassStyle = cp.ClassStyle | NativeConstants.CS_DBLCLKS;
+
+                return cp;
+            }
+        }
+
+
+        #region Drop Shadow
+        private bool aeroEnabled;
+        private void CheckAeroEnabled()
+        {
+            if (Environment.OSVersion.Version.Major >= 6)
+            {
+                int enabled = 0;
+                NativeMethods.DwmIsCompositionEnabled(ref enabled);
+                aeroEnabled = enabled == 1;
+            }
+            else
+            {
+                aeroEnabled = false;
+            }
         }
 
         #endregion
@@ -378,7 +381,6 @@ namespace M2TWinForms
         {
             RefreshResizeDirCursor();
         }
-
         private void BaseWindowBorderless_MouseMove(object? sender, MouseEventArgs e)
         {
             RefreshResizeDirCursor();
@@ -390,7 +392,7 @@ namespace M2TWinForms
                 ResizeDir = ResizeDirection.None;
                 return;
             }
-            
+
             Point mouseLocation = PointToClient(Cursor.Position);
 
             var borderWidthX = WindowBorderSystemMetrics.GetForX().Total;
@@ -451,20 +453,41 @@ namespace M2TWinForms
             }
         }
 
-
-        private void PerformMaximize()
+        private void BorderlessForm_ControlAdded(object? sender, ControlEventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
+            if (e.Control == null)
                 return;
-
-            SetCorrectedMaximizedBounds();
-            this.WindowState = FormWindowState.Maximized;
+            AttachMouseResizeHandlersRecursively(e.Control);
         }
-        private void SetCorrectedMaximizedBounds()
+        private void BorderlessForm_ControlRemoved(object? sender, ControlEventArgs e)
         {
-            var rect = Screen.FromHandle(this.Handle).WorkingArea;
-            var correctedRect = new Rectangle(0, 0, rect.Width - 1, rect.Height + 1);
-            this.MaximizedBounds = correctedRect;
+            if (e.Control == null)
+                return;
+            DetachMouseResizeHandlersRecursively(e.Control);
+        }
+        private void AttachMouseResizeHandlersRecursively(Control control)
+        {
+            control.MouseMove += BaseWindowBorderless_MouseMove;
+            control.MouseLeave += BaseWindowBorderless_MouseLeave;
+            control.MouseDown += BaseWindowBorderless_MouseDown;
+            foreach (Control child in control.Controls)
+            {
+                AttachMouseResizeHandlersRecursively(child);
+            }
+            control.ControlAdded += BorderlessForm_ControlAdded;
+            control.ControlRemoved += BorderlessForm_ControlRemoved;
+        }
+        private void DetachMouseResizeHandlersRecursively(Control control)
+        {
+            control.MouseMove -= BaseWindowBorderless_MouseMove;
+            control.MouseLeave -= BaseWindowBorderless_MouseLeave;
+            control.MouseDown -= BaseWindowBorderless_MouseDown;
+            foreach (Control child in control.Controls)
+            {
+                DetachMouseResizeHandlersRecursively(child);
+            }
+            control.ControlAdded -= BorderlessForm_ControlAdded;
+            control.ControlRemoved -= BorderlessForm_ControlRemoved;
         }
         #endregion
 
@@ -500,13 +523,11 @@ namespace M2TWinForms
                 WindowIconClicked?.Invoke(this, new EventArgs());
             }
         }
-
         private void CloseButton_Click(object? sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
         private void MinimizeButton_Click(object? sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -521,6 +542,21 @@ namespace M2TWinForms
                 PerformMaximize();
             else
                 this.WindowState = FormWindowState.Normal;
+        }
+
+        private void PerformMaximize()
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                return;
+
+            SetCorrectedMaximizedBounds();
+            this.WindowState = FormWindowState.Maximized;
+        }
+        private void SetCorrectedMaximizedBounds()
+        {
+            var rect = Screen.FromHandle(this.Handle).WorkingArea;
+            var correctedRect = new Rectangle(0, 0, rect.Width - 1, rect.Height + 1);
+            this.MaximizedBounds = correctedRect;
         }
 
         private FormWindowState? _previousWindowState;
@@ -545,5 +581,6 @@ namespace M2TWinForms
             MinimizeButton.Location = new Point(PN_DragPanel.Width - minimizeOffset, MinimizeButton.Location.Y);
         }
         #endregion
+
     }
 }

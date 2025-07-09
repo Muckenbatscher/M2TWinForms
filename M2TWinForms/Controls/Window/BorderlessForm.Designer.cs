@@ -32,10 +32,10 @@ namespace M2TWinForms
         {
             LB_Title = new Label();
             PN_DragPanel = new Panel();
-            MaximizeButton = new M2TWinForms.ColoredImageButton();
-            CloseButton = new M2TWinForms.ColoredImageButton();
-            MinimizeButton = new M2TWinForms.ColoredImageButton();
-            WindowImageButton = new M2TWinForms.ColoredImageButton();
+            MaximizeButton = new ColoredImageButton();
+            CloseButton = new ColoredImageButton();
+            MinimizeButton = new ColoredImageButton();
+            WindowImageButton = new ColoredImageButton();
             PN_DragPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,7 +69,10 @@ namespace M2TWinForms
             MaximizeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             MaximizeButton.BaseImage = Properties.Resources.Maximize;
             MaximizeButton.ConvertBaseImageToGrayscale = true;
+            MaximizeButton.HoverBackColor = Color.Empty;
             MaximizeButton.HoverEnabled = true;
+            MaximizeButton.HoverImageColor = Color.Empty;
+            MaximizeButton.ImageColor = Color.Empty;
             MaximizeButton.ImagePadding = new Padding(3);
             MaximizeButton.Location = new Point(768, 0);
             MaximizeButton.Name = "MaximizeButton";
@@ -82,7 +85,10 @@ namespace M2TWinForms
             CloseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             CloseButton.BaseImage = Properties.Resources.Close;
             CloseButton.ConvertBaseImageToGrayscale = true;
+            CloseButton.HoverBackColor = Color.Empty;
             CloseButton.HoverEnabled = true;
+            CloseButton.HoverImageColor = Color.Empty;
+            CloseButton.ImageColor = Color.Empty;
             CloseButton.ImagePadding = new Padding(0);
             CloseButton.Location = new Point(804, 0);
             CloseButton.Name = "CloseButton";
@@ -95,7 +101,10 @@ namespace M2TWinForms
             MinimizeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             MinimizeButton.BaseImage = Properties.Resources.Minimize;
             MinimizeButton.ConvertBaseImageToGrayscale = true;
+            MinimizeButton.HoverBackColor = Color.Empty;
             MinimizeButton.HoverEnabled = true;
+            MinimizeButton.HoverImageColor = Color.Empty;
+            MinimizeButton.ImageColor = Color.Empty;
             MinimizeButton.ImagePadding = new Padding(0, 2, 0, -2);
             MinimizeButton.Location = new Point(732, 0);
             MinimizeButton.Name = "MinimizeButton";
@@ -107,7 +116,10 @@ namespace M2TWinForms
             // 
             WindowImageButton.BaseImage = Properties.Resources.WindowIcon;
             WindowImageButton.ConvertBaseImageToGrayscale = false;
+            WindowImageButton.HoverBackColor = Color.Empty;
             WindowImageButton.HoverEnabled = true;
+            WindowImageButton.HoverImageColor = Color.Empty;
+            WindowImageButton.ImageColor = Color.Empty;
             WindowImageButton.ImagePadding = new Padding(0);
             WindowImageButton.Location = new Point(5, 0);
             WindowImageButton.Name = "WindowImageButton";
@@ -125,6 +137,8 @@ namespace M2TWinForms
             Name = "BorderlessForm";
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterParent;
+            ControlAdded += BorderlessForm_ControlAdded;
+            ControlRemoved += BorderlessForm_ControlRemoved;
             PN_DragPanel.ResumeLayout(false);
             PN_DragPanel.PerformLayout();
             ResumeLayout(false);

@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            M2TDataGridViewCellStyle m2tDataGridViewCellStyle1 = new M2TDataGridViewCellStyle();
-            M2TDataGridViewCellStyle m2tDataGridViewCellStyle2 = new M2TDataGridViewCellStyle();
-            M2TDataGridViewCellStyle m2tDataGridViewCellStyle3 = new M2TDataGridViewCellStyle();
-            M2TDataGridViewCellStyle m2tDataGridViewCellStyle4 = new M2TDataGridViewCellStyle();
-            M2TDataGridViewCellStyle m2tDataGridViewCellStyle5 = new M2TDataGridViewCellStyle();
             m2tLabel1 = new M2TLabel();
             m2tLabel2 = new M2TLabel();
             m2tLabel3 = new M2TLabel();
@@ -90,34 +85,33 @@
             m2tPanel10 = new M2TPanel();
             m2tLabel19 = new M2TLabel();
             m2tLabel20 = new M2TLabel();
-            m2tButton15 = new M2TButton();
             m2tNumericUpDown1 = new M2TNumericUpDown();
-            m2tDataGridView1 = new M2TDataGridView();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewButtonColumn();
-            Column2 = new DataGridViewCheckBoxColumn();
+            m2tButton16 = new M2TButton();
+            m2tButton17 = new M2TButton();
+            m2tButton18 = new M2TButton();
+            m2tLabel21 = new M2TLabel();
+            m2tLabel22 = new M2TLabel();
+            TB_MessageText = new M2TTextBox();
+            m2tButton19 = new M2TButton();
+            m2tButton20 = new M2TButton();
+            m2tPanel11 = new M2TPanel();
+            m2tPanel12 = new M2TPanel();
+            m2tPanel13 = new M2TPanel();
+            m2tPanel14 = new M2TPanel();
             m2tNumericUpDown2 = new M2TNumericUpDown();
             m2tNumericUpDown3 = new M2TNumericUpDown();
             m2tNumericUpDown4 = new M2TNumericUpDown();
             m2tNumericUpDown5 = new M2TNumericUpDown();
-            m2tNumericUpDown6 = new M2TNumericUpDown();
-            dataGridView1 = new DataGridView();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewButtonColumn();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
             m2tPanel9.SuspendLayout();
             m2tPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)m2tDataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // m2tLabel1
@@ -154,7 +148,7 @@
             // 
             m2tLabel4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             m2tLabel4.AutoSize = true;
-            m2tLabel4.Location = new Point(1041, 214);
+            m2tLabel4.Location = new Point(1086, 511);
             m2tLabel4.Name = "m2tLabel4";
             m2tLabel4.Size = new Size(62, 15);
             m2tLabel4.TabIndex = 21;
@@ -298,7 +292,7 @@
             // 
             m2tLabel6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             m2tLabel6.AutoSize = true;
-            m2tLabel6.Location = new Point(353, 766);
+            m2tLabel6.Location = new Point(353, 591);
             m2tLabel6.Name = "m2tLabel6";
             m2tLabel6.Size = new Size(62, 15);
             m2tLabel6.TabIndex = 38;
@@ -456,7 +450,7 @@
             // m2tPanel1
             // 
             m2tPanel1.ColorRole = M2TPanelColorRoleSelection.SurfaceContainerLowest;
-            m2tPanel1.Location = new Point(312, 294);
+            m2tPanel1.Location = new Point(296, 326);
             m2tPanel1.Name = "m2tPanel1";
             m2tPanel1.Size = new Size(31, 100);
             m2tPanel1.TabIndex = 55;
@@ -464,7 +458,7 @@
             // m2tPanel2
             // 
             m2tPanel2.ColorRole = M2TPanelColorRoleSelection.SurfaceContainerLow;
-            m2tPanel2.Location = new Point(349, 294);
+            m2tPanel2.Location = new Point(333, 326);
             m2tPanel2.Name = "m2tPanel2";
             m2tPanel2.Size = new Size(31, 100);
             m2tPanel2.TabIndex = 56;
@@ -472,7 +466,7 @@
             // m2tPanel3
             // 
             m2tPanel3.ColorRole = M2TPanelColorRoleSelection.SurfaceContainerHigh;
-            m2tPanel3.Location = new Point(423, 294);
+            m2tPanel3.Location = new Point(407, 326);
             m2tPanel3.Name = "m2tPanel3";
             m2tPanel3.Size = new Size(31, 100);
             m2tPanel3.TabIndex = 57;
@@ -480,7 +474,7 @@
             // m2tPanel4
             // 
             m2tPanel4.ColorRole = M2TPanelColorRoleSelection.SurfaceContainerHighest;
-            m2tPanel4.Location = new Point(460, 294);
+            m2tPanel4.Location = new Point(444, 326);
             m2tPanel4.Name = "m2tPanel4";
             m2tPanel4.Size = new Size(31, 100);
             m2tPanel4.TabIndex = 56;
@@ -488,7 +482,7 @@
             // m2tPanel5
             // 
             m2tPanel5.ColorRole = M2TPanelColorRoleSelection.SurfaceContainer;
-            m2tPanel5.Location = new Point(386, 294);
+            m2tPanel5.Location = new Point(370, 326);
             m2tPanel5.Name = "m2tPanel5";
             m2tPanel5.Size = new Size(31, 100);
             m2tPanel5.TabIndex = 57;
@@ -498,7 +492,7 @@
             m2tPanel6.ColorRole = M2TPanelColorRoleSelection.PrimaryContainer;
             m2tPanel6.Controls.Add(m2tLabel12);
             m2tPanel6.Controls.Add(m2tLabel11);
-            m2tPanel6.Location = new Point(28, 407);
+            m2tPanel6.Location = new Point(544, 214);
             m2tPanel6.Name = "m2tPanel6";
             m2tPanel6.Size = new Size(159, 153);
             m2tPanel6.TabIndex = 58;
@@ -529,7 +523,7 @@
             m2tPanel7.ColorRole = M2TPanelColorRoleSelection.SecondaryContainer;
             m2tPanel7.Controls.Add(m2tLabel13);
             m2tPanel7.Controls.Add(m2tLabel14);
-            m2tPanel7.Location = new Point(193, 407);
+            m2tPanel7.Location = new Point(709, 214);
             m2tPanel7.Name = "m2tPanel7";
             m2tPanel7.Size = new Size(159, 153);
             m2tPanel7.TabIndex = 59;
@@ -560,7 +554,7 @@
             m2tPanel8.ColorRole = M2TPanelColorRoleSelection.ErrorContainer;
             m2tPanel8.Controls.Add(m2tLabel15);
             m2tPanel8.Controls.Add(m2tLabel16);
-            m2tPanel8.Location = new Point(193, 566);
+            m2tPanel8.Location = new Point(709, 373);
             m2tPanel8.Name = "m2tPanel8";
             m2tPanel8.Size = new Size(159, 153);
             m2tPanel8.TabIndex = 61;
@@ -591,7 +585,7 @@
             m2tPanel9.ColorRole = M2TPanelColorRoleSelection.TertiaryContainer;
             m2tPanel9.Controls.Add(m2tLabel17);
             m2tPanel9.Controls.Add(m2tLabel18);
-            m2tPanel9.Location = new Point(28, 566);
+            m2tPanel9.Location = new Point(544, 373);
             m2tPanel9.Name = "m2tPanel9";
             m2tPanel9.Size = new Size(159, 153);
             m2tPanel9.TabIndex = 60;
@@ -622,9 +616,9 @@
             m2tPanel10.ColorRole = M2TPanelColorRoleSelection.SurfaceContainer;
             m2tPanel10.Controls.Add(m2tLabel19);
             m2tPanel10.Controls.Add(m2tLabel20);
-            m2tPanel10.Location = new Point(358, 407);
+            m2tPanel10.Location = new Point(100, 373);
             m2tPanel10.Name = "m2tPanel10";
-            m2tPanel10.Size = new Size(159, 312);
+            m2tPanel10.Size = new Size(159, 153);
             m2tPanel10.TabIndex = 62;
             // 
             // m2tLabel19
@@ -633,7 +627,7 @@
             m2tLabel19.ForeColorRole = M2TLabelTextColorRoleSelection.OnSurfaceVariant;
             m2tLabel19.Location = new Point(19, 38);
             m2tLabel19.Name = "m2tLabel19";
-            m2tLabel19.Size = new Size(122, 266);
+            m2tLabel19.Size = new Size(122, 107);
             m2tLabel19.TabIndex = 1;
             m2tLabel19.Text = resources.GetString("m2tLabel19.Text");
             // 
@@ -647,161 +641,177 @@
             m2tLabel20.TabIndex = 0;
             m2tLabel20.Text = "m2tLabel20";
             // 
-            // m2tButton15
-            // 
-            m2tButton15.ColorRole = M2TButtonColorRoleSelection.PrimaryContainer;
-            m2tButton15.Location = new Point(692, 164);
-            m2tButton15.Name = "m2tButton15";
-            m2tButton15.Size = new Size(75, 23);
-            m2tButton15.TabIndex = 63;
-            m2tButton15.Text = "m2tButton15";
-            // 
             // m2tNumericUpDown1
             // 
             m2tNumericUpDown1.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.SurfaceContainer;
-            m2tNumericUpDown1.Location = new Point(938, 75);
+            m2tNumericUpDown1.Location = new Point(812, 75);
             m2tNumericUpDown1.Name = "m2tNumericUpDown1";
             m2tNumericUpDown1.Size = new Size(120, 23);
             m2tNumericUpDown1.TabIndex = 64;
             // 
-            // m2tDataGridView1
+            // m2tButton16
             // 
-            m2tDataGridView1.AllowUserToResizeRows = false;
-            m2tDataGridViewCellStyle1.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
-            m2tDataGridViewCellStyle1.SelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
-            m2tDataGridView1.AlternatingRowsDefaultCellStyle = m2tDataGridViewCellStyle1;
-            m2tDataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            m2tDataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            m2tDataGridViewCellStyle2.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHigh;
-            m2tDataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            m2tDataGridViewCellStyle2.Padding = new Padding(0, 2, 0, 2);
-            m2tDataGridViewCellStyle2.SelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
-            m2tDataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            m2tDataGridView1.ColumnHeadersDefaultCellStyle = m2tDataGridViewCellStyle2;
-            m2tDataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            m2tDataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column3, Column4, Column1, Column2 });
-            m2tDataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            m2tDataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            m2tDataGridViewCellStyle3.SelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Tertiary;
-            m2tDataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            m2tDataGridView1.DefaultCellStyle = m2tDataGridViewCellStyle3;
-            m2tDataGridView1.DefaultCellStyleSelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Tertiary;
-            m2tDataGridView1.Location = new Point(561, 265);
-            m2tDataGridView1.Name = "m2tDataGridView1";
-            m2tDataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            m2tDataGridViewCellStyle4.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.SurfaceContainerHigh;
-            m2tDataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            m2tDataGridViewCellStyle4.SelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
-            m2tDataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            m2tDataGridView1.RowHeadersDefaultCellStyle = m2tDataGridViewCellStyle4;
-            m2tDataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            m2tDataGridViewCellStyle5.ColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
-            m2tDataGridViewCellStyle5.SelectionColorRole = M2TDataGridViewCellStyleColorRoleSelection.Empty;
-            m2tDataGridView1.RowsDefaultCellStyle = m2tDataGridViewCellStyle5;
-            m2tDataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            m2tDataGridView1.Size = new Size(497, 259);
-            m2tDataGridView1.TabIndex = 67;
-            m2tDataGridView1.CellContentClick += m2tDataGridView1_CellContentClick;
+            m2tButton16.Location = new Point(915, 283);
+            m2tButton16.Name = "m2tButton16";
+            m2tButton16.Size = new Size(75, 23);
+            m2tButton16.TabIndex = 65;
+            m2tButton16.Text = "None";
+            m2tButton16.Click += m2tButton16_Click;
             // 
-            // Column3
+            // m2tButton17
             // 
-            Column3.HeaderText = "Column3";
-            Column3.Name = "Column3";
+            m2tButton17.ColorRole = M2TButtonColorRoleSelection.SecondaryContainer;
+            m2tButton17.Location = new Point(996, 283);
+            m2tButton17.Name = "m2tButton17";
+            m2tButton17.Size = new Size(75, 23);
+            m2tButton17.TabIndex = 66;
+            m2tButton17.Text = "Info";
+            m2tButton17.Click += m2tButton17_Click;
             // 
-            // Column4
+            // m2tButton18
             // 
-            Column4.HeaderText = "Column4";
-            Column4.Name = "Column4";
+            m2tButton18.ColorRole = M2TButtonColorRoleSelection.PrimaryContainer;
+            m2tButton18.Location = new Point(915, 341);
+            m2tButton18.Name = "m2tButton18";
+            m2tButton18.Size = new Size(75, 23);
+            m2tButton18.TabIndex = 67;
+            m2tButton18.Text = "Warning";
+            m2tButton18.Click += m2tButton18_Click;
             // 
-            // Column1
+            // m2tLabel21
             // 
-            Column1.HeaderText = "Column1";
-            Column1.Name = "Column1";
+            m2tLabel21.AutoSize = true;
+            m2tLabel21.Location = new Point(915, 265);
+            m2tLabel21.Name = "m2tLabel21";
+            m2tLabel21.Size = new Size(104, 15);
+            m2tLabel21.TabIndex = 68;
+            m2tLabel21.Text = "Message Box Icon:";
             // 
-            // Column2
+            // m2tLabel22
             // 
-            Column2.HeaderText = "Column2";
-            Column2.Name = "Column2";
+            m2tLabel22.AutoSize = true;
+            m2tLabel22.Location = new Point(915, 186);
+            m2tLabel22.Name = "m2tLabel22";
+            m2tLabel22.Size = new Size(102, 15);
+            m2tLabel22.TabIndex = 69;
+            m2tLabel22.Text = "Message Box Text:";
+            // 
+            // TB_MessageText
+            // 
+            TB_MessageText.ColorRole = M2TTextBoxColorRoleSelection.SurfaceContainerLowest;
+            TB_MessageText.Location = new Point(915, 204);
+            TB_MessageText.Multiline = true;
+            TB_MessageText.Name = "TB_MessageText";
+            TB_MessageText.Size = new Size(219, 54);
+            TB_MessageText.TabIndex = 70;
+            TB_MessageText.Text = "Some Sample Message Box Text.\r\nAlso with multiple lines.\r\nLike this.\r\nAnd another one.";
+            // 
+            // m2tButton19
+            // 
+            m2tButton19.ColorRole = M2TButtonColorRoleSelection.ErrorContainer;
+            m2tButton19.Location = new Point(996, 341);
+            m2tButton19.Name = "m2tButton19";
+            m2tButton19.Size = new Size(75, 23);
+            m2tButton19.TabIndex = 71;
+            m2tButton19.Text = "Error";
+            m2tButton19.Click += m2tButton19_Click;
+            // 
+            // m2tButton20
+            // 
+            m2tButton20.ColorRole = M2TButtonColorRoleSelection.TertiaryContainer;
+            m2tButton20.Location = new Point(915, 312);
+            m2tButton20.Name = "m2tButton20";
+            m2tButton20.Size = new Size(75, 23);
+            m2tButton20.TabIndex = 72;
+            m2tButton20.Text = "Question";
+            m2tButton20.Click += m2tButton20_Click;
+            // 
+            // m2tPanel11
+            // 
+            m2tPanel11.ColorRole = M2TPanelColorRoleSelection.Primary;
+            m2tPanel11.Location = new Point(891, 446);
+            m2tPanel11.Name = "m2tPanel11";
+            m2tPanel11.Size = new Size(50, 50);
+            m2tPanel11.TabIndex = 59;
+            // 
+            // m2tPanel12
+            // 
+            m2tPanel12.ColorRole = M2TPanelColorRoleSelection.Secondary;
+            m2tPanel12.Location = new Point(947, 446);
+            m2tPanel12.Name = "m2tPanel12";
+            m2tPanel12.Size = new Size(50, 50);
+            m2tPanel12.TabIndex = 60;
+            // 
+            // m2tPanel13
+            // 
+            m2tPanel13.ColorRole = M2TPanelColorRoleSelection.Tertiary;
+            m2tPanel13.Location = new Point(891, 502);
+            m2tPanel13.Name = "m2tPanel13";
+            m2tPanel13.Size = new Size(50, 50);
+            m2tPanel13.TabIndex = 61;
+            // 
+            // m2tPanel14
+            // 
+            m2tPanel14.ColorRole = M2TPanelColorRoleSelection.Error;
+            m2tPanel14.Location = new Point(947, 502);
+            m2tPanel14.Name = "m2tPanel14";
+            m2tPanel14.Size = new Size(50, 50);
+            m2tPanel14.TabIndex = 62;
             // 
             // m2tNumericUpDown2
             // 
-            m2tNumericUpDown2.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.Primary;
-            m2tNumericUpDown2.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnPrimary;
+            m2tNumericUpDown2.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.PrimaryContainer;
             m2tNumericUpDown2.Location = new Point(812, 104);
             m2tNumericUpDown2.Name = "m2tNumericUpDown2";
             m2tNumericUpDown2.Size = new Size(120, 23);
-            m2tNumericUpDown2.TabIndex = 68;
+            m2tNumericUpDown2.TabIndex = 73;
             // 
             // m2tNumericUpDown3
             // 
-            m2tNumericUpDown3.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.PrimaryContainer;
-            m2tNumericUpDown3.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnPrimaryContainer;
-            m2tNumericUpDown3.Location = new Point(812, 133);
+            m2tNumericUpDown3.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.SecondaryContainer;
+            m2tNumericUpDown3.Location = new Point(938, 104);
             m2tNumericUpDown3.Name = "m2tNumericUpDown3";
             m2tNumericUpDown3.Size = new Size(120, 23);
-            m2tNumericUpDown3.TabIndex = 69;
+            m2tNumericUpDown3.TabIndex = 74;
             // 
             // m2tNumericUpDown4
             // 
             m2tNumericUpDown4.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.TertiaryContainer;
-            m2tNumericUpDown4.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnTertiaryContainer;
-            m2tNumericUpDown4.Location = new Point(938, 133);
+            m2tNumericUpDown4.Location = new Point(812, 133);
             m2tNumericUpDown4.Name = "m2tNumericUpDown4";
             m2tNumericUpDown4.Size = new Size(120, 23);
-            m2tNumericUpDown4.TabIndex = 71;
+            m2tNumericUpDown4.TabIndex = 75;
             // 
             // m2tNumericUpDown5
             // 
-            m2tNumericUpDown5.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.Tertiary;
-            m2tNumericUpDown5.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnTertiary;
-            m2tNumericUpDown5.Location = new Point(938, 104);
+            m2tNumericUpDown5.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.ErrorContainer;
+            m2tNumericUpDown5.Location = new Point(938, 133);
             m2tNumericUpDown5.Name = "m2tNumericUpDown5";
             m2tNumericUpDown5.Size = new Size(120, 23);
-            m2tNumericUpDown5.TabIndex = 70;
-            // 
-            // m2tNumericUpDown6
-            // 
-            m2tNumericUpDown6.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnSurfaceVariant;
-            m2tNumericUpDown6.Location = new Point(812, 75);
-            m2tNumericUpDown6.Name = "m2tNumericUpDown6";
-            m2tNumericUpDown6.Size = new Size(120, 23);
-            m2tNumericUpDown6.TabIndex = 72;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column5, Column6 });
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.Location = new Point(571, 558);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(451, 150);
-            dataGridView1.TabIndex = 73;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Column5";
-            Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Column6";
-            Column6.Name = "Column6";
+            m2tNumericUpDown5.TabIndex = 76;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1103, 780);
-            Controls.Add(dataGridView1);
-            Controls.Add(m2tNumericUpDown6);
-            Controls.Add(m2tNumericUpDown4);
+            ClientSize = new Size(1146, 605);
             Controls.Add(m2tNumericUpDown5);
+            Controls.Add(m2tNumericUpDown4);
             Controls.Add(m2tNumericUpDown3);
             Controls.Add(m2tNumericUpDown2);
-            Controls.Add(m2tDataGridView1);
+            Controls.Add(m2tPanel14);
+            Controls.Add(m2tPanel13);
+            Controls.Add(m2tPanel12);
+            Controls.Add(m2tPanel11);
+            Controls.Add(m2tButton20);
+            Controls.Add(m2tButton19);
+            Controls.Add(TB_MessageText);
+            Controls.Add(m2tLabel22);
+            Controls.Add(m2tLabel21);
+            Controls.Add(m2tButton18);
+            Controls.Add(m2tButton17);
+            Controls.Add(m2tButton16);
             Controls.Add(m2tNumericUpDown1);
-            Controls.Add(m2tButton15);
             Controls.Add(m2tPanel10);
             Controls.Add(m2tPanel8);
             Controls.Add(m2tPanel9);
@@ -896,15 +906,23 @@
             Controls.SetChildIndex(m2tPanel9, 0);
             Controls.SetChildIndex(m2tPanel8, 0);
             Controls.SetChildIndex(m2tPanel10, 0);
-            Controls.SetChildIndex(m2tButton15, 0);
             Controls.SetChildIndex(m2tNumericUpDown1, 0);
-            Controls.SetChildIndex(m2tDataGridView1, 0);
+            Controls.SetChildIndex(m2tButton16, 0);
+            Controls.SetChildIndex(m2tButton17, 0);
+            Controls.SetChildIndex(m2tButton18, 0);
+            Controls.SetChildIndex(m2tLabel21, 0);
+            Controls.SetChildIndex(m2tLabel22, 0);
+            Controls.SetChildIndex(TB_MessageText, 0);
+            Controls.SetChildIndex(m2tButton19, 0);
+            Controls.SetChildIndex(m2tButton20, 0);
+            Controls.SetChildIndex(m2tPanel11, 0);
+            Controls.SetChildIndex(m2tPanel12, 0);
+            Controls.SetChildIndex(m2tPanel13, 0);
+            Controls.SetChildIndex(m2tPanel14, 0);
             Controls.SetChildIndex(m2tNumericUpDown2, 0);
             Controls.SetChildIndex(m2tNumericUpDown3, 0);
-            Controls.SetChildIndex(m2tNumericUpDown5, 0);
             Controls.SetChildIndex(m2tNumericUpDown4, 0);
-            Controls.SetChildIndex(m2tNumericUpDown6, 0);
-            Controls.SetChildIndex(dataGridView1, 0);
+            Controls.SetChildIndex(m2tNumericUpDown5, 0);
             m2tPanel6.ResumeLayout(false);
             m2tPanel6.PerformLayout();
             m2tPanel7.ResumeLayout(false);
@@ -916,13 +934,10 @@
             m2tPanel10.ResumeLayout(false);
             m2tPanel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)m2tDataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown3).EndInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown4).EndInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -984,20 +999,22 @@
         private M2TPanel m2tPanel10;
         private M2TLabel m2tLabel19;
         private M2TLabel m2tLabel20;
-        private M2TButton m2tButton15;
         private M2TNumericUpDown m2tNumericUpDown1;
-        private M2TDataGridView m2tDataGridView1;
+        private M2TButton m2tButton16;
+        private M2TButton m2tButton17;
+        private M2TButton m2tButton18;
+        private M2TLabel m2tLabel21;
+        private M2TLabel m2tLabel22;
+        private M2TTextBox TB_MessageText;
+        private M2TButton m2tButton19;
+        private M2TButton m2tButton20;
+        private M2TPanel m2tPanel11;
+        private M2TPanel m2tPanel12;
+        private M2TPanel m2tPanel13;
+        private M2TPanel m2tPanel14;
         private M2TNumericUpDown m2tNumericUpDown2;
         private M2TNumericUpDown m2tNumericUpDown3;
         private M2TNumericUpDown m2tNumericUpDown4;
         private M2TNumericUpDown m2tNumericUpDown5;
-        private M2TNumericUpDown m2tNumericUpDown6;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewButtonColumn Column6;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewButtonColumn Column1;
-        private DataGridViewCheckBoxColumn Column2;
     }
 }
