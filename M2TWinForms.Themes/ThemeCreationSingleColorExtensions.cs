@@ -37,7 +37,6 @@ namespace M2TWinForms.Themes
                 Neutral = neutralColorHct.GetColor(),
                 NeutralVariant = neutralVariantColorHct.GetColor()
             };
-
             return Theme.CreateFromCoreColors(coreColors, mode, contrastLevel, true);
         }
     }
