@@ -13,8 +13,9 @@ namespace M2TWinForms.Themes.DefaultThemeProviders
         public Theme CreateTheme()
         {
             var colors = CreateThemeColors();
-            return Theme.CreateFromThemeColors(colors);
+            return Theme.CreateFromThemeColors(IsDark, colors);
         }
         protected abstract IThemeColors CreateThemeColors();
+        protected abstract bool IsDark { get; }
     }
 }
