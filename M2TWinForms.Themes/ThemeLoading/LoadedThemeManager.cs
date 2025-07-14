@@ -11,12 +11,12 @@ namespace M2TWinForms.Themes.ThemeLoading
     public class LoadedThemeManager
     {
         public Theme? CurrentLoadedTheme { get; private set; }
-        public bool IsThemeLoaded { get => CurrentLoadedTheme != null; }
+        public bool IsThemeLoaded 
+            => CurrentLoadedTheme != null; 
 
         public void LoadTheme(Theme theme)
         {
-            if (theme == null)
-                throw new ArgumentNullException(nameof(theme));
+            ArgumentNullException.ThrowIfNull(theme, nameof(theme));
 
             CurrentLoadedTheme = theme;
         }
@@ -56,5 +56,8 @@ namespace M2TWinForms.Themes.ThemeLoading
                 _ => throw new ArgumentException("Invalid color role", nameof(role)),
             };
         }
+
+        public bool IsDarkTheme() 
+            => CurrentLoadedTheme!.IsDark;
     }
 }
