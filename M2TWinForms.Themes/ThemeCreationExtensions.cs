@@ -13,7 +13,7 @@ namespace M2TWinForms.Themes
 {
     public partial class Theme
     {
-        public static Theme CreateFromThemeColors(IThemeColors themeColors)
+        public static Theme CreateFromThemeColors(bool isDark, IThemeColors themeColors)
         {
             var colors = new ThemeColors()
             {
@@ -42,7 +42,11 @@ namespace M2TWinForms.Themes
                 OnSurface = themeColors.OnSurface,
                 OnSurfaceVariant = themeColors.OnSurfaceVariant
             };
-            return new Theme() { Colors = colors };
+            return new Theme() 
+            { 
+                Colors = colors,
+                IsDark = isDark,
+            };
         }
 
     }

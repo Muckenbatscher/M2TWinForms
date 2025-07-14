@@ -85,7 +85,12 @@ namespace M2TWinForms.Themes
                 OnSurfaceVariant = neutralVariantPalette.GetHctForTone(surfaceVariantForegroundTone).GetColor()
             };
 
-            return new Theme() { Colors = colors };
+            bool isDark = mode == ThemeMode.Dark;
+            return new Theme() 
+            { 
+                Colors = colors,
+                IsDark = isDark,
+            };
         }
 
         private static double GetTone(ThemeMode mode, ContrastLevel contrastLevel, bool isBackground)
