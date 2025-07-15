@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
@@ -12,14 +13,14 @@ namespace M2TWinForms.Helper
         public static void DrawImageWithColor(Image image, Color color, Padding padding, Control control, PaintEventArgs e)
         {
             if (image == null)
-            {
                 image = new Bitmap(1, 1);
-            }
             var colorMatrix = GetTransformationMatrix(color);
             var imageattributes = new ImageAttributes();
             imageattributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
             var destinationRectangle = GetZoomedDestinationRectangle(control.Size, image.Size, padding);
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
+            e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
             e.Graphics.DrawImage(image, destinationRectangle, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, imageattributes);
             GC.Collect();
         }

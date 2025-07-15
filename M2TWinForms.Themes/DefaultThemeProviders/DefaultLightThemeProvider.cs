@@ -11,6 +11,8 @@ namespace M2TWinForms.Themes.DefaultThemeProviders
 {
     public class DefaultLightThemeProvider : DefaultThemeProvider
     {
+        protected override bool IsDark => true;
+
         protected override IThemeColors CreateThemeColors()
         {
             return new ThemeColors

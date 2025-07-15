@@ -14,10 +14,8 @@ namespace M2TWinForms.Themes.ThemeLoading
         private static LoadedThemeManager? _themeManagerInstance;
         private static LoadedThemeManager GetLoadedThemeManagerInstance()
         {
-            if (_themeManagerInstance == null)
-            {
-                _themeManagerInstance = new LoadedThemeManager();
-            }
+            _themeManagerInstance ??= new LoadedThemeManager();
+
             if (!_themeManagerInstance.IsThemeLoaded)
             {
                 var provider = new DefaultLightThemeProvider();

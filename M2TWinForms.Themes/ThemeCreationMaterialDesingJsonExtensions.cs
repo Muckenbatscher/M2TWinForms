@@ -38,7 +38,12 @@ namespace M2TWinForms.Themes
                 throw new ArgumentException($"The requested combination of {nameof(ThemeMode)}: {mode} and {nameof(ContrastLevel)}: {contrastLevel} was not present in the supplied JSON content.");
 
             var themeColors = converter.ConvertFromThemeBuilder(selectedScheme);
-            return new Theme() { Colors = themeColors };
+            bool isDark = mode == ThemeMode.Dark;
+            return new Theme()
+            {
+                Colors = themeColors,
+                IsDark = isDark,
+            };
         }
 
         public static Theme CreateFromMaterialDesignJson(FileInfo materialDesignJsonFile, ThemeMode mode, ContrastLevel contrastLevel)
