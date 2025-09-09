@@ -102,6 +102,8 @@
             m2tNumericUpDown3 = new M2TNumericUpDown();
             m2tNumericUpDown4 = new M2TNumericUpDown();
             m2tNumericUpDown5 = new M2TNumericUpDown();
+            m2tCheckBox1 = new M2TCheckBox();
+            m2tCheckBox2 = new M2TCheckBox();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
@@ -790,11 +792,37 @@
             m2tNumericUpDown5.Size = new Size(120, 23);
             m2tNumericUpDown5.TabIndex = 76;
             // 
+            // m2tCheckBox1
+            // 
+            m2tCheckBox1.AutoSize = true;
+            m2tCheckBox1.BoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxBoxColorRoleSelection.Primary;
+            m2tCheckBox1.Checked = true;
+            m2tCheckBox1.CheckState = CheckState.Indeterminate;
+            m2tCheckBox1.Location = new Point(299, 457);
+            m2tCheckBox1.Name = "m2tCheckBox1";
+            m2tCheckBox1.Size = new Size(105, 19);
+            m2tCheckBox1.TabIndex = 79;
+            m2tCheckBox1.Text = "m2tCheckBox1";
+            m2tCheckBox1.ThreeState = true;
+            m2tCheckBox1.UseVisualStyleBackColor = true;
+            // 
+            // m2tCheckBox2
+            // 
+            m2tCheckBox2.AutoSize = true;
+            m2tCheckBox2.Location = new Point(299, 496);
+            m2tCheckBox2.Name = "m2tCheckBox2";
+            m2tCheckBox2.Size = new Size(105, 19);
+            m2tCheckBox2.TabIndex = 80;
+            m2tCheckBox2.Text = "m2tCheckBox2";
+            m2tCheckBox2.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1146, 605);
+            Controls.Add(m2tCheckBox2);
+            Controls.Add(m2tCheckBox1);
             Controls.Add(m2tNumericUpDown5);
             Controls.Add(m2tNumericUpDown4);
             Controls.Add(m2tNumericUpDown3);
@@ -923,6 +951,8 @@
             Controls.SetChildIndex(m2tNumericUpDown3, 0);
             Controls.SetChildIndex(m2tNumericUpDown4, 0);
             Controls.SetChildIndex(m2tNumericUpDown5, 0);
+            Controls.SetChildIndex(m2tCheckBox1, 0);
+            Controls.SetChildIndex(m2tCheckBox2, 0);
             m2tPanel6.ResumeLayout(false);
             m2tPanel6.PerformLayout();
             m2tPanel7.ResumeLayout(false);
@@ -1016,5 +1046,7 @@
         private M2TNumericUpDown m2tNumericUpDown3;
         private M2TNumericUpDown m2tNumericUpDown4;
         private M2TNumericUpDown m2tNumericUpDown5;
+        private M2TCheckBox m2tCheckBox1;
+        private M2TCheckBox m2tCheckBox2;
     }
 }
