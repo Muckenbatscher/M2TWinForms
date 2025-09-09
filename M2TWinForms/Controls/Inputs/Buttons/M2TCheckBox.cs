@@ -70,6 +70,20 @@ namespace M2TWinForms
         }
         private M2TCheckBoxBoxColorRoleSelection _boxColorRole = M2TCheckBoxBoxColorRoleSelection.OnSurfaceVariant;
 
+        [Description("The Material Design Color Role used for the background of the CheckBox")]
+        [Category("Material Design")]
+        [DefaultValue(M2TCheckBoxOnBoxColorRoleSelection.Transparent)]
+        public M2TCheckBoxOnBoxColorRoleSelection OnBoxColorRole
+        {
+            get => _onBoxColorRole;
+            set
+            {
+                _onBoxColorRole = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        private M2TCheckBoxOnBoxColorRoleSelection _onBoxColorRole = M2TCheckBoxOnBoxColorRoleSelection.Transparent;
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new FlatButtonAppearance FlatAppearance
         {
@@ -103,7 +117,7 @@ namespace M2TWinForms
             this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(mappedForeColorRole);
             var mappedBoxColorRole = GetMappedBoxColorRole();
             this.BoxColor = CurrentLoadedThemeManager.GetColorForRole(mappedBoxColorRole);
-            if (BoxColorRole == M2TCheckBoxBoxColorRoleSelection.OnSurface || BoxColorRole == M2TCheckBoxBoxColorRoleSelection.OnSurfaceVariant)
+            if (OnBoxColorRole == M2TCheckBoxOnBoxColorRoleSelection.Transparent)
             {
                 this.OnBoxColor = BackColor;
             }
@@ -177,17 +191,17 @@ namespace M2TWinForms
         }
         private ColorRoles GetMappedOnBoxColorRole()
         {
-            return BoxColorRole switch
+            return OnBoxColorRole switch
             {
-                M2TCheckBoxBoxColorRoleSelection.Primary => ColorRoles.OnPrimary,
-                M2TCheckBoxBoxColorRoleSelection.PrimaryContainer => ColorRoles.OnPrimaryContainer,
-                M2TCheckBoxBoxColorRoleSelection.Secondary => ColorRoles.OnSecondary,
-                M2TCheckBoxBoxColorRoleSelection.SecondaryContainer => ColorRoles.OnSecondaryContainer,
-                M2TCheckBoxBoxColorRoleSelection.Tertiary => ColorRoles.OnTertiary,
-                M2TCheckBoxBoxColorRoleSelection.TertiaryContainer => ColorRoles.OnTertiaryContainer,
-                M2TCheckBoxBoxColorRoleSelection.Error => ColorRoles.OnError,
-                M2TCheckBoxBoxColorRoleSelection.ErrorContainer => ColorRoles.OnErrorContainer,
-                _ => throw new ArgumentException($"Unknown {nameof(M2TCheckBoxBoxColorRoleSelection)} value: {BoxColorRole}"),
+                M2TCheckBoxOnBoxColorRoleSelection.OnPrimary => ColorRoles.OnPrimary,
+                M2TCheckBoxOnBoxColorRoleSelection.OnPrimaryContainer => ColorRoles.OnPrimaryContainer,
+                M2TCheckBoxOnBoxColorRoleSelection.OnSecondary => ColorRoles.OnSecondary,
+                M2TCheckBoxOnBoxColorRoleSelection.OnSecondaryContainer => ColorRoles.OnSecondaryContainer,
+                M2TCheckBoxOnBoxColorRoleSelection.OnTertiary => ColorRoles.OnTertiary,
+                M2TCheckBoxOnBoxColorRoleSelection.OnTertiaryContainer => ColorRoles.OnTertiaryContainer,
+                M2TCheckBoxOnBoxColorRoleSelection.OnError => ColorRoles.OnError,
+                M2TCheckBoxOnBoxColorRoleSelection.OnErrorContainer => ColorRoles.OnErrorContainer,
+                _ => throw new ArgumentException($"Unknown {nameof(M2TCheckBoxOnBoxColorRoleSelection)} value: {OnBoxColorRole}"),
             };
         }
 
