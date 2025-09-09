@@ -12,12 +12,16 @@ namespace M2TWinForms.Helper
     {
         public static void DrawImageWithColor(Image image, Color color, Padding padding, Control control, PaintEventArgs e)
         {
+            var destinationRectangle = GetZoomedDestinationRectangle(control.Size, image.Size, padding);
+            DrawImageWithColor(image, color, destinationRectangle, control, e);
+        }
+        public static void DrawImageWithColor(Image image, Color color, Rectangle destinationRectangle, Control control, PaintEventArgs e)
+        {
             if (image == null)
                 image = new Bitmap(1, 1);
             var colorMatrix = GetTransformationMatrix(color);
             var imageattributes = new ImageAttributes();
             imageattributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
-            var destinationRectangle = GetZoomedDestinationRectangle(control.Size, image.Size, padding);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
             e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
@@ -44,9 +48,6 @@ namespace M2TWinForms.Helper
 
         private static Rectangle GetZoomedDestinationRectangle(Size destination, Size source, Padding padding)
         {
-            Size size;
-            Point location;
-
             double actualDestinationWidth = destination.Width - padding.Left - padding.Right;
             double actualDestinationHeight = destination.Height - padding.Top - padding.Bottom;
 
@@ -56,17 +57,17 @@ namespace M2TWinForms.Helper
             if (ratioHeight > ratioWidth) // width limited
             {
                 int newHeight = (int)((double)source.Height / source.Width * actualDestinationWidth);
-                size = new Size((int)actualDestinationWidth, newHeight);
-                location = new Point(padding.Left, padding.Top + ((int)actualDestinationHeight - newHeight) / 2);
+                var size = new Size((int)actualDestinationWidth, newHeight);
+                var location = new Point(padding.Left, padding.Top + ((int)actualDestinationHeight - newHeight) / 2);
+                return new Rectangle(location, size);
             }
             else // height limited
             {
                 int newWidth = (int)((double)source.Width / source.Height * actualDestinationHeight);
-                size = new Size(newWidth, (int)actualDestinationHeight);
-                location = new Point(padding.Left + ((int)actualDestinationWidth - newWidth) / 2, padding.Top);
+                var size = new Size(newWidth, (int)actualDestinationHeight);
+                var location = new Point(padding.Left + ((int)actualDestinationWidth - newWidth) / 2, padding.Top);
+                return new Rectangle(location, size);
             }
-            return new Rectangle(location, size);
-
         }
 
         public static Image GetGrayScaledImage(Image sourceImage)

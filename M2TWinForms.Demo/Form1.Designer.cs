@@ -102,6 +102,10 @@
             m2tNumericUpDown3 = new M2TNumericUpDown();
             m2tNumericUpDown4 = new M2TNumericUpDown();
             m2tNumericUpDown5 = new M2TNumericUpDown();
+            m2tCheckBox1 = new M2TCheckBox();
+            m2tCheckBox2 = new M2TCheckBox();
+            m2tCheckBox3 = new M2TCheckBox();
+            m2tCheckBox4 = new M2TCheckBox();
             PN_SizeCheck = new M2TPanel();
             m2tButton15 = new M2TButton();
             m2tButton21 = new M2TButton();
@@ -793,6 +797,61 @@
             m2tNumericUpDown5.Size = new Size(120, 23);
             m2tNumericUpDown5.TabIndex = 76;
             // 
+            // m2tCheckBox1
+            // 
+            m2tCheckBox1.AutoSize = true;
+            m2tCheckBox1.BoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxBoxColorRoleSelection.Primary;
+            m2tCheckBox1.Checked = true;
+            m2tCheckBox1.CheckState = CheckState.Indeterminate;
+            m2tCheckBox1.Location = new Point(297, 446);
+            m2tCheckBox1.Name = "m2tCheckBox1";
+            m2tCheckBox1.OnBoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxOnBoxColorRoleSelection.OnPrimary;
+            m2tCheckBox1.Size = new Size(67, 19);
+            m2tCheckBox1.TabIndex = 79;
+            m2tCheckBox1.Text = "Primary";
+            m2tCheckBox1.ThreeState = true;
+            m2tCheckBox1.UseVisualStyleBackColor = true;
+            // 
+            // m2tCheckBox2
+            // 
+            m2tCheckBox2.AutoSize = true;
+            m2tCheckBox2.Location = new Point(297, 471);
+            m2tCheckBox2.Name = "m2tCheckBox2";
+            m2tCheckBox2.Size = new Size(117, 19);
+            m2tCheckBox2.TabIndex = 80;
+            m2tCheckBox2.Text = "OnSurfaceVariant";
+            m2tCheckBox2.UseVisualStyleBackColor = false;
+            // 
+            // m2tCheckBox3
+            // 
+            m2tCheckBox3.AutoSize = true;
+            m2tCheckBox3.BoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxBoxColorRoleSelection.TertiaryContainer;
+            m2tCheckBox3.Checked = true;
+            m2tCheckBox3.CheckState = CheckState.Checked;
+            m2tCheckBox3.Location = new Point(297, 496);
+            m2tCheckBox3.Name = "m2tCheckBox3";
+            m2tCheckBox3.OnBoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxOnBoxColorRoleSelection.OnTertiaryContainer;
+            m2tCheckBox3.Size = new Size(117, 19);
+            m2tCheckBox3.TabIndex = 81;
+            m2tCheckBox3.Text = "TertiaryContainer";
+            m2tCheckBox3.ThreeState = true;
+            m2tCheckBox3.UseVisualStyleBackColor = true;
+            // 
+            // m2tCheckBox4
+            // 
+            m2tCheckBox4.AutoSize = true;
+            m2tCheckBox4.BoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxBoxColorRoleSelection.Error;
+            m2tCheckBox4.Checked = true;
+            m2tCheckBox4.CheckState = CheckState.Checked;
+            m2tCheckBox4.ForeColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxTextColorRoleSelection.Error;
+            m2tCheckBox4.Location = new Point(297, 521);
+            m2tCheckBox4.Name = "m2tCheckBox4";
+            m2tCheckBox4.OnBoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxOnBoxColorRoleSelection.OnError;
+            m2tCheckBox4.Size = new Size(51, 19);
+            m2tCheckBox4.TabIndex = 82;
+            m2tCheckBox4.Text = "Error";
+            m2tCheckBox4.UseVisualStyleBackColor = true;
+            // 
             // PN_SizeCheck
             // 
             PN_SizeCheck.ColorRole = M2TPanelColorRoleSelection.Primary;
@@ -828,6 +887,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1137, 555);
+            Controls.Add(m2tCheckBox4);
+            Controls.Add(m2tCheckBox3);
+            Controls.Add(m2tCheckBox2);
+            Controls.Add(m2tCheckBox1);
             Controls.Add(m2tButton21);
             Controls.Add(m2tButton15);
             Controls.Add(PN_SizeCheck);
@@ -962,6 +1025,10 @@
             Controls.SetChildIndex(PN_SizeCheck, 0);
             Controls.SetChildIndex(m2tButton15, 0);
             Controls.SetChildIndex(m2tButton21, 0);
+            Controls.SetChildIndex(m2tCheckBox1, 0);
+            Controls.SetChildIndex(m2tCheckBox2, 0);
+            Controls.SetChildIndex(m2tCheckBox3, 0);
+            Controls.SetChildIndex(m2tCheckBox4, 0);
             m2tPanel6.ResumeLayout(false);
             m2tPanel6.PerformLayout();
             m2tPanel7.ResumeLayout(false);
@@ -1058,5 +1125,9 @@
         private M2TPanel PN_SizeCheck;
         private M2TButton m2tButton15;
         private M2TButton m2tButton21;
+        private M2TCheckBox m2tCheckBox1;
+        private M2TCheckBox m2tCheckBox2;
+        private M2TCheckBox m2tCheckBox3;
+        private M2TCheckBox m2tCheckBox4;
     }
 }
