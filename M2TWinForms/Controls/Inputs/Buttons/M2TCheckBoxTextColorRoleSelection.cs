@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Controls.Inputs.Buttons
+namespace M2TWinForms
 {
     public enum M2TCheckBoxTextColorRoleSelection
     {

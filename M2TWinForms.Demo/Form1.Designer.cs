@@ -797,12 +797,10 @@
             // m2tCheckBox1
             // 
             m2tCheckBox1.AutoSize = true;
-            m2tCheckBox1.BoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxBoxColorRoleSelection.Primary;
             m2tCheckBox1.Checked = true;
             m2tCheckBox1.CheckState = CheckState.Indeterminate;
             m2tCheckBox1.Location = new Point(299, 471);
             m2tCheckBox1.Name = "m2tCheckBox1";
-            m2tCheckBox1.OnBoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxOnBoxColorRoleSelection.OnPrimary;
             m2tCheckBox1.Size = new Size(67, 19);
             m2tCheckBox1.TabIndex = 79;
             m2tCheckBox1.Text = "Primary";
@@ -812,6 +810,7 @@
             // m2tCheckBox2
             // 
             m2tCheckBox2.AutoSize = true;
+            m2tCheckBox2.BoxColorRoleChecked = M2TCheckBoxBoxColorRoleSelection.OnSurfaceVariant;
             m2tCheckBox2.Location = new Point(299, 496);
             m2tCheckBox2.Name = "m2tCheckBox2";
             m2tCheckBox2.Size = new Size(117, 19);
@@ -822,12 +821,12 @@
             // m2tCheckBox3
             // 
             m2tCheckBox3.AutoSize = true;
-            m2tCheckBox3.BoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxBoxColorRoleSelection.TertiaryContainer;
+            m2tCheckBox3.BoxColorRoleChecked = M2TCheckBoxBoxColorRoleSelection.TertiaryContainer;
+            m2tCheckBox3.BoxColorRoleUnchecked = M2TCheckBoxBoxColorRoleSelection.TertiaryContainer;
             m2tCheckBox3.Checked = true;
             m2tCheckBox3.CheckState = CheckState.Checked;
             m2tCheckBox3.Location = new Point(299, 521);
             m2tCheckBox3.Name = "m2tCheckBox3";
-            m2tCheckBox3.OnBoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxOnBoxColorRoleSelection.OnTertiaryContainer;
             m2tCheckBox3.Size = new Size(117, 19);
             m2tCheckBox3.TabIndex = 81;
             m2tCheckBox3.Text = "TertiaryContainer";
@@ -837,13 +836,13 @@
             // m2tCheckBox4
             // 
             m2tCheckBox4.AutoSize = true;
-            m2tCheckBox4.BoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxBoxColorRoleSelection.Error;
+            m2tCheckBox4.BoxColorRoleChecked = M2TCheckBoxBoxColorRoleSelection.Error;
+            m2tCheckBox4.BoxColorRoleUnchecked = M2TCheckBoxBoxColorRoleSelection.Error;
             m2tCheckBox4.Checked = true;
             m2tCheckBox4.CheckState = CheckState.Checked;
-            m2tCheckBox4.ForeColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxTextColorRoleSelection.Error;
+            m2tCheckBox4.ForeColorRole = M2TCheckBoxTextColorRoleSelection.Error;
             m2tCheckBox4.Location = new Point(299, 546);
             m2tCheckBox4.Name = "m2tCheckBox4";
-            m2tCheckBox4.OnBoxColorRole = M2TWinForms.Controls.Inputs.Buttons.M2TCheckBoxOnBoxColorRoleSelection.OnError;
             m2tCheckBox4.Size = new Size(51, 19);
             m2tCheckBox4.TabIndex = 82;
             m2tCheckBox4.Text = "Error";
