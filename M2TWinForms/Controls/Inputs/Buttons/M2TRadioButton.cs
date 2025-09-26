@@ -1,5 +1,4 @@
-﻿using M2TWinForms.Controls.Inputs.Buttons;
-using M2TWinForms.Themes.MaterialDesign;
+﻿using M2TWinForms.Themes.MaterialDesign;
 using M2TWinForms.Themes.ThemeLoading;
 using System;
 using System.Collections.Generic;
@@ -28,13 +27,15 @@ namespace M2TWinForms
             set => base.BackColor = value;
         }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color CheckCircleColor { get; private set; }
+        public Color CheckColorChecked { get; private set; }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Color CheckColorUnchecked { get; private set; }
 
 
-        [Description("The Material Design Color Role used for the text of the CheckBox")]
+        [Description("The Material Design Color Role used for the text of the RadioButton")]
         [Category("Material Design")]
-        [DefaultValue(M2TCheckBoxTextColorRoleSelection.OnSurface)]
-        public M2TCheckBoxTextColorRoleSelection ForeColorRole
+        [DefaultValue(M2TRadioButtonTextColorRoleSelection.OnSurface)]
+        public M2TRadioButtonTextColorRoleSelection TextColorRole
         {
             get => _foreColorRole;
             set
@@ -43,12 +44,12 @@ namespace M2TWinForms
                 ApplyCurrentLoadedTheme();
             }
         }
-        private M2TCheckBoxTextColorRoleSelection _foreColorRole = M2TCheckBoxTextColorRoleSelection.OnSurface;
+        private M2TRadioButtonTextColorRoleSelection _foreColorRole = M2TRadioButtonTextColorRoleSelection.OnSurface;
 
-        [Description("The Material Design Color Role used for the background of the CheckBox")]
+        [Description("The Material Design Color Role used for the background of the RadioButton")]
         [Category("Material Design")]
-        [DefaultValue(M2TCheckBoxBackgroundColorRoleSelection.Transparent)]
-        public M2TCheckBoxBackgroundColorRoleSelection BackColorRole
+        [DefaultValue(M2TRadioButtonBackgroundColorRoleSelection.Transparent)]
+        public M2TRadioButtonBackgroundColorRoleSelection BackColorRole
         {
             get => _backColorRole;
             set
@@ -57,31 +58,76 @@ namespace M2TWinForms
                 ApplyCurrentLoadedTheme();
             }
         }
-        private M2TCheckBoxBackgroundColorRoleSelection _backColorRole = M2TCheckBoxBackgroundColorRoleSelection.Transparent;
+        private M2TRadioButtonBackgroundColorRoleSelection _backColorRole = M2TRadioButtonBackgroundColorRoleSelection.Transparent;
 
-        [Description("The Material Design Color Role used for the background of the CheckBox")]
+        [Description("The Material Design Color Role used for the check part of the RadioButton when checked")]
         [Category("Material Design")]
-        [DefaultValue(M2TCheckBoxBoxColorRoleSelection.OnSurfaceVariant)]
-        public M2TCheckBoxBoxColorRoleSelection BoxColorRole
+        [DefaultValue(M2TRadioButtonCheckColorRoleSelection.Primary)]
+        public M2TRadioButtonCheckColorRoleSelection CheckedBoxColorRole
         {
-            get => _boxColorRole;
+            get => _checkedBoxColorRole;
             set
             {
-                _boxColorRole = value;
+                _checkedBoxColorRole = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        private M2TCheckBoxBoxColorRoleSelection _boxColorRole = M2TCheckBoxBoxColorRoleSelection.OnSurfaceVariant;
+        private M2TRadioButtonCheckColorRoleSelection _checkedBoxColorRole = M2TRadioButtonCheckColorRoleSelection.Primary;
 
-        
+        [Description("The Material Design Color Role used for the check part of the RadioButton when unchecked")]
+        [Category("Material Design")]
+        [DefaultValue(M2TRadioButtonCheckColorRoleSelection.OnSurfaceVariant)]
+        public M2TRadioButtonCheckColorRoleSelection UncheckedBoxColorRole
+        {
+            get => _uncheckedBoxColorRole;
+            set
+            {
+                _uncheckedBoxColorRole = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        private M2TRadioButtonCheckColorRoleSelection _uncheckedBoxColorRole = M2TRadioButtonCheckColorRoleSelection.OnSurfaceVariant;
+
+        [DefaultValue(FlatStyle.Standard)]
+        public new FlatStyle FlatStyle
+        {
+            get => base.FlatStyle;
+            set
+            {
+                base.FlatStyle = value;
+            }
+        }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public new FlatButtonAppearance FlatAppearance
+        {
+            get => base.FlatAppearance;
+        }
+
         public M2TRadioButton()
         {
+            FlatStyle = FlatStyle.Standard;
             ApplyCurrentLoadedTheme();
+
+            this.AppearanceChanged += (s, e) => ApplyCurrentLoadedTheme();
+            this.CheckedChanged += (s, e) => ApplyCurrentLoadedTheme();
         }
 
         public void ApplyCurrentLoadedTheme()
         {
-            if (BackColorRole == M2TCheckBoxBackgroundColorRoleSelection.Transparent)
+            RefreshColorsForAppearance();
+            Invalidate();
+        }
+
+        private void RefreshColorsForAppearance()
+        {
+            if (Appearance == Appearance.Normal)
+                SetColorsForNormalAppearance();
+            else if (Appearance == Appearance.Button)
+                SetColorsForButtonAppearance();
+        }
+        private void SetColorsForNormalAppearance()
+        {
+            if (BackColorRole == M2TRadioButtonBackgroundColorRoleSelection.Transparent)
             {
                 this.BackColor = Color.Empty;
             }
@@ -92,31 +138,64 @@ namespace M2TWinForms
             }
             var mappedForeColorRole = GetMappedForeColorRole();
             this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(mappedForeColorRole);
-            var mappedBoxColorRole = GetMappedBoxColorRole();
-            this.CheckCircleColor = CurrentLoadedThemeManager.GetColorForRole(mappedBoxColorRole);
 
-            Invalidate();
+            var mappedCheckedBoxColorRole = GetMappedBoxColorRole(true);
+            this.CheckColorChecked = CurrentLoadedThemeManager.GetColorForRole(mappedCheckedBoxColorRole);
+            var mappedUncheckedBoxColorRole = GetMappedBoxColorRole(false);
+            this.CheckColorUnchecked = CurrentLoadedThemeManager.GetColorForRole(mappedUncheckedBoxColorRole);
+        }
+        private void SetColorsForButtonAppearance()
+        {
+            var mappedForeColorRole = GetMappedBoxTextColorRole(Checked);
+            this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(mappedForeColorRole);
+
+            if (RequiresSurfaceBackColorRole())
+            {
+                BackColor = CurrentLoadedThemeManager.GetColorForRole(ColorRoles.Surface);
+            }
+            else
+            {
+                var mappedCheckedBoxColorRole = GetMappedBoxColorRole(true);
+                CheckColorChecked = CurrentLoadedThemeManager.GetColorForRole(mappedCheckedBoxColorRole);
+                var mappedUncheckedBoxColorRole = GetMappedBoxColorRole(false);
+                CheckColorUnchecked = CurrentLoadedThemeManager.GetColorForRole(mappedUncheckedBoxColorRole);
+                this.BackColor = CheckColorUnchecked;
+                this.FlatAppearance.CheckedBackColor = CheckColorChecked;
+            }
+
+            this.FlatAppearance.BorderColor = this.ForeColor;
+        }
+
+        private bool RequiresSurfaceBackColorRole()
+        {
+            var roleToBeUsed = Checked ? CheckedBoxColorRole : UncheckedBoxColorRole;
+            var rolesRequiringSurface = new M2TRadioButtonCheckColorRoleSelection[]
+            {
+                M2TRadioButtonCheckColorRoleSelection.OnSurface,
+                M2TRadioButtonCheckColorRoleSelection.OnSurfaceVariant
+            };
+            return rolesRequiringSurface.Contains(roleToBeUsed);
         }
 
         private ColorRoles GetMappedForeColorRole()
         {
-            return ForeColorRole switch
+            return TextColorRole switch
             {
-                M2TCheckBoxTextColorRoleSelection.Primary => ColorRoles.Primary,
-                M2TCheckBoxTextColorRoleSelection.OnPrimary => ColorRoles.OnPrimary,
-                M2TCheckBoxTextColorRoleSelection.OnPrimaryContainer => ColorRoles.OnPrimaryContainer,
-                M2TCheckBoxTextColorRoleSelection.Secondary => ColorRoles.Secondary,
-                M2TCheckBoxTextColorRoleSelection.OnSecondary => ColorRoles.OnSecondary,
-                M2TCheckBoxTextColorRoleSelection.OnSecondaryContainer => ColorRoles.OnSecondaryContainer,
-                M2TCheckBoxTextColorRoleSelection.Tertiary => ColorRoles.Tertiary,
-                M2TCheckBoxTextColorRoleSelection.OnTertiary => ColorRoles.OnTertiary,
-                M2TCheckBoxTextColorRoleSelection.OnTertiaryContainer => ColorRoles.OnTertiaryContainer,
-                M2TCheckBoxTextColorRoleSelection.Error => ColorRoles.Error,
-                M2TCheckBoxTextColorRoleSelection.OnError => ColorRoles.OnError,
-                M2TCheckBoxTextColorRoleSelection.OnErrorContainer => ColorRoles.OnErrorContainer,
-                M2TCheckBoxTextColorRoleSelection.OnSurface => ColorRoles.OnSurface,
-                M2TCheckBoxTextColorRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
-                _ => throw new ArgumentException($"Unknown {nameof(M2TCheckBoxTextColorRoleSelection)} value: {ForeColorRole}"),
+                M2TRadioButtonTextColorRoleSelection.Primary => ColorRoles.Primary,
+                M2TRadioButtonTextColorRoleSelection.OnPrimary => ColorRoles.OnPrimary,
+                M2TRadioButtonTextColorRoleSelection.OnPrimaryContainer => ColorRoles.OnPrimaryContainer,
+                M2TRadioButtonTextColorRoleSelection.Secondary => ColorRoles.Secondary,
+                M2TRadioButtonTextColorRoleSelection.OnSecondary => ColorRoles.OnSecondary,
+                M2TRadioButtonTextColorRoleSelection.OnSecondaryContainer => ColorRoles.OnSecondaryContainer,
+                M2TRadioButtonTextColorRoleSelection.Tertiary => ColorRoles.Tertiary,
+                M2TRadioButtonTextColorRoleSelection.OnTertiary => ColorRoles.OnTertiary,
+                M2TRadioButtonTextColorRoleSelection.OnTertiaryContainer => ColorRoles.OnTertiaryContainer,
+                M2TRadioButtonTextColorRoleSelection.Error => ColorRoles.Error,
+                M2TRadioButtonTextColorRoleSelection.OnError => ColorRoles.OnError,
+                M2TRadioButtonTextColorRoleSelection.OnErrorContainer => ColorRoles.OnErrorContainer,
+                M2TRadioButtonTextColorRoleSelection.OnSurface => ColorRoles.OnSurface,
+                M2TRadioButtonTextColorRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
+                _ => throw new ArgumentException($"Unknown {nameof(M2TRadioButtonTextColorRoleSelection)} value: {TextColorRole}"),
             };
         }
 
@@ -124,49 +203,70 @@ namespace M2TWinForms
         {
             return BackColorRole switch
             {
-                M2TCheckBoxBackgroundColorRoleSelection.Primary => ColorRoles.Primary,
-                M2TCheckBoxBackgroundColorRoleSelection.PrimaryContainer => ColorRoles.PrimaryContainer,
-                M2TCheckBoxBackgroundColorRoleSelection.Secondary => ColorRoles.Secondary,
-                M2TCheckBoxBackgroundColorRoleSelection.SecondaryContainer => ColorRoles.SecondaryContainer,
-                M2TCheckBoxBackgroundColorRoleSelection.Tertiary => ColorRoles.Tertiary,
-                M2TCheckBoxBackgroundColorRoleSelection.TertiaryContainer => ColorRoles.TertiaryContainer,
-                M2TCheckBoxBackgroundColorRoleSelection.Error => ColorRoles.Error,
-                M2TCheckBoxBackgroundColorRoleSelection.ErrorContainer => ColorRoles.ErrorContainer,
-                M2TCheckBoxBackgroundColorRoleSelection.Surface => ColorRoles.Surface,
-                M2TCheckBoxBackgroundColorRoleSelection.SurfaceContainer => ColorRoles.SurfaceContainer,
-                M2TCheckBoxBackgroundColorRoleSelection.SurfaceContainerLowest => ColorRoles.SurfaceContainerLowest,
-                M2TCheckBoxBackgroundColorRoleSelection.SurfaceContainerLow => ColorRoles.SurfaceContainerLow,
-                M2TCheckBoxBackgroundColorRoleSelection.SurfaceContainerHigh => ColorRoles.SurfaceContainerHigh,
-                M2TCheckBoxBackgroundColorRoleSelection.SurfaceContainerHighest => ColorRoles.SurfaceContainerHighest,
-                _ => throw new ArgumentException($"Unknown {nameof(M2TCheckBoxBackgroundColorRoleSelection)} value: {BackColorRole}"),
+                M2TRadioButtonBackgroundColorRoleSelection.Primary => ColorRoles.Primary,
+                M2TRadioButtonBackgroundColorRoleSelection.PrimaryContainer => ColorRoles.PrimaryContainer,
+                M2TRadioButtonBackgroundColorRoleSelection.Secondary => ColorRoles.Secondary,
+                M2TRadioButtonBackgroundColorRoleSelection.SecondaryContainer => ColorRoles.SecondaryContainer,
+                M2TRadioButtonBackgroundColorRoleSelection.Tertiary => ColorRoles.Tertiary,
+                M2TRadioButtonBackgroundColorRoleSelection.TertiaryContainer => ColorRoles.TertiaryContainer,
+                M2TRadioButtonBackgroundColorRoleSelection.Error => ColorRoles.Error,
+                M2TRadioButtonBackgroundColorRoleSelection.ErrorContainer => ColorRoles.ErrorContainer,
+                M2TRadioButtonBackgroundColorRoleSelection.Surface => ColorRoles.Surface,
+                M2TRadioButtonBackgroundColorRoleSelection.SurfaceContainer => ColorRoles.SurfaceContainer,
+                M2TRadioButtonBackgroundColorRoleSelection.SurfaceContainerLowest => ColorRoles.SurfaceContainerLowest,
+                M2TRadioButtonBackgroundColorRoleSelection.SurfaceContainerLow => ColorRoles.SurfaceContainerLow,
+                M2TRadioButtonBackgroundColorRoleSelection.SurfaceContainerHigh => ColorRoles.SurfaceContainerHigh,
+                M2TRadioButtonBackgroundColorRoleSelection.SurfaceContainerHighest => ColorRoles.SurfaceContainerHighest,
+                _ => throw new ArgumentException($"Unknown {nameof(M2TRadioButtonBackgroundColorRoleSelection)} value: {BackColorRole}"),
             };
         }
-        private ColorRoles GetMappedBoxColorRole()
+        private ColorRoles GetMappedBoxColorRole(bool isChecked)
         {
-            return BoxColorRole switch
+            var role = isChecked ? CheckedBoxColorRole : UncheckedBoxColorRole;
+            return role switch
             {
-                M2TCheckBoxBoxColorRoleSelection.Primary => ColorRoles.Primary,
-                M2TCheckBoxBoxColorRoleSelection.PrimaryContainer => ColorRoles.PrimaryContainer,
-                M2TCheckBoxBoxColorRoleSelection.Secondary => ColorRoles.Secondary,
-                M2TCheckBoxBoxColorRoleSelection.SecondaryContainer => ColorRoles.SecondaryContainer,
-                M2TCheckBoxBoxColorRoleSelection.Tertiary => ColorRoles.Tertiary,
-                M2TCheckBoxBoxColorRoleSelection.TertiaryContainer => ColorRoles.TertiaryContainer,
-                M2TCheckBoxBoxColorRoleSelection.Error => ColorRoles.Error,
-                M2TCheckBoxBoxColorRoleSelection.ErrorContainer => ColorRoles.ErrorContainer,
-                M2TCheckBoxBoxColorRoleSelection.OnSurface => ColorRoles.OnSurface,
-                M2TCheckBoxBoxColorRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
-                _ => throw new ArgumentException($"Unknown {nameof(M2TCheckBoxBoxColorRoleSelection)} value: {BoxColorRole}"),
+                M2TRadioButtonCheckColorRoleSelection.Primary => ColorRoles.Primary,
+                M2TRadioButtonCheckColorRoleSelection.PrimaryContainer => ColorRoles.PrimaryContainer,
+                M2TRadioButtonCheckColorRoleSelection.Secondary => ColorRoles.Secondary,
+                M2TRadioButtonCheckColorRoleSelection.SecondaryContainer => ColorRoles.SecondaryContainer,
+                M2TRadioButtonCheckColorRoleSelection.Tertiary => ColorRoles.Tertiary,
+                M2TRadioButtonCheckColorRoleSelection.TertiaryContainer => ColorRoles.TertiaryContainer,
+                M2TRadioButtonCheckColorRoleSelection.Error => ColorRoles.Error,
+                M2TRadioButtonCheckColorRoleSelection.ErrorContainer => ColorRoles.ErrorContainer,
+                M2TRadioButtonCheckColorRoleSelection.OnSurface => ColorRoles.OnSurface,
+                M2TRadioButtonCheckColorRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
+                _ => throw new ArgumentException($"Unknown {nameof(M2TRadioButtonCheckColorRoleSelection)} value: {role}"),
+            };
+        }
+        private ColorRoles GetMappedBoxTextColorRole(bool isChecked)
+        {
+            var role = isChecked ? CheckedBoxColorRole : UncheckedBoxColorRole;
+            return role switch
+            {
+                M2TRadioButtonCheckColorRoleSelection.Primary => ColorRoles.OnPrimary,
+                M2TRadioButtonCheckColorRoleSelection.PrimaryContainer => ColorRoles.OnPrimaryContainer,
+                M2TRadioButtonCheckColorRoleSelection.Secondary => ColorRoles.OnSecondary,
+                M2TRadioButtonCheckColorRoleSelection.SecondaryContainer => ColorRoles.OnSecondaryContainer,
+                M2TRadioButtonCheckColorRoleSelection.Tertiary => ColorRoles.OnTertiary,
+                M2TRadioButtonCheckColorRoleSelection.TertiaryContainer => ColorRoles.OnTertiaryContainer,
+                M2TRadioButtonCheckColorRoleSelection.Error => ColorRoles.OnError,
+                M2TRadioButtonCheckColorRoleSelection.ErrorContainer => ColorRoles.OnErrorContainer,
+                M2TRadioButtonCheckColorRoleSelection.OnSurface => ColorRoles.OnSurface,
+                M2TRadioButtonCheckColorRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
+                _ => throw new ArgumentException($"Unknown {nameof(M2TRadioButtonCheckColorRoleSelection)} value: {role}"),
             };
         }
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
-            base.OnPaint(pevent);
-
             if (Appearance == Appearance.Normal)
             {
                 pevent.Graphics.Clear(BackColor);
                 PaintMaterialRadioAppearance(pevent);
+            }
+            else
+            {
+                base.OnPaint(pevent);
             }
         }
 
@@ -177,16 +277,17 @@ namespace M2TWinForms
 
             pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            Point pt = new Point(1, 2);
-            Rectangle rect = new Rectangle(pt, new Size(14, 14));
+            var pt = new Point(1, 2);
+            var rect = new Rectangle(pt, new Size(14, 14));
 
-            var outerCirclePen = new Pen(CheckCircleColor, 1.75F);
+            var checkColor = Checked ? CheckColorChecked : CheckColorUnchecked;
+            var outerCirclePen = new Pen(checkColor, 1.75F);
             pevent.Graphics.DrawEllipse(outerCirclePen, rect);
 
             if (Checked)
             {
                 rect.Inflate(-3, -3);
-                var fillBrush = new SolidBrush(CheckCircleColor);
+                var fillBrush = new SolidBrush(checkColor);
                 pevent.Graphics.FillEllipse(fillBrush, rect);
             }
         }
