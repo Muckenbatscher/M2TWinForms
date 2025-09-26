@@ -106,6 +106,14 @@
             m2tCheckBox2 = new M2TCheckBox();
             m2tCheckBox3 = new M2TCheckBox();
             m2tCheckBox4 = new M2TCheckBox();
+            m2tRadioButton1 = new M2TRadioButton();
+            m2tRadioButton2 = new M2TRadioButton();
+            m2tRadioButton3 = new M2TRadioButton();
+            m2tPanel15 = new M2TPanel();
+            m2tPanel16 = new M2TPanel();
+            m2tRadioButton5 = new M2TRadioButton();
+            m2tRadioButton4 = new M2TRadioButton();
+            m2tRadioButton6 = new M2TRadioButton();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
@@ -116,6 +124,8 @@
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown5).BeginInit();
+            m2tPanel15.SuspendLayout();
+            m2tPanel16.SuspendLayout();
             SuspendLayout();
             // 
             // m2tLabel1
@@ -133,7 +143,7 @@
             // 
             m2tLabel2.AutoSize = true;
             m2tLabel2.ForeColorRole = M2TLabelTextColorRoleSelection.OnSurfaceVariant;
-            m2tLabel2.Location = new Point(692, 100);
+            m2tLabel2.Location = new Point(656, 100);
             m2tLabel2.Name = "m2tLabel2";
             m2tLabel2.Size = new Size(62, 15);
             m2tLabel2.TabIndex = 19;
@@ -161,7 +171,7 @@
             // m2tLabel5
             // 
             m2tLabel5.AutoSize = true;
-            m2tLabel5.Location = new Point(692, 77);
+            m2tLabel5.Location = new Point(656, 77);
             m2tLabel5.Name = "m2tLabel5";
             m2tLabel5.Size = new Size(62, 15);
             m2tLabel5.TabIndex = 23;
@@ -259,18 +269,18 @@
             // m2tButton11
             // 
             m2tButton11.ColorRole = M2TButtonColorRoleSelection.ErrorTransparent;
-            m2tButton11.Location = new Point(147, 315);
+            m2tButton11.Location = new Point(147, 317);
             m2tButton11.Name = "m2tButton11";
-            m2tButton11.Size = new Size(95, 26);
+            m2tButton11.Size = new Size(95, 28);
             m2tButton11.TabIndex = 37;
             m2tButton11.Text = "Error T";
             // 
             // m2tButton12
             // 
             m2tButton12.ColorRole = M2TButtonColorRoleSelection.TertiaryTransparent;
-            m2tButton12.Location = new Point(49, 315);
+            m2tButton12.Location = new Point(49, 317);
             m2tButton12.Name = "m2tButton12";
-            m2tButton12.Size = new Size(95, 26);
+            m2tButton12.Size = new Size(95, 28);
             m2tButton12.TabIndex = 36;
             m2tButton12.Text = "Tertiary T";
             // 
@@ -279,7 +289,7 @@
             m2tButton13.ColorRole = M2TButtonColorRoleSelection.SecondaryTransparent;
             m2tButton13.Location = new Point(147, 286);
             m2tButton13.Name = "m2tButton13";
-            m2tButton13.Size = new Size(95, 26);
+            m2tButton13.Size = new Size(95, 28);
             m2tButton13.TabIndex = 35;
             m2tButton13.Text = "Secondary T";
             // 
@@ -288,7 +298,7 @@
             m2tButton14.ColorRole = M2TButtonColorRoleSelection.PrimaryTransparent;
             m2tButton14.Location = new Point(49, 286);
             m2tButton14.Name = "m2tButton14";
-            m2tButton14.Size = new Size(95, 26);
+            m2tButton14.Size = new Size(95, 28);
             m2tButton14.TabIndex = 34;
             m2tButton14.Text = "Primary T";
             // 
@@ -320,7 +330,7 @@
             m2tLabel8.Name = "m2tLabel8";
             m2tLabel8.Size = new Size(123, 30);
             m2tLabel8.TabIndex = 40;
-            m2tLabel8.Text = "m2tLabel8";
+            m2tLabel8.Text = "m2tLabel2";
             // 
             // m2tLabel9
             // 
@@ -331,7 +341,7 @@
             m2tLabel9.Name = "m2tLabel9";
             m2tLabel9.Size = new Size(123, 30);
             m2tLabel9.TabIndex = 41;
-            m2tLabel9.Text = "m2tLabel9";
+            m2tLabel9.Text = "m2tLabel3";
             // 
             // m2tLabel10
             // 
@@ -340,9 +350,9 @@
             m2tLabel10.ForeColorRole = M2TLabelTextColorRoleSelection.Error;
             m2tLabel10.Location = new Point(512, 154);
             m2tLabel10.Name = "m2tLabel10";
-            m2tLabel10.Size = new Size(136, 30);
+            m2tLabel10.Size = new Size(123, 30);
             m2tLabel10.TabIndex = 42;
-            m2tLabel10.Text = "m2tLabel10";
+            m2tLabel10.Text = "m2tLabel4";
             // 
             // m2tTextBox1
             // 
@@ -648,7 +658,7 @@
             // m2tNumericUpDown1
             // 
             m2tNumericUpDown1.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.SurfaceContainer;
-            m2tNumericUpDown1.Location = new Point(812, 75);
+            m2tNumericUpDown1.Location = new Point(888, 75);
             m2tNumericUpDown1.Name = "m2tNumericUpDown1";
             m2tNumericUpDown1.Size = new Size(120, 23);
             m2tNumericUpDown1.TabIndex = 64;
@@ -765,7 +775,7 @@
             // m2tNumericUpDown2
             // 
             m2tNumericUpDown2.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.PrimaryContainer;
-            m2tNumericUpDown2.Location = new Point(812, 104);
+            m2tNumericUpDown2.Location = new Point(888, 104);
             m2tNumericUpDown2.Name = "m2tNumericUpDown2";
             m2tNumericUpDown2.Size = new Size(120, 23);
             m2tNumericUpDown2.TabIndex = 73;
@@ -773,7 +783,7 @@
             // m2tNumericUpDown3
             // 
             m2tNumericUpDown3.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.SecondaryContainer;
-            m2tNumericUpDown3.Location = new Point(938, 104);
+            m2tNumericUpDown3.Location = new Point(1014, 104);
             m2tNumericUpDown3.Name = "m2tNumericUpDown3";
             m2tNumericUpDown3.Size = new Size(120, 23);
             m2tNumericUpDown3.TabIndex = 74;
@@ -781,7 +791,7 @@
             // m2tNumericUpDown4
             // 
             m2tNumericUpDown4.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.TertiaryContainer;
-            m2tNumericUpDown4.Location = new Point(812, 133);
+            m2tNumericUpDown4.Location = new Point(888, 133);
             m2tNumericUpDown4.Name = "m2tNumericUpDown4";
             m2tNumericUpDown4.Size = new Size(120, 23);
             m2tNumericUpDown4.TabIndex = 75;
@@ -789,7 +799,7 @@
             // m2tNumericUpDown5
             // 
             m2tNumericUpDown5.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.ErrorContainer;
-            m2tNumericUpDown5.Location = new Point(938, 133);
+            m2tNumericUpDown5.Location = new Point(1014, 133);
             m2tNumericUpDown5.Name = "m2tNumericUpDown5";
             m2tNumericUpDown5.Size = new Size(120, 23);
             m2tNumericUpDown5.TabIndex = 76;
@@ -848,11 +858,108 @@
             m2tCheckBox4.Text = "Error";
             m2tCheckBox4.UseVisualStyleBackColor = true;
             // 
+            // m2tRadioButton1
+            // 
+            m2tRadioButton1.AutoSize = true;
+            m2tRadioButton1.Checked = true;
+            m2tRadioButton1.Location = new Point(9, 7);
+            m2tRadioButton1.Name = "m2tRadioButton1";
+            m2tRadioButton1.Size = new Size(118, 19);
+            m2tRadioButton1.TabIndex = 83;
+            m2tRadioButton1.TabStop = true;
+            m2tRadioButton1.Text = "m2tRadioButton1";
+            m2tRadioButton1.UseVisualStyleBackColor = false;
+            // 
+            // m2tRadioButton2
+            // 
+            m2tRadioButton2.AutoSize = true;
+            m2tRadioButton2.Location = new Point(9, 32);
+            m2tRadioButton2.Name = "m2tRadioButton2";
+            m2tRadioButton2.Size = new Size(118, 19);
+            m2tRadioButton2.TabIndex = 84;
+            m2tRadioButton2.Text = "m2tRadioButton2";
+            m2tRadioButton2.UseVisualStyleBackColor = false;
+            // 
+            // m2tRadioButton3
+            // 
+            m2tRadioButton3.Appearance = Appearance.Button;
+            m2tRadioButton3.CheckedBoxColorRole = M2TRadioButtonCheckColorRoleSelection.PrimaryContainer;
+            m2tRadioButton3.FlatStyle = FlatStyle.Flat;
+            m2tRadioButton3.Location = new Point(5, 5);
+            m2tRadioButton3.Name = "m2tRadioButton3";
+            m2tRadioButton3.Size = new Size(83, 32);
+            m2tRadioButton3.TabIndex = 85;
+            m2tRadioButton3.Text = "Option 1";
+            m2tRadioButton3.TextAlign = ContentAlignment.MiddleCenter;
+            m2tRadioButton3.UseVisualStyleBackColor = false;
+            // 
+            // m2tPanel15
+            // 
+            m2tPanel15.ColorRole = M2TPanelColorRoleSelection.SurfaceContainer;
+            m2tPanel15.Controls.Add(m2tRadioButton6);
+            m2tPanel15.Controls.Add(m2tRadioButton1);
+            m2tPanel15.Controls.Add(m2tRadioButton2);
+            m2tPanel15.Location = new Point(728, 75);
+            m2tPanel15.Name = "m2tPanel15";
+            m2tPanel15.Size = new Size(140, 82);
+            m2tPanel15.TabIndex = 86;
+            // 
+            // m2tPanel16
+            // 
+            m2tPanel16.ColorRole = M2TPanelColorRoleSelection.SurfaceContainer;
+            m2tPanel16.Controls.Add(m2tRadioButton5);
+            m2tPanel16.Controls.Add(m2tRadioButton4);
+            m2tPanel16.Controls.Add(m2tRadioButton3);
+            m2tPanel16.Location = new Point(638, 165);
+            m2tPanel16.Name = "m2tPanel16";
+            m2tPanel16.Size = new Size(271, 43);
+            m2tPanel16.TabIndex = 87;
+            // 
+            // m2tRadioButton5
+            // 
+            m2tRadioButton5.Appearance = Appearance.Button;
+            m2tRadioButton5.CheckedBoxColorRole = M2TRadioButtonCheckColorRoleSelection.PrimaryContainer;
+            m2tRadioButton5.FlatStyle = FlatStyle.Flat;
+            m2tRadioButton5.Location = new Point(183, 5);
+            m2tRadioButton5.Name = "m2tRadioButton5";
+            m2tRadioButton5.Size = new Size(83, 32);
+            m2tRadioButton5.TabIndex = 87;
+            m2tRadioButton5.Text = "Option 3";
+            m2tRadioButton5.TextAlign = ContentAlignment.MiddleCenter;
+            m2tRadioButton5.UseVisualStyleBackColor = false;
+            // 
+            // m2tRadioButton4
+            // 
+            m2tRadioButton4.Appearance = Appearance.Button;
+            m2tRadioButton4.Checked = true;
+            m2tRadioButton4.CheckedBoxColorRole = M2TRadioButtonCheckColorRoleSelection.PrimaryContainer;
+            m2tRadioButton4.FlatStyle = FlatStyle.Flat;
+            m2tRadioButton4.Location = new Point(94, 5);
+            m2tRadioButton4.Name = "m2tRadioButton4";
+            m2tRadioButton4.Size = new Size(83, 32);
+            m2tRadioButton4.TabIndex = 86;
+            m2tRadioButton4.TabStop = true;
+            m2tRadioButton4.Text = "Option 2";
+            m2tRadioButton4.TextAlign = ContentAlignment.MiddleCenter;
+            m2tRadioButton4.UseVisualStyleBackColor = false;
+            // 
+            // m2tRadioButton6
+            // 
+            m2tRadioButton6.AutoSize = true;
+            m2tRadioButton6.Location = new Point(9, 57);
+            m2tRadioButton6.Name = "m2tRadioButton6";
+            m2tRadioButton6.Size = new Size(118, 19);
+            m2tRadioButton6.TabIndex = 85;
+            m2tRadioButton6.Text = "m2tRadioButton6";
+            m2tRadioButton6.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1146, 605);
+            Controls.Add(m2tPanel16);
+            Controls.Add(m2tPanel15);
             Controls.Add(m2tCheckBox4);
             Controls.Add(m2tCheckBox3);
             Controls.Add(m2tCheckBox2);
@@ -989,6 +1096,8 @@
             Controls.SetChildIndex(m2tCheckBox2, 0);
             Controls.SetChildIndex(m2tCheckBox3, 0);
             Controls.SetChildIndex(m2tCheckBox4, 0);
+            Controls.SetChildIndex(m2tPanel15, 0);
+            Controls.SetChildIndex(m2tPanel16, 0);
             m2tPanel6.ResumeLayout(false);
             m2tPanel6.PerformLayout();
             m2tPanel7.ResumeLayout(false);
@@ -1004,6 +1113,9 @@
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown3).EndInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown4).EndInit();
             ((System.ComponentModel.ISupportInitialize)m2tNumericUpDown5).EndInit();
+            m2tPanel15.ResumeLayout(false);
+            m2tPanel15.PerformLayout();
+            m2tPanel16.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1086,5 +1198,13 @@
         private M2TCheckBox m2tCheckBox2;
         private M2TCheckBox m2tCheckBox3;
         private M2TCheckBox m2tCheckBox4;
+        private M2TRadioButton m2tRadioButton1;
+        private M2TRadioButton m2tRadioButton2;
+        private M2TRadioButton m2tRadioButton3;
+        private M2TPanel m2tPanel15;
+        private M2TPanel m2tPanel16;
+        private M2TRadioButton m2tRadioButton4;
+        private M2TRadioButton m2tRadioButton5;
+        private M2TRadioButton m2tRadioButton6;
     }
 }
