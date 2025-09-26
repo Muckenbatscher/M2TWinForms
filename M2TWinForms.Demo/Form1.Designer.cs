@@ -111,7 +111,9 @@
             m2tRadioButton3 = new M2TRadioButton();
             m2tPanel15 = new M2TPanel();
             m2tPanel16 = new M2TPanel();
+            m2tRadioButton5 = new M2TRadioButton();
             m2tRadioButton4 = new M2TRadioButton();
+            m2tRadioButton6 = new M2TRadioButton();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
@@ -328,7 +330,7 @@
             m2tLabel8.Name = "m2tLabel8";
             m2tLabel8.Size = new Size(123, 30);
             m2tLabel8.TabIndex = 40;
-            m2tLabel8.Text = "m2tLabel8";
+            m2tLabel8.Text = "m2tLabel2";
             // 
             // m2tLabel9
             // 
@@ -339,7 +341,7 @@
             m2tLabel9.Name = "m2tLabel9";
             m2tLabel9.Size = new Size(123, 30);
             m2tLabel9.TabIndex = 41;
-            m2tLabel9.Text = "m2tLabel9";
+            m2tLabel9.Text = "m2tLabel3";
             // 
             // m2tLabel10
             // 
@@ -348,9 +350,9 @@
             m2tLabel10.ForeColorRole = M2TLabelTextColorRoleSelection.Error;
             m2tLabel10.Location = new Point(512, 154);
             m2tLabel10.Name = "m2tLabel10";
-            m2tLabel10.Size = new Size(136, 30);
+            m2tLabel10.Size = new Size(123, 30);
             m2tLabel10.TabIndex = 42;
-            m2tLabel10.Text = "m2tLabel10";
+            m2tLabel10.Text = "m2tLabel4";
             // 
             // m2tTextBox1
             // 
@@ -861,7 +863,7 @@
             // 
             m2tRadioButton1.AutoSize = true;
             m2tRadioButton1.Checked = true;
-            m2tRadioButton1.Location = new Point(12, 9);
+            m2tRadioButton1.Location = new Point(9, 7);
             m2tRadioButton1.Name = "m2tRadioButton1";
             m2tRadioButton1.Size = new Size(118, 19);
             m2tRadioButton1.TabIndex = 83;
@@ -872,7 +874,7 @@
             // m2tRadioButton2
             // 
             m2tRadioButton2.AutoSize = true;
-            m2tRadioButton2.Location = new Point(12, 34);
+            m2tRadioButton2.Location = new Point(9, 32);
             m2tRadioButton2.Name = "m2tRadioButton2";
             m2tRadioButton2.Size = new Size(118, 19);
             m2tRadioButton2.TabIndex = 84;
@@ -886,30 +888,46 @@
             m2tRadioButton3.FlatStyle = FlatStyle.Flat;
             m2tRadioButton3.Location = new Point(5, 5);
             m2tRadioButton3.Name = "m2tRadioButton3";
-            m2tRadioButton3.Size = new Size(118, 32);
+            m2tRadioButton3.Size = new Size(83, 32);
             m2tRadioButton3.TabIndex = 85;
-            m2tRadioButton3.Text = "m2tRadioButton3";
+            m2tRadioButton3.Text = "Option 1";
+            m2tRadioButton3.TextAlign = ContentAlignment.MiddleCenter;
             m2tRadioButton3.UseVisualStyleBackColor = false;
             // 
             // m2tPanel15
             // 
             m2tPanel15.ColorRole = M2TPanelColorRoleSelection.SurfaceContainer;
+            m2tPanel15.Controls.Add(m2tRadioButton6);
             m2tPanel15.Controls.Add(m2tRadioButton1);
             m2tPanel15.Controls.Add(m2tRadioButton2);
             m2tPanel15.Location = new Point(728, 75);
             m2tPanel15.Name = "m2tPanel15";
-            m2tPanel15.Size = new Size(140, 66);
+            m2tPanel15.Size = new Size(140, 82);
             m2tPanel15.TabIndex = 86;
             // 
             // m2tPanel16
             // 
             m2tPanel16.ColorRole = M2TPanelColorRoleSelection.SurfaceContainer;
+            m2tPanel16.Controls.Add(m2tRadioButton5);
             m2tPanel16.Controls.Add(m2tRadioButton4);
             m2tPanel16.Controls.Add(m2tRadioButton3);
-            m2tPanel16.Location = new Point(656, 164);
+            m2tPanel16.Location = new Point(638, 165);
             m2tPanel16.Name = "m2tPanel16";
-            m2tPanel16.Size = new Size(253, 43);
+            m2tPanel16.Size = new Size(271, 43);
             m2tPanel16.TabIndex = 87;
+            // 
+            // m2tRadioButton5
+            // 
+            m2tRadioButton5.Appearance = Appearance.Button;
+            m2tRadioButton5.CheckedBoxColorRole = M2TRadioButtonCheckColorRoleSelection.PrimaryContainer;
+            m2tRadioButton5.FlatStyle = FlatStyle.Flat;
+            m2tRadioButton5.Location = new Point(183, 5);
+            m2tRadioButton5.Name = "m2tRadioButton5";
+            m2tRadioButton5.Size = new Size(83, 32);
+            m2tRadioButton5.TabIndex = 87;
+            m2tRadioButton5.Text = "Option 3";
+            m2tRadioButton5.TextAlign = ContentAlignment.MiddleCenter;
+            m2tRadioButton5.UseVisualStyleBackColor = false;
             // 
             // m2tRadioButton4
             // 
@@ -917,13 +935,24 @@
             m2tRadioButton4.Checked = true;
             m2tRadioButton4.CheckedBoxColorRole = M2TRadioButtonCheckColorRoleSelection.PrimaryContainer;
             m2tRadioButton4.FlatStyle = FlatStyle.Flat;
-            m2tRadioButton4.Location = new Point(129, 5);
+            m2tRadioButton4.Location = new Point(94, 5);
             m2tRadioButton4.Name = "m2tRadioButton4";
-            m2tRadioButton4.Size = new Size(118, 32);
+            m2tRadioButton4.Size = new Size(83, 32);
             m2tRadioButton4.TabIndex = 86;
             m2tRadioButton4.TabStop = true;
-            m2tRadioButton4.Text = "m2tRadioButton4";
+            m2tRadioButton4.Text = "Option 2";
+            m2tRadioButton4.TextAlign = ContentAlignment.MiddleCenter;
             m2tRadioButton4.UseVisualStyleBackColor = false;
+            // 
+            // m2tRadioButton6
+            // 
+            m2tRadioButton6.AutoSize = true;
+            m2tRadioButton6.Location = new Point(9, 57);
+            m2tRadioButton6.Name = "m2tRadioButton6";
+            m2tRadioButton6.Size = new Size(118, 19);
+            m2tRadioButton6.TabIndex = 85;
+            m2tRadioButton6.Text = "m2tRadioButton6";
+            m2tRadioButton6.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -1088,7 +1117,6 @@
             m2tPanel15.ResumeLayout(false);
             m2tPanel15.PerformLayout();
             m2tPanel16.ResumeLayout(false);
-            m2tPanel16.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1177,5 +1205,7 @@
         private M2TPanel m2tPanel15;
         private M2TPanel m2tPanel16;
         private M2TRadioButton m2tRadioButton4;
+        private M2TRadioButton m2tRadioButton5;
+        private M2TRadioButton m2tRadioButton6;
     }
 }
