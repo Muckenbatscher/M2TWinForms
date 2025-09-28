@@ -25,24 +25,27 @@ To load a theme it is as simple as calling the LoadTheme method. This should be 
 M2TWinforms implements the color calculations found in Google's Material 3 specification. 
 With these calculations it is possible to create a theme from a single color. Themes can be created to either suit a dark or light theme. They can also be created for varying contrast levels (normal, high, higher). Additionally to creating a theme from a single color it is also possible to specify each of the colors by hand. This can provide additional freedom when desired.
 
-[!NOTE]  
+[!Note]
 There are plans to switch the themecreation to use the builder pattern as it can be more expressive than traditional method argument approach that is currently being used. See #31
 
 ### Assigning colors
 Unlike in native windows forms, the colors are not directly assigned to control elements. Instead the M2TWinforms controls expose properties to set color roles. These color roles will be translated to an actual color based on the theme that is currently loaded.
 
-[!NOTE]  
+[!Note]
 Because the controls inherit from their native windows forms controls they will still have to expose the properties for setting the colors directly. They are however marked as [Obsolete] to indicate that the color roles properties should be used instead to ensure proper theming.
 
 The color roles work almost like "paint by number". Assigning a color role property can affect the color of one or more elements within the control. It can also ensure that colors of specific elements work nicely together. A prime example would be a proper foreground text color that provides enough contrast against the background color that is placed on top of.
 
 All controls provide different color roles based on their needs for defined colors and their complexity. They might also allow only the color roles for selection that are valid for a specific property.
 
-Supported controls
-Form 
-Panel 
-Label 
-Button 
-RadioButton 
-CheckBox 
-DataGridView 
+### Supported controls
+
+| Windows Forms | M2TWinforms  |
+| ------------- | ------------ |
+| Form          | M2TForm      |  
+| Panel         | M2TPanel     |  
+| Label         | M2TLabel     |  
+| Button        | M2TButton    |  
+| RadioButton   | M2TRadioButton |
+| CheckBox      | M2TCheckBox  |  
+| DataGridView  | M2TDataGridView |  
