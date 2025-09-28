@@ -6,7 +6,7 @@ M2T stands for: Minimal Material Themeable
 **Minimal**  
 The provided controls provida a minimalist flat appearance that goes well with more modern look and feel.  
 **Material**  
-The colorroles that are utilized to style the controls stem from Google's Material 3 design guidelines. Some controls also replace their standard Windows Forms appearance witha a Material 3 one.  
+The colorroles that are utilized to style the controls stem from [Google's Material 3 design guidelines](https://m3.material.io/). Some controls also replace their standard Windows Forms appearance with a Material 3 one.  
 **Themeable**  
 Theming will be applied to all controls. Making the entire application look and feel more cohesive.  
 
@@ -15,30 +15,78 @@ M2TWinforms is built on top of standard Windows Forms Controls. This is manifest
 
 ## How it works
 Because the controls directly inherit from their native windows forms counterpart it can be as simple as replacing occurences of windows forms controls with their M2TWinforms counterpart.
-Note: There are plans to write a source generator that can take care of migrating a whole project to M2TWinforms controls from native WIndows Forms controls.
+```csharp
+// using native windows forms
+public partial class Form1 : Form
+
+// using M2TWinforms
+public partial class Form1 : M2TForm
+```
+
+```csharp
+// using native windows forms
+private Button button1; 
+InitializeComponent() 
+{
+    button1 = new Button();
+}
+
+// using M2TWinforms
+private M2TButton button1; 
+InitializeComponent() 
+{
+    button1 = new M2TButton();
+}
+```
+
+>[!NOTE]
+>There are plans to write a source generator or Visual Studio Extension that can take care of migrating a whole project to M2TWinforms controls from native WIndows Forms controls.
 
 ### Applying a theme
 The currently loaded theme is managed centrally in the `CurrentLoadedThemeManager`. All controls will apply their theming based on the loaded theme.
 To load a theme it is as simple as calling the LoadTheme method. This should be done before any controls are initialized. The Program.cs startup is the perfect place for this.
 
+```csharp
+Theme myDarkTheme;
+CurrentLoadedThemeManager.LoadTheme(myDarkTheme);
+```
+
 ### Creating a theme
-M2TWinforms implements the color calculations found in Google's Material 3 specification. 
-With these calculations it is possible to create a theme from a single color. Themes can be created to either suit a dark or light theme. They can also be created for varying contrast levels (normal, high, higher). Additionally to creating a theme from a single color it is also possible to specify each of the colors by hand. This can provide additional freedom when desired.
+M2TWinforms implements the color calculations found in Google's Material 3 specification.  
+With these calculations it is possible to create a theme from a single color. Themes can be created to either suit a dark or light theme. They can also be created for varying contrast levels (normal, medium, high). Additionally to creating a theme from a single color it is also possible to specify each of the colors by hand. This can provide additional freedom when desired.
+
+##### Creating a theme from a single primary color
+By only needing to specify a single color, the theme creation is made very simple. The library will take care of calculating the other colors based on the provided primary color.
+```csharp
+// dark theme from single color (Cyan) with normal contrast and normalizing the chroma
+var singleColorTheme = Theme.CreateFromSinglePrimaryColor(
+    Color.Cyan, ThemeMode.Dark, ContrastLevel.Normal, true);
+```
+##### Creating a theme from a json file
+A theme can be creted from a json file. The json file can be exported from the [Material Theme Builder](https://material-foundation.github.io/material-theme-builder/).  
+Because the Material Theme Builder exports all variants of the created theme, the desired theme mode (light, dark) and contrast level (normal, medium, high) has to be specified explicitly when creating the theme.
+```csharp
+var themeJsonFile = new FileInfo("material-theme-dark-cyan.json");
+var themeFromJson = Theme.CreateFromMaterialDesignJson(
+    themeJsonFile, ThemeMode.Dark, ContrastLevel.Normal);
+```
 
 >[!NOTE]
->There are plans to switch the themecreation to use the builder pattern as it can be more expressive than traditional method argument approach that is currently being used. See [#31](https://github.com/Muckenbatscher/M2TWinForms/issues/31)
+>There are plans to switch the theme creation to use the builder pattern as it can be more expressive than traditional method argument approach that is currently being used. See [#31](https://github.com/Muckenbatscher/M2TWinForms/issues/31)
 
 ### Assigning colors
-Unlike in native windows forms, the colors are not directly assigned to control elements. Instead the M2TWinforms controls expose properties to set color roles. These color roles will be translated to an actual color based on the theme that is currently loaded.
+Unlike in native windows forms, the colors are not directly assigned to control elements. Instead the M2TWinforms controls expose properties to set color roles. The color roles reflect those that are defined in the [Material 3 design guideline](https://m3.material.io/styles/color/roles).  
+These color roles will be translated to an actual color based on the theme that is currently loaded.
 
 >[!NOTE]
->Because the controls inherit from their native windows forms controls they will still have to expose the properties for setting the colors directly. They are however marked as [Obsolete] to indicate that the color roles properties should be used instead to ensure proper theming.
+>Because the controls inherit from their native windows forms controls they will still have to expose the properties for setting the colors directly. They are however marked as `[Obsolete]` to indicate that the color roles properties should be used instead to ensure proper theming.
 
 The color roles work almost like "paint by number". Assigning a color role property can affect the color of one or more elements within the control. It can also ensure that colors of specific elements work nicely together. A prime example would be a proper foreground text color that provides enough contrast against the background color that is placed on top of.
 
 All controls provide different color roles based on their needs for defined colors and their complexity. They might also allow only the color roles for selection that are valid for a specific property.
 
-### Supported controls
+
+## Supported controls
 
 | Windows Forms | M2TWinforms  |
 | ------------- | ------------ |
