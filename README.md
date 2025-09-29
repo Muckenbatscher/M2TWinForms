@@ -42,15 +42,6 @@ InitializeComponent()
 >[!NOTE]
 >There are plans to write a source generator or Visual Studio Extension that can take care of migrating a whole project to M2TWinforms controls from native WIndows Forms controls.
 
-### Applying a theme
-The currently loaded theme is managed centrally in the `CurrentLoadedThemeManager`. All controls will apply their theming based on the loaded theme.
-To load a theme it is as simple as calling the LoadTheme method. This should be done before any controls are initialized. The Program.cs startup is the perfect place for this.
-
-```csharp
-Theme myDarkTheme;
-CurrentLoadedThemeManager.LoadTheme(myDarkTheme);
-```
-
 ### Creating a theme
 M2TWinforms implements the color calculations found in Google's Material 3 specification.  
 With these calculations it is possible to create a theme from a single color. Themes can be created to either suit a dark or light theme. They can also be created for varying contrast levels (normal, medium, high). Additionally to creating a theme from a single color it is also possible to specify each of the colors by hand. This can provide additional freedom when desired.
@@ -74,6 +65,40 @@ var themeFromJson = Theme.CreateFromMaterialDesignJson(
 >[!NOTE]
 >There are plans to switch the theme creation to use the builder pattern as it can be more expressive than traditional method argument approach that is currently being used. See [#31](https://github.com/Muckenbatscher/M2TWinForms/issues/31)
 
+
+### Applying a theme
+The currently loaded theme is managed centrally in the `CurrentLoadedThemeManager`. All controls will apply their theming based on the loaded theme.
+To load a theme it is as simple as calling the LoadTheme method. This should be done before any controls are initialized.  
+
+#### By loading an existing theme at application startup
+The `Program.cs` is the perfect place for loading a theme because it is executed right at the startup of the application.
+```csharp
+Theme myDarkTheme = CreateDarkThemeFromSomewhere();
+CurrentLoadedThemeManager.LoadTheme(myDarkTheme);
+```
+
+#### By implementing IDefaultThemeProvider
+It is also possible toa automatically load a theme by providing an implementation of the `IDefaultThemeProvider` interface in your assembly.  
+To implement this interface you only have to implement the single method `CreateTheme()`
+```csharp
+public class MyDefaultThemeProvider : IDefaultThemeProvider
+{
+    public Theme CreateTheme()
+    {
+        var theme = Theme.CreateFromSinglePrimaryColor(
+            Color.Green, ThemeMode.Light, ContrastLevel.Normal, true);
+        return theme;
+    }
+}
+```
+When this approach is chosen the theme will even be applied in the Visual Studio Windows Forms Designer. For changes to take effect the project needs to be rebuilt.  
+It is advised to only provide one implementation of the `IDefaultThemeProvider` interface. Otherwise one of the implementations from the assembly has to be chosen and the choice may not be deterministic.
+
+>[!WARNING]
+>The Visual Studio Forms designer is displayed by the out-of-process `DesignToolsServer.exe` process. This process does not use the projects output directory as its working directory.  
+>It is therefore not possible to have a relative path to a theme json file when creating a theme from a json file. Instead it is advised to either use the resources (embedded or .resx) for storing the json or using reflection to build a relative path from the current assembly.
+
+
 ### Assigning colors
 Unlike in native windows forms, the colors are not directly assigned to control elements. Instead the M2TWinforms controls expose properties to set color roles. The color roles reflect those that are defined in the [Material 3 design guideline](https://m3.material.io/styles/color/roles).  
 These color roles will be translated to an actual color based on the theme that is currently loaded.
@@ -85,6 +110,20 @@ The color roles work almost like "paint by number". Assigning a color role prope
 
 All controls provide different color roles based on their needs for defined colors and their complexity. They might also allow only the color roles for selection that are valid for a specific property.
 
+## MessageBox
+M2TWinforms also includes MessageBoxes. Like with all other controls they can be a simple drop in replacement for the native Windows Forms MessageBoxes.  
+The methods to show a MessageBox will also return a `DialogResult` that can be used in the same way as their native Windows Forms counterpart.
+```csharp
+// native Windows Forms
+var dialogResult = MessageBox.Show(
+    "Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+if (dialogResult == DialogResult.Yes) { /*do something*/ }
+
+// M2TWinforms
+var dialogResult = M2TMessageBox.Show(
+    "Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+if (dialogResult == DialogResult.Yes) { /*do something*/ }
+```
 
 ## Supported controls
 
@@ -93,7 +132,11 @@ All controls provide different color roles based on their needs for defined colo
 | Form          | M2TForm      |  
 | Panel         | M2TPanel     |  
 | Label         | M2TLabel     |  
+| TextBox       | M2TTextBox   |
+| RichTextBox   | M2TRichTextBox |
+| NumericUpDown | M2TNumericUpDown |
 | Button        | M2TButton    |  
 | RadioButton   | M2TRadioButton |
 | CheckBox      | M2TCheckBox  |  
 | DataGridView  | M2TDataGridView |  
+
