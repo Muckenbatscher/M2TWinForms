@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Themes.DefaultThemeProviders
+namespace M2TWinForms.Themes.ThemeProviders
 {
     public class DefaultLightThemeProvider : DefaultThemeProvider
     {
