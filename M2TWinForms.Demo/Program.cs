@@ -15,9 +15,6 @@ namespace M2TWinForms.Demo
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            var theme = Theme.CreateFromSinglePrimaryColor(Color.Cyan, ThemeMode.Dark, ContrastLevel.Normal, true);
-            Themes.ThemeLoading.CurrentLoadedThemeManager.LoadTheme(theme);
-            
             Application.EnableVisualStyles();
             Application.Run(new Form1());
         }

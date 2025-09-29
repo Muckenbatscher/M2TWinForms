@@ -1,5 +1,5 @@
-﻿using M2TWinForms.Themes.DefaultThemeProviders;
-using M2TWinForms.Themes.MaterialDesign;
+﻿using M2TWinForms.Themes.MaterialDesign;
+using M2TWinForms.Themes.ThemeProviders;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -18,12 +18,21 @@ namespace M2TWinForms.Themes.ThemeLoading
 
             if (!_themeManagerInstance.IsThemeLoaded)
             {
-                var provider = new DefaultLightThemeProvider();
+                var provider = GetThemeProviderToUse();
                 var theme = provider.CreateTheme();
                 _themeManagerInstance.LoadTheme(theme);
             }
 
             return _themeManagerInstance;
+        }
+
+        private static IThemeProvider GetThemeProviderToUse()
+        {
+            var discoveredThemeProvider = DefaultThemeLoadingManager.FindDefaultThemeProvider();
+            if (discoveredThemeProvider != null)
+                return discoveredThemeProvider;
+
+            return new DefaultLightThemeProvider();
         }
 
         public static Color GetColorForRole(ColorRoles role)
