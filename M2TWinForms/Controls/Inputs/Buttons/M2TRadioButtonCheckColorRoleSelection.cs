@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms
 {
-    public enum M2TCheckBoxBackgroundColorRoleSelection
+    public enum M2TRadioButtonCheckColorRoleSelection
     {
-        Transparent,
         Primary,
         PrimaryContainer,
         Secondary,
@@ -17,11 +16,7 @@ namespace M2TWinForms
         TertiaryContainer,
         Error,
         ErrorContainer,
-        Surface,
-        SurfaceContainer,
-        SurfaceContainerLowest,
-        SurfaceContainerLow,
-        SurfaceContainerHigh,
-        SurfaceContainerHighest
+        OnSurface,
+        OnSurfaceVariant
     }
 }

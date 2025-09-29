@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms
 {
-    public enum M2TCheckBoxBackgroundColorRoleSelection
+    public enum M2TRadioButtonBackgroundColorRoleSelection
     {
         Transparent,
         Primary,

@@ -1,5 +1,4 @@
-﻿using M2TWinForms.Controls.Inputs.Buttons;
-using M2TWinForms.Themes.MaterialDesign;
+﻿using M2TWinForms.Themes.MaterialDesign;
 using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
 using System.Drawing;
@@ -25,6 +24,7 @@ namespace M2TWinForms
         }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color BoxColor { get; private set; }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color OnBoxColor { get; private set; }
 
 
@@ -56,33 +56,34 @@ namespace M2TWinForms
         }
         private M2TCheckBoxBackgroundColorRoleSelection _backColorRole = M2TCheckBoxBackgroundColorRoleSelection.Transparent;
 
-        [Description("The Material Design Color Role used for the background of the CheckBox")]
+        [Description("The Material Design Color Role used for the box part of the CheckBox when checked")]
+        [Category("Material Design")]
+        [DefaultValue(M2TCheckBoxBoxColorRoleSelection.Primary)]
+        public M2TCheckBoxBoxColorRoleSelection BoxColorRoleChecked
+        {
+            get => _boxColorRoleChecked;
+            set
+            {
+                _boxColorRoleChecked = value;
+                ApplyCurrentLoadedTheme();
+            }
+        }
+        private M2TCheckBoxBoxColorRoleSelection _boxColorRoleChecked = M2TCheckBoxBoxColorRoleSelection.Primary;
+
+        [Description("The Material Design Color Role used for the box part of the CheckBox when unchecked")]
         [Category("Material Design")]
         [DefaultValue(M2TCheckBoxBoxColorRoleSelection.OnSurfaceVariant)]
-        public M2TCheckBoxBoxColorRoleSelection BoxColorRole
+        public M2TCheckBoxBoxColorRoleSelection BoxColorRoleUnchecked
         {
-            get => _boxColorRole;
+            get => _boxColorRoleUnchecked;
             set
             {
-                _boxColorRole = value;
+                _boxColorRoleUnchecked = value;
                 ApplyCurrentLoadedTheme();
             }
         }
-        private M2TCheckBoxBoxColorRoleSelection _boxColorRole = M2TCheckBoxBoxColorRoleSelection.OnSurfaceVariant;
+        private M2TCheckBoxBoxColorRoleSelection _boxColorRoleUnchecked = M2TCheckBoxBoxColorRoleSelection.OnSurfaceVariant;
 
-        [Description("The Material Design Color Role used for the background of the CheckBox")]
-        [Category("Material Design")]
-        [DefaultValue(M2TCheckBoxOnBoxColorRoleSelection.Transparent)]
-        public M2TCheckBoxOnBoxColorRoleSelection OnBoxColorRole
-        {
-            get => _onBoxColorRole;
-            set
-            {
-                _onBoxColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private M2TCheckBoxOnBoxColorRoleSelection _onBoxColorRole = M2TCheckBoxOnBoxColorRoleSelection.Transparent;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new FlatButtonAppearance FlatAppearance
@@ -100,6 +101,8 @@ namespace M2TWinForms
         {
             FlatStyle = FlatStyle.Standard;
             ApplyCurrentLoadedTheme();
+
+            this.CheckStateChanged += (s, e) => ApplyCurrentLoadedTheme();
         }
 
         public void ApplyCurrentLoadedTheme()
@@ -117,7 +120,8 @@ namespace M2TWinForms
             this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(mappedForeColorRole);
             var mappedBoxColorRole = GetMappedBoxColorRole();
             this.BoxColor = CurrentLoadedThemeManager.GetColorForRole(mappedBoxColorRole);
-            if (OnBoxColorRole == M2TCheckBoxOnBoxColorRoleSelection.Transparent)
+
+            if (RequiresTransparentOnBoxColorRole())
             {
                 this.OnBoxColor = BackColor;
             }
@@ -126,7 +130,19 @@ namespace M2TWinForms
                 var mappedOnBoxColorRole = GetMappedOnBoxColorRole();
                 this.OnBoxColor = CurrentLoadedThemeManager.GetColorForRole(mappedOnBoxColorRole);
             }
+
             Invalidate();
+        }
+
+        private bool RequiresTransparentOnBoxColorRole()
+        {
+            var roleToBeUsed = Checked ? BoxColorRoleChecked : BoxColorRoleUnchecked;
+            var rolesRequiringSurface = new M2TCheckBoxBoxColorRoleSelection[]
+            {
+                M2TCheckBoxBoxColorRoleSelection.OnSurface,
+                M2TCheckBoxBoxColorRoleSelection.OnSurfaceVariant
+            };
+            return rolesRequiringSurface.Contains(roleToBeUsed);
         }
 
         private ColorRoles GetMappedForeColorRole()
@@ -174,7 +190,8 @@ namespace M2TWinForms
         }
         private ColorRoles GetMappedBoxColorRole()
         {
-            return BoxColorRole switch
+            var roleToUse = CheckState == CheckState.Unchecked ? BoxColorRoleUnchecked : (M2TCheckBoxBoxColorRoleSelection)BoxColorRoleChecked;
+            return roleToUse switch
             {
                 M2TCheckBoxBoxColorRoleSelection.Primary => ColorRoles.Primary,
                 M2TCheckBoxBoxColorRoleSelection.PrimaryContainer => ColorRoles.PrimaryContainer,
@@ -186,22 +203,23 @@ namespace M2TWinForms
                 M2TCheckBoxBoxColorRoleSelection.ErrorContainer => ColorRoles.ErrorContainer,
                 M2TCheckBoxBoxColorRoleSelection.OnSurface => ColorRoles.OnSurface,
                 M2TCheckBoxBoxColorRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
-                _ => throw new ArgumentException($"Unknown {nameof(M2TCheckBoxBoxColorRoleSelection)} value: {BoxColorRole}"),
+                _ => throw new ArgumentException($"Unknown {nameof(M2TCheckBoxBoxColorRoleSelection)} value: {roleToUse}"),
             };
         }
         private ColorRoles GetMappedOnBoxColorRole()
         {
-            return OnBoxColorRole switch
+            var roleToUse = CheckState == CheckState.Unchecked ? BoxColorRoleUnchecked : (M2TCheckBoxBoxColorRoleSelection)BoxColorRoleChecked;
+            return roleToUse switch
             {
-                M2TCheckBoxOnBoxColorRoleSelection.OnPrimary => ColorRoles.OnPrimary,
-                M2TCheckBoxOnBoxColorRoleSelection.OnPrimaryContainer => ColorRoles.OnPrimaryContainer,
-                M2TCheckBoxOnBoxColorRoleSelection.OnSecondary => ColorRoles.OnSecondary,
-                M2TCheckBoxOnBoxColorRoleSelection.OnSecondaryContainer => ColorRoles.OnSecondaryContainer,
-                M2TCheckBoxOnBoxColorRoleSelection.OnTertiary => ColorRoles.OnTertiary,
-                M2TCheckBoxOnBoxColorRoleSelection.OnTertiaryContainer => ColorRoles.OnTertiaryContainer,
-                M2TCheckBoxOnBoxColorRoleSelection.OnError => ColorRoles.OnError,
-                M2TCheckBoxOnBoxColorRoleSelection.OnErrorContainer => ColorRoles.OnErrorContainer,
-                _ => throw new ArgumentException($"Unknown {nameof(M2TCheckBoxOnBoxColorRoleSelection)} value: {OnBoxColorRole}"),
+                M2TCheckBoxBoxColorRoleSelection.Primary => ColorRoles.OnPrimary,
+                M2TCheckBoxBoxColorRoleSelection.PrimaryContainer => ColorRoles.OnPrimaryContainer,
+                M2TCheckBoxBoxColorRoleSelection.Secondary => ColorRoles.OnSecondary,
+                M2TCheckBoxBoxColorRoleSelection.SecondaryContainer => ColorRoles.OnSecondaryContainer,
+                M2TCheckBoxBoxColorRoleSelection.Tertiary => ColorRoles.OnTertiary,
+                M2TCheckBoxBoxColorRoleSelection.TertiaryContainer => ColorRoles.OnTertiaryContainer,
+                M2TCheckBoxBoxColorRoleSelection.Error => ColorRoles.OnError,
+                M2TCheckBoxBoxColorRoleSelection.ErrorContainer => ColorRoles.OnErrorContainer,
+                _ => throw new ArgumentException($"Unknown {nameof(M2TCheckBoxBoxColorRoleSelection)} value: {roleToUse}"),
             };
         }
 
@@ -216,8 +234,8 @@ namespace M2TWinForms
 
             pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            Point pt = new Point(0, 1);
-            Rectangle rect = new Rectangle(pt, new Size(16, 16));
+            var pt = new Point(0, 1);
+            var rect = new Rectangle(pt, new Size(16, 16));
 
             if (CheckState == CheckState.Checked)
             {
@@ -250,11 +268,10 @@ namespace M2TWinForms
             {
                 rect.Inflate(-1, -1);
                 var path = CreateRoundedRect(rect, 3);
-                var outlinePen = new Pen(BoxColor, 2);
+                var outlinePen = new Pen(BoxColor, 1.75F);
                 pevent.Graphics.DrawPath(outlinePen, path);
             }
         }
-
 
         private static GraphicsPath CreateRoundedRect(Rectangle rect, int radius)
         {
