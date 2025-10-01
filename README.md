@@ -1,4 +1,36 @@
-# M2TWinForms
+﻿# M2TWinforms: The Makeover Your WinForms Apps Deserve! ✨
+Do your powerful Windows Forms applications feel visually stuck in the past? It's time to give that time-tested functionality a fresh, modern UI that users will love.
+
+Say goodbye to the classic, dated interface and hello to a minimalistic, beautiful, and professional material design. With **M2TWinforms**, you can effortlessly give your apps a modern look and feel without having to rewrite your entire project.
+
+## What's Possible: A Quick Preview! 👀
+See for yourself how easily you can transform your user interface.  
+From the familiar look of native Windows Forms...
+<img alt="native winforms" src=".docs/pictures/winforms_native.png">
+...to the minimalist, modern, material aesthetics of M2TWinforms!
+<img alt="m2t blue light" src=".docs/pictures/m2t_blue_light.png">
+
+### Light Mode vs. Dark Mode 🌗
+Easily switch between light and dark themes to reflect your desired visuals and suit your users' preferences.
+<img alt="m2t blue dark" src=".docs/pictures/m2t_blue_dark.png">
+<img alt="m2t blue light" src=".docs/pictures/m2t_blue_light.png">
+
+### One App, Many distinct Appearances 🎨
+Apply visual themes to your whole application to give users a consistent look and feel across all forms.  
+Easily switch the theme to a different color scheme and let all controls automatically adapt to it.
+<img alt="m2t yellow light" src=".docs/pictures/m2t_yellow_light.png">
+<img alt="m2t red dark" src=".docs/pictures/m2t_red_dark.png">
+<img alt="m2t purple light" src=".docs/pictures/m2t_purple_light.png">
+
+### Improve Accessibility with Contrast Levels 👥
+Ensure your application is accessible to everyone by offering different levels of contrast.
+The provided contrast levels include: Normal...
+<img alt="m2t green dark" src=".docs/pictures/m2t_green_dark.png">
+Medium...
+<img alt="m2t green dark medium contrast" src=".docs/pictures/m2t_green_dark_medium_contrast.png">
+... and High Contrast.
+<img alt="m2t green dark high contrast" src=".docs/pictures/m2t_green_dark_high_contrast.png">
+
 
 ## What is M2TWinforms?
 M2TWinforms is a UI library that aims to enhance the dated looks of standard Windows Forms.  
@@ -46,14 +78,14 @@ InitializeComponent()
 M2TWinforms implements the color calculations found in Google's Material 3 specification.  
 With these calculations it is possible to create a theme from a single color. Themes can be created to either suit a dark or light theme. They can also be created for varying contrast levels (normal, medium, high). Additionally to creating a theme from a single color it is also possible to specify each of the colors by hand. This can provide additional freedom when desired.
 
-##### Creating a theme from a single primary color
+#### Creating a theme from a single primary color
 By only needing to specify a single color, the theme creation is made very simple. The library will take care of calculating the other colors based on the provided primary color.
 ```csharp
 // dark theme from single color (Cyan) with normal contrast and normalizing the chroma
 var singleColorTheme = Theme.CreateFromSinglePrimaryColor(
     Color.Cyan, ThemeMode.Dark, ContrastLevel.Normal, true);
 ```
-##### Creating a theme from a json file
+#### Creating a theme from a json file
 A theme can be creted from a json file. The json file can be exported from the [Material Theme Builder](https://material-foundation.github.io/material-theme-builder/).  
 Because the Material Theme Builder exports all variants of the created theme, the desired theme mode (light, dark) and contrast level (normal, medium, high) has to be specified explicitly when creating the theme.
 ```csharp
