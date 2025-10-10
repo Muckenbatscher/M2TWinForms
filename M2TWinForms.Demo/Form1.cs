@@ -39,5 +39,14 @@ namespace M2TWinForms.Demo
             M2TMessageBox.Show(TB_MessageText.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void m2tButton15_Click(object sender, EventArgs e)
+        {
+            PN_SizeCheck.Size += new Size(10, 10);
+        }
+
+        private void m2tButton21_Click(object sender, EventArgs e)
+        {
+            PN_SizeCheck.Size -= new Size(10, 10);
+        }
     }
 }
