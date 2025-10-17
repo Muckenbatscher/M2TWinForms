@@ -29,4 +29,4 @@ jobs:
     - name: Add GitHub NuGet source
       run: dotnet nuget add source --username Muckenbatscher --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Muckenbatscher/index.json"
     - name: Push to GitHub source
-      run: dotnet nuget push "bin/packaged/PROJECT_NAME.1.0.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+      run: dotnet nuget push "bin/packaged/M2TWinForms.1.0.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
