@@ -33,6 +33,6 @@ jobs:
       run: dotnet nuget add source --username Muckenbatscher --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Muckenbatscher/index.json"
     - name: Get project file directory
       id: projectDir
-      run: echo "projectParentDir=$(dirname "${{ matrix.project }}")"
+      run: echo "projectParentDir=$(dirname "${{ matrix.project }}")" >> $GITHUB_OUTPUT
     - name: Push to GitHub source
-      run: dotnet nuget push "${{ steps.projectDir.projectParentDir }}/bin/packaged/M2TWinForms.1.0.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+      run: dotnet nuget push "${{ steps.projectDir.outputs.projectParentDir }}/bin/packaged/M2TWinForms.1.0.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
