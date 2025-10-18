@@ -13,7 +13,7 @@ jobs:
   build-push:
     strategy:
       matrix:
-        project: ['M2TWinForms/M2TWinForms.csproj']
+        project: ['M2TWinForms/M2TWinForms.csproj', 'M2TWinForms.Themes/M2TWinForms.Themes.csproj']
 
     runs-on: ubuntu-latest
     permissions:
@@ -35,10 +35,12 @@ jobs:
             --username Muckenbatscher \
             --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text \
             --name github 
-    - name: Get project file directory
-      id: projectDir
-      run: echo "projectParentDir=$(dirname "${{ matrix.project }}")" >> $GITHUB_OUTPUT
+    - name: Get project properties
+      id: props
+      run: |
+          echo "packageId=$(dotnet msbuild "${{ matrix.project }}" -getProperty:PackageID)" >> $GITHUB_OUTPUT
+          echo "packageVersion=$(dotnet msbuild "${{ matrix.project }}" -getProperty:PackageVersion)" >> $GITHUB_OUTPUT
     - name: Push to GitHub source
       run: | 
-          dotnet nuget push "bin/packaged/M2TWinForms.1.0.0.nupkg" \
+          dotnet nuget push "bin/packaged/"${{ steps.props.outputs.packageId }}.${{ steps.props.outputs.packageVersion }}.nupkg" \
             --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
