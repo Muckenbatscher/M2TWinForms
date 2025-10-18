@@ -42,5 +42,5 @@ jobs:
           echo "packageVersion=$(dotnet msbuild "${{ matrix.project }}" -getProperty:PackageVersion)" >> $GITHUB_OUTPUT
     - name: Push to GitHub source
       run: | 
-          dotnet nuget push "bin/packaged/"${{ steps.props.outputs.packageId }}.${{ steps.props.outputs.packageVersion }}.nupkg" \
+          dotnet nuget push "bin/packaged/${{ steps.props.outputs.packageId }}.${{ steps.props.outputs.packageVersion }}.nupkg" \
             --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
