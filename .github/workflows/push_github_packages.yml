@@ -40,5 +40,5 @@ jobs:
       run: echo "projectParentDir=$(dirname "${{ matrix.project }}")" >> $GITHUB_OUTPUT
     - name: Push to GitHub source
       run: | 
-          dotnet nuget push "${{ steps.projectDir.outputs.projectParentDir }}/bin/packaged/M2TWinForms.1.0.0.nupkg" \
+          dotnet nuget push "/bin/packaged/M2TWinForms.1.0.0.nupkg" \
             --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
