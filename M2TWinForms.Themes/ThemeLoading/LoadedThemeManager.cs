@@ -16,8 +16,12 @@ namespace M2TWinForms.Themes.ThemeLoading
 
         public void LoadTheme(Theme theme)
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull(theme, nameof(theme));
-
+#elif NET48_OR_GREATER
+            if (theme == null)
+                throw new ArgumentNullException(nameof(theme));
+#endif
             CurrentLoadedTheme = theme;
         }
 

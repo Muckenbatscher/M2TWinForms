@@ -13,7 +13,9 @@ namespace M2TWinForms.Demo
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+#if NET8_0_OR_GREATER
             ApplicationConfiguration.Initialize();
+#endif
 
             Application.EnableVisualStyles();
             Application.Run(new Form1());

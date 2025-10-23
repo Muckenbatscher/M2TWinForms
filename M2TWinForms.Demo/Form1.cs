@@ -32,7 +32,9 @@ namespace M2TWinForms.Demo
         }
         private void m2tButton18_Click(object sender, EventArgs e)
         {
+#if NET8_0_OR_GREATER
             M2TMessageBox.Show(TB_MessageText.Text, "Warning", MessageBoxButtons.CancelTryContinue, MessageBoxIcon.Warning);
+#endif
         }
         private void m2tButton19_Click(object sender, EventArgs e)
         {

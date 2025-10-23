@@ -95,7 +95,11 @@ namespace M2TWinForms.Themes.MaterialDesign.HctConversion
             double k = 1.0 / (5.0 * adaptingLuminance + 1.0);
             double k4 = k * k * k * k;
             double k4F = 1.0 - k4;
+#if NET8_0_OR_GREATER
             double fl = (k4 * adaptingLuminance) + (0.1 * k4F * k4F * Math.Cbrt(5.0 * adaptingLuminance));
+#elif NET48_OR_GREATER
+            double fl = (k4 * adaptingLuminance) + (0.1 * k4F * k4F * Math.Pow(5.0 * adaptingLuminance, 1/3D));
+#endif
             double n = (ColorUtils.YFromLstar(backgroundLstar) / whitePoint[1]);
             double z = 1.48 + Math.Sqrt(n);
             double nbb = 0.725 / Math.Pow(n, 0.2);

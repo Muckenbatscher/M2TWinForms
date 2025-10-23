@@ -246,7 +246,11 @@ namespace M2TWinForms
                         g.FillPolygon(upArrowBrush, upArrowPoints);
                         g.FillPolygon(downArrowBrush, downArrowPoints);
                     }
+#if NET8_0_OR_GREATER
                     m.Result = 1;
+#elif NET48_OR_GREATER
+                    m.Result = (nint)1;
+#endif
                     base.WndProc(ref m);
                     IntEndPaint(_updown.Handle, ref s);
                 }
@@ -254,12 +258,16 @@ namespace M2TWinForms
                 {
                     using (var g = Graphics.FromHdcInternal(m.WParam))
                         g.FillRectangle(Brushes.White, _updown.ClientRectangle);
+#if NET8_0_OR_GREATER
                     m.Result = 1;
+#elif NET48_OR_GREATER
+                    m.Result = (nint)1;
+#endif
                 }
                 else
                     base.WndProc(ref m);
             }
         }
-        #endregion FlatNumericUpDown
+#endregion FlatNumericUpDown
     }
 }

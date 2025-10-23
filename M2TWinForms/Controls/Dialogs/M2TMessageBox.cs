@@ -151,7 +151,9 @@ namespace M2TWinForms
                 MessageBoxDefaultButton.Button1 => 0,
                 MessageBoxDefaultButton.Button2 => 1,
                 MessageBoxDefaultButton.Button3 => 2,
+#if NET8_0_OR_GREATER
                 MessageBoxDefaultButton.Button4 => 3,
+#endif
                 _ => 0
             };
             if (msgBoxButtons.Length > focussedButtonIndex)
@@ -217,6 +219,7 @@ namespace M2TWinForms
                             useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
                         return [retryButton, cancelButton];
                     }
+#if NET8_0_OR_GREATER
                 case MessageBoxButtons.CancelTryContinue:
                     {
                         var cancelButton = CreateButton(NativeButtons.Cancel, DialogResult.Cancel,
@@ -227,6 +230,7 @@ namespace M2TWinForms
                             useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button3);
                         return [cancelButton, tryAgainButton, continueButton];
                     }
+#endif
                 default:
                     throw new ArgumentOutOfRangeException(nameof(buttons), buttons, "Invalid message box buttons specified.");
             }

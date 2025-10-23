@@ -257,7 +257,11 @@ namespace M2TWinForms.Themes.MaterialDesign.HctConversion
             return ColorUtils.ArgbFromXyz(xyz[0], xyz[1], xyz[2]);
         }
 
+#if NET8_0_OR_GREATER
         internal double[] XyzInViewingConditions(ViewingConditions viewingConditions, double[]? returnArray)
+#elif NET48_OR_GREATER
+        internal double[] XyzInViewingConditions(ViewingConditions viewingConditions, double[] returnArray)
+#endif
         {
             double alpha =
                 (GetChroma() == 0.0 || GetJ() == 0.0) ? 0.0 : GetChroma() / Math.Sqrt(GetJ() / 100.0);
