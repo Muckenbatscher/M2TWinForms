@@ -7,7 +7,7 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]+-*'
       
 env:
-  PACKAGES_ARTIFACT: nuget-packages-${{ github.ref_name }}
+  PACKAGES_ARTIFACT: nuget-package-${{ github.ref_name }}
 
 jobs:
   version:
@@ -29,7 +29,11 @@ jobs:
     
     strategy:
       matrix:
-        project: ['M2TWinForms/M2TWinForms.csproj', 'M2TWinForms.Themes/M2TWinForms.Themes.csproj']
+        project: 
+          - name: M2TWinForms
+            path: 'M2TWinForms/M2TWinForms.csproj'
+          - name: M2TWinForms.Themes
+            path: 'M2TWinForms.Themes/M2TWinForms.Themes.csproj'
 
     env:
       VERSION: ${{ needs.version.outputs.version }} 
@@ -42,18 +46,18 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore project dependencies
-      run: dotnet restore ${{ matrix.project }} -p:EnableWindowsTargeting=true
+      run: dotnet restore ${{ matrix.project.path }} -p:EnableWindowsTargeting=true
 
     - name: Build package file
       run: |
-        dotnet pack ${{ matrix.project }} --no-restore \
+        dotnet pack ${{ matrix.project.path }} --no-restore \
           -c Release -o ${{ env.OUTDIR }} -p:EnableWindowsTargeting=true \
           -p:PackageVersion=$VERSION
 
     - name: Upload built packages as artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.PACKAGES_ARTIFACT }}
+        name: ${{ env.PACKAGES_ARTIFACT }}-${{ matrix.project.name }}
         path: ${{ env.OUTDIR }}/*.nupkg
         retention-days: 1
         
@@ -63,7 +67,7 @@ jobs:
       - version
       - build-package
     runs-on: ubuntu-latest
-
+            
     permissions:
       packages: write
 
@@ -74,7 +78,6 @@ jobs:
     steps:
     - uses: actions/download-artifact@v4
       with:
-        name: ${{ env.PACKAGES_ARTIFACT }}
         path: ${{ env.PACKAGE_DIR }}
 
     - uses: actions/setup-dotnet@v4
@@ -88,14 +91,9 @@ jobs:
           --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text \
           --name github
           
-    - name: Add NuGet.org source
-      run: |
-        dotnet nuget add source https://api.nuget.org/v3/index.json \
-          --name nuget.org
-          
     - name: Push all to GitHub Packages
       run: |
-        for f in ${{ env.PACKAGE_DIR }}/*.nupkg
+        for f in ${{ env.PACKAGE_DIR }}/*/*.nupkg
         do
           echo "Pushing $f to GitHub Packages source..."
           dotnet nuget push "$f" --source "github"
@@ -105,7 +103,7 @@ jobs:
       env:
         API_KEY: ${{ secrets.M2T_NUGET_KEY }}
       run: |
-        for f in ${{ env.PACKAGE_DIR }}/*.nupkg
+        for f in ${{ env.PACKAGE_DIR }}/*/*.nupkg
         do
           echo "Pushing $f to NuGet.org source..."
           dotnet nuget push "$f" --source "nuget.org" --api-key ${{ env.API_KEY }}
