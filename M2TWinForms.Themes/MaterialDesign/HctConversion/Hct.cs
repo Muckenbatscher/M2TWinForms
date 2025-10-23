@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.MaterialDesign.HctConversion
 {
-    public sealed class Hct
+    internal sealed class Hct
     {
         private double hue;
         private double chroma;
