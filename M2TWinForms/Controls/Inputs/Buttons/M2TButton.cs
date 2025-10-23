@@ -72,9 +72,16 @@ namespace M2TWinForms
         {
             IEnumerable<M2TButtonColorRoleSelection> transparentRoles = [
                 M2TButtonColorRoleSelection.PrimaryTransparent,
+                M2TButtonColorRoleSelection.PrimaryText,
                 M2TButtonColorRoleSelection.SecondaryTransparent,
+                M2TButtonColorRoleSelection.SecondaryText,
                 M2TButtonColorRoleSelection.TertiaryTransparent,
-                M2TButtonColorRoleSelection.ErrorTransparent];
+                M2TButtonColorRoleSelection.TertiaryText,
+                M2TButtonColorRoleSelection.ErrorTransparent,
+                M2TButtonColorRoleSelection.ErrorText,
+                M2TButtonColorRoleSelection.SurfaceText,
+                M2TButtonColorRoleSelection.SurfaceVariantText
+            ];
             bool isTransparentRole = transparentRoles.Contains(ColorRole);
 
             var backColorRole = GetBackgroundColorRole(ColorRole);
@@ -105,17 +112,24 @@ namespace M2TWinForms
             {
                 M2TButtonColorRoleSelection.Primary => ColorRoles.OnPrimary,
                 M2TButtonColorRoleSelection.PrimaryTransparent => ColorRoles.Primary,
+                M2TButtonColorRoleSelection.PrimaryText => ColorRoles.Primary,
                 M2TButtonColorRoleSelection.PrimaryContainer => ColorRoles.OnPrimaryContainer,
                 M2TButtonColorRoleSelection.Secondary => ColorRoles.OnSecondary,
+                M2TButtonColorRoleSelection.SecondaryText => ColorRoles.Secondary,
                 M2TButtonColorRoleSelection.SecondaryTransparent => ColorRoles.Secondary,
                 M2TButtonColorRoleSelection.SecondaryContainer => ColorRoles.OnSecondaryContainer,
                 M2TButtonColorRoleSelection.Tertiary => ColorRoles.OnTertiary,
                 M2TButtonColorRoleSelection.TertiaryTransparent => ColorRoles.Tertiary,
+                M2TButtonColorRoleSelection.TertiaryText => ColorRoles.Tertiary,
                 M2TButtonColorRoleSelection.TertiaryContainer => ColorRoles.OnTertiaryContainer,
                 M2TButtonColorRoleSelection.Error => ColorRoles.OnError,
                 M2TButtonColorRoleSelection.ErrorTransparent => ColorRoles.Error,
+                M2TButtonColorRoleSelection.ErrorText => ColorRoles.Error,
                 M2TButtonColorRoleSelection.ErrorContainer => ColorRoles.OnErrorContainer,
                 M2TButtonColorRoleSelection.Surface => ColorRoles.OnSurface,
+                M2TButtonColorRoleSelection.SurfaceText => ColorRoles.OnSurface,
+                M2TButtonColorRoleSelection.SurfaceVariant => ColorRoles.OnSurfaceVariant,
+                M2TButtonColorRoleSelection.SurfaceVariantText => ColorRoles.OnSurfaceVariant,
                 M2TButtonColorRoleSelection.SurfaceContainer => ColorRoles.OnSurface,
                 M2TButtonColorRoleSelection.SurfaceContainerLowest => ColorRoles.OnSurface,
                 M2TButtonColorRoleSelection.SurfaceContainerLow => ColorRoles.OnSurface,
@@ -130,17 +144,24 @@ namespace M2TWinForms
             {
                 M2TButtonColorRoleSelection.Primary => ColorRoles.Primary,
                 M2TButtonColorRoleSelection.PrimaryTransparent => ColorRoles.Primary,
+                M2TButtonColorRoleSelection.PrimaryText => ColorRoles.Primary,
                 M2TButtonColorRoleSelection.PrimaryContainer => ColorRoles.PrimaryContainer,
                 M2TButtonColorRoleSelection.Secondary => ColorRoles.Secondary,
                 M2TButtonColorRoleSelection.SecondaryTransparent => ColorRoles.Secondary,
+                M2TButtonColorRoleSelection.SecondaryText => ColorRoles.Secondary,
                 M2TButtonColorRoleSelection.SecondaryContainer => ColorRoles.SecondaryContainer,
                 M2TButtonColorRoleSelection.Tertiary => ColorRoles.Tertiary,
                 M2TButtonColorRoleSelection.TertiaryTransparent => ColorRoles.Tertiary,
+                M2TButtonColorRoleSelection.TertiaryText => ColorRoles.Tertiary,
                 M2TButtonColorRoleSelection.TertiaryContainer => ColorRoles.TertiaryContainer,
                 M2TButtonColorRoleSelection.Error => ColorRoles.Error,
                 M2TButtonColorRoleSelection.ErrorTransparent => ColorRoles.Error,
+                M2TButtonColorRoleSelection.ErrorText => ColorRoles.Error,
                 M2TButtonColorRoleSelection.ErrorContainer => ColorRoles.ErrorContainer,
                 M2TButtonColorRoleSelection.Surface => ColorRoles.Surface,
+                M2TButtonColorRoleSelection.SurfaceText => ColorRoles.Surface,
+                M2TButtonColorRoleSelection.SurfaceVariant => ColorRoles.Surface,
+                M2TButtonColorRoleSelection.SurfaceVariantText => ColorRoles.Surface,
                 M2TButtonColorRoleSelection.SurfaceContainer => ColorRoles.SurfaceContainer,
                 M2TButtonColorRoleSelection.SurfaceContainerLowest => ColorRoles.SurfaceContainerLowest,
                 M2TButtonColorRoleSelection.SurfaceContainerLow => ColorRoles.SurfaceContainerLow,
@@ -151,15 +172,25 @@ namespace M2TWinForms
         }
         private static int GetRequestedBorderThickness(M2TButtonColorRoleSelection colorRole)
         {
-            IEnumerable<M2TButtonColorRoleSelection> thicknessTwoRoles = [M2TButtonColorRoleSelection.PrimaryTransparent,
+            IEnumerable<M2TButtonColorRoleSelection> thicknessTwoRoles = [
+                M2TButtonColorRoleSelection.PrimaryTransparent,
                 M2TButtonColorRoleSelection.SecondaryTransparent,
                 M2TButtonColorRoleSelection.TertiaryTransparent,
-                M2TButtonColorRoleSelection.ErrorTransparent];
+                M2TButtonColorRoleSelection.ErrorTransparent
+            ];
 
-            IEnumerable<M2TButtonColorRoleSelection> thicknessZeroRoles = [M2TButtonColorRoleSelection.Primary,
+            IEnumerable<M2TButtonColorRoleSelection> thicknessZeroRoles = [
+                M2TButtonColorRoleSelection.Primary,
                 M2TButtonColorRoleSelection.Secondary,
                 M2TButtonColorRoleSelection.Tertiary,
-                M2TButtonColorRoleSelection.Error];
+                M2TButtonColorRoleSelection.Error,
+                M2TButtonColorRoleSelection.PrimaryText,
+                M2TButtonColorRoleSelection.SecondaryText,
+                M2TButtonColorRoleSelection.TertiaryText,
+                M2TButtonColorRoleSelection.ErrorText,
+                M2TButtonColorRoleSelection.SurfaceText,
+                M2TButtonColorRoleSelection.SurfaceVariantText
+            ];
 
             if (thicknessTwoRoles.Contains(colorRole))
                 return 2;
