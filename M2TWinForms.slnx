@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="M2TWinForms.Demo/M2TWinForms.Demo.csproj" />
+  <Project Path="M2TWinForms.ThemeDesigner/M2TWinForms.ThemeDesigner.csproj" />
+  <Project Path="M2TWinForms.Themes/M2TWinForms.Themes.csproj" />
+  <Project Path="M2TWinForms/M2TWinForms.csproj" />
+</Solution>
