@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.MaterialDesign.HctConversion
 {
-    public sealed class ViewingConditions
+    internal sealed class ViewingConditions
     {
         /** sRGB-like viewing conditions. */
         public static readonly ViewingConditions DEFAULT =

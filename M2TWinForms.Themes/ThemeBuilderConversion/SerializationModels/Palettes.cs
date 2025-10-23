@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.ThemeBuilderConversion.SerializationModels
 {
-    public class Palettes
+    internal class Palettes
     {
         [JsonPropertyName("primary")]
         public Dictionary<string, string> Primary { get; set; }

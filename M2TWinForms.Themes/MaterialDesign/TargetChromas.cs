@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.MaterialDesign
 {
-    public class TargetChromas
+    internal class TargetChromas
     {
         public const int Primary = 32;
         public const int Secondary = 16;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.ThemeBuilderConversion.SerializationModels
 {
-    public class Scheme
+    internal class Scheme
     {
         [JsonPropertyName("primary")]
         public string Primary { get; set; }

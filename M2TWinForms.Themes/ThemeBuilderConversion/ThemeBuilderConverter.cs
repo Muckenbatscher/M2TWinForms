@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.ThemeBuilderConversion
 {
-    public class ThemeBuilderConverter
+    internal class ThemeBuilderConverter
     {
         public ThemeColors ConvertFromThemeBuilder(Scheme scheme)
         {

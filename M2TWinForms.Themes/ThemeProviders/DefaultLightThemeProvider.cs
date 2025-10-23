@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.ThemeProviders
 {
-    public class DefaultLightThemeProvider : DefaultThemeProvider
+    internal class DefaultLightThemeProvider : DefaultThemeProvider
     {
         protected override bool IsDark => true;
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.ThemeBuilderConversion
 {
-    public class MaterialThemeDeserializer
+    internal class MaterialThemeDeserializer
     {
         public MaterialTheme Deserialize(string json)
         {
