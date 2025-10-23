@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms
 {
-    internal interface IThemedControl
+    public interface IThemedControl
     {
         void ApplyCurrentLoadedTheme();
     }
