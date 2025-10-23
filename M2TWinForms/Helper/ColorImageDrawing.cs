@@ -8,29 +8,32 @@ using System.Threading.Tasks;
 
 namespace M2TWinForms
 {
-    public class ColorImageDrawing
+    public static class ColorImageDrawingExtensions
     {
-        public static void DrawImageWithColor(Image image, Color color, Padding padding, Control control, PaintEventArgs e)
+        public static void PrepareGraphicsForHighQualityDrawing(this Graphics g)
+        {
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.CompositingQuality = CompositingQuality.HighQuality;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+        }
+
+        public static void DrawImageWithColor(this Graphics g, Image Image, Color color, Control control)
+        {
+            g.DrawImageWithColor(Image, color, new Padding(0), control);
+        }
+        public static void DrawImageWithColor(this Graphics g, Image image, Color color, Padding padding, Control control)
         {
             var destinationRectangle = GetZoomedDestinationRectangle(control.Size, image.Size, padding);
-            DrawImageWithColor(image, color, destinationRectangle, e);
+            g.DrawImageWithColor(image, color, destinationRectangle);
         }
-        public static void DrawImageWithColor(Image image, Color color, Rectangle destinationRectangle, PaintEventArgs e)
+        public static void DrawImageWithColor(this Graphics g, Image image, Color color, Rectangle destinationRectangle)
         {
-            if (image == null)
-                image = new Bitmap(1, 1);
+            image ??= new Bitmap(1, 1);
             var colorMatrix = GetTransformationMatrix(color);
             var imageattributes = new ImageAttributes();
             imageattributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
-            e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            e.Graphics.DrawImage(image, destinationRectangle, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, imageattributes);
+            g.DrawImage(image, destinationRectangle, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, imageattributes);
             GC.Collect();
-        }
-        public static void DrawImageWithColor(Image Image, Color color, Control control, PaintEventArgs e)
-        {
-            DrawImageWithColor(Image, color, new Padding(0), control, e);
         }
 
         private static ColorMatrix GetTransformationMatrix(Color color)
@@ -68,23 +71,6 @@ namespace M2TWinForms
                 var location = new Point(padding.Left + ((int)actualDestinationWidth - newWidth) / 2, padding.Top);
                 return new Rectangle(location, size);
             }
-        }
-
-        public static Image GetGrayScaledImage(Image sourceImage)
-        {
-            // https://www.tutorialspoint.com/dip/grayscale_to_rgb_conversion.htm
-            var greyScaled = new Bitmap(sourceImage);
-            for (int x = 0, loopTo = greyScaled.Width - 1; x <= loopTo; x++)
-            {
-                for (int y = 0, loopTo1 = greyScaled.Height - 1; y <= loopTo1; y++)
-                {
-                    var pixelColor = greyScaled.GetPixel(x, y);
-                    byte brightnessLevel = (byte)Math.Floor(pixelColor.R * 0.3d + pixelColor.G * 0.59d + pixelColor.B * 0.11d);
-                    var greyScaledColor = Color.FromArgb(pixelColor.A, brightnessLevel, brightnessLevel, brightnessLevel);
-                    greyScaled.SetPixel(x, y, greyScaledColor);
-                }
-            }
-            return greyScaled;
         }
     }
 }
