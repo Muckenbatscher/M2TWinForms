@@ -26,6 +26,11 @@ namespace M2TWinForms
             var destinationRectangle = GetZoomedDestinationRectangle(control.Size, image.Size, padding);
             g.DrawImageWithColor(image, color, destinationRectangle);
         }
+        public static void DrawImageWithColor(this Graphics g, Image image, Color color, Padding padding, Rectangle rectangle)
+        {
+            var destinationRectangle = GetZoomedDestinationRectangle(rectangle.Size, image.Size, padding);
+            g.DrawImageWithColor(image, color, destinationRectangle);
+        }
         public static void DrawImageWithColor(this Graphics g, Image image, Color color, Rectangle destinationRectangle)
         {
             image ??= new Bitmap(1, 1);
