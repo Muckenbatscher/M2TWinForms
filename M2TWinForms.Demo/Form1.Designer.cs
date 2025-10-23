@@ -110,10 +110,14 @@
             m2tRadioButton2 = new M2TRadioButton();
             m2tRadioButton3 = new M2TRadioButton();
             m2tPanel15 = new M2TPanel();
+            m2tRadioButton6 = new M2TRadioButton();
             m2tPanel16 = new M2TPanel();
             m2tRadioButton5 = new M2TRadioButton();
             m2tRadioButton4 = new M2TRadioButton();
-            m2tRadioButton6 = new M2TRadioButton();
+            m2tButton15 = new M2TButton();
+            m2tButton21 = new M2TButton();
+            m2tButton22 = new M2TButton();
+            m2tButton23 = new M2TButton();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
@@ -152,7 +156,7 @@
             // m2tLabel3
             // 
             m2tLabel3.AutoSize = true;
-            m2tLabel3.Location = new Point(0, 364);
+            m2tLabel3.Location = new Point(0, 522);
             m2tLabel3.Name = "m2tLabel3";
             m2tLabel3.Size = new Size(62, 15);
             m2tLabel3.TabIndex = 20;
@@ -630,9 +634,9 @@
             m2tPanel10.ColorRole = M2TPanelColorRoleSelection.SurfaceContainer;
             m2tPanel10.Controls.Add(m2tLabel19);
             m2tPanel10.Controls.Add(m2tLabel20);
-            m2tPanel10.Location = new Point(100, 373);
+            m2tPanel10.Location = new Point(83, 446);
             m2tPanel10.Name = "m2tPanel10";
-            m2tPanel10.Size = new Size(159, 153);
+            m2tPanel10.Size = new Size(159, 131);
             m2tPanel10.TabIndex = 62;
             // 
             // m2tLabel19
@@ -641,7 +645,7 @@
             m2tLabel19.ForeColorRole = M2TLabelTextColorRoleSelection.OnSurfaceVariant;
             m2tLabel19.Location = new Point(19, 38);
             m2tLabel19.Name = "m2tLabel19";
-            m2tLabel19.Size = new Size(122, 107);
+            m2tLabel19.Size = new Size(122, 85);
             m2tLabel19.TabIndex = 1;
             m2tLabel19.Text = resources.GetString("m2tLabel19.Text");
             // 
@@ -904,6 +908,16 @@
             m2tPanel15.Size = new Size(140, 82);
             m2tPanel15.TabIndex = 86;
             // 
+            // m2tRadioButton6
+            // 
+            m2tRadioButton6.AutoSize = true;
+            m2tRadioButton6.Location = new Point(9, 57);
+            m2tRadioButton6.Name = "m2tRadioButton6";
+            m2tRadioButton6.Size = new Size(118, 19);
+            m2tRadioButton6.TabIndex = 85;
+            m2tRadioButton6.Text = "m2tRadioButton6";
+            m2tRadioButton6.UseVisualStyleBackColor = false;
+            // 
             // m2tPanel16
             // 
             m2tPanel16.ColorRole = M2TPanelColorRoleSelection.SurfaceContainer;
@@ -943,21 +957,51 @@
             m2tRadioButton4.TextAlign = ContentAlignment.MiddleCenter;
             m2tRadioButton4.UseVisualStyleBackColor = false;
             // 
-            // m2tRadioButton6
+            // m2tButton15
             // 
-            m2tRadioButton6.AutoSize = true;
-            m2tRadioButton6.Location = new Point(9, 57);
-            m2tRadioButton6.Name = "m2tRadioButton6";
-            m2tRadioButton6.Size = new Size(118, 19);
-            m2tRadioButton6.TabIndex = 85;
-            m2tRadioButton6.Text = "m2tRadioButton6";
-            m2tRadioButton6.UseVisualStyleBackColor = false;
+            m2tButton15.ColorRole = M2TButtonColorRoleSelection.ErrorText;
+            m2tButton15.Location = new Point(147, 391);
+            m2tButton15.Name = "m2tButton15";
+            m2tButton15.Size = new Size(95, 24);
+            m2tButton15.TabIndex = 91;
+            m2tButton15.Text = "Error TX";
+            // 
+            // m2tButton21
+            // 
+            m2tButton21.ColorRole = M2TButtonColorRoleSelection.TertiaryText;
+            m2tButton21.Location = new Point(49, 391);
+            m2tButton21.Name = "m2tButton21";
+            m2tButton21.Size = new Size(95, 24);
+            m2tButton21.TabIndex = 90;
+            m2tButton21.Text = "Tertiary TX";
+            // 
+            // m2tButton22
+            // 
+            m2tButton22.ColorRole = M2TButtonColorRoleSelection.SecondaryText;
+            m2tButton22.Location = new Point(147, 364);
+            m2tButton22.Name = "m2tButton22";
+            m2tButton22.Size = new Size(95, 24);
+            m2tButton22.TabIndex = 89;
+            m2tButton22.Text = "Secondary TX";
+            // 
+            // m2tButton23
+            // 
+            m2tButton23.ColorRole = M2TButtonColorRoleSelection.PrimaryText;
+            m2tButton23.Location = new Point(49, 364);
+            m2tButton23.Name = "m2tButton23";
+            m2tButton23.Size = new Size(95, 24);
+            m2tButton23.TabIndex = 88;
+            m2tButton23.Text = "Primary TX";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1146, 605);
+            Controls.Add(m2tButton15);
+            Controls.Add(m2tButton21);
+            Controls.Add(m2tButton22);
+            Controls.Add(m2tButton23);
             Controls.Add(m2tPanel16);
             Controls.Add(m2tPanel15);
             Controls.Add(m2tCheckBox4);
@@ -1098,6 +1142,10 @@
             Controls.SetChildIndex(m2tCheckBox4, 0);
             Controls.SetChildIndex(m2tPanel15, 0);
             Controls.SetChildIndex(m2tPanel16, 0);
+            Controls.SetChildIndex(m2tButton23, 0);
+            Controls.SetChildIndex(m2tButton22, 0);
+            Controls.SetChildIndex(m2tButton21, 0);
+            Controls.SetChildIndex(m2tButton15, 0);
             m2tPanel6.ResumeLayout(false);
             m2tPanel6.PerformLayout();
             m2tPanel7.ResumeLayout(false);
@@ -1206,5 +1254,9 @@
         private M2TRadioButton m2tRadioButton4;
         private M2TRadioButton m2tRadioButton5;
         private M2TRadioButton m2tRadioButton6;
+        private M2TButton m2tButton15;
+        private M2TButton m2tButton21;
+        private M2TButton m2tButton22;
+        private M2TButton m2tButton23;
     }
 }
