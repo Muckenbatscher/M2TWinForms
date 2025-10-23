@@ -1,5 +1,4 @@
-﻿using M2TWinForms.Helper;
-using M2TWinForms.Themes.MaterialDesign;
+﻿using M2TWinForms.Themes.MaterialDesign;
 using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
 using System.Diagnostics;

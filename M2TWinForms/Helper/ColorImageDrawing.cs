@@ -6,16 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Helper
+namespace M2TWinForms
 {
-    internal class ImageMethods
+    public class ColorImageDrawing
     {
         public static void DrawImageWithColor(Image image, Color color, Padding padding, Control control, PaintEventArgs e)
         {
             var destinationRectangle = GetZoomedDestinationRectangle(control.Size, image.Size, padding);
-            DrawImageWithColor(image, color, destinationRectangle, control, e);
+            DrawImageWithColor(image, color, destinationRectangle, e);
         }
-        public static void DrawImageWithColor(Image image, Color color, Rectangle destinationRectangle, Control control, PaintEventArgs e)
+        public static void DrawImageWithColor(Image image, Color color, Rectangle destinationRectangle, PaintEventArgs e)
         {
             if (image == null)
                 image = new Bitmap(1, 1);

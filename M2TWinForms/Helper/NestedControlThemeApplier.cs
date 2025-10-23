@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2TWinForms.Helper
+namespace M2TWinForms
 {
-    internal static class NestedControlThemeApplier
+    public static class NestedControlThemeApplier
     {
         public static void ApplyThemeForChildControls(Control control)
         {
