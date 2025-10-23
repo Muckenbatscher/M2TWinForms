@@ -98,11 +98,6 @@ jobs:
           --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text \
           --name github
           
-    - name: Add NuGet.org source
-      run: |
-        dotnet nuget add source https://api.nuget.org/v3/index.json \
-          --name nuget.org
-          
     - name: Push all to GitHub Packages
       run: |
         for f in ${{ env.PACKAGE_DIR }}/*.nupkg
