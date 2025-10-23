@@ -36,7 +36,7 @@ namespace M2TWinForms
             {
                 if (!(value == null) && ConvertBaseImageToGrayscale)
                 {
-                    _convertedBaseImage = ColorImageDrawing.GetGrayScaledImage(value);
+                    _convertedBaseImage = value.GetGrayScaledImage();
                 }
                 else
                 {
@@ -186,7 +186,8 @@ namespace M2TWinForms
         private void ColoredImageButton_Paint(object? sender, PaintEventArgs e)
         {
             Color imageColor = IsCurrentlyHovered ? HoverImageColor : ImageColor;
-            ColorImageDrawing.DrawImageWithColor(ConvertedBaseImage, imageColor, ImagePadding, this, e);
+            var image = ConvertedBaseImage ?? new Bitmap(1, 1);
+            e.Graphics.DrawImageWithColor(image, imageColor, ImagePadding, this);
         }
 
         private void ColoredImageButton_MouseEnter(object? sender, EventArgs e)
