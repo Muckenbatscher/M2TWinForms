@@ -263,7 +263,6 @@ namespace M2TWinForms
 
         #region Borderless Window
 
-
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == NativeConstants.WM_NCPAINT)
@@ -290,6 +289,10 @@ namespace M2TWinForms
                 {
                     SetCorrectedMaximizedBounds();
                 }
+            }
+            if (m.Msg == NativeConstants.WM_CAPTURECHANGED) //When maximized by using Aero Snap the WM_SYSCOMMAND is not sent
+            {
+                SetCorrectedMaximizedBounds();
             }
             else if (m.Msg == NativeConstants.WM_NCCALCSIZE)
             {

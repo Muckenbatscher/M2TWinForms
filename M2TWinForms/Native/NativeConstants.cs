@@ -12,6 +12,7 @@ namespace M2TWinForms.Native
         public const int WM_NCPAINT = 0x85;
         public const int WM_NCCALCSIZE = 0x0083;
         public const int WM_SYSCOMMAND = 0x0112;
+        public const int WM_CAPTURECHANGED = 0x0215;
 
         public const int HT_CAPTION = 0x2;
         public const int HT_LEFT = 0xA;
