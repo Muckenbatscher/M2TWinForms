@@ -1,10 +1,5 @@
 ﻿using M2TWinForms.Themes.ThemeProviders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace M2TWinForms.Themes.ThemeLoading
 {
@@ -12,12 +7,13 @@ namespace M2TWinForms.Themes.ThemeLoading
     {
         public static IThemeProvider? FindDefaultThemeProvider()
         {
+            System.Diagnostics.Debugger.Launch();
             var assemblies = GetOrderedRelevantAssemblies();
             foreach (var assembly in assemblies)
             {
-                var assemblyThemeProviders = FindDefaultThemeProvidersInAssembly(assembly);
-                if (assemblyThemeProviders.Any())
-                    return assemblyThemeProviders.First();
+                var assemblyThemeProvider = FindFirstDefaultThemeProviderInAssembly(assembly);
+                if (assemblyThemeProvider != null)
+                    return assemblyThemeProvider;
             }
             return null;
         }
@@ -32,22 +28,17 @@ namespace M2TWinForms.Themes.ThemeLoading
             if (entry != null && IsRelevantAssembly(entry))
                 main = entry;
 
-            var ordered = relevantAssemblies
-                .OrderBy(a => a.GetName().Name)
-                .ToList();
+            var nameOrdered = relevantAssemblies.OrderBy(a => a.GetName().Name);
 
-            if (main == null)
-                return ordered;
+            if (main == null || string.IsNullOrEmpty(main.GetName().Name))
+                return nameOrdered;
 
-            IEnumerable<Assembly> orderedWithoutMain;
-            var mainName = main.GetName().Name;
-            if (!string.IsNullOrEmpty(mainName))
-                orderedWithoutMain = ordered
+            var mainName = main.GetName().Name!;
+            var orderedWithoutMain = nameOrdered
                     .Where(a => !mainName.Equals(a.GetName().Name));
-            else
-                orderedWithoutMain = ordered;
+            var similarOrdered = OrderAssembliesByNameSimilarity(main, orderedWithoutMain);
 
-            return orderedWithoutMain.Prepend(main);
+            return similarOrdered.Prepend(main);
         }
         static bool IsRelevantAssembly(Assembly assembly)
         {
@@ -55,12 +46,43 @@ namespace M2TWinForms.Themes.ThemeLoading
             if (string.IsNullOrEmpty(name))
                 return false;
 
-            bool isSystem = name.StartsWith("System.", StringComparison.OrdinalIgnoreCase);
-            bool isMicrosoft = name.StartsWith("Microsoft.", StringComparison.OrdinalIgnoreCase);
-            return !isSystem && !isMicrosoft;
+            string[] nonRelevantPrefixes = ["System", "Microsoft"];
+            if (nonRelevantPrefixes.Any(p => name.StartsWith($"{p}.")))
+                return false;
+
+            string[] nonRelevantNames = ["netstandard", "mscorlib", "Accessibility", 
+                "DesignToolsServer"]; //Visual Studio Winforms Designer
+            if (nonRelevantNames.Contains(name))
+                return false;
+
+            return true;
         }
 
-        private static IEnumerable<IThemeProvider> FindDefaultThemeProvidersInAssembly(Assembly assembly)
+        private static IEnumerable<Assembly> OrderAssembliesByNameSimilarity(Assembly referenceAssembly, IEnumerable<Assembly> assemblies)
+        {
+            var referenceName = referenceAssembly.GetName().Name ?? string.Empty;
+            return assemblies.OrderByDescending(assembly =>
+            {
+                var assemblyName = assembly.GetName().Name ?? string.Empty;
+                return GetMatchingLength(referenceName, assemblyName);
+            });
+        }
+        private static int GetMatchingLength(string reference, string compared)
+        {
+            int matchLength = 0;
+            int minLength = Math.Min(reference.Length, compared.Length);
+
+            for (int i = 0; i < minLength; i++)
+            {
+                if (reference[i] == compared[i])
+                    matchLength++;
+                else
+                    break;
+            }
+            return matchLength;
+        }
+
+        private static IThemeProvider? FindFirstDefaultThemeProviderInAssembly(Assembly assembly)
         {
             var types = assembly.GetTypes().OrderBy(t => t.Name);
             foreach (var type in types)
@@ -70,8 +92,9 @@ namespace M2TWinForms.Themes.ThemeLoading
 
                 var instance = (IThemeProvider?)Activator.CreateInstance(type);
                 if (instance != null)
-                    yield return instance;
+                    return instance;
             }
+            return null;
         }
         private static bool IsDefaultThemeProvider(Type type)
             => typeof(IDefaultThemeProvider).IsAssignableFrom(type) &&
