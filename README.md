@@ -1,4 +1,6 @@
-﻿# M2TWinforms: The Makeover Your WinForms Apps Deserve! ✨
+﻿<img alt="Logo" src=".docs/M2T_Logo_256.png">
+
+# M2TWinforms: The Makeover Your WinForms Apps Deserve! ✨
 Do your powerful Windows Forms applications feel visually stuck in the past? It's time to give that time-tested functionality a fresh, modern UI that users will love.
 
 Say goodbye to the classic, dated interface and hello to a minimalistic, beautiful, and professional material design. With **M2TWinforms**, you can effortlessly give your apps a modern look and feel without having to rewrite your entire project.
@@ -48,7 +50,7 @@ M2TWinforms is built on top of standard Windows Forms Controls. This is manifest
 ## How it works
 Because the controls directly inherit from their native windows forms counterpart it can be as simple as replacing occurences of windows forms controls with their M2TWinforms counterpart.
 ```csharp
-// using native windows forms
+// using native Windows Forms
 public partial class Form1 : Form
 
 // using M2TWinforms
@@ -56,7 +58,7 @@ public partial class Form1 : M2TForm
 ```
 
 ```csharp
-// using native windows forms
+// using native Windows Forms
 private Button button1; 
 InitializeComponent() 
 {
@@ -86,7 +88,7 @@ var singleColorTheme = Theme.CreateFromSinglePrimaryColor(
     Color.Cyan, ThemeMode.Dark, ContrastLevel.Normal, true);
 ```
 #### Creating a theme from a json file
-A theme can be creted from a json file. The json file can be exported from the [Material Theme Builder](https://material-foundation.github.io/material-theme-builder/).  
+A theme can be created from a json file. The json file can be exported from the [Material Theme Builder](https://material-foundation.github.io/material-theme-builder/).  
 Because the Material Theme Builder exports all variants of the created theme, the desired theme mode (light, dark) and contrast level (normal, medium, high) has to be specified explicitly when creating the theme.
 ```csharp
 var themeJsonFile = new FileInfo("material-theme-dark-cyan.json");
