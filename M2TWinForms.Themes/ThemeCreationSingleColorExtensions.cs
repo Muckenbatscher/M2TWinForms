@@ -22,11 +22,11 @@ namespace M2TWinForms.Themes
             if (normalizeChroma)
                 primaryColorHct.Chroma = TargetChromas.Primary;
 
-            var seconaryColorHct = new HctColor(primaryColorHct.Hue, primaryColorHct.Chroma * SecondaryChromaFactor, 50);
-            var tertiaryColorHct = new HctColor(primaryColorHct.Hue + 60, primaryColorHct.Chroma * TertiaryChromaFactor, 50);
-            var errorColorHct = new HctColor(24, primaryColorHct.Chroma * ErrorChromaFactor, 50);
-            var neutralColorHct = new HctColor(primaryColorHct.Hue, primaryColorHct.Chroma * NeutralChromaFactor, 50);
-            var neutralVariantColorHct = new HctColor(primaryColorHct.Hue, primaryColorHct.Chroma * NeutralVariantChromaFactor, 50);
+            var seconaryColorHct = new HctColor(primaryColorHct.Hue, primaryColorHct.Chroma / SecondaryChromaFactor, 50);
+            var tertiaryColorHct = new HctColor(primaryColorHct.Hue + 60, primaryColorHct.Chroma / TertiaryChromaFactor, 50);
+            var errorColorHct = new HctColor(24, primaryColorHct.Chroma / ErrorChromaFactor, 50);
+            var neutralColorHct = new HctColor(primaryColorHct.Hue, primaryColorHct.Chroma / NeutralChromaFactor, 50);
+            var neutralVariantColorHct = new HctColor(primaryColorHct.Hue, primaryColorHct.Chroma / NeutralVariantChromaFactor, 50);
 
             var coreColors = new CoreColors()
             {
@@ -37,7 +37,7 @@ namespace M2TWinForms.Themes
                 Neutral = neutralColorHct.GetColor(),
                 NeutralVariant = neutralVariantColorHct.GetColor()
             };
-            return Theme.CreateFromCoreColors(coreColors, mode, contrastLevel, true);
+            return Theme.CreateFromCoreColors(coreColors, mode, contrastLevel, normalizeChroma);
         }
     }
 }
