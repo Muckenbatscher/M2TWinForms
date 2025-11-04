@@ -7,7 +7,6 @@ namespace M2TWinForms.Themes.ThemeLoading
     {
         public static IThemeProvider? FindDefaultThemeProvider()
         {
-            System.Diagnostics.Debugger.Launch();
             var assemblies = GetOrderedRelevantAssemblies();
             foreach (var assembly in assemblies)
             {

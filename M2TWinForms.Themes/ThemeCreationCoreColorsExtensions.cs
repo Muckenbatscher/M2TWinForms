@@ -27,32 +27,32 @@ namespace M2TWinForms.Themes
             double surfaceContainerHighTone = mode == ThemeMode.Dark ? 18 : 89;
             double surfaceContainerHighestTone = mode == ThemeMode.Dark ? 22 : 86;
 
-            var primaryHct = new HctColor(coreColors.Primary) { Tone = 50 };
+            var primaryHct = new HctColor(coreColors.Primary);
             if (normalizeChroma)
                 primaryHct.Chroma = TargetChromas.Primary;
             var primaryPalette = new HctTonalPalette(primaryHct);
 
-            var secondaryHct = new HctColor(coreColors.Secondary) { Tone = 50 };
+            var secondaryHct = new HctColor(coreColors.Secondary);
             if (normalizeChroma)
                 secondaryHct.Chroma = TargetChromas.Secondary;
             var secondaryPalette = new HctTonalPalette(secondaryHct);
 
-            var tertiaryHct = new HctColor(coreColors.Tertiary) { Tone = 50 };
+            var tertiaryHct = new HctColor(coreColors.Tertiary);
             if (normalizeChroma)
                 tertiaryHct.Chroma = TargetChromas.Tertiary;
             var tertiaryPalette = new HctTonalPalette(tertiaryHct);
 
-            var errorHct = new HctColor(coreColors.Error) { Tone = 50 };
+            var errorHct = new HctColor(coreColors.Error);
             if (normalizeChroma)
                 errorHct.Chroma = TargetChromas.Error;
             var errorPalette = new HctTonalPalette(errorHct);
 
-            var neutralHct = new HctColor(coreColors.Neutral) { Tone = 50 };
+            var neutralHct = new HctColor(coreColors.Neutral);
             if (normalizeChroma)
                 neutralHct.Chroma = TargetChromas.Neutral;
             var neutralPalette = new HctTonalPalette(neutralHct);
 
-            var neutralVariantHct = new HctColor(coreColors.NeutralVariant) { Tone = 50 };
+            var neutralVariantHct = new HctColor(coreColors.NeutralVariant);
             if (normalizeChroma)
                 neutralVariantHct.Chroma = TargetChromas.NeutralVariant;
             var neutralVariantPalette = new HctTonalPalette(neutralVariantHct);
