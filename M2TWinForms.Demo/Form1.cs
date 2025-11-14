@@ -39,5 +39,10 @@ namespace M2TWinForms.Demo
             M2TMessageBox.Show(TB_MessageText.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void m2tButton24_Click(object sender, EventArgs e)
+        {
+            var form = new Form2();
+            form.ShowDialog();
+        }
     }
 }

@@ -118,6 +118,7 @@
             m2tButton21 = new M2TButton();
             m2tButton22 = new M2TButton();
             m2tButton23 = new M2TButton();
+            m2tButton24 = new M2TButton();
             m2tPanel6.SuspendLayout();
             m2tPanel7.SuspendLayout();
             m2tPanel8.SuspendLayout();
@@ -993,11 +994,22 @@
             m2tButton23.TabIndex = 88;
             m2tButton23.Text = "Primary TX";
             // 
+            // m2tButton24
+            // 
+            m2tButton24.ColorRole = M2TButtonColorRoleSelection.SecondaryText;
+            m2tButton24.Location = new Point(544, 542);
+            m2tButton24.Name = "m2tButton24";
+            m2tButton24.Size = new Size(89, 27);
+            m2tButton24.TabIndex = 92;
+            m2tButton24.Text = "m2tButton24";
+            m2tButton24.Click += m2tButton24_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1146, 605);
+            Controls.Add(m2tButton24);
             Controls.Add(m2tButton15);
             Controls.Add(m2tButton21);
             Controls.Add(m2tButton22);
@@ -1146,6 +1158,7 @@
             Controls.SetChildIndex(m2tButton22, 0);
             Controls.SetChildIndex(m2tButton21, 0);
             Controls.SetChildIndex(m2tButton15, 0);
+            Controls.SetChildIndex(m2tButton24, 0);
             m2tPanel6.ResumeLayout(false);
             m2tPanel6.PerformLayout();
             m2tPanel7.ResumeLayout(false);
@@ -1258,5 +1271,6 @@
         private M2TButton m2tButton21;
         private M2TButton m2tButton22;
         private M2TButton m2tButton23;
+        private M2TButton m2tButton24;
     }
 }

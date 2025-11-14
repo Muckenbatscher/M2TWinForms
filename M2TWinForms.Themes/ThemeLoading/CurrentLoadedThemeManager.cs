@@ -12,6 +12,22 @@ namespace M2TWinForms.Themes.ThemeLoading
     public class CurrentLoadedThemeManager
     {
         private static LoadedThemeManager? _themeManagerInstance;
+
+        public static Theme? LoadedTheme
+            => GetLoadedThemeManagerInstance().CurrentLoadedTheme;
+
+        public static Color GetColorForRole(ColorRoles role)
+        {
+            var instance = GetLoadedThemeManagerInstance();
+            return instance.GetColorForRole(role);
+        }
+
+        public static void LoadTheme(Theme theme)
+        {
+            var instance = GetLoadedThemeManagerInstance();
+            instance.LoadTheme(theme);
+        }
+
         private static LoadedThemeManager GetLoadedThemeManagerInstance()
         {
             _themeManagerInstance ??= new LoadedThemeManager();
@@ -35,16 +51,5 @@ namespace M2TWinForms.Themes.ThemeLoading
             return new DefaultLightThemeProvider();
         }
 
-        public static Color GetColorForRole(ColorRoles role)
-        {
-            var instance = GetLoadedThemeManagerInstance();
-            return instance.GetColorForRole(role);
-        }
-
-        public static void LoadTheme(Theme theme)
-        {
-            var instance = GetLoadedThemeManagerInstance();
-            instance.LoadTheme(theme);
-        }
     }
 }
