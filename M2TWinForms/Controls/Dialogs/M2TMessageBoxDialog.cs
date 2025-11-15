@@ -12,6 +12,7 @@ namespace M2TWinForms
 {
     public partial class M2TMessageBoxDialog : M2TForm
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string Message
         {
             get => LB_Message.Text;

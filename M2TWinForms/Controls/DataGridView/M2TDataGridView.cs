@@ -86,6 +86,8 @@ namespace M2TWinForms
         #endregion GridColor
 
         #region DefaultCellStyle
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public new M2TDataGridViewCellStyle DefaultCellStyle
         {
             get 
@@ -125,6 +127,7 @@ namespace M2TWinForms
         #endregion DefaultCellStyle
 
         #region ColumnHeadersDefaultCellStyle
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public new M2TDataGridViewCellStyle ColumnHeadersDefaultCellStyle
         {
             get
@@ -164,6 +167,7 @@ namespace M2TWinForms
         #endregion ColumnHeadersDefaultCellStyle
 
         #region RowHeadersDefaultCellStyle
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public new M2TDataGridViewCellStyle RowHeadersDefaultCellStyle
         {
             get
@@ -203,6 +207,7 @@ namespace M2TWinForms
         #endregion RowHeadersDefaultCellStyle
 
         #region RowsDefaultCellStyle
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public new M2TDataGridViewCellStyle RowsDefaultCellStyle
         {
             get
@@ -242,6 +247,7 @@ namespace M2TWinForms
         #endregion RowsDefaultCellStyle 
 
         #region AlternatingRowsDefaultCellStyle
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public new M2TDataGridViewCellStyle AlternatingRowsDefaultCellStyle
         {
             get

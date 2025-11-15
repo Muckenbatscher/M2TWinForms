@@ -13,7 +13,8 @@ namespace M2TWinForms
 {
     public partial class M2TColoredImageButton : ColoredImageButton, IThemedControl
     {
-        
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public ColorRoles ImageColorRole
         {
             get => _imageColorRole;
@@ -24,8 +25,9 @@ namespace M2TWinForms
             }
         }
         private ColorRoles _imageColorRole = ColorRoles.OnSurface;
-        
 
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public ColorRoles HoverImageColorRole
         {
             get => _hoverImageColorRole;
@@ -36,8 +38,9 @@ namespace M2TWinForms
             }
         }
         private ColorRoles _hoverImageColorRole = ColorRoles.OnSurface;
-        
 
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public ColorRoles BackgroundColorRole
         {
             get => _backgroundColorRole;
@@ -48,8 +51,9 @@ namespace M2TWinForms
             }
         }
         private ColorRoles _backgroundColorRole = ColorRoles.Surface;
-        
 
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public ColorRoles HoverBackgroundColorRole
         {
             get => _hoverBackgroundColorRole;
