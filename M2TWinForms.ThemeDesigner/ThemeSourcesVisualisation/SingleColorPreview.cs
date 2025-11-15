@@ -14,8 +14,13 @@ namespace M2TWinForms.ThemeDesigner.ThemeSourcesVisualisation
 {
     public partial class SingleColorPreview : Form
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredRed { get => (int)NUD_Red.Value; set => NUD_Red.Value = value; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredGreen { get => (int)NUD_Green.Value; set => NUD_Green.Value = value; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredBlue { get => (int)NUD_Blue.Value; set => NUD_Blue.Value = value; }
 
         public Color EnteredColor { get => Color.FromArgb(EnteredRed, EnteredGreen, EnteredBlue); }

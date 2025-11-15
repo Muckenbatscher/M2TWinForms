@@ -13,8 +13,13 @@ namespace M2TWinForms.ThemeDesigner.HctPaletteVisualisation
 {
     public partial class InteractiveColorPaletteVisualisation : Form
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredHue { get => (int)NUD_Hue.Value; set => NUD_Hue.Value = value; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredChroma { get => (int)NUD_Chroma.Value; set => NUD_Chroma.Value = value; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredTone { get => (int)NUD_Tone.Value; set => NUD_Tone.Value = value; }
 
         public InteractiveColorPaletteVisualisation()

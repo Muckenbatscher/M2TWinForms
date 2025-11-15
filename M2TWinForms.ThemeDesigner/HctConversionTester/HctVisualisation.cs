@@ -14,12 +14,24 @@ namespace M2TWinForms.ThemeDesigner.HctConversionTester
 {
     public partial class HctVisualisation : Form
     {
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredRed { get => (int)NUD_Red.Value; set => NUD_Red.Value = value; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredGreen { get => (int)NUD_Green.Value; set => NUD_Green.Value = value; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredBlue { get => (int)NUD_Blue.Value; set => NUD_Blue.Value = value; }
 
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredHue { get => (int)NUD_Hue.Value; set => NUD_Hue.Value = value; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredChroma { get => (int)NUD_Chroma.Value; set => NUD_Chroma.Value = value; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int EnteredTone { get => (int)NUD_Tone.Value; set => NUD_Tone.Value = value; }
 
         public HctVisualisation()
