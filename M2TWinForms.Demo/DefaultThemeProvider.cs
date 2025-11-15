@@ -15,7 +15,7 @@ namespace M2TWinForms.Demo
     {
         public Theme CreateTheme()
         {
-            var theme = Theme.CreateFromSinglePrimaryColor(Color.Purple, ThemeMode.Dark, ContrastLevel.Normal, true);
+            var theme = Theme.CreateFromSinglePrimaryColor(Color.Khaki, ThemeMode.Light, ContrastLevel.Normal, true);
             return theme;
 
             var themeContentBytes = Properties.Resources.material_theme_blue;

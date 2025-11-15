@@ -42,7 +42,7 @@ namespace M2TWinForms.Demo
         private void m2tButton24_Click(object sender, EventArgs e)
         {
             var form = new Form2();
-            form.ShowDialog();
+            form.Show();
         }
     }
 }

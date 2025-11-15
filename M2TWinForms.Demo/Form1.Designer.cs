@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            var resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             m2tLabel1 = new M2TLabel();
             m2tLabel2 = new M2TLabel();
             m2tLabel3 = new M2TLabel();
@@ -780,6 +780,7 @@
             // m2tNumericUpDown2
             // 
             m2tNumericUpDown2.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.PrimaryContainer;
+            m2tNumericUpDown2.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnPrimaryContainer;
             m2tNumericUpDown2.Location = new Point(888, 104);
             m2tNumericUpDown2.Name = "m2tNumericUpDown2";
             m2tNumericUpDown2.Size = new Size(120, 23);
@@ -788,6 +789,7 @@
             // m2tNumericUpDown3
             // 
             m2tNumericUpDown3.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.SecondaryContainer;
+            m2tNumericUpDown3.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnSecondaryContainer;
             m2tNumericUpDown3.Location = new Point(1014, 104);
             m2tNumericUpDown3.Name = "m2tNumericUpDown3";
             m2tNumericUpDown3.Size = new Size(120, 23);
@@ -796,6 +798,7 @@
             // m2tNumericUpDown4
             // 
             m2tNumericUpDown4.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.TertiaryContainer;
+            m2tNumericUpDown4.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnTertiaryContainer;
             m2tNumericUpDown4.Location = new Point(888, 133);
             m2tNumericUpDown4.Name = "m2tNumericUpDown4";
             m2tNumericUpDown4.Size = new Size(120, 23);
@@ -804,6 +807,7 @@
             // m2tNumericUpDown5
             // 
             m2tNumericUpDown5.BackColorRole = M2TNumericUpDownBackgroundColorRoleSelection.ErrorContainer;
+            m2tNumericUpDown5.ForeColorRole = M2TNumericUpDownTextColorRoleSelection.OnErrorContainer;
             m2tNumericUpDown5.Location = new Point(1014, 133);
             m2tNumericUpDown5.Name = "m2tNumericUpDown5";
             m2tNumericUpDown5.Size = new Size(120, 23);

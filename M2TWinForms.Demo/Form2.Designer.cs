@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             m2tButton1 = new M2TButton();
+            m2tButton2 = new M2TButton();
             SuspendLayout();
             // 
             // m2tButton1
@@ -41,21 +42,31 @@
             m2tButton1.Text = "m2tButton1";
             m2tButton1.Click += m2tButton1_Click;
             // 
+            // m2tButton2
+            // 
+            m2tButton2.ColorRole = M2TButtonColorRoleSelection.Tertiary;
+            m2tButton2.Location = new Point(359, 141);
+            m2tButton2.Name = "m2tButton2";
+            m2tButton2.Size = new Size(116, 65);
+            m2tButton2.TabIndex = 1;
+            m2tButton2.Text = "m2tButton2";
+            m2tButton2.Click += m2tButton2_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(m2tButton2);
             Controls.Add(m2tButton1);
             Name = "Form2";
             Text = "Form2";
-            Activated += Form2_Activated;
-            Deactivate += Form2_Deactivate;
             ResumeLayout(false);
         }
 
         #endregion
 
         private M2TButton m2tButton1;
+        private M2TButton m2tButton2;
     }
 }
