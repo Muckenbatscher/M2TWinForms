@@ -12,12 +12,14 @@ namespace M2TWinForms.ThemeDesigner.HctPaletteVisualisation
 {
     public partial class ColorPaletteStepVisualisaton : UserControl
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string StepName 
         { 
             get => LB_StepName.Text;
             set => LB_StepName.Text = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color StepColor 
         { 
             get => this.BackColor;
@@ -30,6 +32,7 @@ namespace M2TWinForms.ThemeDesigner.HctPaletteVisualisation
 
         private readonly Color _lightTextColor = Color.White;
         private readonly Color _darkTextColor = Color.Black;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool LightText 
         { 
             get => LB_StepName.ForeColor == _lightTextColor;

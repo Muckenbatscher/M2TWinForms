@@ -48,6 +48,7 @@ namespace M2TWinForms
         }
         private bool _hasIcon = true;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Image WindowIcon
         {
             get
@@ -173,13 +174,14 @@ namespace M2TWinForms
         }
         private SizeGripStyle _sizeGripStyle;
 
-
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color TitleBarColor
         {
             get => PN_DragPanel.BackColor;
             set => PN_DragPanel.BackColor = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color TitleBarButtonHoverColor
         {
             get => WindowImageButton.HoverBackColor;
@@ -192,6 +194,7 @@ namespace M2TWinForms
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color TitleBarForegroundColor
         {
             get => LB_Title.ForeColor;
@@ -207,6 +210,7 @@ namespace M2TWinForms
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color CloseButtonColor
         {
             get => CloseButton.ImageColor;

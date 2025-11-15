@@ -15,11 +15,14 @@ namespace M2TWinForms.Demo
     {
         public Theme CreateTheme()
         {
+            var theme = Theme.CreateFromSinglePrimaryColor(Color.Khaki, ThemeMode.Light, ContrastLevel.Normal, true);
+            return theme;
+
             var themeContentBytes = Properties.Resources.material_theme_blue;
             var themeContent = Encoding.UTF8.GetString(themeContentBytes);
 
             var themeJson = Theme.CreateFromMaterialDesignJson(
-                            themeContent, ThemeMode.Dark, ContrastLevel.Normal);
+                            themeContent, ThemeMode.Light, ContrastLevel.Normal);
             return themeJson;
         }
     }

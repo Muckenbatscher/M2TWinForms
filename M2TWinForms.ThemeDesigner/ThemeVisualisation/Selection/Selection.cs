@@ -12,10 +12,13 @@ namespace M2TWinForms.ThemeDesigner.ThemeVisualisation.Selection
 {
     public partial class Selection<I, T> : UserControl where I : SelectionItem<T>
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string SelectionPrompt { get => LB_SelectionPrompt.Text; set => LB_SelectionPrompt.Text = value; }
 
         public I SelectedItem { get => (I)CB_Selection.SelectedItem!; }
         public T SelectedValue { get => (T)CB_Selection.SelectedValue!; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public IEnumerable<I> Selections { get => (IEnumerable<I>)CB_Selection.DataSource!; set => CB_Selection.DataSource = value.ToList(); }
 
 
