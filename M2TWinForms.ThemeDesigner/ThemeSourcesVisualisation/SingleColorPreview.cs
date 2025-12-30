@@ -1,14 +1,6 @@
-﻿using M2TWinForms.Themes;
-using M2TWinForms.Themes.MaterialDesign;
-using System;
-using System.Collections.Generic;
+﻿using MaterialTheming.Creation;
+using MaterialTheming.MaterialDesign;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace M2TWinForms.ThemeDesigner.ThemeSourcesVisualisation
 {
@@ -60,7 +52,11 @@ namespace M2TWinForms.ThemeDesigner.ThemeSourcesVisualisation
         {
             RefreshEnteredColorPreview();
 
-            var theme = Theme.CreateFromSinglePrimaryColor(EnteredColor, SelectedThemeMode, SelectedContrastLevel, true);
+            var theme = ThemeBuilder.Create()
+                .WithPrimaryColor(c => c.WithBaseColor(EnteredColor.R, EnteredColor.G, EnteredColor.B))
+                .WithMode(SelectedThemeMode)
+                .WithContrastLevel(SelectedContrastLevel)
+                .Build();
             CSV_LoadedTheme.LoadTheme(theme);
         }
 

@@ -1,13 +1,4 @@
-﻿using M2TWinForms.Themes.Creation;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using MaterialTheming.MaterialDesign;
 
 namespace M2TWinForms.ThemeDesigner.HctPaletteVisualisation
 {
@@ -33,22 +24,28 @@ namespace M2TWinForms.ThemeDesigner.HctPaletteVisualisation
         public Color NinetyNineColor { get => CSV_NinetyNine.StepColor; private set => CSV_NinetyNine.StepColor = value; }
         public Color HundredColor { get => CSV_Hundred.StepColor; private set => CSV_Hundred.StepColor = value; }
 
-        public void Visualise(IColorPalette palette)
+        public void Visualise(HctTonalPalette palette)
         {
-            ZeroColor = palette.Zero;
-            TenColor = palette.Ten;
-            TwentyColor = palette.Twenty;
-            ThirtyColor = palette.Thirty;
-            FortyColor = palette.Forty;
-            FiftyColor = palette.Fifty;
-            SixtyColor = palette.Sixty;
-            SeventyColor = palette.Seventy;
-            EightyColor = palette.Eighty;
-            NinetyColor = palette.Ninety;
-            NinetyFiveColor = palette.NinetyFive;
-            NinetyEightColor = palette.NinetyEight;
-            NinetyNineColor = palette.NinetyNine;
-            HundredColor = palette.Hundred;
+            ZeroColor = GetColorFromPaletteForTone(palette, 0);
+            TenColor = GetColorFromPaletteForTone(palette, 10);
+            TwentyColor = GetColorFromPaletteForTone(palette, 20);
+            ThirtyColor = GetColorFromPaletteForTone(palette, 30);
+            FortyColor = GetColorFromPaletteForTone(palette, 40);
+            FiftyColor = GetColorFromPaletteForTone(palette, 50);
+            SixtyColor = GetColorFromPaletteForTone(palette, 60);
+            SeventyColor = GetColorFromPaletteForTone(palette, 70);
+            EightyColor = GetColorFromPaletteForTone(palette, 80);
+            NinetyColor = GetColorFromPaletteForTone(palette, 90);
+            NinetyFiveColor = GetColorFromPaletteForTone(palette, 95);
+            NinetyEightColor = GetColorFromPaletteForTone(palette, 98);
+            NinetyNineColor = GetColorFromPaletteForTone(palette, 99);
+            HundredColor = GetColorFromPaletteForTone(palette, 100);
+        }
+
+        private static Color GetColorFromPaletteForTone(HctTonalPalette palette, double tone)
+        {
+            var rgbColor = palette.GetHctForTone(0).ToRgbColor();
+            return Color.FromArgb(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
         }
     }
 }

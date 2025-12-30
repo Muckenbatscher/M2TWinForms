@@ -1,12 +1,6 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-using M2TWinForms.Themes.ThemeLoading;
-using System;
-using System.Collections.Generic;
+﻿using M2TWinForms.Themes.ThemeLoading;
+using MaterialTheming.MaterialDesign;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace M2TWinForms
 {
@@ -90,7 +84,7 @@ namespace M2TWinForms
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public new M2TDataGridViewCellStyle DefaultCellStyle
         {
-            get 
+            get
             {
                 if (base.DefaultCellStyle is M2TDataGridViewCellStyle m2tStyle)
                     return m2tStyle;
@@ -333,7 +327,7 @@ namespace M2TWinForms
             var gridColorRole = GetMappedColorRole(GridColorRole);
             this.GridColor = CurrentLoadedThemeManager.GetColorForRole(gridColorRole);
 
-            DefaultCellStyle.ApplyCurrentLoadedTheme(); 
+            DefaultCellStyle.ApplyCurrentLoadedTheme();
             RowHeadersDefaultCellStyle.ApplyCurrentLoadedTheme();
             ColumnHeadersDefaultCellStyle.ApplyCurrentLoadedTheme();
 

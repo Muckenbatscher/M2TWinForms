@@ -1,13 +1,6 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-using System;
-using System.Collections.Generic;
+﻿using MaterialTheming.ColorDefinitions;
+using MaterialTheming.MaterialDesign;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace M2TWinForms.ThemeDesigner.HctPaletteVisualisation
 {
@@ -29,13 +22,12 @@ namespace M2TWinForms.ThemeDesigner.HctPaletteVisualisation
 
         private void BT_Generate_Click(object sender, EventArgs e)
         {
-            var keyColor = new HctColor(EnteredHue, EnteredChroma, EnteredTone);
-            var rgbColor = keyColor.GetColor();
-            PN_ChosenColor.BackColor = rgbColor;
+            var keyColor = HctColor.From(EnteredHue, EnteredChroma, EnteredTone);
+            var rgbColor = keyColor.ToRgbColor();
+            PN_ChosenColor.BackColor = Color.FromArgb(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
 
             var palette = new HctTonalPalette(keyColor);
-            var colorPalette = palette.GetColorPalette();
-            CPV_Palette.Visualise(colorPalette);
+            CPV_Palette.Visualise(palette);
         }
     }
 }

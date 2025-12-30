@@ -1,6 +1,5 @@
-using M2TWinForms.ThemeDesigner.HctConversionTester;
-using M2TWinForms.Themes;
-using M2TWinForms.Themes.MaterialDesign;
+using MaterialTheming;
+using MaterialTheming.MaterialDesign;
 
 namespace M2TWinForms.ThemeDesigner
 {

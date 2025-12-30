@@ -1,5 +1,5 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-using M2TWinForms.Themes.ThemeLoading;
+﻿using M2TWinForms.Themes.ThemeLoading;
+using MaterialTheming.MaterialDesign;
 using System.ComponentModel;
 
 namespace M2TWinForms.Controls.Window;
@@ -73,6 +73,16 @@ public partial class M2TFormNative : Form, IThemedControl
     }
     #endregion
 
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    public new Icon? Icon
+    {
+        get => base.Icon;
+        set
+        {
+            base.Icon = value;
+        }
+    }
 
     public M2TFormNative()
     {

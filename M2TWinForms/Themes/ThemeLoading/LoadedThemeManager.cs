@@ -1,18 +1,14 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MaterialTheming;
+using MaterialTheming.ColorDefinitions;
+using MaterialTheming.MaterialDesign;
 
 namespace M2TWinForms.Themes.ThemeLoading
 {
     public class LoadedThemeManager
     {
         public Theme? CurrentLoadedTheme { get; private set; }
-        public bool IsThemeLoaded 
-            => CurrentLoadedTheme != null; 
+        public bool IsThemeLoaded
+            => CurrentLoadedTheme != null;
 
         public void LoadTheme(Theme theme)
         {
@@ -26,7 +22,7 @@ namespace M2TWinForms.Themes.ThemeLoading
             if (!IsThemeLoaded)
                 throw new InvalidOperationException("No theme loaded");
 
-            return role switch
+            var color = role switch
             {
                 ColorRoles.Primary => CurrentLoadedTheme!.Colors.Primary,
                 ColorRoles.OnPrimary => CurrentLoadedTheme!.Colors.OnPrimary,
@@ -55,9 +51,14 @@ namespace M2TWinForms.Themes.ThemeLoading
 
                 _ => throw new ArgumentException("Invalid color role", nameof(role)),
             };
+
+            return GetColorFromRgbColor(color);
         }
 
-        public bool IsDarkTheme() 
+        private Color GetColorFromRgbColor(RgbColor rgbColor)
+            => Color.FromArgb(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
+
+        public bool IsDarkTheme()
             => CurrentLoadedTheme!.IsDark;
     }
 }

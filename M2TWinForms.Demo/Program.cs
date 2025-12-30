@@ -1,6 +1,3 @@
-using M2TWinForms.Themes;
-using M2TWinForms.Themes.MaterialDesign;
-
 namespace M2TWinForms.Demo
 {
     internal static class Program

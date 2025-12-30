@@ -1,13 +1,8 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MaterialTheming.MaterialDesign;
 
 namespace M2TWinForms.ThemeDesigner.ThemeVisualisation.Selection
 {
-    public class ThemeModeSelectionItem : 
+    public class ThemeModeSelectionItem :
         SelectionItem<ThemeMode>
     {
         public ThemeModeSelectionItem(string displayName, ThemeMode mode) : base(displayName, mode)

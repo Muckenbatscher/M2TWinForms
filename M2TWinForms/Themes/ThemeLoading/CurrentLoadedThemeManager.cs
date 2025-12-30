@@ -1,11 +1,6 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-using M2TWinForms.Themes.ThemeProviders;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using M2TWinForms.Themes.ThemeProviders;
+using MaterialTheming;
+using MaterialTheming.MaterialDesign;
 
 namespace M2TWinForms.Themes.ThemeLoading
 {
