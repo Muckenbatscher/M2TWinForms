@@ -2,6 +2,7 @@
 using MaterialTheming;
 using MaterialTheming.Creation;
 using MaterialTheming.MaterialDesign;
+using System.Text;
 
 namespace M2TWinForms.Demo
 {
@@ -9,9 +10,16 @@ namespace M2TWinForms.Demo
     {
         public Theme CreateTheme()
         {
-            var primaryColor = Color.Green;
+            return ThemeBuilder.Create()
+                .WithPrimaryColor(c => c.WithBaseColor("#5CC149").WithFixedTargetChroma(true))
+                .WithMode(ThemeMode.Dark)
+                .Build();
+
+            var themeContentBytes = Properties.Resources.material_theme_blue;
+            var themeContent = Encoding.UTF8.GetString(themeContentBytes);
+
             var theme = ThemeBuilder.Create()
-                .WithPrimaryColor(c => c.WithBaseColor(primaryColor.R, primaryColor.G, primaryColor.B))
+                .WithMaterialThemeBuilderJson(themeContent)
                 .WithContrastLevel(ContrastLevel.Normal)
                 .WithMode(ThemeMode.Dark)
                 .Build();

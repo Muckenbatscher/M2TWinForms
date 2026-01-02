@@ -1,4 +1,4 @@
-using MaterialTheming;
+using MaterialTheming.Creation;
 using MaterialTheming.MaterialDesign;
 
 namespace M2TWinForms.ThemeDesigner
@@ -45,8 +45,11 @@ namespace M2TWinForms.ThemeDesigner
         {
             try
             {
-                var file = new FileInfo(SelectedFilePath);
-                var theme = Theme.CreateFromMaterialDesignJson(file, SelectedThemeMode, SelectedContrastLevel);
+                var theme = ThemeBuilder.Create()
+                    .WithMaterialThemeBuilderJsonFile(SelectedFilePath)
+                    .WithMode(SelectedThemeMode)
+                    .WithContrastLevel(SelectedContrastLevel)
+                    .Build();
                 CSV_LoadedTheme.LoadTheme(theme);
             }
             catch (Exception ex)

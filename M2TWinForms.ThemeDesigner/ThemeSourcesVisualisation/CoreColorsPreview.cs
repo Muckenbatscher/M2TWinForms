@@ -43,32 +43,32 @@ namespace M2TWinForms.ThemeDesigner.ThemeSourcesVisualisation
                 .WithPrimaryColor(c =>
                 {
                     c.WithBaseColor(GetFromDrawingColor(BT_Primary.BackColor))
-                     .WithNormalizedChroma(NormalizeChroma);
+                     .WithFixedTargetChroma(NormalizeChroma);
                 })
                 .WithSecondaryColor(c =>
                 {
                     c.WithBaseColor(GetFromDrawingColor(BT_Secondary.BackColor))
-                     .WithNormalizedChroma(NormalizeChroma);
+                     .WithFixedTargetChroma(NormalizeChroma);
                 })
                 .WithTertiaryolor(c =>
                 {
                     c.WithBaseColor(GetFromDrawingColor(BT_Tertiary.BackColor))
-                     .WithNormalizedChroma(NormalizeChroma);
+                     .WithFixedTargetChroma(NormalizeChroma);
                 })
                 .WithErrorColor(c =>
                 {
                     c.WithBaseColor(GetFromDrawingColor(BT_Error.BackColor))
-                     .WithNormalizedChroma(NormalizeChroma);
+                     .WithFixedTargetChroma(NormalizeChroma);
                 })
                 .WithNeutralColor(c =>
                 {
                     c.WithBaseColor(GetFromDrawingColor(BT_Neutral.BackColor))
-                     .WithNormalizedChroma(NormalizeChroma);
+                     .WithFixedTargetChroma(NormalizeChroma);
                 })
                 .WithNeutralVariantColor(c =>
                 {
                     c.WithBaseColor(GetFromDrawingColor(BT_NeutralVariant.BackColor))
-                     .WithNormalizedChroma(NormalizeChroma);
+                     .WithFixedTargetChroma(NormalizeChroma);
                 })
                 .WithMode(SelectedThemeMode)
                 .WithContrastLevel(SelectedContrastLevel)
