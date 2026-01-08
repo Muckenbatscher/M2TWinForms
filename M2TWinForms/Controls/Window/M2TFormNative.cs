@@ -1,6 +1,8 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
+﻿using M2TWinForms.Helper;
+using M2TWinForms.Themes.MaterialDesign;
 using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
+using System.Drawing.Imaging;
 
 namespace M2TWinForms.Controls.Window;
 
@@ -74,6 +76,9 @@ public partial class M2TFormNative : Form, IThemedControl
     #endregion
 
 
+    //[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    //public new Icon Icon { get; set; }
+
     public M2TFormNative()
     {
         InitializeComponent();
@@ -83,6 +88,14 @@ public partial class M2TFormNative : Form, IThemedControl
         TitleBarForegroundColorRole = M2TFormForegroundRoleSelection.OnSurface;
         FormBorderActiveColorRole = M2TFormBorderColorRoleSelection.Primary;
         FormBorderInactiveColorRole = M2TFormBorderColorRoleSelection.SurfaceContainerHigh;
+
+        var output = new MemoryStream();
+        var input = new MemoryStream();
+        Properties.Resources.AppsIcon.Save(input, ImageFormat.Png);
+        ImagingHelper.ConvertToIcon(input: input, output: output, preserveAspectRatio: true);
+        output.Seek(0, SeekOrigin.Begin);
+        Icon = new Icon(output);
+        Icon = Properties.Resources.favicon;
     }
 
     private void M2TForm_Load(object sender, EventArgs e)
