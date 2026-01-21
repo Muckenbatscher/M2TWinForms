@@ -1,4 +1,5 @@
-﻿using M2TWinForms.Themes.ThemeProviders;
+﻿using M2TWinForms.Themes;
+using M2TWinForms.Themes.ThemeProviders;
 using MaterialTheming;
 using MaterialTheming.Creation;
 using MaterialTheming.MaterialDesign;
@@ -10,20 +11,21 @@ namespace M2TWinForms.Demo
     {
         public Theme CreateTheme()
         {
-            return ThemeBuilder
+            var colors = ThemeBuilder
                 .CreateFromSourceColor("#5CC149")
                 .WithMode(ThemeMode.Dark)
                 .Build();
+            return new Theme(true, colors);
 
             var themeContentBytes = Properties.Resources.material_theme_blue;
             var themeContent = Encoding.UTF8.GetString(themeContentBytes);
 
-            var theme = ThemeBuilder
+            var themeBuilderColors = ThemeBuilder
                 .CreateFromJsonContent(themeContent)
                 .WithContrastLevel(ContrastLevel.Normal)
                 .WithMode(ThemeMode.Dark)
                 .Build();
-            return theme;
+            return new Theme(true, themeBuilderColors);
         }
     }
 }

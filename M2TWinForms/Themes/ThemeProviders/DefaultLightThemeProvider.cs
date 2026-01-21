@@ -1,6 +1,4 @@
 ﻿using MaterialTheming;
-using MaterialTheming.Creation;
-using MaterialTheming.MaterialDesign;
 
 namespace M2TWinForms.Themes.ThemeProviders
 {
@@ -8,11 +6,12 @@ namespace M2TWinForms.Themes.ThemeProviders
     {
         public Theme CreateTheme()
         {
-            return ThemeBuilder
+            var colors = ThemeBuilder
                 .CreateFromSourceColor("#6D5E0F")
                 .WithMode(ThemeMode.Light)
                 .WithContrastLevel(ContrastLevel.Normal)
                 .Build();
+            return new Theme(false, colors);
         }
     }
 }
