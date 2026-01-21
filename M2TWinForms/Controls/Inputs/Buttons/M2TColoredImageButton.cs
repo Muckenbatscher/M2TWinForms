@@ -1,5 +1,4 @@
 ﻿using M2TWinForms.Themes.ThemeLoading;
-using MaterialTheming.MaterialDesign;
 using System.ComponentModel;
 
 namespace M2TWinForms
@@ -18,7 +17,6 @@ namespace M2TWinForms
             }
         }
         private ColorRoles _imageColorRole = ColorRoles.OnSurface;
-
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public ColorRoles HoverImageColorRole

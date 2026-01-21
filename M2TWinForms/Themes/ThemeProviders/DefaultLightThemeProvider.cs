@@ -8,8 +8,8 @@ namespace M2TWinForms.Themes.ThemeProviders
     {
         public Theme CreateTheme()
         {
-            return ThemeBuilder.Create()
-                .WithPrimaryColor(c => c.WithBaseColor("#6D5E0F"))
+            return ThemeBuilder
+                .CreateFromSourceColor("#6D5E0F")
                 .WithMode(ThemeMode.Light)
                 .WithContrastLevel(ContrastLevel.Normal)
                 .Build();

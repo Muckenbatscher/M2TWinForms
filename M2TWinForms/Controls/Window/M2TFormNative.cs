@@ -1,5 +1,4 @@
 ﻿using M2TWinForms.Themes.ThemeLoading;
-using MaterialTheming.MaterialDesign;
 using System.ComponentModel;
 
 namespace M2TWinForms.Controls.Window;
@@ -128,7 +127,6 @@ public partial class M2TFormNative : Form, IThemedControl
             : GetMappedColorRole(FormBorderInactiveColorRole);
         FormBorderColor = CurrentLoadedThemeManager.GetColorForRole(formBorderColorRole);
     }
-
 
     private ColorRoles GetMappedRole(M2TFormBackgroundRoleSelection role)
     {

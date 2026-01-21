@@ -10,16 +10,16 @@ namespace M2TWinForms.Demo
     {
         public Theme CreateTheme()
         {
-            return ThemeBuilder.Create()
-                .WithPrimaryColor(c => c.WithBaseColor("#5CC149").WithFixedTargetChroma(true))
+            return ThemeBuilder
+                .CreateFromSourceColor("#5CC149")
                 .WithMode(ThemeMode.Dark)
                 .Build();
 
             var themeContentBytes = Properties.Resources.material_theme_blue;
             var themeContent = Encoding.UTF8.GetString(themeContentBytes);
 
-            var theme = ThemeBuilder.Create()
-                .WithMaterialThemeBuilderJson(themeContent)
+            var theme = ThemeBuilder
+                .CreateFromJsonContent(themeContent)
                 .WithContrastLevel(ContrastLevel.Normal)
                 .WithMode(ThemeMode.Dark)
                 .Build();

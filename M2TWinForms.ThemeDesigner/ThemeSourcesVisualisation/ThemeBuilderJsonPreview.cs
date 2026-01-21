@@ -1,5 +1,4 @@
-using MaterialTheming.Creation;
-using MaterialTheming.MaterialDesign;
+using MaterialTheming;
 
 namespace M2TWinForms.ThemeDesigner
 {
@@ -45,8 +44,8 @@ namespace M2TWinForms.ThemeDesigner
         {
             try
             {
-                var theme = ThemeBuilder.Create()
-                    .WithMaterialThemeBuilderJsonFile(SelectedFilePath)
+                var theme = ThemeBuilder
+                    .CreateFromJsonFilePath(SelectedFilePath)
                     .WithMode(SelectedThemeMode)
                     .WithContrastLevel(SelectedContrastLevel)
                     .Build();

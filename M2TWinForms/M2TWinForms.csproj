@@ -25,7 +25,7 @@
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="MaterialTheming" Version="0.2.0" />
+	  <PackageReference Include="MaterialTheming" Version="1.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

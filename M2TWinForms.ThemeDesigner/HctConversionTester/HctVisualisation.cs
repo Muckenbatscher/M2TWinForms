@@ -1,5 +1,4 @@
-﻿using M2TWinForms.ThemeDesigner.HctPaletteVisualisation;
-using MaterialTheming.ColorDefinitions;
+﻿using MaterialTheming;
 using System.ComponentModel;
 
 namespace M2TWinForms.ThemeDesigner.HctConversionTester
@@ -59,15 +58,6 @@ namespace M2TWinForms.ThemeDesigner.HctConversionTester
             EnteredGreen = rgbColor.Green;
             EnteredBlue = rgbColor.Blue;
             PN_VisualisationRgb.BackColor = Color.FromArgb(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
-        }
-
-        private void BT_PaletteGeneration_Click(object sender, EventArgs e)
-        {
-            var paletteGeneration = new InteractiveColorPaletteVisualisation();
-            paletteGeneration.EnteredHue = EnteredHue;
-            paletteGeneration.EnteredChroma = EnteredChroma;
-            paletteGeneration.EnteredTone = EnteredTone;
-            paletteGeneration.ShowDialog();
         }
 
         private void TB_RgbColorHtml_KeyPress(object sender, KeyPressEventArgs e)

@@ -1,4 +1,5 @@
-﻿using MaterialTheming.MaterialDesign;
+﻿using MaterialTheming;
+using MaterialTheming.MaterialDesign;
 
 namespace M2TWinForms.ThemeDesigner.ThemeVisualisation.Selection
 {

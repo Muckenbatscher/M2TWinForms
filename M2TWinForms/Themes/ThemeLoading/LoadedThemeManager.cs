@@ -1,6 +1,4 @@
 ﻿using MaterialTheming;
-using MaterialTheming.ColorDefinitions;
-using MaterialTheming.MaterialDesign;
 
 namespace M2TWinForms.Themes.ThemeLoading
 {
