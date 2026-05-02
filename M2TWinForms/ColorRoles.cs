@@ -1,0 +1,29 @@
+﻿namespace M2TWinForms;
+
+public enum ColorRoles
+{
+    Primary,
+    OnPrimary,
+    PrimaryContainer,
+    OnPrimaryContainer,
+    Secondary,
+    OnSecondary,
+    SecondaryContainer,
+    OnSecondaryContainer,
+    Tertiary,
+    OnTertiary,
+    TertiaryContainer,
+    OnTertiaryContainer,
+    Error,
+    OnError,
+    ErrorContainer,
+    OnErrorContainer,
+    Surface,
+    SurfaceContainer,
+    SurfaceContainerLowest,
+    SurfaceContainerLow,
+    SurfaceContainerHigh,
+    SurfaceContainerHighest,
+    OnSurface,
+    OnSurfaceVariant
+}

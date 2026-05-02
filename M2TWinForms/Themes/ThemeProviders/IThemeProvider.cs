@@ -1,6 +1,4 @@
-﻿using MaterialTheming;
-
-namespace M2TWinForms.Themes.ThemeProviders
+﻿namespace M2TWinForms.Themes.ThemeProviders
 {
     public interface IThemeProvider
     {

@@ -1,4 +1,4 @@
-﻿using MaterialTheming.MaterialDesign;
+﻿using MaterialTheming.MaterialDesign.Palettes;
 
 namespace M2TWinForms.ThemeDesigner.HctPaletteVisualisation
 {
@@ -24,7 +24,7 @@ namespace M2TWinForms.ThemeDesigner.HctPaletteVisualisation
         public Color NinetyNineColor { get => CSV_NinetyNine.StepColor; private set => CSV_NinetyNine.StepColor = value; }
         public Color HundredColor { get => CSV_Hundred.StepColor; private set => CSV_Hundred.StepColor = value; }
 
-        public void Visualise(HctTonalPalette palette)
+        public void Visualise(TonalPalette palette)
         {
             ZeroColor = GetColorFromPaletteForTone(palette, 0);
             TenColor = GetColorFromPaletteForTone(palette, 10);
@@ -42,9 +42,9 @@ namespace M2TWinForms.ThemeDesigner.HctPaletteVisualisation
             HundredColor = GetColorFromPaletteForTone(palette, 100);
         }
 
-        private static Color GetColorFromPaletteForTone(HctTonalPalette palette, double tone)
+        private static Color GetColorFromPaletteForTone(TonalPalette palette, double tone)
         {
-            var rgbColor = palette.GetHctForTone(0).ToRgbColor();
+            var rgbColor = palette.GetHctForTone(tone).ToRgbColor();
             return Color.FromArgb(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
         }
     }

@@ -1,6 +1,4 @@
 ﻿using MaterialTheming;
-using MaterialTheming.Creation;
-using MaterialTheming.MaterialDesign;
 
 namespace M2TWinForms.Themes.ThemeProviders
 {
@@ -8,11 +6,18 @@ namespace M2TWinForms.Themes.ThemeProviders
     {
         public Theme CreateTheme()
         {
-            return ThemeBuilder.Create()
-                .WithPrimaryColor(c => c.WithBaseColor("#6D5E0F"))
+            var color = GetRgbColor(Color.Khaki);
+            var colors = ThemeBuilder.CreateFromSourceColor(color)
                 .WithMode(ThemeMode.Light)
                 .WithContrastLevel(ContrastLevel.Normal)
+                .WithVariant(Variant.TonalSpot)
                 .Build();
+            return new Theme(colors, isDark: false);
+        }
+
+        private static RgbColor GetRgbColor(Color color)
+        {
+            return RgbColor.FromRgb(color.R, color.G, color.B);
         }
     }
 }

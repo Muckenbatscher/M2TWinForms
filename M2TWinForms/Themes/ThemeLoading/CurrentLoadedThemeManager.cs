@@ -1,6 +1,5 @@
 ﻿using M2TWinForms.Themes.ThemeProviders;
 using MaterialTheming;
-using MaterialTheming.MaterialDesign;
 
 namespace M2TWinForms.Themes.ThemeLoading
 {
@@ -8,7 +7,7 @@ namespace M2TWinForms.Themes.ThemeLoading
     {
         private static LoadedThemeManager? _themeManagerInstance;
 
-        public static Theme? LoadedTheme
+        public static ThemeColors? LoadedTheme
             => GetLoadedThemeManagerInstance().CurrentLoadedTheme;
 
         public static Color GetColorForRole(ColorRoles role)
