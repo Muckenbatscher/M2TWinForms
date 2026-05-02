@@ -1,4 +1,6 @@
-﻿using MaterialTheming.Creation;
+﻿using M2TWinForms.Themes;
+using MaterialTheming;
+using MaterialTheming.Creation;
 using MaterialTheming.MaterialDesign;
 using System.ComponentModel;
 
@@ -51,12 +53,13 @@ namespace M2TWinForms.ThemeDesigner.ThemeSourcesVisualisation
         private void GenerateAndDisplayThemeFromSingleEnteredColor()
         {
             RefreshEnteredColorPreview();
-
-            var theme = ThemeBuilder.Create()
-                .WithPrimaryColor(c => c.WithBaseColor(EnteredColor.R, EnteredColor.G, EnteredColor.B))
+            var sourceColor = RgbColor.FromRgb(EnteredColor.R, EnteredColor.G, EnteredColor.B);
+            var themeColors = ThemeBuilder
+                .CreateFromSourceColor(sourceColor)
                 .WithMode(SelectedThemeMode)
                 .WithContrastLevel(SelectedContrastLevel)
                 .Build();
+            var theme = new Theme(SelectedThemeMode == ThemeMode.Dark, themeColors);
             CSV_LoadedTheme.LoadTheme(theme);
         }
 

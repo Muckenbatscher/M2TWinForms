@@ -128,7 +128,6 @@ public partial class M2TFormNative : Form, IThemedControl
         FormBorderColor = CurrentLoadedThemeManager.GetColorForRole(formBorderColorRole);
     }
 
-
     private ColorRoles GetMappedRole(M2TFormBackgroundRoleSelection role)
     {
         return role switch

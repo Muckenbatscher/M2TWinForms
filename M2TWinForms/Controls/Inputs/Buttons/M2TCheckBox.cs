@@ -1,5 +1,4 @@
 ﻿using M2TWinForms.Themes.ThemeLoading;
-using MaterialTheming.MaterialDesign;
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
 

@@ -1,6 +1,5 @@
-﻿using M2TWinForms.Themes.ThemeLoading;
-using MaterialTheming;
-using MaterialTheming.MaterialDesign;
+﻿using M2TWinForms.Themes;
+using M2TWinForms.Themes.ThemeLoading;
 
 namespace M2TWinForms.ThemeDesigner.ThemeVisualisation
 {
@@ -31,7 +30,6 @@ namespace M2TWinForms.ThemeDesigner.ThemeVisualisation
             foreach (var mapping in roleMappings)
                 SetColorRole(mapping);
         }
-
 
         private void SetColorWithOnColorRole(ColorRoleWithOnRoleVisualisationMapping mapping)
         {

@@ -1,5 +1,5 @@
-using MaterialTheming.Creation;
-using MaterialTheming.MaterialDesign;
+using M2TWinForms.Themes;
+using MaterialTheming;
 
 namespace M2TWinForms.ThemeDesigner
 {
@@ -45,16 +45,17 @@ namespace M2TWinForms.ThemeDesigner
         {
             try
             {
-                var theme = ThemeBuilder.Create()
-                    .WithMaterialThemeBuilderJsonFile(SelectedFilePath)
+                var themeColors = ThemeBuilder
+                    .CreateFromJsonFilePath(SelectedFilePath)
                     .WithMode(SelectedThemeMode)
                     .WithContrastLevel(SelectedContrastLevel)
                     .Build();
+                var theme = new Theme(SelectedThemeMode == ThemeMode.Dark, themeColors);
                 CSV_LoadedTheme.LoadTheme(theme);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occured while loading the theme: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                M2TMessageBox.Show($"An error occured while loading the theme: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

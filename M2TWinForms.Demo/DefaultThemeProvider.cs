@@ -14,7 +14,7 @@ namespace M2TWinForms.Demo
                 .WithMode(ThemeMode.Dark)
                 .WithVariant(Variant.TonalSpot)
                 .Build();
-            return new Theme(colors, isDark: true);
+            return new Theme(isDark: true, colors: colors);
 
             var themeContentBytes = Properties.Resources.material_theme_blue;
             var themeContent = Encoding.UTF8.GetString(themeContentBytes);
@@ -24,7 +24,7 @@ namespace M2TWinForms.Demo
                 .WithContrastLevel(ContrastLevel.Normal)
                 .WithMode(ThemeMode.Dark)
                 .Build();
-            return new Theme(themeBuilderColors, isDark: true);
+            return new Theme(isDark: true, colors: themeBuilderColors);
         }
     }
 }

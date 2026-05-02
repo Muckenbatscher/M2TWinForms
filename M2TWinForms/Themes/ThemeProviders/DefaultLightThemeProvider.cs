@@ -12,7 +12,7 @@ namespace M2TWinForms.Themes.ThemeProviders
                 .WithContrastLevel(ContrastLevel.Normal)
                 .WithVariant(Variant.TonalSpot)
                 .Build();
-            return new Theme(colors, isDark: false);
+            return new Theme(isDark: false, colors: colors);
         }
 
         private static RgbColor GetRgbColor(Color color)
