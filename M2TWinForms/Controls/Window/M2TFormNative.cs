@@ -76,8 +76,17 @@ public partial class M2TFormNative : Form, IThemedControl
     #endregion
 
 
-    //[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-    //public new Icon Icon { get; set; }
+    private Icon? _baseIcon;
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    public new Icon? Icon
+    {
+        get => _baseIcon;
+        set
+        {
+            _baseIcon = value;
+            RedrawBaseIconColored();
+        }
+    }
 
     public M2TFormNative()
     {
@@ -89,12 +98,7 @@ public partial class M2TFormNative : Form, IThemedControl
         FormBorderActiveColorRole = M2TFormBorderColorRoleSelection.Primary;
         FormBorderInactiveColorRole = M2TFormBorderColorRoleSelection.SurfaceContainerHigh;
 
-        var output = new MemoryStream();
-        var input = new MemoryStream();
-        Properties.Resources.AppsIcon.Save(input, ImageFormat.Png);
-        ImagingHelper.ConvertToIcon(input: input, output: output, preserveAspectRatio: true);
-        output.Seek(0, SeekOrigin.Begin);
-        Icon = new Icon(output);
+        _baseIcon = base.Icon;
         Icon = Properties.Resources.favicon;
     }
 
@@ -109,8 +113,22 @@ public partial class M2TFormNative : Form, IThemedControl
         FormCaptionBackColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarColorRole));
         FormCaptionTextColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarForegroundColorRole));
         RefreshFormBorderColor();
+        RedrawBaseIconColored();
 
         NestedControlThemeApplier.ApplyThemeForChildControls(this);
+    }
+
+    private void RedrawBaseIconColored()
+    {
+        Icon? baseClassIcon = null;
+        var iconImage = _baseIcon?.ToBitmap();
+        if (iconImage is not null)
+        {
+            var iconColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarForegroundColorRole));
+            var tintedImage = iconImage.GetTintedImage(iconColor);
+            baseClassIcon = IconHelper.CreateIconFromImage(tintedImage, _baseIcon!.Height);
+        }
+        base.Icon = baseClassIcon;
     }
 
     protected bool IsActivated { get; private set; } = false;
