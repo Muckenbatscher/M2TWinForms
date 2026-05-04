@@ -1,12 +1,5 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-using M2TWinForms.Themes.ThemeLoading;
-using System;
-using System.Collections.Generic;
+﻿using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace M2TWinForms
 {

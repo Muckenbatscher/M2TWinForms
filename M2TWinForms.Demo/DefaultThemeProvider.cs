@@ -1,13 +1,7 @@
 ﻿using M2TWinForms.Themes;
-using M2TWinForms.Themes.MaterialDesign;
 using M2TWinForms.Themes.ThemeProviders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Json;
-using System.Reflection;
+using MaterialTheming;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace M2TWinForms.Demo
 {
@@ -15,15 +9,22 @@ namespace M2TWinForms.Demo
     {
         public Theme CreateTheme()
         {
-            var theme = Theme.CreateFromSinglePrimaryColor(Color.Khaki, ThemeMode.Light, ContrastLevel.Normal, true);
-            return theme;
+            var colors = ThemeBuilder.CreateFromSourceColor(HctColor.From(160, 80, 40))
+                .WithContrastLevel(ContrastLevel.Normal)
+                .WithMode(ThemeMode.Dark)
+                .WithVariant(Variant.TonalSpot)
+                .Build();
+            return new Theme(isDark: true, colors: colors);
 
             var themeContentBytes = Properties.Resources.material_theme_blue;
             var themeContent = Encoding.UTF8.GetString(themeContentBytes);
 
-            var themeJson = Theme.CreateFromMaterialDesignJson(
-                            themeContent, ThemeMode.Light, ContrastLevel.Normal);
-            return themeJson;
+            var themeBuilderColors = ThemeBuilder
+                .CreateFromJsonContent(themeContent)
+                .WithContrastLevel(ContrastLevel.Normal)
+                .WithMode(ThemeMode.Dark)
+                .Build();
+            return new Theme(isDark: true, colors: themeBuilderColors);
         }
     }
 }

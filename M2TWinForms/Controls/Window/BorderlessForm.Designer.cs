@@ -1,6 +1,4 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-
-namespace M2TWinForms
+﻿namespace M2TWinForms
 {
     partial class BorderlessForm
     {

@@ -1,7 +1,5 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-using M2TWinForms.Themes.ThemeLoading;
+﻿using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
-using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace M2TWinForms

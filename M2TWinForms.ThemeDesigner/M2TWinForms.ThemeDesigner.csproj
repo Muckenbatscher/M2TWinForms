@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\M2TWinForms.Themes\M2TWinForms.Themes.csproj" />
     <ProjectReference Include="..\M2TWinForms\M2TWinForms.csproj" />
   </ItemGroup>
 

@@ -1,14 +1,5 @@
-﻿using M2TWinForms.ThemeDesigner.HctPaletteVisualisation;
-using M2TWinForms.Themes.MaterialDesign;
-using System;
-using System.Collections.Generic;
+﻿using MaterialTheming;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace M2TWinForms.ThemeDesigner.HctConversionTester
 {
@@ -46,12 +37,12 @@ namespace M2TWinForms.ThemeDesigner.HctConversionTester
 
         private void CalculateHctFromEnteredRgb()
         {
-            var rgbColor = Color.FromArgb(EnteredRed, EnteredGreen, EnteredBlue);
-            var hctColor = new HctColor(rgbColor);
+            var rgbColor = RgbColor.FromRgb((byte)EnteredRed, (byte)EnteredGreen, (byte)EnteredBlue);
+            var hctColor = HctColor.FromRgbColor(rgbColor);
             EnteredHue = (int)hctColor.Hue;
             EnteredChroma = (int)hctColor.Chroma;
             EnteredTone = (int)hctColor.Tone;
-            PN_VisualisationRgb.BackColor = rgbColor;
+            PN_VisualisationRgb.BackColor = Color.FromArgb(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
         }
 
         private void BT_CalculateRgb_Click(object sender, EventArgs e)
@@ -61,21 +52,12 @@ namespace M2TWinForms.ThemeDesigner.HctConversionTester
 
         private void CalculateRgbFromEnteredHct()
         {
-            var hctColor = new HctColor(EnteredHue, EnteredChroma, EnteredTone);
-            var rgbColor = hctColor.GetColor();
-            EnteredRed = rgbColor.R;
-            EnteredGreen = rgbColor.G;
-            EnteredBlue = rgbColor.B;
-            PN_VisualisationRgb.BackColor = rgbColor;
-        }
-
-        private void BT_PaletteGeneration_Click(object sender, EventArgs e)
-        {
-            var paletteGeneration = new InteractiveColorPaletteVisualisation();
-            paletteGeneration.EnteredHue = EnteredHue;
-            paletteGeneration.EnteredChroma = EnteredChroma;
-            paletteGeneration.EnteredTone = EnteredTone;
-            paletteGeneration.ShowDialog();
+            var hctColor = HctColor.From(EnteredHue, EnteredChroma, EnteredTone);
+            var rgbColor = hctColor.ToRgbColor();
+            EnteredRed = rgbColor.Red;
+            EnteredGreen = rgbColor.Green;
+            EnteredBlue = rgbColor.Blue;
+            PN_VisualisationRgb.BackColor = Color.FromArgb(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
         }
 
         private void TB_RgbColorHtml_KeyPress(object sender, KeyPressEventArgs e)

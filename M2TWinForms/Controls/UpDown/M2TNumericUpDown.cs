@@ -1,12 +1,6 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-using M2TWinForms.Themes.ThemeLoading;
-using System;
-using System.Collections.Generic;
+﻿using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace M2TWinForms
 {
@@ -231,8 +225,8 @@ namespace M2TWinForms
                             }
                             using (var pen = new Pen(parentNumericUpdown.ForeColor))
                             {
-                                IEnumerable<Point> lineVertical = [ new Point(0, 0), new Point(0, _updown.Height) ];
-                                IEnumerable<Point> lineHorizontal = [ new Point(0, _updown.Height / 2), new Point(_updown.Width, _updown.Height / 2)];
+                                IEnumerable<Point> lineVertical = [new Point(0, 0), new Point(0, _updown.Height)];
+                                IEnumerable<Point> lineHorizontal = [new Point(0, _updown.Height / 2), new Point(_updown.Width, _updown.Height / 2)];
                                 var linesPoints = lineVertical.Concat(lineHorizontal);
                                 g.DrawLines(pen, linesPoints.ToArray());
                             }

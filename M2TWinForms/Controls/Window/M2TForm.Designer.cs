@@ -1,5 +1,4 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace M2TWinForms
 {
