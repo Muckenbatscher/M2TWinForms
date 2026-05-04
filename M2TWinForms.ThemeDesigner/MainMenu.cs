@@ -3,7 +3,7 @@ using M2TWinForms.ThemeDesigner.ThemeSourcesVisualisation;
 
 namespace M2TWinForms.ThemeDesigner
 {
-    public partial class MainMenu : M2TForm
+    public partial class MainMenu : M2TFormBorderless
     {
         public MainMenu()
         {

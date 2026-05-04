@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace M2TWinForms
 {
-    public partial class M2TMessageBoxDialog : M2TForm
+    public partial class M2TMessageBoxDialog : M2TFormBorderless
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string Message
