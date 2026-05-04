@@ -1,5 +1,7 @@
-﻿using M2TWinForms.Themes.ThemeLoading;
+﻿using M2TWinForms.Helper;
+using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
+using System.Drawing.Imaging;
 
 namespace M2TWinForms.Controls.Window;
 
@@ -73,13 +75,15 @@ public partial class M2TFormNative : Form, IThemedControl
     #endregion
 
 
+    private Icon? _baseIcon;
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public new Icon? Icon
     {
-        get => base.Icon;
+        get => _baseIcon;
         set
         {
-            base.Icon = value;
+            _baseIcon = value;
+            RedrawBaseIconColored();
         }
     }
 
@@ -92,6 +96,9 @@ public partial class M2TFormNative : Form, IThemedControl
         TitleBarForegroundColorRole = M2TFormForegroundRoleSelection.OnSurface;
         FormBorderActiveColorRole = M2TFormBorderColorRoleSelection.Primary;
         FormBorderInactiveColorRole = M2TFormBorderColorRoleSelection.SurfaceContainerHigh;
+
+        _baseIcon = base.Icon;
+        Icon = Properties.Resources.favicon;
     }
 
     private void M2TForm_Load(object sender, EventArgs e)
@@ -105,8 +112,22 @@ public partial class M2TFormNative : Form, IThemedControl
         FormCaptionBackColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarColorRole));
         FormCaptionTextColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarForegroundColorRole));
         RefreshFormBorderColor();
+        RedrawBaseIconColored();
 
         NestedControlThemeApplier.ApplyThemeForChildControls(this);
+    }
+
+    private void RedrawBaseIconColored()
+    {
+        Icon? baseClassIcon = null;
+        var iconImage = _baseIcon?.ToBitmap();
+        if (iconImage is not null)
+        {
+            var iconColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarForegroundColorRole));
+            var tintedImage = iconImage.GetTintedImage(iconColor);
+            baseClassIcon = IconHelper.CreateIconFromImage(tintedImage, _baseIcon!.Height);
+        }
+        base.Icon = baseClassIcon;
     }
 
     protected bool IsActivated { get; private set; } = false;

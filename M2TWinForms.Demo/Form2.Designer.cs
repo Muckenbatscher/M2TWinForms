@@ -34,7 +34,7 @@
             // 
             // m2tButton1
             // 
-            m2tButton1.ColorRole = M2TButtonColorRoleSelection.Tertiary;
+            m2tButton1.ColorRole = M2TButtonColorRoleSelection.TertiaryContainer;
             m2tButton1.Location = new Point(213, 141);
             m2tButton1.Name = "m2tButton1";
             m2tButton1.Size = new Size(116, 65);
@@ -44,7 +44,7 @@
             // 
             // m2tButton2
             // 
-            m2tButton2.ColorRole = M2TButtonColorRoleSelection.Tertiary;
+            m2tButton2.ColorRole = M2TButtonColorRoleSelection.PrimaryContainer;
             m2tButton2.Location = new Point(359, 141);
             m2tButton2.Name = "m2tButton2";
             m2tButton2.Size = new Size(116, 65);
