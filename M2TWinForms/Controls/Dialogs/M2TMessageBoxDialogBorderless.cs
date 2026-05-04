@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using M2TWinForms.Native;
+using System.ComponentModel;
 using System.Data;
 
 namespace M2TWinForms
@@ -16,11 +17,11 @@ namespace M2TWinForms
         {
             InitializeComponent();
         }
+
         private void M2TMessageBoxDialog_Shown(object sender, EventArgs e)
         {
             FitToContents();
         }
-
         private void TLP_Main_Resize(object sender, EventArgs e)
         {
             FitToContents();
@@ -29,12 +30,11 @@ namespace M2TWinForms
         private void FitToContents()
         {
             var bounds = GetContainingControlsBounds();
-            this.Size = bounds + new Size(8, 36 + 8);
+            this.Size = bounds;
         }
 
         private Size GetContainingControlsBounds()
         {
-            int minX = int.MaxValue, minY = int.MaxValue;
             int maxX = int.MinValue, maxY = int.MinValue;
 
             foreach (Control ctrl in Controls)
@@ -44,16 +44,14 @@ namespace M2TWinForms
                 if (ctrl.Name == "PN_DragPanel")
                     continue; // Skip the drag panel
 
-                minX = Math.Min(minX, ctrl.Left);
-                minY = Math.Min(minY, ctrl.Top);
                 maxX = Math.Max(maxX, ctrl.Right + ctrl.Margin.Right);
                 maxY = Math.Max(maxY, ctrl.Bottom + ctrl.Margin.Bottom);
             }
 
-            if (minX == int.MaxValue || minY == int.MaxValue)
+            if (maxX == int.MinValue || maxY == int.MinValue)
                 return Size.Empty;
 
-            return new Size(maxX - minX, maxY - minY);
+            return new Size(maxX, maxY);
         }
 
         public void AddButtons(IEnumerable<M2TButton> buttons)

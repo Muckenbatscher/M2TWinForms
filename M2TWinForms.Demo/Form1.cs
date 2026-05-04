@@ -1,15 +1,4 @@
-﻿using M2TWinForms.Native;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace M2TWinForms.Demo
+﻿namespace M2TWinForms.Demo
 {
     public partial class Form1 : M2TFormBorderless
     {
@@ -20,11 +9,11 @@ namespace M2TWinForms.Demo
 
         private void m2tButton16_Click(object sender, EventArgs e)
         {
-            M2TMessageBoxBorderless.Show(TB_MessageText.Text, "None", MessageBoxButtons.OK, MessageBoxIcon.None);
+            M2TMessageBox.Show(TB_MessageText.Text, "None", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
         private void m2tButton17_Click(object sender, EventArgs e)
         {
-            M2TMessageBoxBorderless.Show(TB_MessageText.Text, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            M2TMessageBox.Show(TB_MessageText.Text, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void m2tButton20_Click(object sender, EventArgs e)
         {
