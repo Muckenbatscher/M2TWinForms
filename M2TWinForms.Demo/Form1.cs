@@ -20,23 +20,23 @@ namespace M2TWinForms.Demo
 
         private void m2tButton16_Click(object sender, EventArgs e)
         {
-            M2TMessageBox.Show(TB_MessageText.Text, "None", MessageBoxButtons.OK, MessageBoxIcon.None);
+            M2TMessageBoxBorderless.Show(TB_MessageText.Text, "None", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
         private void m2tButton17_Click(object sender, EventArgs e)
         {
-            M2TMessageBox.Show(TB_MessageText.Text, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            M2TMessageBoxBorderless.Show(TB_MessageText.Text, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void m2tButton20_Click(object sender, EventArgs e)
         {
-            M2TMessageBox.Show(TB_MessageText.Text, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            M2TMessageBoxBorderless.Show(TB_MessageText.Text, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
         private void m2tButton18_Click(object sender, EventArgs e)
         {
-            M2TMessageBox.Show(TB_MessageText.Text, "Warning", MessageBoxButtons.CancelTryContinue, MessageBoxIcon.Warning);
+            M2TMessageBoxBorderless.Show(TB_MessageText.Text, "Warning", MessageBoxButtons.CancelTryContinue, MessageBoxIcon.Warning);
         }
         private void m2tButton19_Click(object sender, EventArgs e)
         {
-            M2TMessageBox.Show(TB_MessageText.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            M2TMessageBoxBorderless.Show(TB_MessageText.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void m2tButton24_Click(object sender, EventArgs e)

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace M2TWinForms
 {
-    public partial class M2TMessageBoxDialog : M2TFormBorderless
+    public partial class M2TMessageBoxDialogBorderless : M2TFormBorderless
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string Message
@@ -19,7 +12,7 @@ namespace M2TWinForms
             set => LB_Message.Text = value;
         }
 
-        public M2TMessageBoxDialog()
+        public M2TMessageBoxDialogBorderless()
         {
             InitializeComponent();
         }
@@ -28,7 +21,7 @@ namespace M2TWinForms
             FitToContents();
         }
 
-        private void tableLayoutPanel1_Resize(object sender, EventArgs e)
+        private void TLP_Main_Resize(object sender, EventArgs e)
         {
             FitToContents();
         }

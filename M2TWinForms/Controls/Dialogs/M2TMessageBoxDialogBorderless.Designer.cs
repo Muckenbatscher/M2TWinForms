@@ -1,6 +1,6 @@
 ﻿namespace M2TWinForms
 {
-    partial class M2TMessageBoxDialog
+    partial class M2TMessageBoxDialogBorderless
     {
         /// <summary>
         /// Required designer variable.
@@ -54,7 +54,7 @@
             TLP_Main.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             TLP_Main.Size = new Size(284, 95);
             TLP_Main.TabIndex = 14;
-            TLP_Main.Resize += tableLayoutPanel1_Resize;
+            TLP_Main.Resize += TLP_Main_Resize;
             // 
             // LB_Message
             // 

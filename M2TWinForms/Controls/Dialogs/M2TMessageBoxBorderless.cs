@@ -1,16 +1,9 @@
 ﻿using M2TWinForms.Native;
 using M2TWinForms.Properties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace M2TWinForms
 {
-    public class M2TMessageBox
+    public class M2TMessageBoxBorderless
     {
         /// <summary>
         ///  Displays a message box with specified text, caption, and style.
@@ -130,10 +123,10 @@ namespace M2TWinForms
             return result;
         }
 
-        private static Form CreateM2TMessageBoxDialog(IWin32Window? owner, string? text, string? caption, 
+        private static Form CreateM2TMessageBoxDialog(IWin32Window? owner, string? text, string? caption,
             MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton)
         {
-            var dialog = new M2TMessageBoxDialog()
+            var dialog = new M2TMessageBoxDialogBorderless()
             {
                 Message = text ?? string.Empty,
                 Text = caption ?? string.Empty
@@ -168,65 +161,65 @@ namespace M2TWinForms
             switch (buttons)
             {
                 case MessageBoxButtons.OK:
-                    {
-                        var okButton = CreateButton(NativeButtons.Ok, DialogResult.OK,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
-                        return [okButton];
-                    }
+                {
+                    var okButton = CreateButton(NativeButtons.Ok, DialogResult.OK,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
+                    return [okButton];
+                }
                 case MessageBoxButtons.OKCancel:
-                    {
-                        var okButton = CreateButton(NativeButtons.Ok, DialogResult.OK,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
-                        var cancelButton = CreateButton(NativeButtons.Cancel, DialogResult.Cancel,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
-                        return [okButton, cancelButton];
-                    }
+                {
+                    var okButton = CreateButton(NativeButtons.Ok, DialogResult.OK,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
+                    var cancelButton = CreateButton(NativeButtons.Cancel, DialogResult.Cancel,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
+                    return [okButton, cancelButton];
+                }
                 case MessageBoxButtons.YesNo:
-                    {
-                        var yesButton = CreateButton(NativeButtons.Yes, DialogResult.Yes,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
-                        var noButton = CreateButton(NativeButtons.No, DialogResult.No,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
-                        return [yesButton, noButton];
-                    }
+                {
+                    var yesButton = CreateButton(NativeButtons.Yes, DialogResult.Yes,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
+                    var noButton = CreateButton(NativeButtons.No, DialogResult.No,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
+                    return [yesButton, noButton];
+                }
                 case MessageBoxButtons.YesNoCancel:
-                    {
-                        var yesButton = CreateButton(NativeButtons.Yes, DialogResult.Yes,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
-                        var noButton = CreateButton(NativeButtons.No, DialogResult.No,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
-                        var cancelButton = CreateButton(NativeButtons.Cancel, DialogResult.Cancel,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button3);
-                        return [yesButton, noButton, cancelButton];
-                    }
+                {
+                    var yesButton = CreateButton(NativeButtons.Yes, DialogResult.Yes,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
+                    var noButton = CreateButton(NativeButtons.No, DialogResult.No,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
+                    var cancelButton = CreateButton(NativeButtons.Cancel, DialogResult.Cancel,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button3);
+                    return [yesButton, noButton, cancelButton];
+                }
                 case MessageBoxButtons.AbortRetryIgnore:
-                    {
-                        var abortButton = CreateButton(NativeButtons.Abort, DialogResult.Abort,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
-                        var retryButton = CreateButton(NativeButtons.Retry, DialogResult.Retry,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
-                        var ignoreButton = CreateButton(NativeButtons.Ignore, DialogResult.Ignore,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button3);
-                        return [abortButton, retryButton, ignoreButton];
-                    }
+                {
+                    var abortButton = CreateButton(NativeButtons.Abort, DialogResult.Abort,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
+                    var retryButton = CreateButton(NativeButtons.Retry, DialogResult.Retry,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
+                    var ignoreButton = CreateButton(NativeButtons.Ignore, DialogResult.Ignore,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button3);
+                    return [abortButton, retryButton, ignoreButton];
+                }
                 case MessageBoxButtons.RetryCancel:
-                    {
-                        var retryButton = CreateButton(NativeButtons.Retry, DialogResult.Retry,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
-                        var cancelButton = CreateButton(NativeButtons.Cancel, DialogResult.Cancel,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
-                        return [retryButton, cancelButton];
-                    }
+                {
+                    var retryButton = CreateButton(NativeButtons.Retry, DialogResult.Retry,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
+                    var cancelButton = CreateButton(NativeButtons.Cancel, DialogResult.Cancel,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
+                    return [retryButton, cancelButton];
+                }
                 case MessageBoxButtons.CancelTryContinue:
-                    {
-                        var cancelButton = CreateButton(NativeButtons.Cancel, DialogResult.Cancel,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
-                        var tryAgainButton = CreateButton(NativeButtons.TryAgain, DialogResult.TryAgain,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
-                        var continueButton = CreateButton(NativeButtons.Continue, DialogResult.Continue,
-                            useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button3);
-                        return [cancelButton, tryAgainButton, continueButton];
-                    }
+                {
+                    var cancelButton = CreateButton(NativeButtons.Cancel, DialogResult.Cancel,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button1);
+                    var tryAgainButton = CreateButton(NativeButtons.TryAgain, DialogResult.TryAgain,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button2);
+                    var continueButton = CreateButton(NativeButtons.Continue, DialogResult.Continue,
+                        useHighlightForDefaultButton && defaultButton == MessageBoxDefaultButton.Button3);
+                    return [cancelButton, tryAgainButton, continueButton];
+                }
                 default:
                     throw new ArgumentOutOfRangeException(nameof(buttons), buttons, "Invalid message box buttons specified.");
             }
