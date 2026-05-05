@@ -1,4 +1,4 @@
-﻿namespace M2TWinForms.Controls.Window;
+﻿namespace M2TWinForms;
 
 partial class M2TForm
 {
