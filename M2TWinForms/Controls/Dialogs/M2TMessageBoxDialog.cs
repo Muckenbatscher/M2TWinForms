@@ -1,5 +1,4 @@
-﻿using M2TWinForms.Controls.Window;
-using M2TWinForms.Native;
+﻿using M2TWinForms.Native;
 using System.ComponentModel;
 
 namespace M2TWinForms;

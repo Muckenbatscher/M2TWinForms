@@ -1,6 +1,4 @@
-﻿using M2TWinForms.Controls.Window;
-
-namespace M2TWinForms.Demo
+﻿namespace M2TWinForms.Demo
 {
     public partial class Form2 : M2TForm
     {

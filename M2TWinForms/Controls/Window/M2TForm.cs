@@ -1,9 +1,8 @@
 ﻿using M2TWinForms.Helper;
 using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
-using System.Drawing.Imaging;
 
-namespace M2TWinForms.Controls.Window;
+namespace M2TWinForms;
 
 public partial class M2TForm : Form, IThemedControl
 {
@@ -73,7 +72,6 @@ public partial class M2TForm : Form, IThemedControl
         }
     }
     #endregion
-
 
     private Icon? _baseIcon;
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace M2TWinForms.Controls.Window;
+﻿namespace M2TWinForms;
 
 public enum M2TFormBorderColorRoleSelection
 {
