@@ -1,17 +1,6 @@
-﻿using M2TWinForms.Native;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace M2TWinForms.Demo
+﻿namespace M2TWinForms.Demo
 {
-    public partial class Form1 : M2TForm
+    public partial class Form1 : M2TFormBorderless
     {
         public Form1()
         {
@@ -28,15 +17,15 @@ namespace M2TWinForms.Demo
         }
         private void m2tButton20_Click(object sender, EventArgs e)
         {
-            M2TMessageBox.Show(TB_MessageText.Text, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            M2TMessageBoxBorderless.Show(TB_MessageText.Text, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
         private void m2tButton18_Click(object sender, EventArgs e)
         {
-            M2TMessageBox.Show(TB_MessageText.Text, "Warning", MessageBoxButtons.CancelTryContinue, MessageBoxIcon.Warning);
+            M2TMessageBoxBorderless.Show(TB_MessageText.Text, "Warning", MessageBoxButtons.CancelTryContinue, MessageBoxIcon.Warning);
         }
         private void m2tButton19_Click(object sender, EventArgs e)
         {
-            M2TMessageBox.Show(TB_MessageText.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            M2TMessageBoxBorderless.Show(TB_MessageText.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void m2tButton24_Click(object sender, EventArgs e)

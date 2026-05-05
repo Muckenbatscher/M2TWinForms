@@ -1,10 +1,9 @@
-﻿using M2TWinForms.Helper;
-using M2TWinForms.Native;
+﻿using M2TWinForms.Native;
 using M2TWinForms.Properties;
 
 namespace M2TWinForms
 {
-    public class M2TMessageBox
+    public class M2TMessageBoxBorderless
     {
         /// <summary>
         ///  Displays a message box with specified text, caption, and style.
@@ -127,7 +126,7 @@ namespace M2TWinForms
         private static Form CreateM2TMessageBoxDialog(IWin32Window? owner, string? text, string? caption,
             MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton)
         {
-            var dialog = new M2TMessageBoxDialog()
+            var dialog = new M2TMessageBoxDialogBorderless()
             {
                 Message = text ?? string.Empty,
                 Text = caption ?? string.Empty
@@ -135,11 +134,8 @@ namespace M2TWinForms
 
             var iconImage = GetWindowIcon(icon);
             if (iconImage != null)
-            {
-                var convertedIcon = IconHelper.CreateIconFromImage(iconImage, 64);
-                dialog.Icon = convertedIcon;
-            }
-            dialog.ShowIcon = iconImage != null;
+                dialog.WindowIcon = iconImage;
+            dialog.HasIcon = iconImage != null;
 
             var msgBoxButtons = CreateMessageBoxButtons(buttons, defaultButton, true);
             dialog.AddButtons(msgBoxButtons);

@@ -1,138 +1,199 @@
-﻿using M2TWinForms.Themes.ThemeLoading;
+﻿using M2TWinForms.Helper;
+using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
+using System.Drawing.Imaging;
 
-namespace M2TWinForms
+namespace M2TWinForms.Controls.Window;
+
+public partial class M2TForm : Form, IThemedControl
 {
-    public partial class M2TForm : BorderlessForm, IThemedControl
+    #region Color Roles
+    [Description("The Material Design Color Role used for background of the form")]
+    [Category("Material Design")]
+    [DefaultValue(M2TFormBackgroundRoleSelection.Surface)]
+    public M2TFormBackgroundRoleSelection BackgroundColorRole
     {
-
-        #region Color Roles
-        [Description("The Material Design Color Role used for background of the form")]
-        [Category("Material Design")]
-        [DefaultValue(M2TFormBackgroundRoleSelection.Surface)]
-        public M2TFormBackgroundRoleSelection BackgroundColorRole
+        get;
+        set
         {
-            get => _backgroundColorRole;
-            set
-            {
-                _backgroundColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private M2TFormBackgroundRoleSelection _backgroundColorRole;
-
-        [Description("The Material Design Color Role used for titlebar of the form containing the control buttons")]
-        [Category("Material Design")]
-        [DefaultValue(M2TFormBackgroundRoleSelection.SurfaceContainerHigh)]
-        public M2TFormBackgroundRoleSelection TitleBarColorRole
-        {
-            get => _titleBarColorRole;
-            set
-            {
-                _titleBarColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private M2TFormBackgroundRoleSelection _titleBarColorRole;
-
-        [Description("The Material Design Color Role used for the hover color of the control buttons in the titlebar")]
-        [Category("Material Design")]
-        [DefaultValue(M2TFormBackgroundRoleSelection.SurfaceContainer)]
-        public M2TFormBackgroundRoleSelection TitleBarButtonHoverColorRole
-        {
-            get => _titleBarButtonHoverColorRole;
-            set
-            {
-                _titleBarButtonHoverColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private M2TFormBackgroundRoleSelection _titleBarButtonHoverColorRole;
-
-        [Description("The Material Design Color Role used for the foreground color of the control buttons and window title text in the titlebar")]
-        [Category("Material Design")]
-        [DefaultValue(M2TFormForegroundRoleSelection.OnSurface)]
-        public M2TFormForegroundRoleSelection TitleBarForegroundColorRole
-        {
-            get => _titleBarForegroundColorRole;
-            set
-            {
-                _titleBarForegroundColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private M2TFormForegroundRoleSelection _titleBarForegroundColorRole;
-
-        [Description("The Material Design Color Role used for the foreground color of the close button in the titlebar")]
-        [Category("Material Design")]
-        [DefaultValue(M2TFormForegroundRoleSelection.Error)]
-        public M2TFormForegroundRoleSelection CloseButtonColorRole
-        {
-            get => _closeButtonColorRole;
-            set
-            {
-                _closeButtonColorRole = value;
-                ApplyCurrentLoadedTheme();
-            }
-        }
-        private M2TFormForegroundRoleSelection _closeButtonColorRole;
-        #endregion
-
-
-        public M2TForm()
-        {
-            InitializeComponent();
-
-            TitleBarForegroundColorRole = M2TFormForegroundRoleSelection.OnSurface;
-            BackgroundColorRole = M2TFormBackgroundRoleSelection.Surface;
-            TitleBarColorRole = M2TFormBackgroundRoleSelection.SurfaceContainerHigh;
-            TitleBarButtonHoverColorRole = M2TFormBackgroundRoleSelection.SurfaceContainer;
-            CloseButtonColorRole = M2TFormForegroundRoleSelection.Error;
-        }
-
-        private void M2TForm_Load(object sender, EventArgs e)
-        {
+            field = value;
             ApplyCurrentLoadedTheme();
         }
+    }
 
-
-        public void ApplyCurrentLoadedTheme()
+    [Description("The Material Design Color Role used for titlebar of the form containing the control buttons")]
+    [Category("Material Design")]
+    [DefaultValue(M2TFormBackgroundRoleSelection.SurfaceContainerHigh)]
+    public M2TFormBackgroundRoleSelection TitleBarColorRole
+    {
+        get;
+        set
         {
-            this.BackColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(BackgroundColorRole));
-            TitleBarColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarColorRole));
-            TitleBarForegroundColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarForegroundColorRole));
-            CloseButtonColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(CloseButtonColorRole));
-            TitleBarButtonHoverColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarButtonHoverColorRole));
-
-            NestedControlThemeApplier.ApplyThemeForChildControls(this);
+            field = value;
+            ApplyCurrentLoadedTheme();
         }
+    }
 
-        private ColorRoles GetMappedRole(M2TFormBackgroundRoleSelection role)
+    [Description("The Material Design Color Role used for the foreground color of the control buttons and window title text in the titlebar")]
+    [Category("Material Design")]
+    [DefaultValue(M2TFormForegroundRoleSelection.OnSurface)]
+    public M2TFormForegroundRoleSelection TitleBarForegroundColorRole
+    {
+        get;
+        set
         {
-            return role switch
-            {
-                M2TFormBackgroundRoleSelection.Surface => ColorRoles.Surface,
-                M2TFormBackgroundRoleSelection.SurfaceContainer => ColorRoles.SurfaceContainer,
-                M2TFormBackgroundRoleSelection.SurfaceContainerHighest => ColorRoles.SurfaceContainerHighest,
-                M2TFormBackgroundRoleSelection.SurfaceContainerHigh => ColorRoles.SurfaceContainerHigh,
-                M2TFormBackgroundRoleSelection.SurfaceContainerLow => ColorRoles.SurfaceContainerLow,
-                M2TFormBackgroundRoleSelection.SurfaceContainerLowest => ColorRoles.SurfaceContainerLowest,
-                _ => throw new ArgumentException($"Could not map {nameof(M2TFormBackgroundRoleSelection)}: {role}"),
-            };
+            field = value;
+            ApplyCurrentLoadedTheme();
         }
+    }
 
-        private ColorRoles GetMappedRole(M2TFormForegroundRoleSelection role)
+    [Description("The Material Design Color Role used for the color of the form border when the window is active")]
+    [Category("Material Design")]
+    [DefaultValue(M2TFormBorderColorRoleSelection.Primary)]
+    public M2TFormBorderColorRoleSelection FormBorderActiveColorRole
+    {
+        get;
+        set
         {
-            return role switch
-            {
-                M2TFormForegroundRoleSelection.Primary => ColorRoles.Primary,
-                M2TFormForegroundRoleSelection.Secondary => ColorRoles.Secondary,
-                M2TFormForegroundRoleSelection.Tertiary => ColorRoles.Tertiary,
-                M2TFormForegroundRoleSelection.Error => ColorRoles.Error,
-                M2TFormForegroundRoleSelection.OnSurface => ColorRoles.OnSurface,
-                M2TFormForegroundRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
-                _ => throw new ArgumentException($"Could not map {nameof(M2TFormForegroundRoleSelection)}: {role}"),
-            };
+            field = value;
+            RefreshFormBorderColor();
         }
+    }
+
+    [Description("The Material Design Color Role used for the color of the form border when the window is inactive")]
+    [Category("Material Design")]
+    [DefaultValue(M2TFormBorderColorRoleSelection.SurfaceContainerHigh)]
+    public M2TFormBorderColorRoleSelection FormBorderInactiveColorRole
+    {
+        get;
+        set
+        {
+            field = value;
+            RefreshFormBorderColor();
+        }
+    }
+    #endregion
+
+
+    private Icon? _baseIcon;
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    public new Icon? Icon
+    {
+        get => _baseIcon;
+        set
+        {
+            _baseIcon = value;
+            RedrawBaseIconColored();
+        }
+    }
+
+    public M2TForm()
+    {
+        InitializeComponent();
+
+        BackgroundColorRole = M2TFormBackgroundRoleSelection.Surface;
+        TitleBarColorRole = M2TFormBackgroundRoleSelection.SurfaceContainerHigh;
+        TitleBarForegroundColorRole = M2TFormForegroundRoleSelection.OnSurface;
+        FormBorderActiveColorRole = M2TFormBorderColorRoleSelection.Primary;
+        FormBorderInactiveColorRole = M2TFormBorderColorRoleSelection.SurfaceContainerHigh;
+
+        _baseIcon = base.Icon;
+        Icon = Properties.Resources.favicon;
+    }
+
+    private void M2TForm_Load(object sender, EventArgs e)
+    {
+        ApplyCurrentLoadedTheme();
+    }
+
+    public void ApplyCurrentLoadedTheme()
+    {
+        BackColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(BackgroundColorRole));
+        FormCaptionBackColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarColorRole));
+        FormCaptionTextColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarForegroundColorRole));
+        RefreshFormBorderColor();
+        RedrawBaseIconColored();
+
+        NestedControlThemeApplier.ApplyThemeForChildControls(this);
+    }
+
+    private void RedrawBaseIconColored()
+    {
+        Icon? baseClassIcon = null;
+        var iconImage = _baseIcon?.ToBitmap();
+        if (iconImage is not null)
+        {
+            var iconColor = CurrentLoadedThemeManager.GetColorForRole(GetMappedRole(TitleBarForegroundColorRole));
+            var tintedImage = iconImage.GetTintedImage(iconColor);
+            baseClassIcon = IconHelper.CreateIconFromImage(tintedImage, _baseIcon!.Height);
+        }
+        base.Icon = baseClassIcon;
+    }
+
+    protected bool IsActivated { get; private set; } = false;
+    private void M2TForm_Activated(object sender, EventArgs e)
+    {
+        IsActivated = true;
+        RefreshFormBorderColor();
+    }
+    private void M2TForm_Deactivated(object sender, EventArgs e)
+    {
+        IsActivated = false;
+        RefreshFormBorderColor();
+    }
+    private void RefreshFormBorderColor()
+    {
+        var formBorderColorRole = IsActivated
+            ? GetMappedColorRole(FormBorderActiveColorRole)
+            : GetMappedColorRole(FormBorderInactiveColorRole);
+        FormBorderColor = CurrentLoadedThemeManager.GetColorForRole(formBorderColorRole);
+    }
+
+    private ColorRoles GetMappedRole(M2TFormBackgroundRoleSelection role)
+    {
+        return role switch
+        {
+            M2TFormBackgroundRoleSelection.Surface => ColorRoles.Surface,
+            M2TFormBackgroundRoleSelection.SurfaceContainer => ColorRoles.SurfaceContainer,
+            M2TFormBackgroundRoleSelection.SurfaceContainerHighest => ColorRoles.SurfaceContainerHighest,
+            M2TFormBackgroundRoleSelection.SurfaceContainerHigh => ColorRoles.SurfaceContainerHigh,
+            M2TFormBackgroundRoleSelection.SurfaceContainerLow => ColorRoles.SurfaceContainerLow,
+            M2TFormBackgroundRoleSelection.SurfaceContainerLowest => ColorRoles.SurfaceContainerLowest,
+            _ => throw new ArgumentException($"Could not map {nameof(M2TFormBackgroundRoleSelection)}: {role}"),
+        };
+    }
+
+    private ColorRoles GetMappedRole(M2TFormForegroundRoleSelection role)
+    {
+        return role switch
+        {
+            M2TFormForegroundRoleSelection.Primary => ColorRoles.Primary,
+            M2TFormForegroundRoleSelection.Secondary => ColorRoles.Secondary,
+            M2TFormForegroundRoleSelection.Tertiary => ColorRoles.Tertiary,
+            M2TFormForegroundRoleSelection.Error => ColorRoles.Error,
+            M2TFormForegroundRoleSelection.OnSurface => ColorRoles.OnSurface,
+            M2TFormForegroundRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
+            _ => throw new ArgumentException($"Could not map {nameof(M2TFormForegroundRoleSelection)}: {role}"),
+        };
+    }
+
+    private ColorRoles GetMappedColorRole(M2TFormBorderColorRoleSelection role)
+    {
+        return role switch
+        {
+            M2TFormBorderColorRoleSelection.Primary => ColorRoles.Primary,
+            M2TFormBorderColorRoleSelection.Secondary => ColorRoles.Secondary,
+            M2TFormBorderColorRoleSelection.Tertiary => ColorRoles.Tertiary,
+            M2TFormBorderColorRoleSelection.Error => ColorRoles.Error,
+            M2TFormBorderColorRoleSelection.Surface => ColorRoles.Surface,
+            M2TFormBorderColorRoleSelection.SurfaceContainer => ColorRoles.SurfaceContainer,
+            M2TFormBorderColorRoleSelection.SurfaceContainerHighest => ColorRoles.SurfaceContainerHighest,
+            M2TFormBorderColorRoleSelection.SurfaceContainerHigh => ColorRoles.SurfaceContainerHigh,
+            M2TFormBorderColorRoleSelection.SurfaceContainerLow => ColorRoles.SurfaceContainerLow,
+            M2TFormBorderColorRoleSelection.SurfaceContainerLowest => ColorRoles.SurfaceContainerLowest,
+            M2TFormBorderColorRoleSelection.OnSurface => ColorRoles.OnSurface,
+            M2TFormBorderColorRoleSelection.OnSurfaceVariant => ColorRoles.OnSurfaceVariant,
+            _ => throw new ArgumentException($"Could not map {nameof(M2TFormBorderColorRoleSelection)}: {role}"),
+        };
     }
 }

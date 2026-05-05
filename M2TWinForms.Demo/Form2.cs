@@ -2,7 +2,7 @@
 
 namespace M2TWinForms.Demo
 {
-    public partial class Form2 : M2TFormNative
+    public partial class Form2 : M2TForm
     {
         public Form2()
         {
