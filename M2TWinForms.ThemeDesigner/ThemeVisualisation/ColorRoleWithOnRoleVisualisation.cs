@@ -11,6 +11,7 @@ namespace M2TWinForms.ThemeDesigner.ThemeVisualisation
 {
     public partial class ColorRoleWithOnRoleVisualisation : UserControl
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color Color
         {
             get => CRV_ColorRole.Color;
@@ -20,6 +21,7 @@ namespace M2TWinForms.ThemeDesigner.ThemeVisualisation
                 CRV_OnColorRole.TextColor = value;
             }
         }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color OnColor
         {
             get => CRV_OnColorRole.Color;
@@ -30,6 +32,7 @@ namespace M2TWinForms.ThemeDesigner.ThemeVisualisation
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string ColorRoleName
         {
             get => CRV_ColorRole.ColorRoleName;

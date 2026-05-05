@@ -1,6 +1,5 @@
-using M2TWinForms.ThemeDesigner.HctConversionTester;
 using M2TWinForms.Themes;
-using M2TWinForms.Themes.MaterialDesign;
+using MaterialTheming;
 
 namespace M2TWinForms.ThemeDesigner
 {
@@ -46,13 +45,17 @@ namespace M2TWinForms.ThemeDesigner
         {
             try
             {
-                var file = new FileInfo(SelectedFilePath);
-                var theme = Theme.CreateFromMaterialDesignJson(file, SelectedThemeMode, SelectedContrastLevel);
+                var themeColors = ThemeBuilder
+                    .CreateFromJsonFilePath(SelectedFilePath)
+                    .WithMode(SelectedThemeMode)
+                    .WithContrastLevel(SelectedContrastLevel)
+                    .Build();
+                var theme = new Theme(SelectedThemeMode == ThemeMode.Dark, themeColors);
                 CSV_LoadedTheme.LoadTheme(theme);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occured while loading the theme: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                M2TMessageBoxBorderless.Show($"An error occured while loading the theme: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

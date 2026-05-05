@@ -12,16 +12,19 @@ namespace M2TWinForms.ThemeDesigner.ThemeVisualisation
 {
     public partial class ColorRoleVisualisation: UserControl
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color Color 
         { 
             get => BackColor;
             set => BackColor = value;
         }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color TextColor
         {
             get => LB_ColorRoleName.ForeColor;
             set => LB_ColorRoleName.ForeColor = value;
         }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string ColorRoleName 
         { 
             get => LB_ColorRoleName.Text;

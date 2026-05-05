@@ -1,6 +1,3 @@
-using M2TWinForms.Themes;
-using M2TWinForms.Themes.MaterialDesign;
-
 namespace M2TWinForms.Demo
 {
     internal static class Program
@@ -16,7 +13,7 @@ namespace M2TWinForms.Demo
             ApplicationConfiguration.Initialize();
 
             Application.EnableVisualStyles();
-            Application.Run(new Form1());
+            Application.Run(new Form2());
         }
     }
 }

@@ -12,6 +12,7 @@ namespace M2TWinForms
 {
     public partial class ColoredImageButton : UserControl
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Image? BaseImage
         {
             get
@@ -47,6 +48,7 @@ namespace M2TWinForms
         }
         private Image? _convertedBaseImage;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool ConvertBaseImageToGrayscale
         {
             get
@@ -66,6 +68,7 @@ namespace M2TWinForms
         private bool _convertBaseImageToGrayscale;
 
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Padding ImagePadding
         {
             get
@@ -81,6 +84,7 @@ namespace M2TWinForms
         private Padding _imagePadding;
 
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color ImageColor
         {
             get
@@ -96,6 +100,7 @@ namespace M2TWinForms
         private Color _imageColor;
 
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color HoverImageColor
         {
             get
@@ -111,6 +116,7 @@ namespace M2TWinForms
         private Color _hoverImageColor;
 
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public new Color BackColor
         {
             get
@@ -126,7 +132,9 @@ namespace M2TWinForms
         private Color _originalBackColor;
 
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color HoverBackColor { get; set; }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool HoverEnabled
         {
             get

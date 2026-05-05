@@ -1,14 +1,5 @@
-﻿using M2TWinForms.Themes.MaterialDesign;
-using M2TWinForms.Themes.ThemeLoading;
-using System;
-using System.Collections.Generic;
+﻿using M2TWinForms.Themes.ThemeLoading;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace M2TWinForms
 {
@@ -52,7 +43,6 @@ namespace M2TWinForms
             this.BackColor = CurrentLoadedThemeManager.GetColorForRole(GetBackgroundRole());
             this.ForeColor = CurrentLoadedThemeManager.GetColorForRole(GetForegroundRole());
         }
-
 
         private ColorRoles GetForegroundRole()
         {

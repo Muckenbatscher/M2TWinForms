@@ -34,6 +34,7 @@ namespace M2TWinForms
         public static void DrawImageWithColor(this Graphics g, Image image, Color color, Rectangle destinationRectangle)
         {
             image ??= new Bitmap(1, 1);
+            g.PrepareGraphicsForHighQualityDrawing();
             var colorMatrix = GetTransformationMatrix(color);
             var imageattributes = new ImageAttributes();
             imageattributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
@@ -76,6 +77,17 @@ namespace M2TWinForms
                 var location = new Point(padding.Left + ((int)actualDestinationWidth - newWidth) / 2, padding.Top);
                 return new Rectangle(location, size);
             }
+        }
+
+        public static Image GetTintedImage(this Image originalImage, Color color)
+        {
+            var tintedImage = new Bitmap(originalImage.Width, originalImage.Height);
+            using (Graphics g = Graphics.FromImage(tintedImage))
+            {
+                var grayscaledImage = originalImage.GetGrayScaledImage();
+                g.DrawImageWithColor(grayscaledImage, color, new Rectangle(Point.Empty, originalImage.Size));
+            }
+            return tintedImage;
         }
     }
 }

@@ -47,7 +47,6 @@
             BT_CalculateRgb = new Button();
             BT_CalculateHct = new Button();
             PN_VisualisationRgb = new Panel();
-            BT_PaletteGeneration = new Button();
             TLP_MAIN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NUD_Tone).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUD_Chroma).BeginInit();
@@ -83,7 +82,6 @@
             TLP_MAIN.Controls.Add(BT_CalculateRgb, 3, 4);
             TLP_MAIN.Controls.Add(BT_CalculateHct, 1, 4);
             TLP_MAIN.Controls.Add(PN_VisualisationRgb, 0, 5);
-            TLP_MAIN.Controls.Add(BT_PaletteGeneration, 3, 6);
             TLP_MAIN.Location = new Point(19, 12);
             TLP_MAIN.Name = "TLP_MAIN";
             TLP_MAIN.RowCount = 7;
@@ -271,17 +269,6 @@
             PN_VisualisationRgb.Size = new Size(763, 162);
             PN_VisualisationRgb.TabIndex = 16;
             // 
-            // BT_PaletteGeneration
-            // 
-            BT_PaletteGeneration.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BT_PaletteGeneration.Location = new Point(537, 386);
-            BT_PaletteGeneration.Name = "BT_PaletteGeneration";
-            BT_PaletteGeneration.Size = new Size(229, 37);
-            BT_PaletteGeneration.TabIndex = 17;
-            BT_PaletteGeneration.Text = "Generate Palettes";
-            BT_PaletteGeneration.UseVisualStyleBackColor = true;
-            BT_PaletteGeneration.Click += BT_PaletteGeneration_Click;
-            // 
             // HctVisualisation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -321,7 +308,6 @@
         private Button BT_CalculateRgb;
         private Button BT_CalculateHct;
         private Panel PN_VisualisationRgb;
-        private Button BT_PaletteGeneration;
         private TextBox TB_RgbColorHtml;
     }
 }
