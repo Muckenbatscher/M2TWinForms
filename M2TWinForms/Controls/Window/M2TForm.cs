@@ -180,9 +180,13 @@ public partial class M2TForm : Form, IThemedControl
         return role switch
         {
             M2TFormBorderColorRoleSelection.Primary => ColorRoles.Primary,
+            M2TFormBorderColorRoleSelection.PrimaryContainer => ColorRoles.Primary,
             M2TFormBorderColorRoleSelection.Secondary => ColorRoles.Secondary,
+            M2TFormBorderColorRoleSelection.SecondaryContainer => ColorRoles.SecondaryContainer,
             M2TFormBorderColorRoleSelection.Tertiary => ColorRoles.Tertiary,
+            M2TFormBorderColorRoleSelection.TertiaryContainer => ColorRoles.TertiaryContainer,
             M2TFormBorderColorRoleSelection.Error => ColorRoles.Error,
+            M2TFormBorderColorRoleSelection.ErrorContainer => ColorRoles.ErrorContainer,
             M2TFormBorderColorRoleSelection.Surface => ColorRoles.Surface,
             M2TFormBorderColorRoleSelection.SurfaceContainer => ColorRoles.SurfaceContainer,
             M2TFormBorderColorRoleSelection.SurfaceContainerHighest => ColorRoles.SurfaceContainerHighest,
