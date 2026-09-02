@@ -118,7 +118,7 @@ namespace M2TWinForms.Helper
         /// <param name="image">Das Quellbild</param>
         /// <param name="size">Die gewünschte Größe</param>
         /// <returns>Eine neue Icon-Instanz</returns>
-        public static Icon CreateIconFromImage(Image image, int size = 16)
+        public static Icon? CreateIconFromImage(Image image, int size = 16)
         {
             using (MemoryStream ms = new MemoryStream())
             {

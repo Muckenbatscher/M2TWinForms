@@ -6,6 +6,10 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
+  <PropertyGroup>
+    <!--Obsolete call; Obsolete override;-->
+    <NoWarn>$(NoWarn);CS0618;CS0809</NoWarn>
+  </PropertyGroup>
 
 	<PropertyGroup>
 		<PackageId>M2TWinForms</PackageId>

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace M2TWinForms
 {
     public partial class BorderlessForm : Form
     {
-        public event WindowIconClickedEventHandler WindowIconClicked;
+        public event WindowIconClickedEventHandler? WindowIconClicked;
 
         public delegate void WindowIconClickedEventHandler(object sender, EventArgs e);
 
@@ -49,20 +50,16 @@ namespace M2TWinForms
         private bool _hasIcon = true;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public Image WindowIcon
+        public Image? WindowIcon
         {
-            get
-            {
-                return _windowIcon;
-            }
+            get;
             set
             {
-                _windowIcon = value;
+                field = value;
                 HasIcon = HasIcon && !(value == null);
                 WindowImageButton.BaseImage = value;
             }
         }
-        private Image _windowIcon;
 
         [DefaultValue(typeof(Padding), "3, 3, 3, 3")]
         public Padding WindowIconPadding
@@ -71,6 +68,7 @@ namespace M2TWinForms
             set => WindowImageButton.ImagePadding = value;
         }
 
+        [AllowNull]
         public override string Text
         {
             get
