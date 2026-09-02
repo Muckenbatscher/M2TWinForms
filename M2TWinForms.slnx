@@ -1,4 +1,9 @@
 <Solution>
+  <Folder Name="/Solution Items/" />
+  <Folder Name="/Solution Items/GitHub Actions/">
+    <File Path=".github/workflows/build_validation.yml" />
+    <File Path=".github/workflows/push_github_packages.yml" />
+  </Folder>
   <Project Path="M2TWinForms.Demo/M2TWinForms.Demo.csproj" />
   <Project Path="M2TWinForms.ThemeDesigner/M2TWinForms.ThemeDesigner.csproj" />
   <Project Path="M2TWinForms/M2TWinForms.csproj" />
