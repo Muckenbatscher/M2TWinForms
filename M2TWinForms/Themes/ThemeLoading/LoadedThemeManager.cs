@@ -32,7 +32,7 @@ namespace M2TWinForms.Themes.ThemeLoading
             if (!IsThemeLoaded)
                 throw new InvalidOperationException("No theme loaded");
 
-            var color = role switch
+            var rgbColor = role switch
             {
                 ColorRoles.Primary => CurrentLoadedTheme!.Primary,
                 ColorRoles.OnPrimary => CurrentLoadedTheme!.OnPrimary,
@@ -62,10 +62,7 @@ namespace M2TWinForms.Themes.ThemeLoading
                 _ => throw new ArgumentException("Invalid color role", nameof(role)),
             };
 
-            return GetColorFromRgbColor(color);
+            return rgbColor.ToColor();
         }
-
-        private static Color GetColorFromRgbColor(RgbColor rgbColor)
-            => Color.FromArgb(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
     }
 }
