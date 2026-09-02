@@ -17,7 +17,7 @@ jobs:
       valid: ${{ steps.version.outputs.is_valid }}
     steps:
     - name: Check Version Format in Tag
-      uses: nowsprinting/check-version-format-action@v4.0.7
+      uses: nowsprinting/check-version-format-action@v5.0.4
       id: version
       with:
         prefix: 'v'
@@ -38,8 +38,8 @@ jobs:
       OUTDIR: 'PackageBuild'
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-dotnet@v4
+    - uses: actions/checkout@v7
+    - uses: actions/setup-dotnet@v6
       with:
         dotnet-version: 10.0.x
 
@@ -53,7 +53,7 @@ jobs:
           -p:PackageVersion=$VERSION
 
     - name: Upload built packages as artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: ${{ env.PACKAGES_ARTIFACT }}-${{ matrix.project.name }}
         path: ${{ env.OUTDIR }}/*.nupkg
@@ -74,11 +74,11 @@ jobs:
       PACKAGE_DIR: 'packages'
 
     steps:
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@v8
       with:
         path: ${{ env.PACKAGE_DIR }}
 
-    - uses: actions/setup-dotnet@v4
+    - uses: actions/setup-dotnet@v6
       with:
         dotnet-version: 10.0.x
         
