@@ -29,7 +29,7 @@
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="MaterialTheming.Winforms" Version="2.3.1" />
+	  <PackageReference Include="MaterialTheming.Winforms" Version="2.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>
